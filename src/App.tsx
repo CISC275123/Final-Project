@@ -1,16 +1,18 @@
 import React from "react";
 import "./App.css";
 
+import logo from "./images/logo.png";
+
 function App(): JSX.Element {
     return (
         <div className="App">
             <header className="App-header">
-                UD CISC275 with React Hooks and TypeScript
+                <p>CISC275 - Introduction to Software Engineering</p>
+                <br />
+                <img src={logo} alt="Homepage logo" />
+                <br />
+                <p>Created and Maintained by: Leon Giang, </p>
             </header>
-            <p>
-                Edit <code>src/App.tsx</code> and save. This page will
-                automatically reload.
-            </p>
         </div>
     );
 }
