@@ -11,7 +11,10 @@ function App(): JSX.Element {
                 <br />
                 <img src={logo} alt="Homepage logo" />
                 <br />
-                <p>Created and Maintained by: Leon Giang, Jason Chan, </p>
+                <p>
+                    Created and Maintained by: Leon Giang, Jason Chan, Sibyl
+                    Roosen
+                </p>
             </header>
         </div>
     );
