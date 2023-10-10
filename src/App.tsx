@@ -12,7 +12,7 @@ function App(): JSX.Element {
                 <img src={logo} alt="Homepage logo" />
                 <br />
                 <p>
-                    Created and Maintained by: Leon Giang, Jason Chan, Sibyl
+                    Created and Maintained by: Leon Giang, Jason Chan, Sibyl, Abdullah Maruf
                     Roosen, Taylor Kadans,
                 </p>
             </header>
