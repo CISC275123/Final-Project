@@ -13,7 +13,7 @@ function App(): JSX.Element {
                 <br />
                 <p>
                     Created and Maintained by: Leon Giang, Jason Chan, Sibyl
-                    Roosen, Taylor Kadans
+                    Roosen, Taylor Kadans,
                 </p>
             </header>
         </div>
