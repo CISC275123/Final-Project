@@ -25,19 +25,51 @@ function App(): JSX.Element {
     const [display, setDisplay] = useState<boolean>(false);
     return (
         <div className="App">
-            <header className="App-header">
-                <p>CISC275 - Introduction to Software Engineering</p>
-                <br />
-                <img src={logo} alt="Homepage logo" />
-                <br />
-                <p>
-                    Created and Maintained by: Leon Giang, Jason Chan, Sibyl
-                    Roosen, Abdullah Maruf, Taylor Kadans
-                </p>
-            </header>
-            <Button onClick={() => setDisplay(!display)}>Show Courses</Button>
-            <Button onClick={() => setCourses(COURSES)}>Edit</Button>
-            {display && <CourseList courses={courses}></CourseList>}
+            <body>
+                <header className="App-header">
+                    <nav>
+                        <a className="logo" href="index.html">
+                            <img src={logo} alt="Homepage logo"></img>
+                        </a>
+                        <p className="title">
+                            CISC275 - Introduction to Software Engineering
+                        </p>
+                        <ul className="nav_links">
+                            <li>
+                                <a href="#Home">Home</a>
+                            </li>
+                            <li>
+                                <a href="#Courses">Courses</a>
+                            </li>
+                            <li>
+                                <a href="#Semesters">Semesters</a>
+                            </li>
+                            <li>
+                                <a href="#Degrees">Degress</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </header>
+
+                <div className="CourseButtons">
+                    <Button>Back</Button>
+                    <Button onClick={() => setDisplay(!display)}>
+                        Show Courses
+                    </Button>
+                    <Button>Next</Button>
+                </div>
+
+                <div className="CourseList">
+                    {display && <CourseList courses={courses}></CourseList>}
+                </div>
+
+                <footer>
+                    <p>
+                        Created and Maintained by: Leon Giang, Jason Chan, Sibyl
+                        Roosen, Abdullah Maruf, Taylor Kadans
+                    </p>
+                </footer>
+            </body>
         </div>
     );
 }

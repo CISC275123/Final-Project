@@ -1,9 +1,10 @@
 .course_view_card {
-    background-color: white;
+    background-color: #24252a;
     border-radius: 1rem;
     padding: 2rem;
 }
 
-.title {
+.courseID {
+    color: orange;
     margin-right: 1rem;
 }

@@ -1,12 +1,7 @@
 .course_list {
-    padding: 20px 10%;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     gap: 20px;
     text-align: left;
-}
-
-.add_btn {
-    width: 10rem;
-    align-self: center;
 }
