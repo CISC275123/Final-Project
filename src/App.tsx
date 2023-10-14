@@ -22,7 +22,7 @@ const COURSES = sample.map(
 
 function App(): JSX.Element {
     const [courses, setCourses] = useState<Course[]>(COURSES);
-    const [display, setDisplay] = useState<boolean>(false);
+    const [display, setDisplay] = useState<boolean>(true);
     const [currIndex, setIndex] = useState<number>(0);
 
     const NUM_COURSES_DISPLAYED = 3;
