@@ -217,7 +217,7 @@
     },
     {
         "id": "CISC 410",
-        "name": "INTRODUCTION TO NUMERICAL ANALYSIS &amp; ALGORITHMIC COMPUTATION",
+        "name": "INTRODUCTION TO NUMERICAL ANALYSIS & ALGORITHMIC COMPUTATION",
         "credits": "3 ",
         "prereqs": "MATH349 or MATH341 or MATH351; and CISC106 or CISC108. ",
         "restrictions": "Requires familiarity with computing (e.g., programming language).",
@@ -451,7 +451,7 @@
     },
     {
         "id": "CISC 489",
-        "name": "TOPICS: ARTIFICIAL INTELLIGENCE",
+        "name": "ARTIFICIAL INTELLIGENCE",
         "credits": "3 ",
         "prereqs": "CISC481/681 ",
         "restrictions": "Credit cannot be received for both CISC489 and CISC689. 600 level courses may be taken honors credit.",

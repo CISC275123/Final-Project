@@ -5,7 +5,7 @@ import "./CourseCard.css";
 export const CourseCard = ({ course }: { course: Course }) => {
     return (
         <div className="course_view_card">
-            <div className="d-flex align-items-baseline">
+            <div>
                 <h3 className="courseID">
                     {course.id} : {course.name}
                 </h3>
