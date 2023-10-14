@@ -23,6 +23,10 @@ const COURSES = sample.map(
 function App(): JSX.Element {
     const [courses, setCourses] = useState<Course[]>(COURSES);
     const [display, setDisplay] = useState<boolean>(false);
+    const [currIndex, setIndex] = useState<number>(0);
+
+    const NUM_COURSES_DISPLAYED = 3;
+
     return (
         <div className="App">
             <body>
@@ -52,15 +56,38 @@ function App(): JSX.Element {
                 </header>
 
                 <div className="CourseButtons">
-                    <Button>Back</Button>
+                    <Button
+                        onClick={() =>
+                            currIndex > 0
+                                ? setIndex(currIndex - NUM_COURSES_DISPLAYED)
+                                : setIndex(currIndex)
+                        }
+                    >
+                        Back
+                    </Button>
                     <Button onClick={() => setDisplay(!display)}>
                         Show Courses
                     </Button>
-                    <Button>Next</Button>
+                    <Button
+                        onClick={() =>
+                            currIndex < courses.length - NUM_COURSES_DISPLAYED
+                                ? setIndex(currIndex + NUM_COURSES_DISPLAYED)
+                                : setIndex(currIndex)
+                        }
+                    >
+                        Next
+                    </Button>
                 </div>
 
                 <div className="CourseList">
-                    {display && <CourseList courses={courses}></CourseList>}
+                    {display && (
+                        <CourseList
+                            courses={courses.slice(
+                                currIndex,
+                                currIndex + NUM_COURSES_DISPLAYED
+                            )}
+                        ></CourseList>
+                    )}
                 </div>
 
                 <footer>
