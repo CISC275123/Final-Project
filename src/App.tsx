@@ -25,6 +25,17 @@ function App(): JSX.Element {
     const [display, setDisplay] = useState<boolean>(true);
     const [currIndex, setIndex] = useState<number>(0);
 
+    function editCourse(courseID: string, newCourse: Course) {
+        setCourses(
+            courses.map(
+                (course: Course): Course =>
+                    course.id.replace(/\s/g, "") === courseID
+                        ? newCourse
+                        : course
+            )
+        );
+    }
+
     const NUM_COURSES_DISPLAYED = 3;
 
     return (
@@ -86,6 +97,7 @@ function App(): JSX.Element {
                                 currIndex,
                                 currIndex + NUM_COURSES_DISPLAYED
                             )}
+                            editCourse={editCourse}
                         ></CourseList>
                     )}
                 </div>
