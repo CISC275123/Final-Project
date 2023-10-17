@@ -10,12 +10,12 @@ export const CourseCard = ({
     handleClick: (courseID: string) => void;
 }) => {
     return (
-        <div className="course_view_card">
+        <div
+            className="course_view_card"
+            onClick={() => handleClick(course.id.replace(/\s/g, ""))}
+        >
             <div>
-                <h3
-                    className="courseID"
-                    onClick={() => handleClick(course.id.replace(/\s/g, ""))}
-                >
+                <h3 className="courseID">
                     {course.id} : {course.name}
                 </h3>
                 <p>

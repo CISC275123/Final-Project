@@ -6,16 +6,19 @@ import { Button } from "react-bootstrap";
 export const CourseView = ({
     course,
     editCourse,
-    resetView
+    resetView,
+    switchEditing
 }: {
     course: Course;
     editCourse: (courseID: string, newCourse: Course) => void;
     resetView: () => void;
+    switchEditing: (edit: boolean) => void;
 }) => {
     const [edit, setEdit] = useState(false);
 
     const switchEdit = () => {
         setEdit(!edit);
+        switchEditing(!edit);
     };
 
     return (
@@ -58,7 +61,7 @@ export const CourseView = ({
                             {course.credits !== 1 ? "s" : ""}
                         </p>
                     </div>
-                    <p>{course.description.substring(0, 100)}...</p>
+                    <p>{course.description}</p>
                 </div>
             )}
         </div>

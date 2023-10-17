@@ -24,6 +24,7 @@ function App(): JSX.Element {
     const [courses, setCourses] = useState<Course[]>(COURSES);
     const [display, setDisplay] = useState<boolean>(true);
     const [currIndex, setIndex] = useState<number>(0);
+    const [isEditing, setEditing] = useState<boolean>(false);
 
     function editCourse(courseID: string, newCourse: Course) {
         setCourses(
@@ -34,6 +35,10 @@ function App(): JSX.Element {
                         : course
             )
         );
+    }
+
+    function switchEditing(edit: boolean) {
+        setEditing(edit);
     }
 
     const NUM_COURSES_DISPLAYED = 3;
@@ -73,10 +78,14 @@ function App(): JSX.Element {
                                 ? setIndex(currIndex - NUM_COURSES_DISPLAYED)
                                 : setIndex(currIndex)
                         }
+                        hidden={isEditing}
                     >
                         Back
                     </Button>
-                    <Button onClick={() => setDisplay(!display)}>
+                    <Button
+                        onClick={() => setDisplay(!display)}
+                        hidden={isEditing}
+                    >
                         Show Courses
                     </Button>
                     <Button
@@ -85,6 +94,7 @@ function App(): JSX.Element {
                                 ? setIndex(currIndex + NUM_COURSES_DISPLAYED)
                                 : setIndex(currIndex)
                         }
+                        hidden={isEditing}
                     >
                         Next
                     </Button>
@@ -98,6 +108,7 @@ function App(): JSX.Element {
                                 currIndex + NUM_COURSES_DISPLAYED
                             )}
                             editCourse={editCourse}
+                            switchEditing={switchEditing}
                         ></CourseList>
                     )}
                 </div>
