@@ -6,19 +6,16 @@ import { Button } from "react-bootstrap";
 export const CourseView = ({
     course,
     editCourse,
-    resetView,
-    switchEditing
+    resetView
 }: {
     course: Course;
     editCourse: (courseID: string, newCourse: Course) => void;
     resetView: () => void;
-    switchEditing: (edit: boolean) => void;
 }) => {
     const [edit, setEdit] = useState(false);
 
     const switchEdit = () => {
         setEdit(!edit);
-        switchEditing(!edit);
     };
 
     return (

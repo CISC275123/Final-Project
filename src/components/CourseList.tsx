@@ -40,13 +40,13 @@ export const CourseList = ({
             {courses.map((course: Course) => {
                 const cId = course.id.replace(/\s/g, "");
                 if (displayId === cId) {
+                    switchEditing(true);
                     return (
                         <CourseView
                             key={cId}
                             course={course}
                             editCourse={editCourse}
                             resetView={resetCourseView}
-                            switchEditing={switchEditing}
                         ></CourseView>
                     );
                 } else {
