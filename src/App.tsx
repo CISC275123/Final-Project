@@ -109,6 +109,7 @@ function App(): JSX.Element {
                             )}
                             editCourse={editCourse}
                             switchEditing={switchEditing}
+                            default_courses={COURSES}
                         ></CourseList>
                     )}
                 </div>

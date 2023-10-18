@@ -8,12 +8,14 @@ export const CourseEdit = ({
     course,
     editCourse,
     switchEdit,
-    resetView
+    resetView,
+    default_courses
 }: {
     course: Course;
     editCourse: (courseID: string, newCourse: Course) => void;
     switchEdit: () => void;
     resetView: () => void;
+    default_courses: Course[];
 }) => {
     const [newCourse, setNewCourse] = useState<Course>(course);
     const [newName, setName] = useState<string>(course.name);
@@ -43,6 +45,14 @@ export const CourseEdit = ({
         };
 
         editCourse(cId, newCourse);
+    };
+
+    const resetDefault = () => {
+        const defaultCourse = default_courses.filter(
+            (course: Course): boolean => course.id.replace(/\s/g, "") === cId
+        )[0];
+
+        editCourse(cId, defaultCourse);
     };
 
     return (
@@ -120,6 +130,15 @@ export const CourseEdit = ({
                         </Button>
                         <Button variant="warning" onClick={switchEdit}>
                             Cancel
+                        </Button>
+                        <Button
+                            variant="danger"
+                            onClick={() => {
+                                resetDefault();
+                                switchEdit();
+                            }}
+                        >
+                            Reset
                         </Button>
                     </div>
                 </div>
