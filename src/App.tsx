@@ -80,7 +80,18 @@ function App(): JSX.Element {
                         </ul>
                     </nav>
                 </header>
-                <div> {showComponentSemester && <Semester></Semester>}</div>
+                <div>
+                    {" "}
+                    {showComponentSemester && (
+                        <Semester
+                            courses={courses.slice(
+                                currIndex,
+                                currIndex + NUM_COURSES_DISPLAYED
+                            )}
+                            default_courses={COURSES}
+                        ></Semester>
+                    )}
+                </div>
                 <div className="CourseButtons">
                     <Button
                         onClick={() =>
