@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import { Course } from "../interfaces/course";
 import { CourseEdit } from "./CourseEdit";
 import { Button } from "react-bootstrap";
+import { SemesterProps } from "../App";
 
 export const CourseView = ({
+    updatedAddedCourses,
+    setUpdatedAddedCourses,
     course,
     editCourse,
     resetView,
@@ -13,16 +16,30 @@ export const CourseView = ({
     editCourse: (courseID: string, newCourse: Course) => void;
     resetView: () => void;
     default_courses: Course[];
-}) => {
+} & SemesterProps) => {
     const [edit, setEdit] = useState(false);
 
     const switchEdit = () => {
         setEdit(!edit);
     };
 
+    const addToSemesterList = () => {
+        const newAddedCoursesList = [...updatedAddedCourses, course.name];
+        setUpdatedAddedCourses(newAddedCoursesList);
+    };
+
     return (
         <div className="quiz_card">
             <div>
+                <Button
+                    className="esc_button text-align-center"
+                    variant="warning"
+                    onClick={() => {
+                        addToSemesterList();
+                    }}
+                >
+                    Add
+                </Button>
                 <Button
                     className="esc_button text-align-center"
                     variant="warning"

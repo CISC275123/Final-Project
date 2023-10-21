@@ -3,8 +3,11 @@ import { Course } from "../interfaces/course";
 import { CourseCard } from "./CourseCard";
 import { CourseView } from "./CourseView";
 import "./CourseList.css";
+import { SemesterProps } from "../App";
 
 export const CourseList = ({
+    updatedAddedCourses,
+    setUpdatedAddedCourses,
     courses,
     editCourse,
     switchEditing,
@@ -14,7 +17,7 @@ export const CourseList = ({
     editCourse: (courseID: string, newCourse: Course) => void;
     switchEditing: (edit: boolean) => void;
     default_courses: Course[];
-}) => {
+} & SemesterProps) => {
     const [displayId, setDisplayId] = useState<null | string>(null);
 
     const handleCourseView = (id: string) => {
@@ -45,6 +48,8 @@ export const CourseList = ({
                     switchEditing(true);
                     return (
                         <CourseView
+                            updatedAddedCourses={updatedAddedCourses}
+                            setUpdatedAddedCourses={setUpdatedAddedCourses}
                             key={cId}
                             course={course}
                             editCourse={editCourse}

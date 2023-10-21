@@ -9,6 +9,11 @@ import sample from "./data/courses.json";
 import { Button } from "react-bootstrap";
 import { Semester } from "./components/Semester/Semester";
 
+export interface SemesterProps {
+    updatedAddedCourses: string[];
+    setUpdatedAddedCourses: (newCourseList: string[]) => void;
+}
+
 const COURSES = sample.map(
     (course): Course => ({
         id: course.id,
@@ -27,6 +32,9 @@ function App(): JSX.Element {
     const [currIndex, setIndex] = useState<number>(0);
     const [isEditing, setEditing] = useState<boolean>(false);
     const [showComponentSemester, setShowComponentSemester] = useState(false);
+    const [updatedAddedCourses, setUpdatedAddedCourses] = useState<string[]>([
+        "Hello"
+    ]);
 
     function editCourse(courseID: string, newCourse: Course) {
         setCourses(
@@ -84,11 +92,8 @@ function App(): JSX.Element {
                     {" "}
                     {showComponentSemester && (
                         <Semester
-                            courses={courses.slice(
-                                currIndex,
-                                currIndex + NUM_COURSES_DISPLAYED
-                            )}
-                            default_courses={COURSES}
+                            updatedAddedCourses={updatedAddedCourses}
+                            setUpdatedAddedCourses={setUpdatedAddedCourses}
                         ></Semester>
                     )}
                 </div>
@@ -124,6 +129,8 @@ function App(): JSX.Element {
                 <div className="CourseList">
                     {display && (
                         <CourseList
+                            updatedAddedCourses={updatedAddedCourses}
+                            setUpdatedAddedCourses={setUpdatedAddedCourses}
                             courses={courses.slice(
                                 currIndex,
                                 currIndex + NUM_COURSES_DISPLAYED
