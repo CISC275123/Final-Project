@@ -88,15 +88,7 @@ function App(): JSX.Element {
                         </ul>
                     </nav>
                 </header>
-                <div>
-                    {" "}
-                    {showComponentSemester && (
-                        <Semester
-                            updatedAddedCourses={updatedAddedCourses}
-                            setUpdatedAddedCourses={setUpdatedAddedCourses}
-                        ></Semester>
-                    )}
-                </div>
+                <div> {showComponentSemester && <Semester></Semester>}</div>
                 <div className="CourseButtons">
                     <Button
                         onClick={() =>

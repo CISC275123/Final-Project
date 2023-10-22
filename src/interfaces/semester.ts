@@ -1,5 +1,8 @@
 import { Course } from "./course";
 
-export interface Semester {
+export interface SemesterStructure {
+    name: string;
+    // type: string;
+    // totalCredits: number;
     courses: Course[];
 }
