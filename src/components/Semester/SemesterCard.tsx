@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { SemesterInterfaceProps } from "./Semester";
+import { SemesterStructure } from "../../interfaces/semester";
+import { Course } from "../../interfaces/course";
+
 export function SemesterCard({
     semesterList,
     setSemesterList,
@@ -10,9 +13,10 @@ export function SemesterCard({
     setSeason,
     year,
     setYear,
+    maxCredits,
+    setMaxCredits,
     setIsSemesterCard
 }: SemesterInterfaceProps): JSX.Element {
-    const [maxCredits, setMaxCredits] = useState<number>(18);
     function updateSeason(event: React.ChangeEvent<HTMLSelectElement>) {
         setSeason(event.target.value);
         if (event.target.value === "Fall" || event.target.value === "Spring") {
