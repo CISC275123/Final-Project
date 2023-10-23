@@ -1,11 +1,21 @@
 import React, { FC, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Course } from "../../interfaces/course";
-import { SemesterStructure } from "../../interfaces/semester";
-import { SemesterProps } from "../../App";
 import sample from "../../data/courses.json";
 import "./Semester.css";
 import { SemesterCard } from "./SemesterCard";
+
+export interface SemesterInterfaceProps {
+    semesterList: string[];
+    setSemesterList: (list: string[]) => void;
+    semesterTitle: string;
+    setSemesterTitle: (semesterTitle: string) => void;
+    season: string;
+    setSeason: (season: string) => void;
+    year: string;
+    setYear: (year: string) => void;
+    setIsSemesterCard: (isCard: boolean) => void;
+}
 
 const COURSES = sample.map(
     (course): Course => ({
@@ -20,14 +30,14 @@ const COURSES = sample.map(
 );
 
 export const Semester = () => {
-    const [semesterList, setSemesterList] = useState<string[]>([]);
-    const [semesterCounter, setSemesterCounter] = useState<number>(1);
+    const [semesterList, setSemesterList] = useState<string[]>(["YOOO"]);
     const [isSemesterCard, setIsSemesterCard] = useState<boolean>(false);
+    const [semesterTitle, setSemesterTitle] = useState<string>("Hello");
+    const [season, setSeason] = useState<string>("Fall");
+    const [year, setYear] = useState<string>("2023");
 
     function addSemester() {
-        setSemesterCounter(semesterCounter + 1);
-        const newSemester = "Semester " + semesterCounter;
-        const newSemesterList = [...semesterList, newSemester];
+        const newSemesterList = [...semesterList, semesterTitle];
         setSemesterList(newSemesterList);
     }
 
@@ -41,7 +51,9 @@ export const Semester = () => {
 
     return (
         <div>
-            <Button onClick={addSemester}>Add Semester</Button>
+            <Button onClick={showSemesterCard}>Add Semester</Button>
+            <Button onClick={addSemester}>Add Semester TEST</Button>
+
             <div className="List">
                 <ul>
                     {semesterList.map((semester, index) => (
@@ -54,7 +66,19 @@ export const Semester = () => {
             {isSemesterCard && (
                 <div className="popup-container">
                     <div className="popup">
-                        <SemesterCard></SemesterCard>
+                        <SemesterCard
+                            semesterList={semesterList}
+                            setSemesterList={setSemesterList}
+                            semesterTitle={semesterTitle}
+                            setSemesterTitle={setSemesterTitle}
+                            season={season}
+                            setSeason={setSeason}
+                            year={year}
+                            setYear={setYear}
+                            setIsSemesterCard={setIsSemesterCard}
+                        ></SemesterCard>
+                        <button onClick={hideSemesterCard}>Save</button>
+
                         <button onClick={hideSemesterCard}>Close</button>
                     </div>
                     <div className="background-overlay"></div>
