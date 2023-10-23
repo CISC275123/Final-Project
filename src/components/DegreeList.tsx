@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { Degree } from "../interfaces/degree";
 import { DegreeCard } from "./DegreeCard";
+import { DegreeView } from "./DegreeView";
 
 export const DegreeList = ({ degrees }: { degrees: Degree[] }) => {
     const [displayId, setDisplayId] = useState<null | string>(null);
 
-    const handleCourseView = (id: string) => {
+    const handleDegreeView = (id: string) => {
         setDisplayId(id);
     };
 
-    const resetCourseView = () => {
+    const resetDegreeView = () => {
         setDisplayId(null);
     };
 
@@ -21,10 +22,24 @@ export const DegreeList = ({ degrees }: { degrees: Degree[] }) => {
                         <DegreeCard
                             key={degree.name}
                             degree={degree}
+                            handleClick={handleDegreeView}
                         ></DegreeCard>
                     ))}
                 </>
             )}
+            {degrees.map((degree: Degree) => {
+                const dId = degree.name;
+                if (displayId === dId) {
+                    return (
+                        <DegreeView
+                            degree={degree}
+                            resetView={resetDegreeView}
+                        ></DegreeView>
+                    );
+                } else {
+                    return null;
+                }
+            })}
         </div>
     );
 };
