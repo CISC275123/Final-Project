@@ -1,7 +1,10 @@
 import "./App.css";
 import React, { useState } from "react";
 import { Course } from "./interfaces/course";
+import { Year } from "./interfaces/year";
+import { Degree } from "./interfaces/degree";
 import { CourseList } from "./components/CourseList";
+import { DegreeList } from "./components/DegreeList";
 
 import logo from "./images/logo.png";
 
@@ -20,11 +23,25 @@ const COURSES = sample.map(
     })
 );
 
+// Testing Degrees with test data
+const YEARS: Year[] = [
+    { name: "Year 1" },
+    { name: "Year 2" },
+    { name: "Year 3" },
+    { name: "Year 4" }
+];
+
+const DEGREES: Degree[] = [
+    { name: "Degree 1", years: YEARS },
+    { name: "Degree 2", years: YEARS }
+];
+
 function App(): JSX.Element {
     const [courses, setCourses] = useState<Course[]>(COURSES);
     const [display, setDisplay] = useState<boolean>(true);
     const [currIndex, setIndex] = useState<number>(0);
     const [isEditing, setEditing] = useState<boolean>(false);
+    const [isDegree, setDegree] = useState<boolean>(false);
 
     function editCourse(courseID: string, newCourse: Course) {
         setCourses(
@@ -65,7 +82,15 @@ function App(): JSX.Element {
                                 <a href="#Semesters">Semesters</a>
                             </li>
                             <li>
-                                <a href="#Degrees">Degress</a>
+                                <Button
+                                    onClick={() => {
+                                        switchEditing(!isEditing);
+                                        setDisplay(!display);
+                                        setDegree(!isDegree);
+                                    }}
+                                >
+                                    Degrees
+                                </Button>
                             </li>
                         </ul>
                     </nav>
@@ -111,6 +136,10 @@ function App(): JSX.Element {
                             switchEditing={switchEditing}
                         ></CourseList>
                     )}
+                </div>
+
+                <div className="DegreeList">
+                    {isDegree && <DegreeList degrees={DEGREES}></DegreeList>}
                 </div>
 
                 <footer>
