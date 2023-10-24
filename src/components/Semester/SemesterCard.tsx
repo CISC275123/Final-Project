@@ -1,8 +1,21 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import sample from "../../data/courses.json";
 import { SemesterInterfaceProps } from "./Semester";
 import { SemesterStructure } from "../../interfaces/semester";
 import { Course } from "../../interfaces/course";
+
+const COURSES = sample.map(
+    (course): Course => ({
+        id: course.id,
+        name: course.name,
+        credits: course.credits as unknown as number,
+        prerequisites: course.prereqs as unknown as string,
+        restrictions: course.restrictions as unknown as string,
+        description: course.description,
+        corequisites: course.coreqs as unknown as string
+    })
+);
 
 export function SemesterCard({
     semesterList,
@@ -33,13 +46,21 @@ export function SemesterCard({
     function updateSemesterTitleExitPopupUpdateSemesterList() {
         const title = `${season} Semester ${year}`;
         setSemesterTitle(title);
+        const newSemester: SemesterStructure = {
+            semesterTitle: title,
+            maxCredits: maxCredits,
+            currentCredits: 0,
+            courseList: COURSES
+        };
+        const newSemesterList = [...semesterList, newSemester];
+        setSemesterList(newSemesterList);
         setIsSemesterCard(false);
     }
 
     return (
         <div>
             <Form.Group controlId="chooseSeason">
-                <Form.Label>Choose the Semester</Form.Label>
+                <Form.Label>Semester</Form.Label>
                 <Form.Select onChange={updateSeason} value={season}>
                     <option value="Fall">Fall</option>
                     <option value="Winter">Winter</option>
@@ -48,7 +69,7 @@ export function SemesterCard({
                 </Form.Select>
             </Form.Group>
             <Form.Group controlId="chooseYear">
-                <Form.Label>Choose the Year</Form.Label>
+                <Form.Label>Year</Form.Label>
                 <Form.Select onChange={updateYear} value={year}>
                     <option value="2023">2023</option>
                     <option value="2024">2024</option>

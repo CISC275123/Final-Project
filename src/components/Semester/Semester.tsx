@@ -34,7 +34,8 @@ const COURSES = sample.map(
 
 export const Semester = () => {
     const [semesterList, setSemesterList] = useState<SemesterStructure[]>([]);
-    const [isSemesterCard, setIsSemesterCard] = useState<boolean>(false);
+    const [isMakeSemesterCard, setIsMakeSemesterCard] =
+        useState<boolean>(false);
     const [semesterTitle, setSemesterTitle] = useState<string>("Hi");
     const [maxCredits, setMaxCredits] = useState<number>(18);
     const [season, setSeason] = useState<string>("Fall");
@@ -50,40 +51,27 @@ export const Semester = () => {
     //     setSemesterList(newSemesterList);
     // }, [semesterTitle, maxCredits]);
 
-    function addSemester() {
-        const newSemester: SemesterStructure = {
-            semesterTitle: semesterTitle,
-            maxCredits: maxCredits,
-            currentCredits: 0
-            // courseList: COURSES
-        };
-        const newSemesterList = [...semesterList, newSemester];
-        setSemesterList(newSemesterList);
+    function showMakeSemesterCard() {
+        setIsMakeSemesterCard(!isMakeSemesterCard);
     }
 
-    function showSemesterCard() {
-        setIsSemesterCard(!isSemesterCard);
-    }
-
-    function hideSemesterCard() {
-        setIsSemesterCard(!isSemesterCard);
+    function hideMakeSemesterCard() {
+        setIsMakeSemesterCard(!isMakeSemesterCard);
     }
 
     return (
         <div>
-            <Button onClick={showSemesterCard}>Add Semester</Button>
-            <Button onClick={addSemester}>Add Semester TEST</Button>
-
+            <Button onClick={showMakeSemesterCard}>Add Semester</Button>
             <div className="List">
                 <ul>
                     {semesterList.map((semester, index) => (
-                        <li key={index} onClick={showSemesterCard}>
+                        <li key={index} onClick={showMakeSemesterCard}>
                             {semester.semesterTitle}
                         </li>
                     ))}
                 </ul>
             </div>
-            {isSemesterCard && (
+            {isMakeSemesterCard && (
                 <div className="popup-container">
                     <div className="popup">
                         <SemesterCard
@@ -97,9 +85,9 @@ export const Semester = () => {
                             setYear={setYear}
                             maxCredits={maxCredits}
                             setMaxCredits={setMaxCredits}
-                            setIsSemesterCard={setIsSemesterCard}
+                            setIsSemesterCard={setIsMakeSemesterCard}
                         ></SemesterCard>
-                        <button onClick={hideSemesterCard}>Close</button>
+                        <button onClick={hideMakeSemesterCard}>Close</button>
                     </div>
                     <div className="background-overlay"></div>
                 </div>
