@@ -4,42 +4,28 @@ import { Course } from "../../interfaces/course";
 import sample from "../../data/courses.json";
 import "./Semester.css";
 import { SemesterCard } from "./SemesterCard";
+import { SemesterView } from "./SemesterView";
 import { SemesterStructure } from "../../interfaces/semester";
 
 export interface SemesterInterfaceProps {
     semesterList: SemesterStructure[];
     setSemesterList: (list: SemesterStructure[]) => void;
-    semesterTitle: string;
-    setSemesterTitle: (semesterTitle: string) => void;
-    season: string;
-    setSeason: (season: string) => void;
-    year: string;
-    setYear: (year: string) => void;
-    maxCredits: number;
-    setMaxCredits: (credits: number) => void;
     setIsSemesterCard: (isCard: boolean) => void;
 }
-
-const COURSES = sample.map(
-    (course): Course => ({
-        id: course.id,
-        name: course.name,
-        credits: course.credits as unknown as number,
-        prerequisites: course.prereqs as unknown as string,
-        restrictions: course.restrictions as unknown as string,
-        description: course.description,
-        corequisites: course.coreqs as unknown as string
-    })
-);
 
 export const Semester = () => {
     const [semesterList, setSemesterList] = useState<SemesterStructure[]>([]);
     const [isMakeSemesterCard, setIsMakeSemesterCard] =
         useState<boolean>(false);
-    const [semesterTitle, setSemesterTitle] = useState<string>("Hi");
-    const [maxCredits, setMaxCredits] = useState<number>(18);
-    const [season, setSeason] = useState<string>("Fall");
-    const [year, setYear] = useState<string>("2023");
+    const [displayId, setDisplayId] = useState<null | string>(null);
+
+    const handleCourseView = (id: string) => {
+        setDisplayId(id);
+    };
+
+    const resetCourseView = () => {
+        setDisplayId(null);
+    };
 
     // useEffect(() => {
     //     const newSemester: SemesterStructure = {
@@ -59,13 +45,18 @@ export const Semester = () => {
         setIsMakeSemesterCard(!isMakeSemesterCard);
     }
 
+    function showViewSemesterCard() {
+        return <SemesterView></SemesterView>;
+    }
+
     return (
         <div>
             <Button onClick={showMakeSemesterCard}>Add Semester</Button>
+            <SemesterView></SemesterView>
             <div className="List">
                 <ul>
                     {semesterList.map((semester, index) => (
-                        <li key={index} onClick={showMakeSemesterCard}>
+                        <li key={index} onClick={showViewSemesterCard}>
                             {semester.semesterTitle}
                         </li>
                     ))}
@@ -77,14 +68,6 @@ export const Semester = () => {
                         <SemesterCard
                             semesterList={semesterList}
                             setSemesterList={setSemesterList}
-                            semesterTitle={semesterTitle}
-                            setSemesterTitle={setSemesterTitle}
-                            season={season}
-                            setSeason={setSeason}
-                            year={year}
-                            setYear={setYear}
-                            maxCredits={maxCredits}
-                            setMaxCredits={setMaxCredits}
                             setIsSemesterCard={setIsMakeSemesterCard}
                         ></SemesterCard>
                         <button onClick={hideMakeSemesterCard}>Close</button>

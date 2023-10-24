@@ -20,16 +20,12 @@ const COURSES = sample.map(
 export function SemesterCard({
     semesterList,
     setSemesterList,
-    semesterTitle,
-    setSemesterTitle,
-    season,
-    setSeason,
-    year,
-    setYear,
-    maxCredits,
-    setMaxCredits,
     setIsSemesterCard
 }: SemesterInterfaceProps): JSX.Element {
+    const [maxCredits, setMaxCredits] = useState<number>(18);
+    const [season, setSeason] = useState<string>("Fall");
+    const [year, setYear] = useState<string>("2023");
+
     function updateSeason(event: React.ChangeEvent<HTMLSelectElement>) {
         setSeason(event.target.value);
         if (event.target.value === "Fall" || event.target.value === "Spring") {
@@ -45,11 +41,10 @@ export function SemesterCard({
 
     function updateSemesterTitleExitPopupUpdateSemesterList() {
         const title = `${season} Semester ${year}`;
-        setSemesterTitle(title);
         const newSemester: SemesterStructure = {
             semesterTitle: title,
             maxCredits: maxCredits,
-            currentCredits: 0,
+            currentCredits: 0, //variable will eventually have to be a state, so dynamic change for currentCredits
             courseList: COURSES
         };
         const newSemesterList = [...semesterList, newSemester];
