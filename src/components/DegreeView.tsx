@@ -41,8 +41,14 @@ export const DegreeView = ({
 
             {!edit && (
                 <div className="degree_page">
-                    <div className="year_view_columns">
-                        {degree.years.map((year: Year): string => year.name)}
+                    <div className="year_view_rows">
+                        {degree.years.map((year: Year): JSX.Element => {
+                            return (
+                                <div className="year_view_column" key={null}>
+                                    <h4>{year.name}</h4>
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
             )}

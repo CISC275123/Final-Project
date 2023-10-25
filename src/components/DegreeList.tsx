@@ -15,7 +15,7 @@ export const DegreeList = ({ degrees }: { degrees: Degree[] }) => {
     };
 
     return (
-        <div className="course_list">
+        <div className="degree_list">
             {!displayId && (
                 <>
                     {degrees.map((degree: Degree) => (

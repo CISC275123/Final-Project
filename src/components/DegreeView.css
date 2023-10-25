@@ -1,4 +1,26 @@
 .degree_page {
     display: flex;
     flex-direction: column;
+    max-width: 100vw;
+}
+
+.year_view_rows {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    max-width: 100vw;
+}
+
+.year_view_column {
+    border: solid red;
+    padding: 0rem 12rem 20rem 12rem;
+}
+
+@media only screen and (max-width: 1800px) {
+    .year_view_rows {
+        display: flex;
+        flex-direction: column;
+    }
 }

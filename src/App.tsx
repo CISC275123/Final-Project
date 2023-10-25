@@ -30,7 +30,6 @@ const YEARS: Year[] = [
     { name: "Year 3" },
     { name: "Year 4" }
 ];
-
 const DEGREES: Degree[] = [
     { name: "Degree 1", years: YEARS },
     { name: "Degree 2", years: YEARS }
