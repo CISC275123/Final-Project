@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import sample from "../../data/courses.json";
 import { SemesterInterfaceProps } from "./Semester";
@@ -20,7 +20,9 @@ const COURSES = sample.map(
 export function SemesterCard({
     semesterList,
     setSemesterList,
-    setIsSemesterCard
+    setIsSemesterCard,
+    idCounter,
+    setIdCounter
 }: SemesterInterfaceProps): JSX.Element {
     const [maxCredits, setMaxCredits] = useState<number>(18);
     const [season, setSeason] = useState<string>("Fall");
@@ -40,8 +42,11 @@ export function SemesterCard({
     }
 
     function updateSemesterTitleExitPopupUpdateSemesterList() {
+        const newID = idCounter + 1;
+        setIdCounter(newID);
         const title = `${season} Semester ${year}`;
         const newSemester: SemesterStructure = {
+            id: idCounter,
             semesterTitle: title,
             maxCredits: maxCredits,
             currentCredits: 0, //variable will eventually have to be a state, so dynamic change for currentCredits
@@ -79,7 +84,9 @@ export function SemesterCard({
                 </div>
                 <h3>Courses in the semester:</h3>
                 <button
-                    onClick={updateSemesterTitleExitPopupUpdateSemesterList}
+                    onClick={() => {
+                        updateSemesterTitleExitPopupUpdateSemesterList();
+                    }}
                 >
                     Save
                 </button>

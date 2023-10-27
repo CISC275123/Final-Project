@@ -6,8 +6,6 @@ import "./CourseList.css";
 import { SemesterProps } from "../App";
 
 export const CourseList = ({
-    updatedAddedCourses,
-    setUpdatedAddedCourses,
     courses,
     editCourse,
     switchEditing,
@@ -48,8 +46,6 @@ export const CourseList = ({
                     switchEditing(true);
                     return (
                         <CourseView
-                            updatedAddedCourses={updatedAddedCourses}
-                            setUpdatedAddedCourses={setUpdatedAddedCourses}
                             key={cId}
                             course={course}
                             editCourse={editCourse}

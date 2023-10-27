@@ -1,10 +1,19 @@
 import React, { useState } from "react";
+import { Button } from "react-bootstrap";
 
-export function SemesterView(): JSX.Element {
+export const SemesterView = ({
+    resetView,
+    semesterTitle,
+    semesterID
+}: {
+    semesterTitle: string;
+    semesterID: number;
+    resetView: () => void;
+}) => {
     return (
         <div>
-            YOOOOOO ITS JASON
-            {console.log("Hi")}
+            {semesterTitle} &:{semesterID}
+            <Button onClick={resetView}>Exit</Button>
         </div>
     );
-}
+};

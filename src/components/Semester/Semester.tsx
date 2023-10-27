@@ -11,15 +11,18 @@ export interface SemesterInterfaceProps {
     semesterList: SemesterStructure[];
     setSemesterList: (list: SemesterStructure[]) => void;
     setIsSemesterCard: (isCard: boolean) => void;
+    idCounter: number;
+    setIdCounter: (num: number) => void;
 }
 
 export const Semester = () => {
     const [semesterList, setSemesterList] = useState<SemesterStructure[]>([]);
     const [isMakeSemesterCard, setIsMakeSemesterCard] =
         useState<boolean>(false);
-    const [displayId, setDisplayId] = useState<null | string>(null);
+    const [displayId, setDisplayId] = useState<null | number>(null);
+    const [idCounter, setIdCounter] = useState<number>(1);
 
-    const handleCourseView = (id: string) => {
+    const handleCourseView = (id: number) => {
         setDisplayId(id);
     };
 
@@ -45,21 +48,49 @@ export const Semester = () => {
         setIsMakeSemesterCard(!isMakeSemesterCard);
     }
 
-    function showViewSemesterCard() {
-        return <SemesterView></SemesterView>;
-    }
-
     return (
         <div>
             <Button onClick={showMakeSemesterCard}>Add Semester</Button>
-            <SemesterView></SemesterView>
             <div className="List">
                 <ul>
-                    {semesterList.map((semester, index) => (
-                        <li key={index} onClick={showViewSemesterCard}>
-                            {semester.semesterTitle}
-                        </li>
-                    ))}
+                    {!displayId && (
+                        <>
+                            {" "}
+                            {semesterList.map((semester: SemesterStructure) => (
+                                <li
+                                    className="Semester-li"
+                                    key={semester.id}
+                                    onClick={() => {
+                                        handleCourseView(semester.id);
+                                        console.log(semester.id);
+                                    }}
+                                >
+                                    {semester.semesterTitle}
+                                </li>
+                            ))}
+                        </>
+                    )}
+                    {semesterList.map((semester: SemesterStructure) => {
+                        const cId = semester.id;
+                        if (displayId === cId) {
+                            return (
+                                <div className="popup-container">
+                                    <div className="popup">
+                                        <SemesterView
+                                            semesterTitle={
+                                                semester.semesterTitle
+                                            }
+                                            semesterID={semester.id}
+                                            resetView={resetCourseView}
+                                        ></SemesterView>
+                                    </div>
+                                    <div className="background-overlay"></div>
+                                </div>
+                            );
+                        } else {
+                            return null;
+                        }
+                    })}
                 </ul>
             </div>
             {isMakeSemesterCard && (
@@ -69,6 +100,8 @@ export const Semester = () => {
                             semesterList={semesterList}
                             setSemesterList={setSemesterList}
                             setIsSemesterCard={setIsMakeSemesterCard}
+                            idCounter={idCounter}
+                            setIdCounter={setIdCounter}
                         ></SemesterCard>
                         <button onClick={hideMakeSemesterCard}>Close</button>
                     </div>
