@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { SemesterStructure } from "../../interfaces/semester";
+import { SemesterAddCourse } from "./SemesterAddCourse";
 
 export const SemesterView = ({
     resetView,
@@ -10,9 +11,10 @@ export const SemesterView = ({
     semester: SemesterStructure;
 }) => {
     const [description, setDescription] = useState<string>("");
+    const [isAddCourses, setIsAddCourses] = useState<boolean>(false);
 
     function displayCourses() {
-        resetView();
+        setIsAddCourses(!isAddCourses);
     }
     function updateDescription(event: React.ChangeEvent<HTMLTextAreaElement>) {
         setDescription(event.target.value);
@@ -43,6 +45,7 @@ export const SemesterView = ({
                     onChange={updateDescription}
                 />
             </Form.Group>
+            {isAddCourses && <SemesterAddCourse></SemesterAddCourse>}
         </div>
     );
 };
