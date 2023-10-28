@@ -27,9 +27,6 @@ function App(): JSX.Element {
     const [currIndex, setIndex] = useState<number>(0);
     const [isEditing, setEditing] = useState<boolean>(false);
     const [showComponentSemester, setShowComponentSemester] = useState(false);
-    const [updatedAddedCourses, setUpdatedAddedCourses] = useState<string[]>([
-        "Hello"
-    ]);
 
     function editCourse(courseID: string, newCourse: Course) {
         setCourses(

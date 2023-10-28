@@ -27,6 +27,8 @@ export const SemesterView = ({
                 {" "}
                 {semester.title} ID: {semester.id}
             </h1>
+            <h3>Maximum Credits Allowed: {semester.maxCredits} credits</h3>
+            <h3>Current Credits: {semester.currentCredits} credits</h3>
             <Button onClick={displayCourses}>Add Courses</Button>
             <Button onClick={resetView}>Exit</Button>
             <Button onClick={saveInfo}>Save</Button>
