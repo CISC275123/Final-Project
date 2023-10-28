@@ -41,13 +41,14 @@ export function SemesterCard({
         setYear(event.target.value);
     }
 
-    function updateSemesterTitleExitPopupUpdateSemesterList() {
+    function saveAndExit() {
         const newID = idCounter + 1;
         setIdCounter(newID);
         const title = `${season} Semester ${year}`;
         const newSemester: SemesterStructure = {
             id: idCounter,
-            semesterTitle: title,
+            title: title,
+            notes: "",
             maxCredits: maxCredits,
             currentCredits: 0, //variable will eventually have to be a state, so dynamic change for currentCredits
             courseList: COURSES
@@ -85,7 +86,7 @@ export function SemesterCard({
                 <h3>Courses in the semester:</h3>
                 <button
                     onClick={() => {
-                        updateSemesterTitleExitPopupUpdateSemesterList();
+                        saveAndExit();
                     }}
                 >
                     Save

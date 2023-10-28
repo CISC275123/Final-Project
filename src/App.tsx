@@ -9,11 +9,6 @@ import sample from "./data/courses.json";
 import { Button } from "react-bootstrap";
 import { Semester } from "./components/Semester/Semester";
 
-export interface SemesterProps {
-    updatedAddedCourses: string[];
-    setUpdatedAddedCourses: (newCourseList: string[]) => void;
-}
-
 const COURSES = sample.map(
     (course): Course => ({
         id: course.id,
@@ -121,8 +116,6 @@ function App(): JSX.Element {
                 <div className="CourseList">
                     {display && (
                         <CourseList
-                            updatedAddedCourses={updatedAddedCourses}
-                            setUpdatedAddedCourses={setUpdatedAddedCourses}
                             courses={courses.slice(
                                 currIndex,
                                 currIndex + NUM_COURSES_DISPLAYED

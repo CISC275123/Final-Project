@@ -62,10 +62,9 @@ export const Semester = () => {
                                     key={semester.id}
                                     onClick={() => {
                                         handleCourseView(semester.id);
-                                        console.log(semester.id);
                                     }}
                                 >
-                                    {semester.semesterTitle}
+                                    {semester.title}
                                 </li>
                             ))}
                         </>
@@ -77,10 +76,7 @@ export const Semester = () => {
                                 <div className="popup-container">
                                     <div className="popup">
                                         <SemesterView
-                                            semesterTitle={
-                                                semester.semesterTitle
-                                            }
-                                            semesterID={semester.id}
+                                            semester={semester}
                                             resetView={resetCourseView}
                                         ></SemesterView>
                                     </div>

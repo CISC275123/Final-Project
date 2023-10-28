@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Course } from "../interfaces/course";
 import { CourseEdit } from "./CourseEdit";
 import { Button } from "react-bootstrap";
-import { SemesterProps } from "../App";
 
 export const CourseView = ({
     course,
