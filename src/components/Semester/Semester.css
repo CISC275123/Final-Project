@@ -2,10 +2,14 @@
     padding: 2rem;
     list-style-type: none;
 }
-
+.SemesterContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
 .Semester-li {
     list-style-type: none;
-    padding: 2rem;
+    padding: 0.5rem;
     margin: 1rem;
     background-color: black;
 }

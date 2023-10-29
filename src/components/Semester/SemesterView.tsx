@@ -15,6 +15,7 @@ export const SemesterView = ({
 
     function displayCourses() {
         setIsAddCourses(!isAddCourses);
+        //for next Sprint to accomplish
     }
     function updateDescription(event: React.ChangeEvent<HTMLTextAreaElement>) {
         setDescription(event.target.value);
@@ -31,7 +32,8 @@ export const SemesterView = ({
             </h1>
             <h3>Maximum Credits Allowed: {semester.maxCredits} credits</h3>
             <h3>Current Credits: {semester.currentCredits} credits</h3>
-            <Button onClick={displayCourses}>Add Courses</Button>
+            <Button onClick={displayCourses}>Add Course</Button>
+            <Button onClick={displayCourses}>Clear Courses</Button>
             <Button onClick={resetView}>Exit</Button>
             <Button onClick={saveInfo}>Save</Button>
             <h2>Courses Added: </h2>

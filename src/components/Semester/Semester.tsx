@@ -48,6 +48,14 @@ export const Semester = () => {
         setIsMakeSemesterCard(!isMakeSemesterCard);
     }
 
+    function deleteSemester(inputID: number) {
+        const newSemesterList = semesterList.filter(
+            (sem: SemesterStructure): boolean => inputID !== sem.id
+        );
+        setSemesterList(newSemesterList);
+        console.log("Delete");
+    }
+
     return (
         <div>
             <Button onClick={showMakeSemesterCard}>Add Semester</Button>
@@ -55,17 +63,27 @@ export const Semester = () => {
                 <ul>
                     {!displayId && (
                         <>
-                            {" "}
                             {semesterList.map((semester: SemesterStructure) => (
-                                <li
-                                    className="Semester-li"
+                                <div
                                     key={semester.id}
-                                    onClick={() => {
-                                        handleCourseView(semester.id);
-                                    }}
+                                    className="SemesterContainer"
                                 >
-                                    {semester.title}
-                                </li>
+                                    <li
+                                        className="Semester-li"
+                                        onClick={() => {
+                                            handleCourseView(semester.id);
+                                        }}
+                                    >
+                                        {semester.title}
+                                    </li>
+                                    <Button
+                                        onClick={() => {
+                                            deleteSemester(semester.id);
+                                        }}
+                                    >
+                                        Delete Semester
+                                    </Button>
+                                </div>
                             ))}
                         </>
                     )}
