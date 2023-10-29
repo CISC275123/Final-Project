@@ -54,6 +54,14 @@ export const Semester = () => {
         setIsMakeSemesterCard(!isMakeSemesterCard);
     }
 
+    function deleteSemester(semester: SemesterStructure) {
+        const newSemester = semesterList.filter(
+            (sem: SemesterStructure): boolean => semester.id != sem.id
+        );
+        setSemesterList(newSemester);
+        console.log("Delete");
+    }
+
     return (
         <div>
             {" "}
@@ -77,15 +85,26 @@ export const Semester = () => {
                         <>
                             {" "}
                             {semesterList.map((semester: SemesterStructure) => (
-                                <li
-                                    className="Semester-li"
-                                    key={semester.id}
-                                    onClick={() => {
-                                        handleCourseView(semester.id);
-                                    }}
-                                >
-                                    {semester.title}
-                                </li>
+                                <>
+                                    <li
+                                        className="Semester-li"
+                                        key={semester.id}
+                                        onClick={() => {
+                                            handleCourseView(semester.id);
+                                        }}
+                                    >
+                                        {semester.title}
+                                    </li>
+                                    <div>
+                                        <Button
+                                            onClick={() => {
+                                                deleteSemester(semester);
+                                            }}
+                                        >
+                                            Delete
+                                        </Button>
+                                    </div>
+                                </>
                             ))}
                         </>
                     )}
