@@ -1,11 +1,10 @@
-import React, { FC, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
-import { Course } from "../../interfaces/course";
-import sample from "../../data/courses.json";
 import "./Semester.css";
 import { SemesterCard } from "./SemesterCard";
 import { SemesterView } from "./SemesterView";
 import { SemesterStructure } from "../../interfaces/semester";
+import { SemesterBackEnd } from "../../interfaces/semesterBackend";
 
 export interface SemesterInterfaceProps {
     semesterList: SemesterStructure[];
@@ -16,11 +15,18 @@ export interface SemesterInterfaceProps {
 }
 
 export const Semester = () => {
+    const [myRestData, setMyRestData] = useState<SemesterBackEnd[]>([]);
     const [semesterList, setSemesterList] = useState<SemesterStructure[]>([]);
     const [isMakeSemesterCard, setIsMakeSemesterCard] =
         useState<boolean>(false);
     const [displayId, setDisplayId] = useState<null | number>(null);
     const [idCounter, setIdCounter] = useState<number>(1);
+
+    useEffect(() => {
+        fetch("http://localhost:8080/semester/list")
+            .then((response) => response.json())
+            .then((data) => setMyRestData(data));
+    }, []);
 
     const handleCourseView = (id: number) => {
         setDisplayId(id);
@@ -50,6 +56,20 @@ export const Semester = () => {
 
     return (
         <div>
+            {" "}
+            <div>
+                {myRestData.map((item) => {
+                    console.log(item);
+                    console.log("HELLO BRO");
+                    <ul>
+                        <li>
+                            {" "}
+                            Backend info: {item.year} {item.season}
+                        </li>
+                    </ul>;
+                })}
+                Hi:
+            </div>
             <Button onClick={showMakeSemesterCard}>Add Semester</Button>
             <div className="List">
                 <ul>

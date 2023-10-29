@@ -1,10 +1,8 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Course } from "./interfaces/course";
 import { CourseList } from "./components/CourseList";
-
 import logo from "./images/logo.png";
-
 import sample from "./data/courses.json";
 import { Button } from "react-bootstrap";
 import { Semester } from "./components/Semester/Semester";
