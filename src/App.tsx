@@ -10,6 +10,7 @@ import logo from "./images/logo.png";
 
 import sample from "./data/courses.json";
 import { Button } from "react-bootstrap";
+import { Semester } from "./interfaces/semester";
 
 const COURSES = sample.map(
     (course): Course => ({
@@ -24,11 +25,18 @@ const COURSES = sample.map(
 );
 
 // Testing Degrees with test data
+const SEMESTERS: Semester[] = [
+    { type: "Fall", courses: COURSES },
+    { type: "Winter", courses: COURSES },
+    { type: "Spring", courses: COURSES },
+    { type: "Summer", courses: COURSES }
+];
+
 const YEARS: Year[] = [
-    { name: "Year 1" },
-    { name: "Year 2" },
-    { name: "Year 3" },
-    { name: "Year 4" }
+    { name: "Year 1", semesters: SEMESTERS },
+    { name: "Year 2", semesters: SEMESTERS },
+    { name: "Year 3", semesters: SEMESTERS },
+    { name: "Year 4", semesters: SEMESTERS }
 ];
 const DEGREES: Degree[] = [
     { name: "Degree 1", years: YEARS },
