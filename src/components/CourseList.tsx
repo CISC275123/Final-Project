@@ -7,11 +7,13 @@ import "./CourseList.css";
 export const CourseList = ({
     courses,
     editCourse,
-    switchEditing
+    switchEditing,
+    default_courses
 }: {
     courses: Course[];
     editCourse: (courseID: string, newCourse: Course) => void;
     switchEditing: (edit: boolean) => void;
+    default_courses: Course[];
 }) => {
     const [displayId, setDisplayId] = useState<null | string>(null);
 
@@ -47,6 +49,7 @@ export const CourseList = ({
                             course={course}
                             editCourse={editCourse}
                             resetView={resetCourseView}
+                            default_courses={default_courses}
                         ></CourseView>
                     );
                 } else {

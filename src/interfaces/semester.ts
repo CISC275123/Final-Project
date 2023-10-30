@@ -1,6 +1,12 @@
 import { Course } from "./course";
 export type SemesterType = "Fall" | "Winter" | "Spring" | "Summer";
-export interface Semester {
+
+export interface SemesterStructure {
+    id: number;
     type: SemesterType;
-    courses: Course[];
+    title: string;
+    notes: string;
+    maxCredits: number;
+    currentCredits: number;
+    courseList: Course[];
 }

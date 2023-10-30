@@ -10,7 +10,10 @@ import logo from "./images/logo.png";
 
 import sample from "./data/courses.json";
 import { Button } from "react-bootstrap";
+
 import { Semester } from "./interfaces/semester";
+import { Semester } from "./components/Semester/Semester";
+
 
 const COURSES = sample.map(
     (course): Course => ({
@@ -49,6 +52,7 @@ function App(): JSX.Element {
     const [currIndex, setIndex] = useState<number>(0);
     const [isEditing, setEditing] = useState<boolean>(false);
     const [isDegree, setDegree] = useState<boolean>(false);
+    const [showComponentSemester, setShowComponentSemester] = useState(false);
 
     function editCourse(courseID: string, newCourse: Course) {
         setCourses(
@@ -66,6 +70,11 @@ function App(): JSX.Element {
     }
 
     const NUM_COURSES_DISPLAYED = 3;
+
+    const handleClickSemester = () => {
+        setShowComponentSemester(!showComponentSemester);
+        setDisplay(!display);
+    };
 
     return (
         <div className="App">
@@ -86,6 +95,9 @@ function App(): JSX.Element {
                                 <a href="#Courses">Courses</a>
                             </li>
                             <li>
+                                <Button onClick={handleClickSemester}>
+                                    Semesters
+                                </Button>
                                 <a href="#Semesters">Semesters</a>
                             </li>
                             <li>
@@ -102,7 +114,7 @@ function App(): JSX.Element {
                         </ul>
                     </nav>
                 </header>
-
+                <div> {showComponentSemester && <Semester></Semester>}</div>
                 <div className="CourseButtons">
                     <Button
                         onClick={() =>
@@ -131,7 +143,7 @@ function App(): JSX.Element {
                         Next
                     </Button>
                 </div>
-
+                {/* The beginning of the list of courses in the html  */}
                 <div className="CourseList">
                     {display && (
                         <CourseList
@@ -141,6 +153,7 @@ function App(): JSX.Element {
                             )}
                             editCourse={editCourse}
                             switchEditing={switchEditing}
+                            default_courses={COURSES}
                         ></CourseList>
                     )}
                 </div>
