@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Button, Form } from "react-bootstrap";
 import "./Semester.css";
 import { SemesterCard } from "./SemesterCard";
 import { SemesterView } from "./SemesterView";
 import { SemesterStructure } from "../../interfaces/semester";
-import { SemesterBackEnd } from "../../interfaces/semesterBackend";
+import { RegistrationCard } from "../../interfaces/registrationCard";
+import { CourseBackend } from "../../interfaces/courseBackend";
+import ReadMoreReact from "read-more-react";
 
 export interface SemesterInterfaceProps {
     semesterList: SemesterStructure[];
@@ -15,7 +18,7 @@ export interface SemesterInterfaceProps {
 }
 
 export const Semester = () => {
-    const [myRestData, setMyRestData] = useState<SemesterBackEnd[]>([]);
+    const [myRestData, setMyRestData] = useState<RegistrationCard[]>([]);
     const [semesterList, setSemesterList] = useState<SemesterStructure[]>([]);
     const [isMakeSemesterCard, setIsMakeSemesterCard] =
         useState<boolean>(false);
@@ -23,7 +26,12 @@ export const Semester = () => {
     const [idCounter, setIdCounter] = useState<number>(1);
 
     useEffect(() => {
-        fetch("http://localhost:8080/semester/list")
+        fetch("http://localhost:8080/registration/card", {
+            method: "GET",
+            headers: {
+                studentId: "jasonc"
+            }
+        })
             .then((response) => response.json())
             .then((data) => setMyRestData(data));
     }, []);
@@ -62,21 +70,90 @@ export const Semester = () => {
         console.log("Delete");
     }
 
+    const dropCourse = (
+        registrationCard: RegistrationCard,
+        course: CourseBackend
+    ) => {
+        console.log(
+            "Delete " + course.id + " semester " + registrationCard.semester.id
+        );
+        const options = {
+            method: "DELETE",
+            url: "http://localhost:8080/registration/delete",
+            headers: {
+                studentId: "jasonc",
+                semesterId: registrationCard.semester.id,
+                courseId: course.id
+            }
+        };
+
+        axios
+            .request(options)
+            .then(function (response) {
+                console.log(response.data);
+                alert("Course " + course.id + " dropped");
+            })
+            .catch(function (error) {
+                console.error(error);
+                alert("Error in dropping " + course.id + " - " + error);
+            });
+    };
+
     return (
         <div>
             {" "}
             <div>
-                {myRestData.map((item) => {
-                    console.log(item);
-                    console.log("HELLO BRO");
-                    <ul>
-                        <li>
-                            {" "}
-                            Backend info: {item.year} {item.season}
-                        </li>
-                    </ul>;
-                })}
-                Hi:
+                <h4>Course Registration Dashboard</h4>
+                <ol>
+                    {myRestData.map((item) => {
+                        return (
+                            <li className="Semester-li" key={item.semester.id}>
+                                {item.semester.year} {item.semester.season},
+                                total credits: {item.totalCredit} (max{" "}
+                                {item.semester.maxCredit} allowed for this
+                                semester)
+                                <ul>
+                                    {item.courseSelected.map(
+                                        (course: CourseBackend) => {
+                                            return (
+                                                <li
+                                                    key={
+                                                        item.semester.id +
+                                                        course.id
+                                                    }
+                                                >
+                                                    {course.id} -{" "}
+                                                    {course.courseName} (
+                                                    {course.credit} credits){" "}
+                                                    <button
+                                                        className="btn btn-delete"
+                                                        onClick={() =>
+                                                            dropCourse(
+                                                                item,
+                                                                course
+                                                            )
+                                                        }
+                                                    >
+                                                        Drop
+                                                    </button>
+                                                    <ReadMoreReact
+                                                        text={
+                                                            course.courseDescription
+                                                        }
+                                                        min={100}
+                                                        ideal={250}
+                                                        max={300}
+                                                        readMoreText="...<read more>"
+                                                    />
+                                                </li>
+                                            );
+                                        }
+                                    )}
+                                </ul>
+                            </li>
+                        );
+                    })}
+                </ol>
             </div>
             <Button onClick={showMakeSemesterCard}>Add Semester</Button>
             <div className="List">
@@ -84,7 +161,7 @@ export const Semester = () => {
                     {!displayId && (
                         <>
                             {" "}
-                            {semesterList.map((semester: SemesterStructure) => (
+                            {semesterList.map((semester: SemesterStructure) => {
                                 <>
                                     <li
                                         className="Semester-li"
@@ -104,8 +181,8 @@ export const Semester = () => {
                                             Delete
                                         </Button>
                                     </div>
-                                </>
-                            ))}
+                                </>;
+                            })}
                         </>
                     )}
                     {semesterList.map((semester: SemesterStructure) => {

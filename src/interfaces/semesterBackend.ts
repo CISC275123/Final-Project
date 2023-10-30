@@ -1,5 +1,5 @@
 export interface SemesterBackEnd {
-    id: number;
+    id: string;
     year: number;
     season: string;
     active: boolean;
