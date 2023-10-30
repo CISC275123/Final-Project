@@ -100,7 +100,6 @@ function App(): JSX.Element {
 
     const handleClickSemester = () => {
         setShowComponentSemester(!showComponentSemester);
-        setDisplay(!display);
     };
 
     return (
@@ -119,20 +118,37 @@ function App(): JSX.Element {
                                 <a href="#Home">Home</a>
                             </li>
                             <li>
-                                <a href="#Courses">Courses</a>
-                            </li>
-                            <li>
-                                <Button onClick={handleClickSemester}>
-                                    Semesters
+                                <Button
+                                    onClick={() => {
+                                        setDegree(false);
+                                        setShowComponentSemester(false);
+                                        setDisplay(!display);
+                                        setEditing(!isEditing);
+                                    }}
+                                >
+                                    Courses
                                 </Button>
-                                <a href="#Semesters">Semesters</a>
                             </li>
                             <li>
                                 <Button
                                     onClick={() => {
-                                        switchEditing(!isEditing);
-                                        setDisplay(!display);
+                                        handleClickSemester();
+                                        switchEditing(true);
+                                        // Disables display for Degrees and Courses
+                                        setDegree(false);
+                                        setDisplay(false);
+                                    }}
+                                >
+                                    Semesters
+                                </Button>
+                            </li>
+                            <li>
+                                <Button
+                                    onClick={() => {
+                                        switchEditing(true);
                                         setDegree(!isDegree);
+                                        setDisplay(false);
+                                        setShowComponentSemester(false);
                                     }}
                                 >
                                     Degrees
