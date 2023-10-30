@@ -1,13 +1,19 @@
 import "./App.css";
 import React, { useState } from "react";
 import { Course } from "./interfaces/course";
+import { Year } from "./interfaces/year";
+import { Degree } from "./interfaces/degree";
 import { CourseList } from "./components/CourseList";
+import { DegreeList } from "./components/DegreeList";
 
 import logo from "./images/logo.png";
 
 import sample from "./data/courses.json";
 import { Button } from "react-bootstrap";
+
+import { Semester } from "./interfaces/semester";
 import { Semester } from "./components/Semester/Semester";
+
 
 const COURSES = sample.map(
     (course): Course => ({
@@ -21,11 +27,31 @@ const COURSES = sample.map(
     })
 );
 
+// Testing Degrees with test data
+const SEMESTERS: Semester[] = [
+    { type: "Fall", courses: COURSES },
+    { type: "Winter", courses: COURSES },
+    { type: "Spring", courses: COURSES },
+    { type: "Summer", courses: COURSES }
+];
+
+const YEARS: Year[] = [
+    { name: "Year 1", semesters: SEMESTERS },
+    { name: "Year 2", semesters: SEMESTERS },
+    { name: "Year 3", semesters: SEMESTERS },
+    { name: "Year 4", semesters: SEMESTERS }
+];
+const DEGREES: Degree[] = [
+    { name: "Degree 1", years: YEARS },
+    { name: "Degree 2", years: YEARS }
+];
+
 function App(): JSX.Element {
     const [courses, setCourses] = useState<Course[]>(COURSES);
     const [display, setDisplay] = useState<boolean>(true);
     const [currIndex, setIndex] = useState<number>(0);
     const [isEditing, setEditing] = useState<boolean>(false);
+    const [isDegree, setDegree] = useState<boolean>(false);
     const [showComponentSemester, setShowComponentSemester] = useState(false);
 
     function editCourse(courseID: string, newCourse: Course) {
@@ -75,7 +101,15 @@ function App(): JSX.Element {
                                 <a href="#Semesters">Semesters</a>
                             </li>
                             <li>
-                                <a href="#Degrees">Degress</a>
+                                <Button
+                                    onClick={() => {
+                                        switchEditing(!isEditing);
+                                        setDisplay(!display);
+                                        setDegree(!isDegree);
+                                    }}
+                                >
+                                    Degrees
+                                </Button>
                             </li>
                         </ul>
                     </nav>
@@ -122,6 +156,10 @@ function App(): JSX.Element {
                             default_courses={COURSES}
                         ></CourseList>
                     )}
+                </div>
+
+                <div className="DegreeList">
+                    {isDegree && <DegreeList degrees={DEGREES}></DegreeList>}
                 </div>
 
                 <footer>
