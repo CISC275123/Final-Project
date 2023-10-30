@@ -12,8 +12,7 @@ import sample from "./data/courses.json";
 import { Button } from "react-bootstrap";
 
 import { Semester } from "./interfaces/semester";
-import { Semester } from "./components/Semester/Semester";
-
+import { SemesterList } from "./components/Semester/SemesterList";
 
 const COURSES = sample.map(
     (course): Course => ({
@@ -29,10 +28,38 @@ const COURSES = sample.map(
 
 // Testing Degrees with test data
 const SEMESTERS: Semester[] = [
-    { type: "Fall", courses: COURSES },
-    { type: "Winter", courses: COURSES },
-    { type: "Spring", courses: COURSES },
-    { type: "Summer", courses: COURSES }
+    {
+        title: "Fall",
+        courseList: COURSES,
+        id: 0,
+        notes: "",
+        maxCredits: 18,
+        currentCredits: 0
+    },
+    {
+        title: "Spring",
+        courseList: COURSES,
+        id: 1,
+        notes: "",
+        maxCredits: 18,
+        currentCredits: 0
+    },
+    {
+        title: "Winter",
+        courseList: COURSES,
+        id: 2,
+        notes: "",
+        maxCredits: 6,
+        currentCredits: 0
+    },
+    {
+        title: "Summer",
+        courseList: COURSES,
+        id: 3,
+        notes: "",
+        maxCredits: 6,
+        currentCredits: 0
+    }
 ];
 
 const YEARS: Year[] = [
@@ -114,7 +141,10 @@ function App(): JSX.Element {
                         </ul>
                     </nav>
                 </header>
-                <div> {showComponentSemester && <Semester></Semester>}</div>
+                <div>
+                    {" "}
+                    {showComponentSemester && <SemesterList></SemesterList>}
+                </div>
                 <div className="CourseButtons">
                     <Button
                         onClick={() =>

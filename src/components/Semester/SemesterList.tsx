@@ -2,21 +2,21 @@ import React, { FC, useState, useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Course } from "../../interfaces/course";
 import sample from "../../data/courses.json";
-import "./Semester.css";
+import "./SemesterList.css";
 import { SemesterCard } from "./SemesterCard";
 import { SemesterView } from "./SemesterView";
-import { SemesterStructure } from "../../interfaces/semester";
+import { Semester } from "../../interfaces/semester";
 
 export interface SemesterInterfaceProps {
-    semesterList: SemesterStructure[];
-    setSemesterList: (list: SemesterStructure[]) => void;
+    semesterList: Semester[];
+    setSemesterList: (list: Semester[]) => void;
     setIsSemesterCard: (isCard: boolean) => void;
     idCounter: number;
     setIdCounter: (num: number) => void;
 }
 
-export const Semester = () => {
-    const [semesterList, setSemesterList] = useState<SemesterStructure[]>([]);
+export const SemesterList = () => {
+    const [semesterList, setSemesterList] = useState<Semester[]>([]);
     const [isMakeSemesterCard, setIsMakeSemesterCard] =
         useState<boolean>(false);
     const [displayId, setDisplayId] = useState<null | number>(null);
@@ -50,7 +50,7 @@ export const Semester = () => {
 
     function deleteSemester(inputID: number) {
         const newSemesterList = semesterList.filter(
-            (sem: SemesterStructure): boolean => inputID !== sem.id
+            (sem: Semester): boolean => inputID !== sem.id
         );
         setSemesterList(newSemesterList);
         console.log("Delete");
@@ -63,7 +63,7 @@ export const Semester = () => {
                 <ul>
                     {!displayId && (
                         <>
-                            {semesterList.map((semester: SemesterStructure) => (
+                            {semesterList.map((semester: Semester) => (
                                 <div
                                     key={semester.id}
                                     className="SemesterContainer"
@@ -87,7 +87,7 @@ export const Semester = () => {
                             ))}
                         </>
                     )}
-                    {semesterList.map((semester: SemesterStructure) => {
+                    {semesterList.map((semester: Semester) => {
                         const cId = semester.id;
                         if (displayId === cId) {
                             return (

@@ -62,8 +62,8 @@ export const DegreeView = ({
                                 <h4>{year.name}</h4>
                                 {year.semesters.map((semester) => (
                                     <SemesterView
-                                        key={semester.type}
-                                        type={semester.type}
+                                        key={semester.title}
+                                        type={semester.title}
                                         courses={testDegreeList}
                                     />
                                 ))}

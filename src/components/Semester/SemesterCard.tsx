@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import sample from "../../data/courses.json";
-import { SemesterInterfaceProps } from "./Semester";
-import { SemesterStructure } from "../../interfaces/semester";
+import { SemesterInterfaceProps } from "./SemesterList";
+import { Semester } from "../../interfaces/semester";
 import { Course } from "../../interfaces/course";
 
 const COURSES = sample.map(
@@ -45,7 +45,7 @@ export function SemesterCard({
         const newID = idCounter + 1;
         setIdCounter(newID);
         const title = `${season} Semester ${year}`;
-        const newSemester: SemesterStructure = {
+        const newSemester: Semester = {
             id: idCounter,
             title: title,
             notes: "",

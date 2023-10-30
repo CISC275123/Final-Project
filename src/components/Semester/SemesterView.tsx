@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { SemesterStructure } from "../../interfaces/semester";
+import { Semester } from "../../interfaces/semester";
 import { SemesterAddCourse } from "./SemesterAddCourse";
 
 export const SemesterView = ({
@@ -8,7 +8,7 @@ export const SemesterView = ({
     semester
 }: {
     resetView: () => void;
-    semester: SemesterStructure;
+    semester: Semester;
 }) => {
     const [description, setDescription] = useState<string>("");
     const [isAddCourses, setIsAddCourses] = useState<boolean>(false);
