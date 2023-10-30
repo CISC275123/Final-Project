@@ -1,0 +1,42 @@
+.edit_name_row {
+    display: flex;
+    justify-content: space-between;
+    max-width: 100vw;
+}
+
+.edit_name_box {
+    display: flex;
+    align-items: center;
+}
+
+.name_input {
+    width: 20rem;
+    margin-left: 0.5rem;
+}
+
+.edit_credits_row {
+    display: flex;
+    justify-content: space-between;
+    max-width: 100vw;
+}
+
+.edit_credits_box {
+    display: flex;
+    align-items: center;
+}
+
+.credits_input {
+    width: 4rem;
+    margin-left: 0.5rem;
+}
+
+.edit_desc_box {
+    overflow-wrap: break-word;
+}
+
+.edit_course {
+    background-color: #24252a;
+    border-radius: 1rem;
+    padding: 2rem;
+    color: orange;
+}
