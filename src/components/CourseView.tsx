@@ -26,6 +26,12 @@ export const CourseView = ({
                 <Button
                     className="esc_button text-align-center"
                     variant="warning"
+                >
+                    Add
+                </Button>
+                <Button
+                    className="esc_button text-align-center"
+                    variant="warning"
                     onClick={() => {
                         switchEdit();
                     }}
