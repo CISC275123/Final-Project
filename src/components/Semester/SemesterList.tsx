@@ -73,14 +73,16 @@ export const SemesterList = ({ courses }: { courses: Course[] }) => {
                                     key={semester.id}
                                     className="SemesterContainer"
                                 >
-                                    <li
-                                        className="Semester-li"
+                                    <li className="Semester-li">
+                                        {semester.title}
+                                    </li>
+                                    <Button
                                         onClick={() => {
                                             handleCourseView(semester.id);
                                         }}
                                     >
-                                        {semester.title}
-                                    </li>
+                                        Edit Semester
+                                    </Button>{" "}
                                     <Button
                                         onClick={() => {
                                             deleteSemester(semester.id);

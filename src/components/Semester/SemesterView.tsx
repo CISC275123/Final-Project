@@ -32,6 +32,9 @@ export const SemesterView = ({
         semester.notes = semester.notes + description;
         resetView();
     }
+    function clearCourses() {
+        setAddedCourses([]);
+    }
     return (
         <div>
             <h1>
@@ -41,7 +44,7 @@ export const SemesterView = ({
             <h3>Maximum Credits Allowed: {semester.maxCredits} credits</h3>
             <h3>Current Credits: {semester.currentCredits} credits</h3>
             <Button onClick={displayCourses}>Add Course</Button>
-            <Button onClick={displayCourses}>Clear Courses</Button>
+            <Button onClick={clearCourses}>Clear Courses</Button>
             <Button onClick={resetView}>Exit</Button>
             <Button onClick={saveInfo}>Save</Button>
             <h2>The result of notes: {semester.notes}</h2>
