@@ -2,8 +2,8 @@ export interface Course {
     id: string;
     name: string;
     credits: number;
-    prerequisites: string;
+    prerequisites: string[] | null;
     restrictions: string;
     description: string;
-    corequisites: string;
+    corequisites: string[] | null;
 }
