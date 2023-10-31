@@ -17,9 +17,6 @@ export const SemesterView = ({
     const [addedCourses, setAddedCourses] = useState<string[]>([]);
 
     const [isAddCourses, setIsAddCourses] = useState<boolean>(false);
-    const [currIndex, setIndex] = useState<number>(0);
-
-    const NUM_COURSES_DISPLAYED = 5;
 
     function displayCourses() {
         setIsAddCourses(!isAddCourses);
@@ -65,34 +62,10 @@ export const SemesterView = ({
                 <div key={c}>{c}</div>
             ))}
 
-            {isAddCourses && (
-                <div className="CourseButtons">
-                    <Button
-                        onClick={() =>
-                            currIndex > 0
-                                ? setIndex(currIndex - NUM_COURSES_DISPLAYED)
-                                : setIndex(currIndex)
-                        }
-                    >
-                        Back
-                    </Button>
-                    <Button
-                        onClick={() =>
-                            currIndex < courses.length - NUM_COURSES_DISPLAYED
-                                ? setIndex(currIndex + NUM_COURSES_DISPLAYED)
-                                : setIndex(currIndex)
-                        }
-                    >
-                        Next
-                    </Button>
-                </div>
-            )}
+            {isAddCourses && <div className="CourseButtons"></div>}
             {isAddCourses && (
                 <SemesterAddCourse
-                    courses={courses.slice(
-                        currIndex,
-                        currIndex + NUM_COURSES_DISPLAYED
-                    )}
+                    courses={courses}
                     addedCourses={addedCourses}
                     setAddedCourses={setAddedCourses}
                 ></SemesterAddCourse>
