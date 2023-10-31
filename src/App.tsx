@@ -125,7 +125,6 @@ function App(): JSX.Element {
                                 <Button onClick={handleClickSemester}>
                                     Semesters
                                 </Button>
-                                <a href="#Semesters">Semesters</a>
                             </li>
                             <li>
                                 <Button
@@ -143,8 +142,11 @@ function App(): JSX.Element {
                 </header>
                 <div>
                     {" "}
-                    {showComponentSemester && <SemesterList></SemesterList>}
+                    {showComponentSemester && (
+                        <SemesterList courses={courses}></SemesterList>
+                    )}
                 </div>
+
                 <div className="CourseButtons">
                     <Button
                         onClick={() =>
@@ -173,6 +175,7 @@ function App(): JSX.Element {
                         Next
                     </Button>
                 </div>
+
                 {/* The beginning of the list of courses in the html  */}
                 <div className="CourseList">
                     {display && (
