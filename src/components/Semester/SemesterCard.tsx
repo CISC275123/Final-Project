@@ -51,7 +51,8 @@ export function SemesterCard({
             notes: "",
             maxCredits: maxCredits,
             currentCredits: 0, //variable will eventually have to be a state, so dynamic change for currentCredits
-            courseList: COURSES
+            courseList: COURSES,
+            courses: []
         };
         const newSemesterList = [...semesterList, newSemester];
         setSemesterList(newSemesterList);

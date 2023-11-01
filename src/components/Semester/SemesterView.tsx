@@ -14,9 +14,11 @@ export const SemesterView = ({
     semester: Semester;
 }) => {
     const [description, setDescription] = useState<string>("");
-    const [addedCourses, setAddedCourses] = useState<string[]>([]);
+    const [addedCourses, setAddedCourses] = useState<Course[]>([]);
 
     const [isAddCourses, setIsAddCourses] = useState<boolean>(false);
+    const [currIndex, setIndex] = useState<number>(0);
+    const NUM_COURSES_DISPLAYED = 5;
 
     function displayCourses() {
         setIsAddCourses(!isAddCourses);
@@ -27,10 +29,17 @@ export const SemesterView = ({
     }
     function saveInfo() {
         semester.notes = semester.notes + description;
+        semester.courses = [...addedCourses];
+        const totalCredits = addedCourses.reduce(
+            (sum: number, course: Course) => sum + course.credits,
+            0
+        );
+        semester.currentCredits = totalCredits;
         resetView();
     }
     function clearCourses() {
         setAddedCourses([]);
+        semester.courses = [];
     }
     return (
         <div>
@@ -40,11 +49,15 @@ export const SemesterView = ({
             </h1>
             <h3>Maximum Credits Allowed: {semester.maxCredits} credits</h3>
             <h3>Current Credits: {semester.currentCredits} credits</h3>
+            <h3>Courses: </h3>
+            {semester.courses.map((c) => (
+                <div key={c.id}>{c.id}</div>
+            ))}
             <Button onClick={displayCourses}>Add Course</Button>
             <Button onClick={clearCourses}>Clear Courses</Button>
             <Button onClick={resetView}>Exit</Button>
             <Button onClick={saveInfo}>Save</Button>
-            <h2>The result of notes: {semester.notes}</h2>
+            <h2>{semester.notes}</h2>
             {!isAddCourses && (
                 <Form.Group controlId="formNotes">
                     <Form.Label>Notes:</Form.Label>
@@ -56,16 +69,34 @@ export const SemesterView = ({
                     />
                 </Form.Group>
             )}
-
-            <h2>Courses Added: </h2>
-            {addedCourses.map((c) => (
-                <div key={c}>{c}</div>
-            ))}
-
-            {isAddCourses && <div className="CourseButtons"></div>}
+            {isAddCourses && (
+                <div className="CourseButtons">
+                    <Button
+                        onClick={() =>
+                            currIndex > 0
+                                ? setIndex(currIndex - NUM_COURSES_DISPLAYED)
+                                : setIndex(currIndex)
+                        }
+                    >
+                        Back
+                    </Button>
+                    <Button
+                        onClick={() =>
+                            currIndex < courses.length - NUM_COURSES_DISPLAYED
+                                ? setIndex(currIndex + NUM_COURSES_DISPLAYED)
+                                : setIndex(currIndex)
+                        }
+                    >
+                        Next
+                    </Button>
+                </div>
+            )}
             {isAddCourses && (
                 <SemesterAddCourse
-                    courses={courses}
+                    courses={courses.slice(
+                        currIndex,
+                        currIndex + NUM_COURSES_DISPLAYED
+                    )}
                     addedCourses={addedCourses}
                     setAddedCourses={setAddedCourses}
                 ></SemesterAddCourse>

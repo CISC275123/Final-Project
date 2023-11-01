@@ -9,24 +9,28 @@ export const SemesterAddCourse = ({
     setAddedCourses
 }: {
     courses: Course[];
-    addedCourses: string[];
-    setAddedCourses: (courseList: string[]) => void;
+    addedCourses: Course[];
+    setAddedCourses: (courseList: Course[]) => void;
 }) => {
     function addCourse(c: Course) {
-        const newCourse = c.name + ", " + c.credits + " credits";
-        const newAddedCourse = [...addedCourses, newCourse];
+        const newAddedCourse = [...addedCourses, c];
         setAddedCourses(newAddedCourse);
     }
-
     return (
         <div>
             Available Semester Courses
             <div>
                 {courses.map((course: Course) => (
                     <div key={course.name}>
-                        {course.name} ({course.credits} Credits){" "}
+                        {course.id} ({course.credits} Credits){" "}
                         <Button onClick={() => addCourse(course)}>Add</Button>
                     </div>
+                ))}
+            </div>
+            Courses in Queue:
+            <div>
+                {addedCourses.map((c: Course) => (
+                    <div key={c.id}>{c.id}</div>
                 ))}
             </div>
         </div>
