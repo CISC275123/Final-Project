@@ -15,6 +15,7 @@
 
 .year_view_column {
     border: solid red;
+    background-color: gray;
     padding: 0rem 12rem 20rem 12rem;
 }
 
