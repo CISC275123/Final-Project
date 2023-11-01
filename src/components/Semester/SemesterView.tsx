@@ -29,7 +29,11 @@ export const SemesterView = ({
     }
     function saveInfo() {
         semester.notes = semester.notes + description;
-        semester.courses = [...semester.courses, ...addedCourses];
+        for (const x of addedCourses) {
+            if (!semester.courses.includes(x)) {
+                semester.courses.push(x);
+            }
+        }
         setCredits(
             addedCourses.reduce(
                 (sum: number, course: Course) =>
