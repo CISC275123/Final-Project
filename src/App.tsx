@@ -19,10 +19,10 @@ const COURSES = sample.map(
         id: course.id,
         name: course.name,
         credits: course.credits as unknown as number,
-        prerequisites: [course.prereqs as unknown as string],
+        prerequisites: course.prereqs as unknown as string[],
         restrictions: course.restrictions as unknown as string,
         description: course.description,
-        corequisites: [course.coreqs as unknown as string]
+        corequisites: course.coreqs as unknown as string[]
     })
 );
 

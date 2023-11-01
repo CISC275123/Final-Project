@@ -48,7 +48,7 @@
         "id": "CISC 210",
         "name": "INTRODUCTION TO SYSTEMS PROGRAMMING",
         "credits": "3",
-        "prereqs": ["CISC106||CISC108"],
+        "prereqs": ["CISC106||CISC108", "CISC220"],
         "restrictions": null,
         "description": "Principles of computer systems programming for software and hardware platforms to achieve efficient resource usage. Topics include the C programming language, memory management, and awareness of system constraints and interfacing. Projects include programming embedded systems and interactive objects.",
         "coreqs": ["MATH221", "MATH241"]

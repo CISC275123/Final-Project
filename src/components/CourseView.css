@@ -1,0 +1,24 @@
+.reqs_list {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: left;
+}
+
+.reqs_title {
+    color: orange;
+}
+
+.reqs {
+    color: orange;
+}
+
+.reqs h2 {
+    color: red;
+    padding-bottom: 2rem;
+}
+
+.reqs_card {
+    background-color: aqua;
+}
