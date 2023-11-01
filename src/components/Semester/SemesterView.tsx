@@ -15,7 +15,7 @@ export const SemesterView = ({
 }) => {
     const [description, setDescription] = useState<string>("");
     const [addedCourses, setAddedCourses] = useState<Course[]>([]);
-
+    const [credits, setCredits] = useState<number>(0);
     const [isAddCourses, setIsAddCourses] = useState<boolean>(false);
     const [currIndex, setIndex] = useState<number>(0);
     const NUM_COURSES_DISPLAYED = 5;
@@ -29,17 +29,24 @@ export const SemesterView = ({
     }
     function saveInfo() {
         semester.notes = semester.notes + description;
-        semester.courses = [...addedCourses];
-        const totalCredits = addedCourses.reduce(
-            (sum: number, course: Course) => sum + course.credits,
-            0
+        semester.courses = [...semester.courses, ...addedCourses];
+        setCredits(
+            addedCourses.reduce(
+                (sum: number, course: Course) =>
+                    (sum + course.credits) as unknown as number,
+                0
+            )
         );
-        semester.currentCredits = totalCredits;
-        resetView();
+        console.log(credits);
+        setAddedCourses([]);
     }
     function clearCourses() {
         setAddedCourses([]);
         semester.courses = [];
+    }
+    function removeCourse(id: string) {
+        semester.courses = semester.courses.filter((c: Course) => c.id != id);
+        saveInfo();
     }
     return (
         <div>
@@ -48,10 +55,13 @@ export const SemesterView = ({
                 {semester.title} ID: {semester.id}
             </h1>
             <h3>Maximum Credits Allowed: {semester.maxCredits} credits</h3>
-            <h3>Current Credits: {semester.currentCredits} credits</h3>
+            <h3>Current Credits: {credits} credits</h3>
             <h3>Courses: </h3>
             {semester.courses.map((c) => (
-                <div key={c.id}>{c.id}</div>
+                <div key={c.id}>
+                    {c.id}{" "}
+                    <Button onClick={() => removeCourse(c.id)}>Remove</Button>
+                </div>
             ))}
             <Button onClick={displayCourses}>Add Course</Button>
             <Button onClick={clearCourses}>Clear Courses</Button>
