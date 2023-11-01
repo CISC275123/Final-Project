@@ -7,17 +7,16 @@ import { CourseCard } from "./CourseCard";
 
 import "./CourseView.css";
 import sample from "../data/courses.json";
-import { check } from "prettier";
 
 const COURSES = sample.map(
     (course): Course => ({
         id: course.id,
         name: course.name,
         credits: course.credits as unknown as number,
-        prerequisites: [course.prereqs as unknown as string],
+        prerequisites: course.prereqs as unknown as string[],
         restrictions: course.restrictions as unknown as string,
         description: course.description,
-        corequisites: [course.coreqs as unknown as string]
+        corequisites: course.coreqs as unknown as string[]
     })
 );
 
@@ -87,15 +86,12 @@ export const CourseView = ({
         return unknownCourses;
     }
 
-    function showRequirements(
-        preq_courses: string[],
-        coreq_courses: string[]
-    ): ReactNode | string {
+    function showRequirements(preq_courses: string[]): ReactNode | string {
         const reqs: Course[] = findMatching(preq_courses);
-        const coreqs: Course[] = findMatching(coreq_courses);
+        // const coreqs: Course[] = findMatching(coreq_courses);
 
         const unknownReqs: string[] = findUnknown(preq_courses);
-        const unknownCoreqs: string[] = findUnknown(coreq_courses);
+        // const unknownCoreqs: string[] = findUnknown(coreq_courses);
 
         return (
             <div>
@@ -109,7 +105,7 @@ export const CourseView = ({
                         ></CourseCard>
                     ))}
                 </h3>
-                <h2>{unknownCoreqs.map((course: string) => course + " ")}</h2>
+                {/* <h2>{unknownCoreqs.map((course: string) => course + " ")}</h2>
                 {coreqs.length > 0 && (
                     <h3 className="coreq_card">
                         {coreqs.map((course: Course) => (
@@ -120,7 +116,7 @@ export const CourseView = ({
                             ></CourseCard>
                         ))}
                     </h3>
-                )}
+                )} */}
             </div>
         );
     }
@@ -181,10 +177,7 @@ export const CourseView = ({
                         <h3 className="reqs">
                             {course.prerequisites === null
                                 ? "No Requirements"
-                                : showRequirements(
-                                      [...course.prerequisites],
-                                      [...course.corequisites]
-                                  )}
+                                : showRequirements([...course.prerequisites])}
                         </h3>
                     </div>
                 </div>
