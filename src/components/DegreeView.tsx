@@ -56,6 +56,7 @@ export const DegreeView = ({
 
             {!edit && (
                 <div className="degree_page">
+                    <h2>{degree.name}</h2>
                     <div className="year_view_rows">
                         {degree.years.map((year: Year) => (
                             <div className="year_view_column" key={year.name}>

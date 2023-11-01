@@ -68,18 +68,17 @@ const YEARS: Year[] = [
     { name: "Year 3", semesters: SEMESTERS },
     { name: "Year 4", semesters: SEMESTERS }
 ];
-const DEGREES: Degree[] = [
-    { name: "Degree 1", years: YEARS },
-    { name: "Degree 2", years: YEARS }
-];
+const DEGREES: Degree[] = [];
 
 function App(): JSX.Element {
     const [courses, setCourses] = useState<Course[]>(COURSES);
+    const [degrees, setDegrees] = useState<Degree[]>(DEGREES);
     const [display, setDisplay] = useState<boolean>(true);
     const [currIndex, setIndex] = useState<number>(0);
     const [isEditing, setEditing] = useState<boolean>(false);
     const [isDegree, setDegree] = useState<boolean>(false);
     const [showComponentSemester, setShowComponentSemester] = useState(false);
+    const [degreeId, setDegreeId] = useState<number>(1);
 
     function editCourse(courseID: string, newCourse: Course) {
         setCourses(
@@ -90,6 +89,24 @@ function App(): JSX.Element {
                         : course
             )
         );
+    }
+
+    function addDegree(name: string) {
+        const newDegree: Degree = {
+            name: name,
+            years: YEARS,
+            id: degreeId
+        };
+        const newId = degreeId + 1;
+        setDegreeId(newId);
+        setDegrees([...degrees, newDegree]);
+    }
+
+    function removeDegree(id: number) {
+        const newDegrees: Degree[] = degrees.filter(
+            (degree: Degree): boolean => degree.id !== id
+        );
+        setDegrees(newDegrees);
     }
 
     function switchEditing(edit: boolean) {
@@ -205,7 +222,13 @@ function App(): JSX.Element {
                 </div>
 
                 <div className="DegreeList">
-                    {isDegree && <DegreeList degrees={DEGREES}></DegreeList>}
+                    {isDegree && (
+                        <DegreeList
+                            degrees={degrees}
+                            addDegree={addDegree}
+                            removeDegree={removeDegree}
+                        ></DegreeList>
+                    )}
                 </div>
 
                 <footer>

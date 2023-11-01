@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "react-bootstrap";
 import { Degree } from "../interfaces/degree";
 import { Year } from "../interfaces/year";
 
@@ -6,19 +7,22 @@ import "./DegreeCard.css";
 
 export const DegreeCard = ({
     degree,
-    handleClick
+    handleClick,
+    removeDegree
 }: {
     degree: Degree;
-    handleClick: (id: string) => void;
+    handleClick: (id: number) => void;
+    removeDegree: (id: number) => void;
 }) => {
     return (
         <div
+            onClick={() => console.log(degree.id)}
             className="degree_view_card"
-            onClick={() => handleClick(degree.name)}
         >
-            <div>
+            <div onClick={() => handleClick(degree.id)}>
                 <h3 className="degreeName">{degree.name}</h3>
             </div>
+            <Button onClick={() => removeDegree(degree.id)}>Remove</Button>
         </div>
     );
 };
