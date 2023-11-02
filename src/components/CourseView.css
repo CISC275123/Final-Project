@@ -4,6 +4,11 @@
     flex-direction: column;
     gap: 20px;
     text-align: left;
+    color: orange;
+}
+
+.reqs_list h5 {
+    padding-left: 2rem;
 }
 
 .reqs_title {

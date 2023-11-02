@@ -261,13 +261,19 @@ export const CourseView = ({
 
                     <br />
 
-                    <h2 className="reqs_title">Requirements</h2>
                     <div className="reqs_list">
-                        <h3 className="reqs">
+                        <h2>Prerequisites</h2>
+                        <h5 className="reqs">
                             {course.prerequisites === null
                                 ? "No Requirements"
                                 : showRequirements([...course.prerequisites])}
-                        </h3>
+                        </h5>
+                        <h2>Restrictions</h2>
+                        <h5 className="restrictions">
+                            {course.restrictions === null
+                                ? "No Restrictions"
+                                : course.restrictions}
+                        </h5>
                     </div>
                 </div>
             )}
