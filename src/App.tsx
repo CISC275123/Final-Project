@@ -185,7 +185,7 @@ function App(): JSX.Element {
                                 ? setIndex(currIndex - NUM_COURSES_DISPLAYED)
                                 : setIndex(currIndex)
                         }
-                        hidden={isEditing}
+                        hidden={isEditing || currIndex <= 0}
                     >
                         Back
                     </Button>
@@ -193,7 +193,7 @@ function App(): JSX.Element {
                         onClick={() => setDisplay(!display)}
                         hidden={isEditing}
                     >
-                        Show Courses
+                        {display ? "Hide Courses" : "Show Courses"}
                     </Button>
                     <Button
                         onClick={() =>
@@ -201,7 +201,10 @@ function App(): JSX.Element {
                                 ? setIndex(currIndex + NUM_COURSES_DISPLAYED)
                                 : setIndex(currIndex)
                         }
-                        hidden={isEditing}
+                        hidden={
+                            isEditing ||
+                            currIndex >= courses.length - NUM_COURSES_DISPLAYED
+                        }
                     >
                         Next
                     </Button>
