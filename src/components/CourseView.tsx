@@ -159,7 +159,7 @@ export const CourseView = ({
                     </h2>
                     <h3 className="orReqs_card">
                         {orCourses.map((course: Course, index) => (
-                            <div key={course.id}>
+                            <div key={course.id} onClick={resetView}>
                                 <CourseCard
                                     key={course.id}
                                     course={course}
@@ -170,12 +170,14 @@ export const CourseView = ({
                         ))}
                     </h3>
                     <h3 className="reqs_card">
-                        {newMatching.map((course: Course) => (
-                            <CourseCard
-                                key={course.id}
-                                course={course}
-                                handleClick={handleClick}
-                            ></CourseCard>
+                        {newMatching.map((course: Course, index) => (
+                            <div key={index} onClick={resetView}>
+                                <CourseCard
+                                    key={course.id}
+                                    course={course}
+                                    handleClick={handleClick}
+                                ></CourseCard>
+                            </div>
                         ))}
                     </h3>
                 </div>
@@ -186,12 +188,14 @@ export const CourseView = ({
             <div>
                 <h2>{unknownReqs.map((c: string) => c)}</h2>
                 <h3 className="reqs_card">
-                    {reqs.map((course: Course) => (
-                        <CourseCard
-                            key={course.id}
-                            course={course}
-                            handleClick={handleClick}
-                        ></CourseCard>
+                    {reqs.map((course: Course, index) => (
+                        <div key={index} onClick={resetView}>
+                            <CourseCard
+                                key={course.id}
+                                course={course}
+                                handleClick={handleClick}
+                            ></CourseCard>
+                        </div>
                     ))}
                 </h3>
                 {/* <h2>{unknownCoreqs.map((course: string) => course + " ")}</h2>
