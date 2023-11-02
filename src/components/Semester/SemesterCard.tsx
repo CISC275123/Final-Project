@@ -51,7 +51,8 @@ export function SemesterCard({
             notes: "",
             maxCredits: maxCredits,
             currentCredits: 0, //variable will eventually have to be a state, so dynamic change for currentCredits
-            courseList: COURSES
+            courseList: COURSES,
+            courses: []
         };
         const newSemesterList = [...semesterList, newSemester];
         setSemesterList(newSemesterList);
@@ -78,19 +79,16 @@ export function SemesterCard({
                 </Form.Select>
             </Form.Group>
             <div>
-                {" "}
                 {season} semester {year}: {maxCredits} credits maximum
                 <div>
-                    <Button>Add Course</Button>
+                    <button
+                        onClick={() => {
+                            saveAndExit();
+                        }}
+                    >
+                        Save
+                    </button>
                 </div>
-                <h3>Courses in the semester:</h3>
-                <button
-                    onClick={() => {
-                        saveAndExit();
-                    }}
-                >
-                    Save
-                </button>
             </div>
         </div>
     );

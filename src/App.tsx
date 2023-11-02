@@ -34,7 +34,8 @@ const SEMESTERS: Semester[] = [
         id: 0,
         notes: "",
         maxCredits: 18,
-        currentCredits: 0
+        currentCredits: 0,
+        courses: []
     },
     {
         title: "Spring",
@@ -42,7 +43,8 @@ const SEMESTERS: Semester[] = [
         id: 1,
         notes: "",
         maxCredits: 18,
-        currentCredits: 0
+        currentCredits: 0,
+        courses: []
     },
     {
         title: "Winter",
@@ -50,7 +52,8 @@ const SEMESTERS: Semester[] = [
         id: 2,
         notes: "",
         maxCredits: 6,
-        currentCredits: 0
+        currentCredits: 0,
+        courses: []
     },
     {
         title: "Summer",
@@ -58,7 +61,8 @@ const SEMESTERS: Semester[] = [
         id: 3,
         notes: "",
         maxCredits: 6,
-        currentCredits: 0
+        currentCredits: 0,
+        courses: []
     }
 ];
 
@@ -176,8 +180,11 @@ function App(): JSX.Element {
                 </header>
                 <div>
                     {" "}
-                    {showComponentSemester && <SemesterList></SemesterList>}
+                    {showComponentSemester && (
+                        <SemesterList courses={courses}></SemesterList>
+                    )}
                 </div>
+
                 <div className="CourseButtons">
                     <Button
                         onClick={() =>
@@ -209,6 +216,7 @@ function App(): JSX.Element {
                         Next
                     </Button>
                 </div>
+
                 {/* The beginning of the list of courses in the html  */}
                 <div className="CourseList">
                     {display && (

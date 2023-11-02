@@ -15,7 +15,7 @@ export interface SemesterInterfaceProps {
     setIdCounter: (num: number) => void;
 }
 
-export const SemesterList = () => {
+export const SemesterList = ({ courses }: { courses: Course[] }) => {
     const [semesterList, setSemesterList] = useState<Semester[]>([]);
     const [isMakeSemesterCard, setIsMakeSemesterCard] =
         useState<boolean>(false);
@@ -58,7 +58,12 @@ export const SemesterList = () => {
 
     return (
         <div>
-            <Button onClick={showMakeSemesterCard}>Add Semester</Button>
+            <Button
+                className="AddSemesterButton"
+                onClick={showMakeSemesterCard}
+            >
+                Add Semester
+            </Button>
             <div className="List">
                 <ul>
                     {!displayId && (
@@ -68,14 +73,16 @@ export const SemesterList = () => {
                                     key={semester.id}
                                     className="SemesterContainer"
                                 >
-                                    <li
-                                        className="Semester-li"
+                                    <li className="Semester-li">
+                                        {semester.title}
+                                    </li>
+                                    <Button
                                         onClick={() => {
                                             handleCourseView(semester.id);
                                         }}
                                     >
-                                        {semester.title}
-                                    </li>
+                                        Edit Semester
+                                    </Button>{" "}
                                     <Button
                                         onClick={() => {
                                             deleteSemester(semester.id);
@@ -94,6 +101,7 @@ export const SemesterList = () => {
                                 <div className="popup-container">
                                     <div className="popup">
                                         <SemesterView
+                                            courses={courses}
                                             semester={semester}
                                             resetView={resetCourseView}
                                         ></SemesterView>
