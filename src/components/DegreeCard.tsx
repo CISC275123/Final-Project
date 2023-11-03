@@ -15,10 +15,7 @@ export const DegreeCard = ({
     removeDegree: (id: number) => void;
 }) => {
     return (
-        <div
-            onClick={() => console.log(degree.id)}
-            className="degree_view_card"
-        >
+        <div className="degree_view_card">
             <div onClick={() => handleClick(degree.id)}>
                 <h3 className="degreeName">{degree.name}</h3>
             </div>

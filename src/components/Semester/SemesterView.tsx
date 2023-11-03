@@ -5,11 +5,9 @@ import { SemesterAddCourse } from "./SemesterAddCourse";
 import { Course } from "../../interfaces/course";
 
 export const SemesterView = ({
-    courses,
     resetView,
     semester
 }: {
-    courses: Course[];
     resetView: () => void;
     semester: Semester;
 }) => {
@@ -95,7 +93,8 @@ export const SemesterView = ({
                     </Button>
                     <Button
                         onClick={() =>
-                            currIndex < courses.length - NUM_COURSES_DISPLAYED
+                            currIndex <
+                            semester.courseList.length - NUM_COURSES_DISPLAYED
                                 ? setIndex(currIndex + NUM_COURSES_DISPLAYED)
                                 : setIndex(currIndex)
                         }
@@ -106,7 +105,7 @@ export const SemesterView = ({
             )}
             {isAddCourses && (
                 <SemesterAddCourse
-                    courses={courses.slice(
+                    courses={semester.courseList.slice(
                         currIndex,
                         currIndex + NUM_COURSES_DISPLAYED
                     )}

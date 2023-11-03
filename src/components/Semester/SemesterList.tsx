@@ -101,7 +101,6 @@ export const SemesterList = ({ courses }: { courses: Course[] }) => {
                                 <div className="popup-container">
                                     <div className="popup">
                                         <SemesterView
-                                            courses={courses}
                                             semester={semester}
                                             resetView={resetCourseView}
                                         ></SemesterView>
