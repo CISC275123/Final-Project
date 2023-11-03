@@ -35,11 +35,10 @@ export const SemesterView = ({
             }
         }
         setCredits(
-            addedCourses.reduce(
-                (sum: number, course: Course) =>
-                    (sum + course.credits) as unknown as number,
-                0
-            )
+            addedCourses.reduce((sum: number, course: Course): number => {
+                const creds: number = course.credits as number;
+                return sum + creds;
+            }, 0)
         );
         console.log(credits);
         setAddedCourses([]);
