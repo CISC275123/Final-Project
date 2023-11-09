@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { Course } from "./interfaces/course";
 import { Year } from "./interfaces/year";
 import { Degree } from "./interfaces/degree";
-import { CourseList } from "./components/CourseList";
 import { DegreeList } from "./components/DegreeList";
 
 import logo from "./images/logo.png";
@@ -12,8 +11,9 @@ import sample from "./data/courses.json";
 import { Button } from "react-bootstrap";
 
 import { Semester } from "./interfaces/semester";
-import { SemesterList } from "./components/Semester/SemesterList";
+import { CourseList } from "./components/CourseList";
 
+// Creates default list of courses pulling from a JSON file.
 const COURSES = sample.map(
     (course): Course => ({
         id: course.id,
@@ -26,32 +26,34 @@ const COURSES = sample.map(
     })
 );
 
-const TEST_YEARS: Year[] = [
-    { name: "Year 1", semesters: [], id: 5 },
-    { name: "Year 2", semesters: [], id: 2 }
-];
-
-const DEFAULT_DEGREES: Degree[] = [
-    { id: 577, name: "Sample Test", years: TEST_YEARS }
-];
+// sets the number of courses to be displayed on a single page.
+const NUM_COURSES_DISPLAYED = 3;
 
 function App(): JSX.Element {
     // VARs holding list information on the user's degree plan
     const [courses, setCourses] = useState<Course[]>(COURSES);
-    const [semesterList, setSemesterList] = useState<Semester[]>([]);
-    const [degrees, setDegrees] = useState<Degree[]>(DEFAULT_DEGREES);
+    const [degrees, setDegrees] = useState<Degree[]>([]);
 
     // VARs used to control display of elements
     const [display, setDisplay] = useState<boolean>(true);
     const [isEditing, setEditing] = useState<boolean>(false);
     const [isDegree, setDegree] = useState<boolean>(false);
-    const [showComponentSemester, setShowComponentSemester] = useState(false);
 
     // IDs used to differentiate instances of objects
     const [degreeId, setDegreeId] = useState<number>(1);
     const [yearId, setYearId] = useState<number>(1);
     const [currIndex, setIndex] = useState<number>(0);
 
+    // Used to edit a course. Replaces the target course with a modified course.
+    // Works by passing in a target course ID and a new instance of the course.
+    // It then maps, searching for the target ID and replaces if it matches
+    //
+    // INPUTS:
+    // courseID: string => The string course code with NO SPACES such as 'CISC101'
+    // newCourse: Course => The new course instance containing the changes.
+    //
+    // OUTPUTS:
+    // Modifies the state variable containing the list of courses.
     function editCourse(courseID: string, newCourse: Course) {
         setCourses(
             courses.map(
@@ -63,6 +65,13 @@ function App(): JSX.Element {
         );
     }
 
+    // Used to add a new degree plan. Takes user input for the name of the degree plan.
+    //
+    // INPUTS:
+    // name: string => user input, a unique name given by the user so that they can easily remember it.
+    //
+    // OUTPUTS:
+    // Modifies the state variable containing the list of Degrees. Adds the new degree to it.
     function addDegree(name: string) {
         const newDegree: Degree = {
             name: name,
@@ -74,6 +83,18 @@ function App(): JSX.Element {
         setDegrees([...degrees, newDegree]);
     }
 
+    // Used to add a new instance of a Year to a degree. Takes user Input for the name.
+    // Typically we want the name to be "Year [1-4]" or "Freshman", "Sophomore", etc ...
+    //
+    // TO DO : Remove the user input and make it a drop down to select one of the 4 names: ["Freshman", "Sophomore", "Junior", "Senior"]
+    //
+    // INPUTS:
+    // name: string => user input, a unique name given by the user so that they can easily remember it.
+    // degree: Degree => The target degree in which the year should be added.
+    //
+    // OUTPUTS:
+    // Modifies the state variable containing the list of Degrees. Finds the matching degree and replaces it with the new, modified one
+    // containing the added Year.
     function addYear(name: string, degree: Degree) {
         const newYear: Year = {
             name: name,
@@ -97,6 +118,16 @@ function App(): JSX.Element {
         );
     }
 
+    // Used to add/remove semesters from a Year under Degrees.
+    //
+    // INPUTS:
+    // newSemesterList: Semester[] => the new list of semesters containing the desired updates.
+    // targetDegree: Degree => The target degree in which to update the Years.
+    // targetYear: Year => the target Year in which to update the semesters.
+    //
+    // OUTPUTS:
+    // Finds the correct Year and Degree before modifying the Degree list. Finds the correct degree ID and replaces
+    // the old version with the new, updated Degree.
     function updateSemesterList(
         newSemesterList: Semester[],
         targetDegree: Degree,
@@ -124,6 +155,13 @@ function App(): JSX.Element {
         );
     }
 
+    // Used to remove degree plans.
+    //
+    // INPUTS:
+    // id: number => the id of the degree to remove.
+    //
+    // OUTPUTS:
+    // Removes the correct ID from the list of degrees and updates the state variable containing the list of degrees.
     function removeDegree(id: number) {
         const newDegrees: Degree[] = degrees.filter(
             (degree: Degree): boolean => degree.id !== id
@@ -134,12 +172,6 @@ function App(): JSX.Element {
     function switchEditing(edit: boolean) {
         setEditing(edit);
     }
-
-    const NUM_COURSES_DISPLAYED = 3;
-
-    const handleClickSemester = () => {
-        setShowComponentSemester(!showComponentSemester);
-    };
 
     return (
         <div className="App">
@@ -160,7 +192,6 @@ function App(): JSX.Element {
                                 <Button
                                     onClick={() => {
                                         setDegree(false);
-                                        setShowComponentSemester(false);
                                         setDisplay(!display);
                                         setEditing(!isEditing);
                                     }}
@@ -171,23 +202,9 @@ function App(): JSX.Element {
                             <li>
                                 <Button
                                     onClick={() => {
-                                        handleClickSemester();
-                                        switchEditing(true);
-                                        // Disables display for Degrees and Courses
-                                        setDegree(false);
-                                        setDisplay(false);
-                                    }}
-                                >
-                                    Semesters
-                                </Button>
-                            </li>
-                            <li>
-                                <Button
-                                    onClick={() => {
                                         switchEditing(true);
                                         setDegree(!isDegree);
                                         setDisplay(false);
-                                        setShowComponentSemester(false);
                                     }}
                                 >
                                     Degrees
@@ -241,16 +258,6 @@ function App(): JSX.Element {
                             switchEditing={switchEditing}
                             default_courses={COURSES}
                         ></CourseList>
-                    )}
-                </div>
-
-                <div className="SemesterList">
-                    {showComponentSemester && (
-                        <SemesterList
-                            courses={courses}
-                            semesterList={semesterList}
-                            setSemesterList={setSemesterList}
-                        ></SemesterList>
                     )}
                 </div>
 
