@@ -15,8 +15,15 @@ export interface SemesterInterfaceProps {
     setIdCounter: (num: number) => void;
 }
 
-export const SemesterList = ({ courses }: { courses: Course[] }) => {
-    const [semesterList, setSemesterList] = useState<Semester[]>([]);
+export const SemesterList = ({
+    courses,
+    semesterList,
+    setSemesterList
+}: {
+    courses: Course[];
+    semesterList: Semester[];
+    setSemesterList: (semesterList: Semester[]) => void;
+}) => {
     const [isMakeSemesterCard, setIsMakeSemesterCard] =
         useState<boolean>(false);
     const [displayId, setDisplayId] = useState<null | number>(null);

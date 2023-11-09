@@ -13,14 +13,12 @@ export const SemesterView = ({
 }) => {
     const [description, setDescription] = useState<string>("");
     const [addedCourses, setAddedCourses] = useState<Course[]>([]);
-    const [credits, setCredits] = useState<number>(0);
     const [isAddCourses, setIsAddCourses] = useState<boolean>(false);
     const [currIndex, setIndex] = useState<number>(0);
     const NUM_COURSES_DISPLAYED = 5;
 
     function displayCourses() {
         setIsAddCourses(!isAddCourses);
-        //for next Sprint to accomplish
     }
     function updateDescription(event: React.ChangeEvent<HTMLTextAreaElement>) {
         setDescription(event.target.value);
@@ -28,25 +26,24 @@ export const SemesterView = ({
     function saveInfo() {
         semester.notes = semester.notes + description;
         for (const x of addedCourses) {
-            if (!semester.courses.includes(x)) {
-                semester.courses.push(x);
+            if (semester.currentCredits + x.credits <= semester.maxCredits) {
+                if (!semester.courses.includes(x)) {
+                    semester.courses.push(x);
+                    semester.currentCredits =
+                        semester.currentCredits + x.credits;
+                }
             }
         }
-        setCredits(
-            addedCourses.reduce((sum: number, course: Course): number => {
-                const creds: number = course.credits as number;
-                return sum + creds;
-            }, 0)
-        );
-        console.log(credits);
         setAddedCourses([]);
     }
     function clearCourses() {
         setAddedCourses([]);
         semester.courses = [];
+        semester.currentCredits = 0;
     }
-    function removeCourse(id: string) {
+    function removeCourse(id: string, creds: number) {
         semester.courses = semester.courses.filter((c: Course) => c.id != id);
+        semester.currentCredits = semester.currentCredits - creds;
         saveInfo();
     }
     return (
@@ -56,15 +53,17 @@ export const SemesterView = ({
                 {semester.title} ID: {semester.id}
             </h1>
             <h3>Maximum Credits Allowed: {semester.maxCredits} credits</h3>
-            <h3>Current Credits: {credits} credits</h3>
+            <h3>Current Credits: {semester.currentCredits} credits</h3>
             <h3>Courses: </h3>
             {semester.courses.map((c) => (
                 <div key={c.id}>
                     {c.id}{" "}
-                    <Button onClick={() => removeCourse(c.id)}>Remove</Button>
+                    <Button onClick={() => removeCourse(c.id, c.credits)}>
+                        Remove
+                    </Button>
                 </div>
             ))}
-            <Button onClick={displayCourses}>Add Course</Button>
+            <Button onClick={displayCourses}>Show Courses</Button>
             <Button onClick={clearCourses}>Clear Courses</Button>
             <Button onClick={resetView}>Exit</Button>
             <Button onClick={saveInfo}>Save</Button>

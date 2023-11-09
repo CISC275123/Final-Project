@@ -76,6 +76,7 @@ const DEGREES: Degree[] = [];
 
 function App(): JSX.Element {
     const [courses, setCourses] = useState<Course[]>(COURSES);
+    const [semesterList, setSemesterList] = useState<Semester[]>([]);
     const [degrees, setDegrees] = useState<Degree[]>(DEGREES);
     const [display, setDisplay] = useState<boolean>(true);
     const [currIndex, setIndex] = useState<number>(0);
@@ -181,7 +182,11 @@ function App(): JSX.Element {
                 <div>
                     {" "}
                     {showComponentSemester && (
-                        <SemesterList courses={courses}></SemesterList>
+                        <SemesterList
+                            courses={courses}
+                            semesterList={semesterList}
+                            setSemesterList={setSemesterList}
+                        ></SemesterList>
                     )}
                 </div>
 
