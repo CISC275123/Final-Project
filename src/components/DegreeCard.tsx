@@ -1,7 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import { Degree } from "../interfaces/degree";
-import { Year } from "../interfaces/year";
 
 import "./DegreeCard.css";
 

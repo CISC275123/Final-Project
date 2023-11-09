@@ -1,6 +1,6 @@
+/* eslint-disable no-extra-parens */
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
-import { Course } from "../interfaces/course";
+import { Button } from "react-bootstrap";
 import "./Semester/SemesterList.css";
 import { Semester } from "../interfaces/semester";
 import { SemesterView } from "./SemesterView";

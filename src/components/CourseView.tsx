@@ -1,5 +1,5 @@
-/* eslint-disable indent */
-import React, { ReactComponentElement, ReactNode, useState } from "react";
+/* eslint-disable no-extra-parens */
+import React, { ReactNode, useState } from "react";
 import { Course } from "../interfaces/course";
 import { CourseEdit } from "./CourseEdit";
 import { Button } from "react-bootstrap";
@@ -246,7 +246,6 @@ export const CourseView = ({
                     course={course}
                     editCourse={editCourse}
                     switchEdit={switchEdit}
-                    resetView={resetView}
                     default_courses={default_courses}
                 ></CourseEdit>
             )}

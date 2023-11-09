@@ -8,16 +8,13 @@ export const CourseEdit = ({
     course,
     editCourse,
     switchEdit,
-    resetView,
     default_courses
 }: {
     course: Course;
     editCourse: (courseID: string, newCourse: Course) => void;
     switchEdit: () => void;
-    resetView: () => void;
     default_courses: Course[];
 }) => {
-    const [newCourse, setNewCourse] = useState<Course>(course);
     const [newName, setName] = useState<string>(course.name);
     const [newCredits, setCredits] = useState<number>(course.credits);
     const [newDesc, setDesc] = useState<string>(course.description);
