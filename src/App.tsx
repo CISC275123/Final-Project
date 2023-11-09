@@ -12,6 +12,7 @@ import { Button } from "react-bootstrap";
 
 import { Semester } from "./interfaces/semester";
 import { CourseList } from "./components/CourseList";
+import { HomePage } from "./components/HomePage";
 
 // Creates default list of courses pulling from a JSON file.
 const COURSES = sample.map(
@@ -38,6 +39,7 @@ function App(): JSX.Element {
     const [display, setDisplay] = useState<boolean>(true);
     const [isEditing, setEditing] = useState<boolean>(false);
     const [isDegree, setDegree] = useState<boolean>(false);
+    const [isHome, setIsHome] = useState<boolean>(true);
 
     // IDs used to differentiate instances of objects
     const [degreeId, setDegreeId] = useState<number>(1);
@@ -186,7 +188,16 @@ function App(): JSX.Element {
                         </p>
                         <ul className="nav_links">
                             <li>
-                                <a href="#Home">Home</a>
+                                <Button
+                                    onClick={() => {
+                                        switchEditing(true);
+                                        setDegree(false);
+                                        setDisplay(false);
+                                        setIsHome(true);
+                                    }}
+                                >
+                                    Home
+                                </Button>
                             </li>
                             <li>
                                 <Button
@@ -194,6 +205,7 @@ function App(): JSX.Element {
                                         setDegree(false);
                                         setDisplay(!display);
                                         setEditing(!isEditing);
+                                        setIsHome(false);
                                     }}
                                 >
                                     Courses
@@ -205,6 +217,7 @@ function App(): JSX.Element {
                                         switchEditing(true);
                                         setDegree(!isDegree);
                                         setDisplay(false);
+                                        setIsHome(false);
                                     }}
                                 >
                                     Degrees
@@ -214,6 +227,7 @@ function App(): JSX.Element {
                     </nav>
                 </header>
 
+                {isHome && <HomePage></HomePage>}
                 <div className="CourseButtons">
                     <Button
                         onClick={() =>
