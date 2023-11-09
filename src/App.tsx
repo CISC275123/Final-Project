@@ -26,64 +26,31 @@ const COURSES = sample.map(
     })
 );
 
-// Testing Degrees with test data
-const SEMESTERS: Semester[] = [
-    {
-        title: "Fall",
-        courseList: COURSES,
-        id: 0,
-        notes: "",
-        maxCredits: 18,
-        currentCredits: 0,
-        courses: []
-    },
-    {
-        title: "Spring",
-        courseList: COURSES,
-        id: 1,
-        notes: "",
-        maxCredits: 18,
-        currentCredits: 0,
-        courses: []
-    },
-    {
-        title: "Winter",
-        courseList: COURSES,
-        id: 2,
-        notes: "",
-        maxCredits: 6,
-        currentCredits: 0,
-        courses: []
-    },
-    {
-        title: "Summer",
-        courseList: COURSES,
-        id: 3,
-        notes: "",
-        maxCredits: 6,
-        currentCredits: 0,
-        courses: []
-    }
+const TEST_YEARS: Year[] = [
+    { name: "Year 1", semesters: [], id: 5 },
+    { name: "Year 2", semesters: [], id: 2 }
 ];
 
-const YEARS: Year[] = [
-    { name: "Year 1", semesters: SEMESTERS },
-    { name: "Year 2", semesters: SEMESTERS },
-    { name: "Year 3", semesters: SEMESTERS },
-    { name: "Year 4", semesters: SEMESTERS }
+const DEFAULT_DEGREES: Degree[] = [
+    { id: 577, name: "Sample Test", years: TEST_YEARS }
 ];
-const DEGREES: Degree[] = [];
 
 function App(): JSX.Element {
+    // VARs holding list information on the user's degree plan
     const [courses, setCourses] = useState<Course[]>(COURSES);
     const [semesterList, setSemesterList] = useState<Semester[]>([]);
-    const [degrees, setDegrees] = useState<Degree[]>(DEGREES);
+    const [degrees, setDegrees] = useState<Degree[]>(DEFAULT_DEGREES);
+
+    // VARs used to control display of elements
     const [display, setDisplay] = useState<boolean>(true);
-    const [currIndex, setIndex] = useState<number>(0);
     const [isEditing, setEditing] = useState<boolean>(false);
     const [isDegree, setDegree] = useState<boolean>(false);
     const [showComponentSemester, setShowComponentSemester] = useState(false);
+
+    // IDs used to differentiate instances of objects
     const [degreeId, setDegreeId] = useState<number>(1);
+    const [yearId, setYearId] = useState<number>(1);
+    const [currIndex, setIndex] = useState<number>(0);
 
     function editCourse(courseID: string, newCourse: Course) {
         setCourses(
@@ -99,12 +66,30 @@ function App(): JSX.Element {
     function addDegree(name: string) {
         const newDegree: Degree = {
             name: name,
-            years: YEARS,
+            years: [],
             id: degreeId
         };
         const newId = degreeId + 1;
         setDegreeId(newId);
         setDegrees([...degrees, newDegree]);
+    }
+
+    function addYear(name: string, degree: Degree) {
+        const newYear: Year = {
+            name: name,
+            semesters: [],
+            id: yearId
+        };
+
+        const newId = yearId + 1;
+        setYearId(newId);
+
+        const updatedDegree: Degree = {
+            ...degree,
+            years: [...degree.years, newYear]
+        };
+
+        setDegrees([...degrees, updatedDegree]);
     }
 
     function removeDegree(id: number) {
@@ -179,16 +164,6 @@ function App(): JSX.Element {
                         </ul>
                     </nav>
                 </header>
-                <div>
-                    {" "}
-                    {showComponentSemester && (
-                        <SemesterList
-                            courses={courses}
-                            semesterList={semesterList}
-                            setSemesterList={setSemesterList}
-                        ></SemesterList>
-                    )}
-                </div>
 
                 <div className="CourseButtons">
                     <Button
@@ -237,12 +212,23 @@ function App(): JSX.Element {
                     )}
                 </div>
 
+                <div className="SemesterList">
+                    {showComponentSemester && (
+                        <SemesterList
+                            courses={courses}
+                            semesterList={semesterList}
+                            setSemesterList={setSemesterList}
+                        ></SemesterList>
+                    )}
+                </div>
+
                 <div className="DegreeList">
                     {isDegree && (
                         <DegreeList
                             degrees={degrees}
                             addDegree={addDegree}
                             removeDegree={removeDegree}
+                            addYear={addYear}
                         ></DegreeList>
                     )}
                 </div>
