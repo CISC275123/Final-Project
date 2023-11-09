@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import React, { useState } from "react";
+import { Form } from "react-bootstrap";
 import sample from "../data/courses.json";
 import { Semester } from "../interfaces/semester";
 import { Course } from "../interfaces/course";

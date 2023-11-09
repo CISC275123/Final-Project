@@ -1,3 +1,4 @@
+/* eslint-disable no-extra-parens */
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Year } from "../interfaces/year";
@@ -6,21 +7,7 @@ import { Degree } from "../interfaces/degree";
 import "./DegreeView.css";
 import { SemesterList } from "./SemesterList";
 
-import sample from "../data/courses.json";
-import { Course } from "../interfaces/course";
 import { Semester } from "../interfaces/semester";
-
-const COURSES = sample.map(
-    (course): Course => ({
-        id: course.id,
-        name: course.name,
-        credits: course.credits as unknown as number,
-        prerequisites: course.prereqs as unknown as string[],
-        restrictions: course.restrictions as unknown as string,
-        description: course.description,
-        corequisites: course.coreqs as unknown as string[]
-    })
-);
 
 export const DegreeView = ({
     degree,

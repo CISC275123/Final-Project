@@ -1,3 +1,4 @@
+/* eslint-disable no-extra-parens */
 import "./App.css";
 import React, { useState } from "react";
 import { Course } from "./interfaces/course";
