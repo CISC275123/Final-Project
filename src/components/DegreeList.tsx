@@ -5,17 +5,25 @@ import { DegreeCard } from "./DegreeCard";
 import { DegreeView } from "./DegreeView";
 
 import "./DegreeList.css";
+import { Semester } from "../interfaces/semester";
+import { Year } from "../interfaces/year";
 
 export const DegreeList = ({
     degrees,
     addDegree,
     addYear,
-    removeDegree
+    removeDegree,
+    updateSemesterList
 }: {
     degrees: Degree[];
     addDegree: (name: string) => void;
     removeDegree: (id: number) => void;
     addYear: (name: string, degree: Degree) => void;
+    updateSemesterList: (
+        newSemesterList: Semester[],
+        targetDegree: Degree,
+        targetYear: Year
+    ) => void;
 }) => {
     const [displayId, setDisplayId] = useState<null | number>(null);
     const [userInput, setUserInput] = useState<string>("Sample");
@@ -91,6 +99,7 @@ export const DegreeList = ({
                                 degree={degree}
                                 resetView={resetDegreeView}
                                 addYear={addYear}
+                                updateSemesterList={updateSemesterList}
                             ></DegreeView>
                         );
                     } else {

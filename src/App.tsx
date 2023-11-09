@@ -97,6 +97,33 @@ function App(): JSX.Element {
         );
     }
 
+    function updateSemesterList(
+        newSemesterList: Semester[],
+        targetDegree: Degree,
+        targetYear: Year
+    ) {
+        const newYear: Year = {
+            ...targetYear,
+            semesters: newSemesterList
+        };
+
+        const newYearList: Year[] = targetDegree.years.map(
+            (y: Year): Year => (y.id === targetYear.id ? newYear : y)
+        );
+
+        const newDegree: Degree = {
+            ...targetDegree,
+            years: newYearList
+        };
+
+        setDegrees(
+            degrees.map(
+                (d: Degree): Degree =>
+                    d.id === targetDegree.id ? newDegree : d
+            )
+        );
+    }
+
     function removeDegree(id: number) {
         const newDegrees: Degree[] = degrees.filter(
             (degree: Degree): boolean => degree.id !== id
@@ -234,6 +261,7 @@ function App(): JSX.Element {
                             addDegree={addDegree}
                             removeDegree={removeDegree}
                             addYear={addYear}
+                            updateSemesterList={updateSemesterList}
                         ></DegreeList>
                     )}
                 </div>

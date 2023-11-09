@@ -25,22 +25,32 @@ const COURSES = sample.map(
 export const DegreeView = ({
     degree,
     resetView,
-    addYear
+    addYear,
+    updateSemesterList
 }: {
     degree: Degree;
     resetView: () => void;
     addYear: (name: string, degree: Degree) => void;
+    updateSemesterList: (
+        newSemesterList: Semester[],
+        targetDegree: Degree,
+        targetYear: Year
+    ) => void;
 }) => {
     const [isAdding, setAdding] = useState<boolean>(false);
     const [userInput, setUserInput] = useState<string>("Year 1");
 
-    function updateSemesterList(
-        newSemesterList: Semester[],
-        degree: Degree,
-        year: Year
-    ) {
-        null;
-    }
+    // function updateSemesterList(
+    //     newSemesterList: Semester[],
+    //     degree: Degree,
+    //     year: Year
+    // ) {
+    //     const newYear: Year = {
+    //         ...year,
+    //         semesters: newSemesterList
+    //     };
+    //     degree.years.map((y: Year): Year => (year.id === y.id ? newYear : y));
+    // }
 
     return (
         <div className="degree_card">
