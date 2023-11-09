@@ -47,7 +47,7 @@ function App(): JSX.Element {
 
     // Used to edit a course. Replaces the target course with a modified course.
     // Works by passing in a target course ID and a new instance of the course.
-    // It then maps, searching for the target ID and replaces if it matches
+    // It then maps, searching for the target ID and replaces if it matches!
     //
     // INPUTS:
     // courseID: string => The string course code with NO SPACES such as 'CISC101'
