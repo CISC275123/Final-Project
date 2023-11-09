@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Computer Science BA",
+        "university_requirements": {
+            "English Requirement": "ENGL110",
+            "First Year Seminar": [
+                "ARSC116",
+                "BHAN135",
+                "BMEG101",
+                "BUAD110",
+                "EDUC100",
+                "EGGG101",
+                "ENSC101",
+                "KAAP105",
+                "KAAP155",
+                "LLCU111",
+                "MAST100",
+                "NURS100",
+                "UNIV101"
+            ],
+            "Discovery Learning Experience": [],
+            "Multicultural Requirement": [],
+            "University Breadth Requirement": {
+                "Creative Arts and Humanities": [],
+                "History and Cultural Change": [],
+                "Social and Behavioral Sciences": [],
+                "Mathematics, Natural Sciences, and Technology": []
+            },
+            "Capstone Experience": []
+        }
+    }
+]

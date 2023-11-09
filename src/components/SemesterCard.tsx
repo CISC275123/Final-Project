@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import sample from "../../data/courses.json";
-import { SemesterInterfaceProps } from "./SemesterList";
-import { Semester } from "../../interfaces/semester";
-import { Course } from "../../interfaces/course";
+import sample from "../data/courses.json";
+import { Semester } from "../interfaces/semester";
+import { Course } from "../interfaces/course";
+import { Degree } from "../interfaces/degree";
+import { Year } from "../interfaces/year";
 
 const COURSES = sample.map(
     (course): Course => ({
@@ -17,16 +18,30 @@ const COURSES = sample.map(
     })
 );
 
-export function SemesterCard({
+export const SemesterCard = ({
     semesterList,
     setSemesterList,
     setIsSemesterCard,
     idCounter,
-    setIdCounter
-}: SemesterInterfaceProps): JSX.Element {
+    setIdCounter,
+    degree,
+    year
+}: {
+    semesterList: Semester[];
+    setSemesterList: (
+        semesterList: Semester[],
+        degree: Degree,
+        year: Year
+    ) => void;
+    setIsSemesterCard: (isSemester: boolean) => void;
+    idCounter: number;
+    setIdCounter: (id: number) => void;
+    degree: Degree;
+    year: Year;
+}) => {
     const [maxCredits, setMaxCredits] = useState<number>(18);
     const [season, setSeason] = useState<string>("Fall");
-    const [year, setYear] = useState<string>("2023");
+    const [userYear, setYear] = useState<string>("2023");
 
     function updateSeason(event: React.ChangeEvent<HTMLSelectElement>) {
         setSeason(event.target.value);
@@ -44,7 +59,7 @@ export function SemesterCard({
     function saveAndExit() {
         const newID = idCounter + 1;
         setIdCounter(newID);
-        const title = `${season} Semester ${year}`;
+        const title = `${season} Semester ${userYear}`;
         const newSemester: Semester = {
             id: idCounter,
             title: title,
@@ -55,7 +70,7 @@ export function SemesterCard({
             courses: []
         };
         const newSemesterList = [...semesterList, newSemester];
-        setSemesterList(newSemesterList);
+        setSemesterList(newSemesterList, degree, year);
         setIsSemesterCard(false);
     }
 
@@ -72,14 +87,14 @@ export function SemesterCard({
             </Form.Group>
             <Form.Group controlId="chooseYear">
                 <Form.Label>Year</Form.Label>
-                <Form.Select onChange={updateYear} value={year}>
+                <Form.Select onChange={updateYear} value={userYear}>
                     <option value="2023">2023</option>
                     <option value="2024">2024</option>
                     <option value="2025">2025</option>
                 </Form.Select>
             </Form.Group>
             <div>
-                {season} semester {year}: {maxCredits} credits maximum
+                {season} semester {userYear}: {maxCredits} credits maximum
                 <div>
                     <button
                         onClick={() => {
@@ -92,4 +107,4 @@ export function SemesterCard({
             </div>
         </div>
     );
-}
+};

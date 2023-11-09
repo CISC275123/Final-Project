@@ -7,4 +7,5 @@ export interface Semester {
     maxCredits: number;
     currentCredits: number;
     courseList: Course[];
+    courses: Course[];
 }

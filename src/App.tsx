@@ -19,67 +19,38 @@ const COURSES = sample.map(
         id: course.id,
         name: course.name,
         credits: course.credits as unknown as number,
-        prerequisites: course.prereqs as unknown as string,
+        prerequisites: course.prereqs as unknown as string[],
         restrictions: course.restrictions as unknown as string,
         description: course.description,
-        corequisites: course.coreqs as unknown as string
+        corequisites: course.coreqs as unknown as string[]
     })
 );
 
-// Testing Degrees with test data
-const SEMESTERS: Semester[] = [
-    {
-        title: "Fall",
-        courseList: COURSES,
-        id: 0,
-        notes: "",
-        maxCredits: 18,
-        currentCredits: 0
-    },
-    {
-        title: "Spring",
-        courseList: COURSES,
-        id: 1,
-        notes: "",
-        maxCredits: 18,
-        currentCredits: 0
-    },
-    {
-        title: "Winter",
-        courseList: COURSES,
-        id: 2,
-        notes: "",
-        maxCredits: 6,
-        currentCredits: 0
-    },
-    {
-        title: "Summer",
-        courseList: COURSES,
-        id: 3,
-        notes: "",
-        maxCredits: 6,
-        currentCredits: 0
-    }
+const TEST_YEARS: Year[] = [
+    { name: "Year 1", semesters: [], id: 5 },
+    { name: "Year 2", semesters: [], id: 2 }
 ];
 
-const YEARS: Year[] = [
-    { name: "Year 1", semesters: SEMESTERS },
-    { name: "Year 2", semesters: SEMESTERS },
-    { name: "Year 3", semesters: SEMESTERS },
-    { name: "Year 4", semesters: SEMESTERS }
-];
-const DEGREES: Degree[] = [
-    { name: "Degree 1", years: YEARS },
-    { name: "Degree 2", years: YEARS }
+const DEFAULT_DEGREES: Degree[] = [
+    { id: 577, name: "Sample Test", years: TEST_YEARS }
 ];
 
 function App(): JSX.Element {
+    // VARs holding list information on the user's degree plan
     const [courses, setCourses] = useState<Course[]>(COURSES);
+    const [semesterList, setSemesterList] = useState<Semester[]>([]);
+    const [degrees, setDegrees] = useState<Degree[]>(DEFAULT_DEGREES);
+
+    // VARs used to control display of elements
     const [display, setDisplay] = useState<boolean>(true);
-    const [currIndex, setIndex] = useState<number>(0);
     const [isEditing, setEditing] = useState<boolean>(false);
     const [isDegree, setDegree] = useState<boolean>(false);
     const [showComponentSemester, setShowComponentSemester] = useState(false);
+
+    // IDs used to differentiate instances of objects
+    const [degreeId, setDegreeId] = useState<number>(1);
+    const [yearId, setYearId] = useState<number>(1);
+    const [currIndex, setIndex] = useState<number>(0);
 
     function editCourse(courseID: string, newCourse: Course) {
         setCourses(
@@ -90,6 +61,74 @@ function App(): JSX.Element {
                         : course
             )
         );
+    }
+
+    function addDegree(name: string) {
+        const newDegree: Degree = {
+            name: name,
+            years: [],
+            id: degreeId
+        };
+        const newId = degreeId + 1;
+        setDegreeId(newId);
+        setDegrees([...degrees, newDegree]);
+    }
+
+    function addYear(name: string, degree: Degree) {
+        const newYear: Year = {
+            name: name,
+            semesters: [],
+            id: yearId
+        };
+
+        const newId = yearId + 1;
+        setYearId(newId);
+
+        const updatedDegree: Degree = {
+            ...degree,
+            years: [...degree.years, newYear]
+        };
+
+        setDegrees(
+            degrees.map(
+                (d: Degree): Degree =>
+                    d.id === updatedDegree.id ? updatedDegree : d
+            )
+        );
+    }
+
+    function updateSemesterList(
+        newSemesterList: Semester[],
+        targetDegree: Degree,
+        targetYear: Year
+    ) {
+        const newYear: Year = {
+            ...targetYear,
+            semesters: newSemesterList
+        };
+
+        const newYearList: Year[] = targetDegree.years.map(
+            (y: Year): Year => (y.id === targetYear.id ? newYear : y)
+        );
+
+        const newDegree: Degree = {
+            ...targetDegree,
+            years: newYearList
+        };
+
+        setDegrees(
+            degrees.map(
+                (d: Degree): Degree =>
+                    d.id === targetDegree.id ? newDegree : d
+            )
+        );
+    }
+
+    function removeDegree(id: number) {
+        const newDegrees: Degree[] = degrees.filter(
+            (degree: Degree): boolean => degree.id !== id
+        );
+        setDegrees(newDegrees);
     }
 
     function switchEditing(edit: boolean) {
@@ -157,10 +196,7 @@ function App(): JSX.Element {
                         </ul>
                     </nav>
                 </header>
-                <div>
-                    {" "}
-                    {showComponentSemester && <SemesterList></SemesterList>}
-                </div>
+
                 <div className="CourseButtons">
                     <Button
                         onClick={() =>
@@ -168,7 +204,7 @@ function App(): JSX.Element {
                                 ? setIndex(currIndex - NUM_COURSES_DISPLAYED)
                                 : setIndex(currIndex)
                         }
-                        hidden={isEditing}
+                        hidden={isEditing || currIndex <= 0}
                     >
                         Back
                     </Button>
@@ -176,7 +212,7 @@ function App(): JSX.Element {
                         onClick={() => setDisplay(!display)}
                         hidden={isEditing}
                     >
-                        Show Courses
+                        {display ? "Hide Courses" : "Show Courses"}
                     </Button>
                     <Button
                         onClick={() =>
@@ -184,11 +220,15 @@ function App(): JSX.Element {
                                 ? setIndex(currIndex + NUM_COURSES_DISPLAYED)
                                 : setIndex(currIndex)
                         }
-                        hidden={isEditing}
+                        hidden={
+                            isEditing ||
+                            currIndex >= courses.length - NUM_COURSES_DISPLAYED
+                        }
                     >
                         Next
                     </Button>
                 </div>
+
                 {/* The beginning of the list of courses in the html  */}
                 <div className="CourseList">
                     {display && (
@@ -204,8 +244,26 @@ function App(): JSX.Element {
                     )}
                 </div>
 
+                <div className="SemesterList">
+                    {showComponentSemester && (
+                        <SemesterList
+                            courses={courses}
+                            semesterList={semesterList}
+                            setSemesterList={setSemesterList}
+                        ></SemesterList>
+                    )}
+                </div>
+
                 <div className="DegreeList">
-                    {isDegree && <DegreeList degrees={DEGREES}></DegreeList>}
+                    {isDegree && (
+                        <DegreeList
+                            degrees={degrees}
+                            addDegree={addDegree}
+                            removeDegree={removeDegree}
+                            addYear={addYear}
+                            updateSemesterList={updateSemesterList}
+                        ></DegreeList>
+                    )}
                 </div>
 
                 <footer>

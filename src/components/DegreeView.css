@@ -6,7 +6,7 @@
 
 .year_view_rows {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     align-content: center;
     align-items: center;
@@ -15,12 +15,6 @@
 
 .year_view_column {
     border: solid red;
+    background-color: gray;
     padding: 0rem 12rem 20rem 12rem;
-}
-
-@media only screen and (max-width: 1800px) {
-    .year_view_rows {
-        display: flex;
-        flex-direction: column;
-    }
 }

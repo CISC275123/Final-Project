@@ -1,28 +1,27 @@
-import React, { FC, useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { Course } from "../../interfaces/course";
-import sample from "../../data/courses.json";
-import "./SemesterList.css";
-import { SemesterCard } from "./SemesterCard";
+import { Course } from "../interfaces/course";
+import "./Semester/SemesterList.css";
+import { Semester } from "../interfaces/semester";
 import { SemesterView } from "./SemesterView";
-import { Semester } from "../../interfaces/semester";
-
-export interface SemesterInterfaceProps {
-    semesterList: Semester[];
-    setSemesterList: (list: Semester[]) => void;
-    setIsSemesterCard: (isCard: boolean) => void;
-    idCounter: number;
-    setIdCounter: (num: number) => void;
-}
+import { SemesterCard } from "./SemesterCard";
+import { Degree } from "../interfaces/degree";
+import { Year } from "../interfaces/year";
 
 export const SemesterList = ({
-    courses,
     semesterList,
-    setSemesterList
+    setSemesterList,
+    degree,
+    year
 }: {
-    courses: Course[];
     semesterList: Semester[];
-    setSemesterList: (semesterList: Semester[]) => void;
+    setSemesterList: (
+        semesterList: Semester[],
+        degree: Degree,
+        year: Year
+    ) => void;
+    degree: Degree;
+    year: Year;
 }) => {
     const [isMakeSemesterCard, setIsMakeSemesterCard] =
         useState<boolean>(false);
@@ -37,16 +36,6 @@ export const SemesterList = ({
         setDisplayId(null);
     };
 
-    // useEffect(() => {
-    //     const newSemester: SemesterStructure = {
-    //         semesterTitle: semesterTitle,
-    //         maxCredits: maxCredits,
-    //         currentCredits: 0
-    //     };
-    //     const newSemesterList = [...semesterList, newSemester];
-    //     setSemesterList(newSemesterList);
-    // }, [semesterTitle, maxCredits]);
-
     function showMakeSemesterCard() {
         setIsMakeSemesterCard(!isMakeSemesterCard);
     }
@@ -59,7 +48,7 @@ export const SemesterList = ({
         const newSemesterList = semesterList.filter(
             (sem: Semester): boolean => inputID !== sem.id
         );
-        setSemesterList(newSemesterList);
+        setSemesterList(newSemesterList, degree, year);
         console.log("Delete");
     }
 
@@ -130,6 +119,8 @@ export const SemesterList = ({
                             setIsSemesterCard={setIsMakeSemesterCard}
                             idCounter={idCounter}
                             setIdCounter={setIdCounter}
+                            degree={degree}
+                            year={year}
                         ></SemesterCard>
                         <button onClick={hideMakeSemesterCard}>Close</button>
                     </div>

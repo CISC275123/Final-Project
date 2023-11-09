@@ -50,6 +50,7 @@ export const CourseList = ({
                             editCourse={editCourse}
                             resetView={resetCourseView}
                             default_courses={default_courses}
+                            handleClick={handleCourseView}
                         ></CourseView>
                     );
                 } else {

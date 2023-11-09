@@ -2,7 +2,7 @@
     {
         "id": "CISC 101",
         "name": "PRINCIPLES OF COMPUTING",
-        "credits": "3 ",
+        "credits": 3,
         "prereqs": null,
         "restrictions": "Does not count toward graduation if taken after any other CISC course. Not open to students with credit for MISY160 or 260, or FREC135.",
         "description": "Introduces students to the central ideas of computing and computer science including programs, algorithms, abstraction, the internet, and information systems. Instills ideas and practices of computational thinking and engages students in activities that show how computing and computer science change the world. Explores computing as a creative activity and empowers students to apply computational thinking to all disciplines including the arts, humanities, business, social and physical sciences, health, and entertainment.",
@@ -11,7 +11,7 @@
     {
         "id": "CISC 103",
         "name": "INTRODUCTION TO COMPUTER SCIENCE WITH WEB APPLICATIONS",
-        "credits": "3 ",
+        "credits": 3,
         "prereqs": null,
         "restrictions": "Open to non-majors. Student may not receive credit for CISC103 after receiving credit for CISC106 or CISC108.",
         "description": "Principles of computer science illustrated through programming in scripting languages such as JavaScript and VBScript. Topics include control structures, arrays, functions, and procedures. Programming projects illustrate web-based applications.",
@@ -20,53 +20,53 @@
     {
         "id": "CISC 106",
         "name": "GENERAL COMPUTER SCIENCE FOR ENGINEERS",
-        "credits": "3 ",
+        "credits": 3,
         "prereqs": null,
         "restrictions": "Student may not receive credit for both CISC106 and CISC108.",
         "description": "Principles of computer science illustrated and applied through programming in a general-purpose language. Programming projects illustrate computational problems, styles, and issues that arise in engineering.",
-        "coreqs": "MATH241 or any higher level MATH course. "
+        "coreqs": "MATH241"
     },
     {
         "id": "CISC 108",
         "name": "INTRODUCTION TO COMPUTER SCIENCE I",
-        "credits": "3 ",
+        "credits": 3,
         "prereqs": null,
         "restrictions": "Student may not receive credit for both CISC106 and CISC108.",
         "description": "Computing and principles of programming with an emphasis on systematic program design. Topics include functional programming, data abstraction, procedural abstraction, use of control and state, recursion, testing, and object-oriented programming concepts. Requires no prior programming experience, open to any major, but intended primarily for majors and minors in computer science or mathematics.",
-        "coreqs": "MATH115, MATH117, or higher math course or math placement."
+        "coreqs": ["MATH115", "MATH117"]
     },
     {
         "id": "CISC 181",
         "name": "INTRODUCTION TO COMPUTER SCIENCE II",
-        "credits": "3 ",
-        "prereqs": "Grade of C- or better in CISC108 or CISC106. ",
+        "credits": 3,
+        "prereqs": ["CISC106||CISC108"],
         "restrictions": null,
         "description": "Principles of computer science illustrated and applied through programming in an object oriented language. Programming projects illustrate computational problems, styles and issues that arise in computer systems development and in all application areas of computation.",
-        "coreqs": "MATH221, MATH241, or a higher level math course or math placement."
+        "coreqs": ["MATH221", "MATH241"]
     },
     {
         "id": "CISC 210",
         "name": "INTRODUCTION TO SYSTEMS PROGRAMMING",
-        "credits": "3 ",
-        "prereqs": "Grade of C- or better in CISC106 or CISC108. ",
+        "credits": 3,
+        "prereqs": ["CISC106||CISC108", "CISC220"],
         "restrictions": null,
         "description": "Principles of computer systems programming for software and hardware platforms to achieve efficient resource usage. Topics include the C programming language, memory management, and awareness of system constraints and interfacing. Projects include programming embedded systems and interactive objects.",
-        "coreqs": "MATH221, MATH241, or a higher level math course or math placement."
+        "coreqs": ["MATH221", "MATH241"]
     },
     {
         "id": "CISC 220",
         "name": "DATA STRUCTURES",
-        "credits": "3 ",
-        "prereqs": "A minimum grade of C- in CISC181. ",
+        "credits": 3,
+        "prereqs": ["CISC181"],
         "restrictions": null,
         "description": "Review of data type abstraction, recursion, arrays, stacks, queues, multiple stacks and linked lists. Emphasis on dynamic storage management, garbage collection, trees, graphs, tables, sorting and searching.",
-        "coreqs": "MATH210 or MATH241."
+        "coreqs": ["MATH210||MATH241"]
     },
     {
         "id": "CISC 250",
         "name": "BUSINESS TELECOMMUNICATION NETWORKS",
-        "credits": "3 ",
-        "prereqs": "CISC181. ",
+        "credits": 3,
+        "prereqs": ["CISC181"],
         "restrictions": "Degree credit will not be given for both CISC250 and CISC450.",
         "description": "Examines technologies of information transmission currently utilized in the business environments and the implications of these technologies upon the development and implementation of information systems. Provides a basic background in the convergence of voice, data and video services into common digital networks. Security issues also considered.",
         "coreqs": null
@@ -74,8 +74,8 @@
     {
         "id": "CISC 260",
         "name": "MACHINE ORGANIZATION AND ASSEMBLY LANGUAGE",
-        "credits": "3 ",
-        "prereqs": "A minimum grade of C- in CISC181.",
+        "credits": 3,
+        "prereqs": ["CISC181"],
         "restrictions": null,
         "description": "Introduction to the basics of machine organization. Programming tools and techniques at the machine and assembly levels. Assembly language programming and computer arithmetic techniques.",
         "coreqs": null
@@ -83,8 +83,8 @@
     {
         "id": "CISC 275",
         "name": "INTRODUCTION TO SOFTWARE ENGINEERING",
-        "credits": "3 ",
-        "prereqs": "Minimum grade of C- in CISC220.",
+        "credits": 3,
+        "prereqs": ["CISC220"],
         "restrictions": null,
         "description": "Object oriented software design and development through use of the Java programming language. Topics include team programming, design patterns, graphical user interfaces, software engineering tools (eg., integrated development environments, version control, build management, bug tracking, automated testing).",
         "coreqs": null
@@ -92,8 +92,8 @@
     {
         "id": "CISC 303",
         "name": "AUTOMATA THEORY",
-        "credits": "3 ",
-        "prereqs": "A minimum grade of C- in both MATH210 and CISC220.",
+        "credits": 3,
+        "prereqs": ["MATH210", "CISC220"],
         "restrictions": null,
         "description": "Automata and formal language theory. Background for advanced applications in compilers, computer networks, operating systems, and natural language processing. Finite automata and regular languages. Push down automata and context free grammars. Turing machines.",
         "coreqs": null
@@ -101,8 +101,8 @@
     {
         "id": "CISC 304",
         "name": "LOGIC AND PROGRAMMING",
-        "credits": "3 ",
-        "prereqs": "CISC220, MATH210 (with minimum C- grade in both).",
+        "credits": 3,
+        "prereqs": ["MATH210", "CISC220"],
         "restrictions": null,
         "description": "Propositional and predicate logic for general reasoning and advanced applications in knowledge representation in artificial intelligence and database, program correctness and programming semantics. Models, resolution, logic programming, and natural deduction.",
         "coreqs": null
@@ -110,8 +110,8 @@
     {
         "id": "CISC 320",
         "name": "INTRODUCTION TO ALGORITHMS",
-        "credits": "3 ",
-        "prereqs": "MATH210 and a minimum grade of C- in CISC220.",
+        "credits": 3,
+        "prereqs": ["MATH210", "CISC220"],
         "restrictions": null,
         "description": "Design and analysis of algorithms: worst/average case analysis, proofs for correctness and performance of algorithms. Algorithmic strategies (divide and conquer, greedy methods, dynamic programming, etc.). Algorithms for searching, forming and traversal of strings, trees and graphs. Categorization of computational problems: classes P and NP. NP completeness.",
         "coreqs": null
@@ -119,7 +119,7 @@
     {
         "id": "CISC 355",
         "name": "COMPUTERS, ETHICS AND SOCIETY",
-        "credits": "3 ",
+        "credits": 3,
         "prereqs": null,
         "restrictions": "Cannot be used as a technical elective for CISC majors or minors.",
         "description": "Explains relationships among information technology, society and ethics by examining issues raised by increasingly widespread use of computers. Topics include ethics for computer professionals, computer impact on factory work, office work, personal privacy and social power distribution.",
@@ -128,7 +128,7 @@
     {
         "id": "CISC 356",
         "name": "INTELLECTUAL PROPERTY IN THE DIGITAL AGE",
-        "credits": "3 ",
+        "credits": 3,
         "prereqs": null,
         "restrictions": "Junior or Senior standing. Cannot be used as a technical elective for CISC majors or minors.",
         "description": "Explore economic, philosophical, social, and technical approaches to intellectual property (1500 BCE to present) then will research contemporary IP issues in software, entertainment, the Internet, and biotechnology.",
@@ -137,8 +137,8 @@
     {
         "id": "CISC 360",
         "name": "COMPUTER ARCHITECTURE",
-        "credits": "3 ",
-        "prereqs": "A minimum grade of C- in CISC220 and CISC260 (or equivalent courses).",
+        "credits": 3,
+        "prereqs": ["CISC220", "CISC260"],
         "restrictions": null,
         "description": "Principles and techniques used in the architecture of digital computers. Machine elements and their interrelation. Instruction sets, risc vs cisc, registers, busses and switches.",
         "coreqs": null
@@ -146,8 +146,8 @@
     {
         "id": "CISC 361",
         "name": "OPERATING SYSTEMS",
-        "credits": "3 ",
-        "prereqs": "A minimum grade of C- in both CISC220 and CISC260. CPEG222 may be substituted for CISC260. ",
+        "credits": 3,
+        "prereqs": ["CISC220", "CISC260||CPEG222"],
         "restrictions": "CISC360 recommended as a prerequisite.",
         "description": "Principles and techniques employed in the development of operating systems and their control programs. Includes management of memory, processors, I/O devices.",
         "coreqs": null
@@ -155,8 +155,8 @@
     {
         "id": "CISC 364",
         "name": "SYSTEM SECURITY",
-        "credits": "3 ",
-        "prereqs": "CISC361",
+        "credits": 3,
+        "prereqs": ["CISC361"],
         "restrictions": null,
         "description": "Concepts in maintaining a secure network of computers connected to the Internet. Topics include information security, classic/common exploits of operating system and networking weaknesses (e.g., buffer overflows, denial of service) and how to prevent them, symmetric and public-key cryptography, digital signatures, wireless LAN security, and firewalls.",
         "coreqs": null
@@ -164,7 +164,7 @@
     {
         "id": "CISC 366",
         "name": "INDEPENDENT STUDY",
-        "credits": "1-6 ",
+        "credits": 1,
         "prereqs": null,
         "restrictions": null,
         "description": "",
@@ -173,8 +173,8 @@
     {
         "id": "CISC 372",
         "name": "PARALLEL PROGRAMMING",
-        "credits": "3 ",
-        "prereqs": "CISC220",
+        "credits": 3,
+        "prereqs": ["CISC220"],
         "restrictions": null,
         "description": "Introduction to parallel programming concepts, methodologies, and tools. Programming techniques for programs that contain code segments which will run simultaneously on multiple processors. Topics include: concurrency, program decomposition, data distribution, communication, load balancing, scalability, locality, granularity, debugging, performance evaluation.",
         "coreqs": null
@@ -182,8 +182,8 @@
     {
         "id": "CISC 374",
         "name": "EDUCATIONAL GAME DEVELOPMENT",
-        "credits": "3 ",
-        "prereqs": "CISC 220.",
+        "credits": 3,
+        "prereqs": ["CISC220"],
         "restrictions": null,
         "description": "Experience the software engineering process through creating educational games for youth; open-ended, project-oriented team learning while assisting regional teachers in integrating computing and computational thinking into the classroom; interact with teachers as clients, hone communication skills and experience design-studio-based critiques of your ideas.",
         "coreqs": null
@@ -191,8 +191,8 @@
     {
         "id": "CISC 401",
         "name": "ELEMENTS OF THE THEORY OF COMPUTATION",
-        "credits": "3 ",
-        "prereqs": "CISC303 ",
+        "credits": 3,
+        "prereqs": ["CISC303"],
         "restrictions": "Credit cannot be received for both CISC401 and CISC601.",
         "description": "General models of computation, formal languages and automata theory and algorithmic unsolvability.",
         "coreqs": null
@@ -200,8 +200,8 @@
     {
         "id": "CISC 404",
         "name": "LOGIC IN COMPUTER SCIENCE",
-        "credits": "3 ",
-        "prereqs": "CISC304. ",
+        "credits": 3,
+        "prereqs": ["CISC304"],
         "restrictions": "Credit cannot be received for both CISC404 and CISC604.",
         "description": "Formal introduction to first-order logic with emphasis on its relevance to computer science. Syntax, semantics, models, formal proofs and results on soundness, consistency, completeness, compactness and undecidability. Automated theorem proving also covered.",
         "coreqs": null
@@ -209,8 +209,8 @@
     {
         "id": "CISC 409",
         "name": "TOPICS IN THEORETICAL COMPUTER SCIENCE",
-        "credits": "3 ",
-        "prereqs": "CISC401 ",
+        "credits": 3,
+        "prereqs": ["CISC401"],
         "restrictions": "Credit cannot be received for both CISC409 and CISC609.",
         "description": "Contents vary to coincide with the interests of students and current faculty.",
         "coreqs": null
@@ -218,8 +218,8 @@
     {
         "id": "CISC 410",
         "name": "INTRODUCTION TO NUMERICAL ANALYSIS & ALGORITHMIC COMPUTATION",
-        "credits": "3 ",
-        "prereqs": "MATH349 or MATH341 or MATH351; and CISC106 or CISC108. ",
+        "credits": 3,
+        "prereqs": ["MATH349||MATH341||MATH351", "CISC106||CISC108"],
         "restrictions": "Requires familiarity with computing (e.g., programming language).",
         "description": "Direct and iterative methods for solution of algebraic equations and systems of linear equations, matrix inversion, pseudo-inverses, algebraic eigenvalue problems, linear least-square problems and nonlinear equations. Stresses both numerical analysis and algorithmic aspects.Crosslisted with MATH426.",
         "coreqs": null
@@ -227,8 +227,8 @@
     {
         "id": "CISC 411",
         "name": "ALGORITHMIC AND NUMERICAL SOLUTION OF DIFFERENTIAL EQUATIONS",
-        "credits": "3 ",
-        "prereqs": "MATH426 or CISC410",
+        "credits": 3,
+        "prereqs": ["MATH426||CISC410"],
         "restrictions": null,
         "description": "Algorithms for numerical integration and differentiation. Initial value problems; boundary value problems in ordinary differential equations; finite difference (explicit and implicit) methods; polynomial and spline approximation; finite elements and collocation; and introduction to numerical methods for partial differential equations.Crosslisted with MATH428.",
         "coreqs": null
@@ -236,8 +236,8 @@
     {
         "id": "CISC 414",
         "name": "FORMAL METHODS IN SOFTWARE ENGINEERING",
-        "credits": "3 ",
-        "prereqs": "CISC304 or equivalent course, or permission of instructor.",
+        "credits": 3,
+        "prereqs": ["CISC304"],
         "restrictions": "Credit cannot be received for both CISC614/CPEG614 and CISC414.",
         "description": "Formal approaches to the specification, verification, and design of software systems. Topics include representing programs as transition systems; liveness and safety properties; state space reachability; explicit, symbolic and automata-based model checking; temporal logics; symbolic execution; automated theorem-proving; and relational calculus. Learn to use state-of-the-art tools based on these methods, such as the model checker Spin.",
         "coreqs": null
@@ -245,7 +245,7 @@
     {
         "id": "CISC 429",
         "name": "TOPICS IN ALGORITHMS AND COMPLEXITY THEORY",
-        "credits": "3 ",
+        "credits": 3,
         "prereqs": null,
         "restrictions": "Credit cannot be received for both CISC429 and CISC629.",
         "description": "Contents vary to coincide with the interests of students and current faculty.",
@@ -254,8 +254,8 @@
     {
         "id": "CISC 436",
         "name": "BIOINFORMATICS",
-        "credits": "3 ",
-        "prereqs": "CISC220 or permission of instructor.",
+        "credits": 3,
+        "prereqs": ["CISC220"],
         "restrictions": null,
         "description": "Concepts, methodologies, and tools in bioinformatics. Abstraction of biological problems for computational solutions. Genome sequencing and assembly, biosequence analysis and comparison and database search, dynamics programming, hidden Markov models, and phylogenetic trees.",
         "coreqs": null
@@ -263,8 +263,8 @@
     {
         "id": "CISC 437",
         "name": "DATABASE SYSTEMS",
-        "credits": "3 ",
-        "prereqs": "A minimum grade of C- in CISC220. ",
+        "credits": 3,
+        "prereqs": ["CISC220"],
         "restrictions": "Credit cannot be received for both CISC437 and CISC637.",
         "description": "Physical and logical organization of databases. Data retrieval languages, relational database languages, security and integrity, concurrency, distributed databases.",
         "coreqs": null
@@ -272,8 +272,8 @@
     {
         "id": "CISC 440",
         "name": "COMPUTER GRAPHICS",
-        "credits": "3 ",
-        "prereqs": "CISC220 and MATH241 ",
+        "credits": 3,
+        "prereqs": ["CISC220", "MATH241"],
         "restrictions": "CISC320 recommended. Credit cannot be received for both CISC440 and CISC640.",
         "description": "Computer graphics technology, two- and three-dimensional systems, graphics software systems, modeling and object hierarchy, and animation.",
         "coreqs": null
@@ -281,8 +281,8 @@
     {
         "id": "CISC 442",
         "name": "INTRODUCTION TO COMPUTER VISION",
-        "credits": "3 ",
-        "prereqs": "CISC220. ",
+        "credits": 3,
+        "prereqs": ["CISC220"],
         "restrictions": "Credit cannot be received for both CISC442 and CISC642.",
         "description": "Analysis of images and video to recognize, reconstruct, model, and otherwise infer static and dynamic properties of objects in the three-dimensional world. Geometry of image formation; image processing such as smoothing, edge and feature detection, color, and texture; segmentation; shape representation including deformable templates; stereo vision; motion estimation and tracking; techniques for 3-D reconstruction; image registration methods.",
         "coreqs": null
@@ -290,8 +290,8 @@
     {
         "id": "CISC 450",
         "name": "COMPUTER NETWORKS I",
-        "credits": "3 ",
-        "prereqs": "CISC260 or CPEG222.",
+        "credits": 3,
+        "prereqs": ["CISC260||CPEG222"],
         "restrictions": "Knowledge of probability and statistics recommended. Credit cannot be received for both CISC450 and any of the following courses: CISC250, CPEG419, CISC650, ELEG651.",
         "description": "Foundation principles, architectures and techniques employed in computer and communication networks. Focuses on mechanisms used in TCP/IP protocol suite. Topics include connection management, end-to-end reliable data transfer, sliding window protocols, quality of service, flow control, congestion control, routing, LANs, framing, error control, analog versus digital transmission, packet versus circuit switching, multiplexing.May be crosslisted with CPEG419.",
         "coreqs": null
@@ -299,8 +299,8 @@
     {
         "id": "CISC 451",
         "name": "DATA COMPRESSION IN MULTIMEDIA",
-        "credits": "3 ",
-        "prereqs": "CISC220, MATH210, MATH241, and either MATH205 or MATH350.",
+        "credits": 3,
+        "prereqs": ["CISC220", "MATH210", "MATH241", "MATH205||MATH350."],
         "restrictions": null,
         "description": "Important approaches to data and multimedia compression. Lossless techniques: Huffman, dictionary, arithmetic, run length. Lossless applications: GIF, lossless JPEG, Unix compress, facsimile. Lossy techniques: scalar/vector quantization, differential/subband/transform/wavelet encoding. Lossy applications: JPEG, JPEG200, MPEG, MP3.",
         "coreqs": null
@@ -308,8 +308,8 @@
     {
         "id": "CISC 452",
         "name": "TELECOMMUNICATIONS SYSTEMS",
-        "credits": "3 ",
-        "prereqs": "CISC250, or CISC450 ",
+        "credits": 3,
+        "prereqs": ["CISC250||CISC450"],
         "restrictions": "Open to CIS and EE majors and minors only.",
         "description": "Presents basic concepts in telecommunications, emphasizing topics such as SONET, Cell and Frame Relay and multimedia switching. Concepts of operation and maintenance of large communications networks discussed.",
         "coreqs": null
@@ -317,8 +317,8 @@
     {
         "id": "CISC 453",
         "name": "SIMULATION OF COMPUTER NETWORKS",
-        "credits": "3 ",
-        "prereqs": "CISC450, or equivalent.",
+        "credits": 3,
+        "prereqs": ["CISC450"],
         "restrictions": null,
         "description": "Modeling and computer simulation of discrete systems using discrete event simulation techniques. Application to the performance evaluation and modeling of computer networks and networking protocols. Study and use of simulation systems such as OPNET, Qualnet, and ns-2.",
         "coreqs": null
@@ -326,8 +326,8 @@
     {
         "id": "CISC 458",
         "name": "APPLIED COMPUTER NETWORKS",
-        "credits": "3 ",
-        "prereqs": "CISC450",
+        "credits": 3,
+        "prereqs": ["CISC450"],
         "restrictions": null,
         "description": "Principles of communications as they apply to computer networks. Includes advanced concepts of network design, construction and management.",
         "coreqs": null
@@ -335,8 +335,8 @@
     {
         "id": "CISC 459",
         "name": "TOPICS IN COMMUNICATIONS, DISTRIBUTED COMPUTING AND NETWORKS 3",
-        "credits": "3 ",
-        "prereqs": "CISC450. ",
+        "credits": 3,
+        "prereqs": ["CISC450"],
         "restrictions": "Credit cannot be received for both CISC459 and CISC659.",
         "description": "Contents vary to coincide with the interests of students and current faculty.",
         "coreqs": null
@@ -344,8 +344,8 @@
     {
         "id": "CISC 464",
         "name": "INTRODUCTION TO NETWORK SECURITY",
-        "credits": "3 ",
-        "prereqs": "CISC450 or equivalent.",
+        "credits": 3,
+        "prereqs": ["CISC450"],
         "restrictions": null,
         "description": "Practical introduction to network security field. Covers material on cryptography, intrusions, denial-of-service attacks, worms, honeynets and other hot topics in network security.",
         "coreqs": null
@@ -353,7 +353,7 @@
     {
         "id": "CISC 466",
         "name": "INDEPENDENT STUDY",
-        "credits": "3 ",
+        "credits": 3,
         "prereqs": null,
         "restrictions": null,
         "description": "",
@@ -362,8 +362,8 @@
     {
         "id": "CISC 470",
         "name": "PROGRAMMING LANGUAGES",
-        "credits": "3 ",
-        "prereqs": "CISC275 ",
+        "credits": 3,
+        "prereqs": ["CISC275"],
         "restrictions": "Credit cannot be received for both CISC470 and CISC670.",
         "description": "Selection, use and implementation of appropriate language(s) for given problems. Syntax, semantics, pragmatics, parameter passing, abstract data types and comparisons between languages.",
         "coreqs": null
@@ -371,8 +371,8 @@
     {
         "id": "CISC 471",
         "name": "COMPILER DESIGN",
-        "credits": "3 ",
-        "prereqs": "CISC260 and CISC303",
+        "credits": 3,
+        "prereqs": ["CISC260", "CISC303"],
         "restrictions": null,
         "description": "Introduction to the design and implementation of compilers, with a focus on lexical analysis, parsing and syntax directed translation.",
         "coreqs": null
@@ -380,7 +380,7 @@
     {
         "id": "CISC 473",
         "name": "COMPUTER SCIENCE PROJECTS",
-        "credits": "3 ",
+        "credits": 3,
         "prereqs": null,
         "restrictions": "Open to majors only. Requires permission of instructor. May be taken twice for credit when topics vary.",
         "description": "Experimental, theoretical and literature studies of computer science problems.",
@@ -389,8 +389,8 @@
     {
         "id": "CISC 474",
         "name": "ADVANCED WEB TECHNOLOGIES",
-        "credits": "3 ",
-        "prereqs": "CISC275 ",
+        "credits": 3,
+        "prereqs": ["CISC275"],
         "restrictions": null,
         "description": "Programming and architecture of web servers and the technologies for implementing high performance, sophisticated web sites for applications like e-commerce. Students learn how to install and set-up a web server, how to write and install programs for a web server, and how to design and implement multi-tier client/server applications with database backends.",
         "coreqs": "CISC437"
@@ -398,8 +398,8 @@
     {
         "id": "CISC 475",
         "name": "ADVANCED SOFTWARE ENGINEERING",
-        "credits": "3 ",
-        "prereqs": "CISC275. CISC361 is recommended. ",
+        "credits": 3,
+        "prereqs": ["CISC275"],
         "restrictions": "Senior status. Credit cannot be received for both CISC475 and CISC675.",
         "description": "Understand and apply a complete modern software engineering process. Topics include requirements analysis, specification, design, implementation, verification, and project management. Real-life team projects cover all aspects of the software development lifecycle, from the requirements to acceptance testing.",
         "coreqs": null
@@ -407,7 +407,7 @@
     {
         "id": "CISC 449",
         "name": "TOPICS IN COMPUTER APPLICATIONS",
-        "credits": "3 ",
+        "credits": 3,
         "prereqs": null,
         "restrictions": "Credit cannot be received for both CISC449 and CISC649.",
         "description": "Contents will vary to coincide with the interests of students and current faculty.",
@@ -416,8 +416,8 @@
     {
         "id": "CISC 477",
         "name": "SYSTEMS ADMINISTRATION",
-        "credits": "3 ",
-        "prereqs": "CISC361",
+        "credits": 3,
+        "prereqs": ["CISC361"],
         "restrictions": null,
         "description": "Introduces students to the internals of UNIX, trouble-shooting system and network problems, hardware and software configuration and installation, and security aspects of hosts on the internet. Multi-operating system integration will also be discusssed.",
         "coreqs": null
@@ -425,8 +425,8 @@
     {
         "id": "CISC 479",
         "name": "TOPICS IN ARCHITECTURE AND SOFTWARE",
-        "credits": "3 ",
-        "prereqs": "CISC361. ",
+        "credits": 3,
+        "prereqs": ["CISC361"],
         "restrictions": "Credit cannot be received for both CISC479 and CISC679.",
         "description": "Contents will vary to coincide with the interests of students and faculty.",
         "coreqs": null
@@ -434,8 +434,8 @@
     {
         "id": "CISC 481",
         "name": "ARTIFICIAL INTELLIGENCE",
-        "credits": "3 ",
-        "prereqs": "CISC220 with a minimum grade of C-, CISC304. ",
+        "credits": 3,
+        "prereqs": ["CISC220", "CISC304"],
         "restrictions": "Credit cannot be received for both CISC481 and CISC681.",
         "description": "Programming techniques for problems not amenable to algorithmic solutions. Problem formulation, search strategies, state spaces, applications of logic, knowledge representation, planning and application areas.May be crosslisted with CGSC481.",
         "coreqs": null
@@ -443,8 +443,8 @@
     {
         "id": "CISC 483",
         "name": "INTRODUCTION TO DATA MINING",
-        "credits": "3 ",
-        "prereqs": "CISC-275, or permission of instructor.",
+        "credits": 3,
+        "prereqs": ["CISC275"],
         "restrictions": null,
         "description": "Concepts, techniques, and algorithms for mining large data sets to discover structural patterns that can be used to make subsequent predictions. Emphasis on practical approaches and empirical evaluation. Use of a workbench of data mining tools, such as the Weka toolkit.",
         "coreqs": null
@@ -452,8 +452,8 @@
     {
         "id": "CISC 489",
         "name": "ARTIFICIAL INTELLIGENCE",
-        "credits": "3 ",
-        "prereqs": "CISC481/681 ",
+        "credits": 3,
+        "prereqs": ["CISC481||CISC681"],
         "restrictions": "Credit cannot be received for both CISC489 and CISC689. 600 level courses may be taken honors credit.",
         "description": "Contents vary to coincide with the interests of students and current faculty.",
         "coreqs": null
@@ -461,8 +461,8 @@
     {
         "id": "CISC 498",
         "name": "COMPUTER SCIENCE SENIOR DESIGN PROJECT I",
-        "credits": "3 ",
-        "prereqs": "CISC275 and CISC320.",
+        "credits": 3,
+        "prereqs": ["CISC275", "CISC320"],
         "restrictions": null,
         "description": "Apply a complete modern software engineering process. Activities include requirements analysis, specification, design, implementation, verification, and project management. Real-life team projects with a client cover all aspects of the software development life-cycle, from the requirements to acceptance testing. This is the first semester of a two-semester sequence.",
         "coreqs": null
@@ -470,8 +470,8 @@
     {
         "id": "CISC 499",
         "name": "COMPUTER SCIENCE SENIOR DESIGN PROJECT II",
-        "credits": "3 ",
-        "prereqs": "CISC498 Department of Computer and Information Sciences 101 Smith Hall 18 Amstel Ave Newark, DE 19716 P: (302) 831-2712 F: (302) 831-8458",
+        "credits": 3,
+        "prereqs": ["CISC498"],
         "restrictions": null,
         "description": "Continuation of CISC498",
         "coreqs": null
