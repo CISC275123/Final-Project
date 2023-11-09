@@ -9,11 +9,13 @@ import "./DegreeList.css";
 export const DegreeList = ({
     degrees,
     addDegree,
+    addYear,
     removeDegree
 }: {
     degrees: Degree[];
     addDegree: (name: string) => void;
     removeDegree: (id: number) => void;
+    addYear: (name: string, degree: Degree) => void;
 }) => {
     const [displayId, setDisplayId] = useState<null | number>(null);
     const [userInput, setUserInput] = useState<string>("Sample");
@@ -88,6 +90,7 @@ export const DegreeList = ({
                             <DegreeView
                                 degree={degree}
                                 resetView={resetDegreeView}
+                                addYear={addYear}
                             ></DegreeView>
                         );
                     } else {

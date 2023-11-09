@@ -89,7 +89,12 @@ function App(): JSX.Element {
             years: [...degree.years, newYear]
         };
 
-        setDegrees([...degrees, updatedDegree]);
+        setDegrees(
+            degrees.map(
+                (d: Degree): Degree =>
+                    d.id === updatedDegree.id ? updatedDegree : d
+            )
+        );
     }
 
     function removeDegree(id: number) {
