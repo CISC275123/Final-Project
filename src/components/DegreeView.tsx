@@ -27,7 +27,7 @@ export const DegreeView = ({
     ) => void;
 }) => {
     const [isAdding, setAdding] = useState<boolean>(false);
-    const [userInput, setUserInput] = useState<string>("Year 1");
+    const [userInput, setUserInput] = useState<string>("Freshman");
 
     function updateSelection(event: React.ChangeEvent<HTMLSelectElement>) {
         setUserInput(event.target.value);
