@@ -29,8 +29,8 @@ export const DegreeList = ({
     ) => void;
 }) => {
     const [displayId, setDisplayId] = useState<null | number>(null);
-    const [userInput, setUserInput] = useState<string>("Sample");
-    const [adding, setAdding] = useState<boolean>(false);
+    const [userInput, setUserInput] = useState<string>("Sample Degree");
+    const [isAdding, setIsAdding] = useState<boolean>(false);
 
     const handleDegreeView = (id: number) => {
         setDisplayId(id);
@@ -41,7 +41,7 @@ export const DegreeList = ({
     };
 
     const handleAddClick = () => {
-        setAdding(!adding);
+        setIsAdding(!isAdding);
     };
 
     const setUpDegree = () => {
@@ -55,7 +55,7 @@ export const DegreeList = ({
                 <Button hidden={displayId !== null} onClick={handleAddClick}>
                     Add
                 </Button>
-                {adding && (
+                {isAdding && (
                     <Form.Group controlId="formAddDegree">
                         <br />
                         <Form.Label>
