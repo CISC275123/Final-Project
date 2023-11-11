@@ -13,11 +13,13 @@ export const DegreeList = ({
     degrees,
     addDegree,
     addYear,
+    deleteYear,
     removeDegree,
     updateSemesterList
 }: {
     degrees: Degree[];
     addDegree: (name: string) => void;
+    deleteYear: (targetYear: Year, targetDegree: Degree) => void;
     removeDegree: (id: number) => void;
     addYear: (name: string, degree: Degree) => void;
     updateSemesterList: (
@@ -97,9 +99,11 @@ export const DegreeList = ({
                     if (displayId === dId) {
                         return (
                             <DegreeView
+                                key={degree.id}
                                 degree={degree}
                                 resetView={resetDegreeView}
                                 addYear={addYear}
+                                deleteYear={deleteYear}
                                 updateSemesterList={updateSemesterList}
                             ></DegreeView>
                         );

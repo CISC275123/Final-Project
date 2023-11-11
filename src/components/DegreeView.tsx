@@ -13,11 +13,13 @@ export const DegreeView = ({
     degree,
     resetView,
     addYear,
+    deleteYear,
     updateSemesterList
 }: {
     degree: Degree;
     resetView: () => void;
     addYear: (name: string, degree: Degree) => void;
+    deleteYear: (targetYear: Year, targetDegree: Degree) => void;
     updateSemesterList: (
         newSemesterList: Semester[],
         targetDegree: Degree,
@@ -27,17 +29,9 @@ export const DegreeView = ({
     const [isAdding, setAdding] = useState<boolean>(false);
     const [userInput, setUserInput] = useState<string>("Year 1");
 
-    // function updateSemesterList(
-    //     newSemesterList: Semester[],
-    //     degree: Degree,
-    //     year: Year
-    // ) {
-    //     const newYear: Year = {
-    //         ...year,
-    //         semesters: newSemesterList
-    //     };
-    //     degree.years.map((y: Year): Year => (year.id === y.id ? newYear : y));
-    // }
+    function updateSelection(event: React.ChangeEvent<HTMLSelectElement>) {
+        setUserInput(event.target.value);
+    }
 
     return (
         <div className="degree_card">
@@ -61,13 +55,15 @@ export const DegreeView = ({
                     <Form.Group controlId="formAddDegree">
                         <br />
                         <Form.Label>Name your new Year:</Form.Label>
-                        <Form.Control
-                            type="string"
+                        <Form.Select
+                            onChange={updateSelection}
                             value={userInput}
-                            onChange={(
-                                event: React.ChangeEvent<HTMLInputElement>
-                            ) => setUserInput(event.target.value)}
-                        ></Form.Control>
+                        >
+                            <option value="Freshman">Freshman</option>
+                            <option value="Sophomore">Sophomore</option>
+                            <option value="Junior">Junior</option>
+                            <option value="Senior">Senior</option>
+                        </Form.Select>
                         <Button
                             variant="success"
                             className="save_edit_btn"
@@ -94,7 +90,14 @@ export const DegreeView = ({
                     <div className="year_view_rows">
                         {degree.years.map((year: Year) => (
                             <div className="year_view_column" key={year.name}>
-                                <h4>{year.name}</h4>
+                                <h4 onClick={() => console.log(year.id)}>
+                                    {year.name}
+                                </h4>
+                                <Button
+                                    onClick={() => deleteYear(year, degree)}
+                                >
+                                    Delete Year
+                                </Button>
                                 {
                                     <SemesterList
                                         key={year.name}

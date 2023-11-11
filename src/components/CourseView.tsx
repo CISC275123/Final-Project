@@ -72,10 +72,6 @@ export const CourseView = ({
     }
 
     function findUnknown(courses: string[]): string[] {
-        // const removeOR: string[] = courses.filter(
-        //     (c: string): boolean => !c.includes("||")
-        // );
-
         const checking = courses.filter((c: string): boolean =>
             c.includes("||")
         );
@@ -217,12 +213,6 @@ export const CourseView = ({
     return (
         <div className="quiz_card">
             <div>
-                <Button
-                    className="esc_button text-align-center"
-                    variant="warning"
-                >
-                    Add
-                </Button>
                 <Button
                     className="esc_button text-align-center"
                     variant="warning"

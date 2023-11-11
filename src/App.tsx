@@ -37,8 +37,8 @@ function App(): JSX.Element {
     const [degrees, setDegrees] = useState<Degree[]>([]);
 
     // VARs used to control display of elements
-    const [display, setDisplay] = useState<boolean>(true);
-    const [isEditing, setEditing] = useState<boolean>(false);
+    const [display, setDisplay] = useState<boolean>(false);
+    const [isEditing, setEditing] = useState<boolean>(true);
     const [isDegree, setDegree] = useState<boolean>(false);
     const [isHome, setIsHome] = useState<boolean>(true);
 
@@ -117,6 +117,21 @@ function App(): JSX.Element {
             degrees.map(
                 (d: Degree): Degree =>
                     d.id === updatedDegree.id ? updatedDegree : d
+            )
+        );
+    }
+
+    function deleteYear(targetYear: Year, targetDegree: Degree) {
+        const newYearList: Year[] = targetDegree.years.filter(
+            (year: Year): boolean => year.id !== targetYear.id
+        );
+
+        const newDegree: Degree = { ...targetDegree, years: newYearList };
+
+        setDegrees(
+            degrees.map(
+                (degree: Degree): Degree =>
+                    degree.id === targetDegree.id ? newDegree : degree
             )
         );
     }
@@ -283,6 +298,7 @@ function App(): JSX.Element {
                             addDegree={addDegree}
                             removeDegree={removeDegree}
                             addYear={addYear}
+                            deleteYear={deleteYear}
                             updateSemesterList={updateSemesterList}
                         ></DegreeList>
                     )}
