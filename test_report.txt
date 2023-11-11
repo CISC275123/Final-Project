@@ -5,6 +5,9 @@
 Browserslist: caniuse-lite is outdated. Please run:
   npx browserslist@latest --update-db
   Why you should do it regularly: https://github.com/browserslist/browserslist#browsers-data-updating
+Browserslist: caniuse-lite is outdated. Please run:
+  npx browserslist@latest --update-db
+  Why you should do it regularly: https://github.com/browserslist/browserslist#browsers-data-updating
 FAIL src/components/Semester/Semester.test.tsx
   ● Test suite failed to run
 
@@ -23,7 +26,7 @@ PASS src/App.test.tsx
       Warning: validateDOMNesting(...): <body> cannot appear as a child of <div>.
           at body
           at div
-          at App (/home/runner/work/Final-Project/Final-Project/src/App.tsx:35:35)
+          at App (/home/runner/work/Final-Project/Final-Project/src/App.tsx:36:53)
 
       at printWarning (node_modules/react-dom/cjs/react-dom.development.js:67:30)
       at error (node_modules/react-dom/cjs/react-dom.development.js:43:5)
@@ -37,17 +40,18 @@ PASS src/App.test.tsx
 -------------------------|---------|----------|---------|---------|-------------------
 File                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 -------------------------|---------|----------|---------|---------|-------------------
-All files                |   14.57 |    13.95 |    7.07 |   14.63 |                   
- src                     |    27.9 |    36.36 |   11.11 |    27.9 |                   
-  App.tsx                |    27.9 |    36.36 |   11.11 |    27.9 | 59-174,195-237    
- src/components          |   11.67 |     6.25 |    6.66 |   11.73 |                   
-  CourseCard.tsx         |   66.66 |       50 |      50 |   66.66 | 15                
-  CourseEdit.tsx         |    4.34 |        0 |       0 |    4.34 | 18-135            
-  CourseList.tsx         |   64.28 |       75 |      60 |   64.28 | 22,26-27,46-47    
-  CourseView.tsx         |    5.55 |        0 |    3.44 |    5.55 | 36-230            
+All files                |    11.4 |     7.77 |    4.16 |   11.45 |                   
+ src                     |   23.63 |    26.92 |    9.09 |   23.63 |                   
+  App.tsx                |   23.63 |    26.92 |    9.09 |   23.63 | 63-204,223-283    
+ src/components          |    7.96 |        0 |    3.22 |       8 |                   
+  CourseCard.tsx         |   33.33 |        0 |       0 |   33.33 | 12-15             
+  CourseEdit.tsx         |    4.34 |        0 |       0 |    4.34 | 18-137            
+  CourseList.tsx         |    7.14 |        0 |       0 |    7.14 | 19-58             
+  CourseView.tsx         |    5.55 |        0 |    3.44 |    5.55 | 36-220            
   DegreeCard.tsx         |      25 |      100 |       0 |      25 | 16-21             
-  DegreeList.tsx         |       5 |        0 |       0 |       5 | 29-107            
-  DegreeView.tsx         |      10 |        0 |       0 |      10 | 27-96             
+  DegreeList.tsx         |       5 |        0 |       0 |       5 | 31-111            
+  DegreeView.tsx         |    8.33 |        0 |       0 |    8.33 | 29-97             
+  HomePage.tsx           |     100 |      100 |     100 |     100 |                   
   SemesterCard.tsx       |      15 |        0 |   16.66 |      15 | 42-101            
   SemesterList.tsx       |    4.54 |        0 |       0 |    4.54 | 27-108            
   SemesterView.tsx       |     3.7 |        0 |       0 |    3.84 | 15-96             
@@ -63,5 +67,5 @@ All files                |   14.57 |    13.95 |    7.07 |   14.63 |
 Test Suites: 1 failed, 1 passed, 2 total
 Tests:       1 passed, 1 total
 Snapshots:   0 total
-Time:        3.366 s
+Time:        3.516 s
 Ran all test suites.
