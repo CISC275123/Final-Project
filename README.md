@@ -1,18 +1,11 @@
-# React TypeScript Starter Repo
+# React TypeScript Final Project
 
-Hello! This repository has been pre-configured with eslint and gh-pages to automatically deploy your app when you push to the main branch.
+This repository contains the Final Project files for Sibyl R's Group.
+The live webpage is located at: https://cisc275123.github.io/Final-Project/
 
-You will, however, need to finish setting up the deployment.
+### 1. How to navigate the website
 
-### 1. Generate a personal access token
-
-1. Click on your picture -> `settings` in the top right of Github.
-2. Then, scroll to `Developer Settings` and click `Personal access tokens`
-3. Generate a new token with `repo` access and no expiration date.
-4. Make sure you copy the created token as you will not be able to see it after this.
-
-### 2. Add a secret to the forked repo
-
-Back in this repository, go to `settings` -> `secrets` -> `Actions` and click the `New repository secret` button in the topright.
-
-Name the secret "GH_TOKEN" and paste in the token you copied in the previous step.
+1. Read the instructions on the main page.
+2. Navigate through the buttons located in the navigation bar at the top of the page.
+3. Click "COURSES" to view a list of all of the courses. Clicking on an individual course "card" allows you to view more information in addition to editing the course's information.
+4. Click "DEGREES" to view your degree plans. Click "Add" to name and add a new plan. Each plan consists of Years (Freshman, Sophomore, Junior, Senior) that you must add individually. Once a year is added, you can then begin to add semesters. You can then edit these semesters to add courses.
