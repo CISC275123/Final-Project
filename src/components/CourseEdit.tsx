@@ -21,6 +21,8 @@ export const CourseEdit = ({
 
     const cId = course.id.replace(/\s/g, "");
 
+    // Saves the changes step-by-step by creating new courses, each course containing the desired change.
+    // TO DO : Reduce code so that it accomplishes this without creating multiple new instances of a course.
     const saveChanges = () => {
         const newCourseName: Course = {
             ...course,

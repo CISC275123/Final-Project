@@ -13,11 +13,13 @@ export const DegreeList = ({
     degrees,
     addDegree,
     addYear,
+    deleteYear,
     removeDegree,
     updateSemesterList
 }: {
     degrees: Degree[];
     addDegree: (name: string) => void;
+    deleteYear: (targetYear: Year, targetDegree: Degree) => void;
     removeDegree: (id: number) => void;
     addYear: (name: string, degree: Degree) => void;
     updateSemesterList: (
@@ -27,8 +29,8 @@ export const DegreeList = ({
     ) => void;
 }) => {
     const [displayId, setDisplayId] = useState<null | number>(null);
-    const [userInput, setUserInput] = useState<string>("Sample");
-    const [adding, setAdding] = useState<boolean>(false);
+    const [userInput, setUserInput] = useState<string>("Sample Degree");
+    const [isAdding, setIsAdding] = useState<boolean>(false);
 
     const handleDegreeView = (id: number) => {
         setDisplayId(id);
@@ -39,7 +41,7 @@ export const DegreeList = ({
     };
 
     const handleAddClick = () => {
-        setAdding(!adding);
+        setIsAdding(!isAdding);
     };
 
     const setUpDegree = () => {
@@ -53,7 +55,7 @@ export const DegreeList = ({
                 <Button hidden={displayId !== null} onClick={handleAddClick}>
                     Add
                 </Button>
-                {adding && (
+                {isAdding && (
                     <Form.Group controlId="formAddDegree">
                         <br />
                         <Form.Label>
@@ -97,9 +99,11 @@ export const DegreeList = ({
                     if (displayId === dId) {
                         return (
                             <DegreeView
+                                key={degree.id}
                                 degree={degree}
                                 resetView={resetDegreeView}
                                 addYear={addYear}
+                                deleteYear={deleteYear}
                                 updateSemesterList={updateSemesterList}
                             ></DegreeView>
                         );
