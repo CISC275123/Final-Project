@@ -210,7 +210,15 @@ function App(): JSX.Element {
                 {/* Header containing navbar and site header information  */}
                 <header className="App-header">
                     <nav>
-                        <a className="logo" href="index.html">
+                        <a
+                            className="logo"
+                            onClick={() => {
+                                switchEditing(true);
+                                setDegree(false);
+                                setCourseDisplay(false);
+                                setIsHome(true);
+                            }}
+                        >
                             <img src={logo} alt="Homepage logo"></img>
                         </a>
                         <p className="title">
