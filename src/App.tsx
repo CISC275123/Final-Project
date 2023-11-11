@@ -258,10 +258,12 @@ function App(): JSX.Element {
                 </header>
 
                 {/* The default home page  */}
-                {isHome && <HomePage></HomePage>}
+                <div className="HomePage">
+                    {isHome && <HomePage></HomePage>}
+                </div>
 
                 {/* Following are a part of the "COURSES" functionality  */}
-                <div className="CourseButtons">
+                <div hidden={!courseDisplay} className="CourseButtons">
                     <Button
                         onClick={() =>
                             currIndex > 0
@@ -271,12 +273,6 @@ function App(): JSX.Element {
                         hidden={isEditing || currIndex <= 0}
                     >
                         Back
-                    </Button>
-                    <Button
-                        onClick={() => setCourseDisplay(!courseDisplay)}
-                        hidden={isEditing}
-                    >
-                        {courseDisplay ? "Hide Courses" : "Show Courses"}
                     </Button>
                     <Button
                         onClick={() =>
@@ -294,7 +290,7 @@ function App(): JSX.Element {
                         Next
                     </Button>
                 </div>
-                <div className="CourseList">
+                <div hidden={!courseDisplay} className="CourseList">
                     {courseDisplay && (
                         <CourseList
                             courses={globalCourseList.slice(
@@ -309,7 +305,7 @@ function App(): JSX.Element {
                 </div>
 
                 {/* Following sets up the Degree Plan functionality  */}
-                <div className="DegreeList">
+                <div hidden={!isDegree} className="DegreeList">
                     {isDegree && (
                         <DegreeList
                             degrees={degreeList}
