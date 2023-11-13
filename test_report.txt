@@ -5,28 +5,10 @@
 Browserslist: caniuse-lite is outdated. Please run:
   npx browserslist@latest --update-db
   Why you should do it regularly: https://github.com/browserslist/browserslist#browsers-data-updating
-Browserslist: caniuse-lite is outdated. Please run:
-  npx browserslist@latest --update-db
-  Why you should do it regularly: https://github.com/browserslist/browserslist#browsers-data-updating
-FAIL src/components/Semester/Semester.test.tsx
-  ● Test suite failed to run
-
-    Your test suite must contain at least one test.
-
-      at onResult (node_modules/@jest/core/build/TestScheduler.js:175:18)
-      at node_modules/@jest/core/build/TestScheduler.js:316:17
-      at node_modules/emittery/index.js:260:13
-          at Array.map (<anonymous>)
-      at Emittery.emit (node_modules/emittery/index.js:258:23)
-
-PASS src/App.test.tsx
-  ● Console
-
-    console.error
-      Warning: validateDOMNesting(...): <body> cannot appear as a child of <div>.
-          at body
-          at div
-          at App (/home/runner/work/Final-Project/Final-Project/src/App.tsx:36:53)
+  console.error
+    Warning: validateDOMNesting(...): <body> cannot appear as a child of <div>.
+        at body
+        at App (/home/runner/work/Final-Project/Final-Project/src/App.tsx:36:53)
 
       at printWarning (node_modules/react-dom/cjs/react-dom.development.js:67:30)
       at error (node_modules/react-dom/cjs/react-dom.development.js:43:5)
@@ -35,37 +17,118 @@ PASS src/App.test.tsx
       at completeWork (node_modules/react-dom/cjs/react-dom.development.js:19464:28)
       at completeUnitOfWork (node_modules/react-dom/cjs/react-dom.development.js:22812:16)
       at performUnitOfWork (node_modules/react-dom/cjs/react-dom.development.js:22787:5)
-      at workLoopSync (node_modules/react-dom/cjs/react-dom.development.js:22707:5)
 
--------------------------|---------|----------|---------|---------|-------------------
-File                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
--------------------------|---------|----------|---------|---------|-------------------
-All files                |    11.4 |     7.77 |    4.16 |   11.45 |                   
- src                     |   23.63 |    26.92 |    9.09 |   23.63 |                   
-  App.tsx                |   23.63 |    26.92 |    9.09 |   23.63 | 63-204,223-283    
- src/components          |    7.96 |        0 |    3.22 |       8 |                   
-  CourseCard.tsx         |   33.33 |        0 |       0 |   33.33 | 12-15             
-  CourseEdit.tsx         |    4.34 |        0 |       0 |    4.34 | 18-137            
-  CourseList.tsx         |    7.14 |        0 |       0 |    7.14 | 19-58             
-  CourseView.tsx         |    5.55 |        0 |    3.44 |    5.55 | 36-220            
-  DegreeCard.tsx         |      25 |      100 |       0 |      25 | 16-21             
-  DegreeList.tsx         |       5 |        0 |       0 |       5 | 31-111            
-  DegreeView.tsx         |    8.33 |        0 |       0 |    8.33 | 29-97             
-  HomePage.tsx           |     100 |      100 |     100 |     100 |                   
-  SemesterCard.tsx       |      15 |        0 |   16.66 |      15 | 42-101            
-  SemesterList.tsx       |    4.54 |        0 |       0 |    4.54 | 27-108            
-  SemesterView.tsx       |     3.7 |        0 |       0 |    3.84 | 15-96             
- src/components/Semester |   14.28 |      100 |       0 |   14.28 |                   
-  SemesterAddCourse.tsx  |   14.28 |      100 |       0 |   14.28 | 16-33             
- src/interfaces          |       0 |        0 |       0 |       0 |                   
-  course.ts              |       0 |        0 |       0 |       0 |                   
-  degree.ts              |       0 |        0 |       0 |       0 |                   
-  semester.ts            |       0 |        0 |       0 |       0 |                   
-  year.ts                |       0 |        0 |       0 |       0 |                   
--------------------------|---------|----------|---------|---------|-------------------
+  console.error
+    Warning: Cannot update a component (`App`) while rendering a different component (`CourseList`). To locate the bad setState() call inside `CourseList`, follow the stack trace as described in https://reactjs.org/link/setstate-in-render
+        at CourseList (/home/runner/work/Final-Project/Final-Project/src/components/CourseList.tsx:9:5)
+        at div
+        at body
+        at App (/home/runner/work/Final-Project/Final-Project/src/App.tsx:36:53)
 
-Test Suites: 1 failed, 1 passed, 2 total
-Tests:       1 passed, 1 total
+      202 |     // Used to display/hide the relevant buttons when editing a course. Takes in a boolean to set the value of isEditing to.
+      203 |     function switchEditing(edit: boolean) {
+    > 204 |         setEditing(edit);
+          |         ^
+      205 |     }
+      206 |
+      207 |     return (
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:67:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:43:5)
+      at warnAboutRenderPhaseUpdatesInDEV (node_modules/react-dom/cjs/react-dom.development.js:24002:15)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:21836:3)
+      at setEditing (node_modules/react-dom/cjs/react-dom.development.js:16139:5)
+      at switchEditing (src/App.tsx:204:9)
+      at src/components/CourseList.tsx:46:21
+
+  console.error
+    Warning: Each child in a list should have a unique "key" prop.
+    
+    Check the render method of `SemesterList`. See https://reactjs.org/link/warning-keys for more information.
+        at div
+        at SemesterList (/home/runner/work/Final-Project/Final-Project/src/components/SemesterList.tsx:12:5)
+        at div
+        at div
+        at div
+        at div
+        at DegreeView (/home/runner/work/Final-Project/Final-Project/src/components/DegreeView.tsx:13:5)
+        at div
+        at div
+        at DegreeList (/home/runner/work/Final-Project/Final-Project/src/components/DegreeList.tsx:13:5)
+        at div
+        at body
+        at App (/home/runner/work/Final-Project/Final-Project/src/App.tsx:36:53)
+
+      62 |             </Button>
+      63 |             <div className="List">
+    > 64 |                 <ul>
+         |                 ^
+      65 |                     {!displayId && (
+      66 |                         <>
+      67 |                             {semesterList.map((semester: Semester) => (
+
+      at printWarning (node_modules/react/cjs/react-jsx-dev-runtime.development.js:117:30)
+      at error (node_modules/react/cjs/react-jsx-dev-runtime.development.js:93:5)
+      at validateExplicitKey (node_modules/react/cjs/react-jsx-dev-runtime.development.js:986:5)
+      at validateChildKeys (node_modules/react/cjs/react-jsx-dev-runtime.development.js:1013:11)
+      at jsxWithValidation (node_modules/react/cjs/react-jsx-dev-runtime.development.js:1174:15)
+      at SemesterList (src/components/SemesterList.tsx:64:17)
+      at renderWithHooks (node_modules/react-dom/cjs/react-dom.development.js:14985:18)
+
+  console.log
+    Delete
+
+      at deleteSemester (src/components/SemesterList.tsx:52:17)
+
+PASS src/App.test.tsx
+  ✓ renders the course name somewhere (120 ms)
+  Degree Tests
+    ✓ Users can add a new degree plan (40 ms)
+    ✓ Users can delete a new degree plan (25 ms)
+    ✓ Users can select a degree plan they made and view it (31 ms)
+    ✓ Users can exit a degree plan after clicking on it (30 ms)
+    ✓ Users can add a Year to a Degree Plan (38 ms)
+    ✓ Users can delete a Year from their Degree Plan (32 ms)
+  Course Tests
+    ✓ Users can see a list of courses, including the course code, title, and credits (86 ms)
+    ✓ Users can click on a course to view its information (121 ms)
+    ✓ Users can edit a course (130 ms)
+  Semester Tests
+    ✓ Users can add a Semester from their Degree Plan (80 ms)
+    ✓ Users can add a new semester to a year (39 ms)
+    ✓ Users can delete a semester (37 ms)
+    ✓ Users can edit a semester (34 ms)
+    ✓ Users can add a course to a semester (48 ms)
+    ✓ Users can remove a course from a semester (50 ms)
+
+-------------------------|---------|----------|---------|---------|--------------------
+File                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s  
+-------------------------|---------|----------|---------|---------|--------------------
+All files                |   66.54 |    61.11 |   58.33 |   66.41 |                    
+ src                     |   81.03 |    65.38 |   77.27 |   81.03 |                    
+  App.tsx                |   81.03 |    65.38 |   77.27 |   81.03 | 63-66,215-233,274  
+ src/components          |   61.19 |    59.37 |   51.61 |      61 |                    
+  CourseCard.tsx         |     100 |      100 |     100 |     100 |                    
+  CourseEdit.tsx         |   34.78 |       50 |   11.11 |   34.78 | 27-46,50-54,73-137 
+  CourseList.tsx         |     100 |      100 |     100 |     100 |                    
+  CourseView.tsx         |   14.81 |    31.81 |   13.79 |   14.81 | 43-188             
+  DegreeCard.tsx         |     100 |      100 |     100 |     100 |                    
+  DegreeList.tsx         |      95 |      100 |    87.5 |      95 | 69                 
+  DegreeView.tsx         |      75 |      100 |    62.5 |      75 | 33,79,93           
+  HomePage.tsx           |     100 |      100 |     100 |     100 |                    
+  SemesterCard.tsx       |      75 |        0 |   66.66 |      75 | 47-56              
+  SemesterList.tsx       |    90.9 |      100 |   81.81 |    90.9 | 36,44              
+  SemesterView.tsx       |   77.77 |    57.14 |   63.63 |   76.92 | 25,41-43,87-96     
+ src/components/Semester |     100 |      100 |     100 |     100 |                    
+  SemesterAddCourse.tsx  |     100 |      100 |     100 |     100 |                    
+ src/interfaces          |       0 |        0 |       0 |       0 |                    
+  course.ts              |       0 |        0 |       0 |       0 |                    
+  degree.ts              |       0 |        0 |       0 |       0 |                    
+  semester.ts            |       0 |        0 |       0 |       0 |                    
+  year.ts                |       0 |        0 |       0 |       0 |                    
+-------------------------|---------|----------|---------|---------|--------------------
+Test Suites: 1 passed, 1 total
+Tests:       16 passed, 16 total
 Snapshots:   0 total
-Time:        3.516 s
+Time:        4.083 s
 Ran all test suites.
