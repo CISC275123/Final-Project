@@ -107,7 +107,7 @@ describe("Degree Tests", () => {
         const saveButtonDegree = screen.getByText("Save");
         saveButtonDegree.click();
 
-        // Opens Sample Degree
+        // Opens Sample Degree!
         const text = screen.getByText("Sample Degree");
         text.click();
 
