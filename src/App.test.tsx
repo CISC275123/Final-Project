@@ -35,6 +35,21 @@ describe("App Tests", () => {
         expect(screen.queryByText("Sample Degree")).toBeInTheDocument();
     });
 
+    test("Users can delete a new degree plan", () => {
+        // Add a sample degree
+        const degreeButton = screen.getByText("Degrees");
+        degreeButton.click();
+        const button = screen.getByText("Add");
+        button.click();
+        const saveButton = screen.getByText("Save");
+        saveButton.click();
+
+        const deleteDegree = screen.getByText("Remove");
+        expect(screen.queryByText("Sample Degree")).toBeInTheDocument();
+        deleteDegree.click();
+        expect(screen.queryByText("Sample Degree")).not.toBeInTheDocument();
+    });
+
     test("Users can select a degree plan they made and view it", () => {
         // Opens Degree Plan and Adds a Sample Degree
         const degreeButton = screen.getByText("Degrees");
@@ -47,6 +62,24 @@ describe("App Tests", () => {
         const text = screen.getByText("Sample Degree");
         text.click();
         expect(screen.queryByText("Add Year")).toBeInTheDocument();
+    });
+
+    test("Users can exit a degree plan after clicking on it", () => {
+        // Opens Degree Plan and Adds a Sample Degree
+        const degreeButton = screen.getByText("Degrees");
+        degreeButton.click();
+        const button = screen.getByText("Add");
+        button.click();
+        const saveButton = screen.getByText("Save");
+        saveButton.click();
+
+        const text = screen.getByText("Sample Degree");
+        text.click();
+
+        const exitDegree = screen.getByText("Exit");
+        expect(screen.queryByText("Add Year")).toBeInTheDocument();
+        exitDegree.click();
+        expect(screen.queryByText("Add Year")).not.toBeInTheDocument();
     });
 
     test("Users can add a Year to a Degree Plan", () => {
@@ -74,5 +107,31 @@ describe("App Tests", () => {
         const saveButtonYear = screen.getByText("Save");
         saveButtonYear.click();
         expect(screen.queryByText("Freshman")).toBeInTheDocument();
+    });
+
+    test("Users can delete a Year from their Degree Plan", () => {
+        // Opens Degree Plan and Adds a Sample Degree
+        const degreeButton = screen.getByText("Degrees");
+        degreeButton.click();
+        const button = screen.getByText("Add");
+        button.click();
+        const saveButtonDegree = screen.getByText("Save");
+        saveButtonDegree.click();
+
+        // Opens Sample Degree
+        const text = screen.getByText("Sample Degree");
+        text.click();
+
+        // Adds a Freshman Year
+        const addYear = screen.getByText("Add Year");
+        addYear.click();
+        const saveButtonYear = screen.getByText("Save");
+        saveButtonYear.click();
+
+        expect(screen.queryByText("Delete Year")).toBeInTheDocument();
+        const deleteYear = screen.getByText("Delete Year");
+        expect(screen.queryByText("Freshman")).toBeInTheDocument();
+        deleteYear.click();
+        expect(screen.queryByLabelText("Freshman")).not.toBeInTheDocument();
     });
 });
