@@ -1,6 +1,22 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import App from "./App";
+import sample from "./data/courses.json";
+import { Course } from "./interfaces/course";
+
+// Creates default list of courses pulling from a JSON file.
+const COURSES = sample.map(
+    (course): Course => ({
+        id: course.id,
+        name: course.name,
+        credits: course.credits as unknown as number,
+        prerequisites: course.prereqs as unknown as string[],
+        restrictions: course.restrictions as unknown as string,
+        description: course.description,
+        corequisites: course.coreqs as unknown as string[]
+    })
+);
+const NUM_COURSES_DISPLAYED = 3;
 
 test("renders the course name somewhere", () => {
     render(<App />);
@@ -8,7 +24,7 @@ test("renders the course name somewhere", () => {
     expect(linkElement).toBeInTheDocument();
 });
 
-describe("App Tests", () => {
+describe("Degree Tests", () => {
     beforeEach(() => {
         render(<App />);
     });
@@ -172,5 +188,29 @@ describe("App Tests", () => {
         expect(screen.queryByText("Freshman")).toBeInTheDocument();
         deleteYear.click();
         expect(screen.queryByLabelText("Freshman")).not.toBeInTheDocument();
+    });
+});
+
+describe("Course Tests", () => {
+    beforeEach(() => {
+        render(<App />);
+    });
+    test("Users can see a list of courses, including the course code, and title", () => {
+        const courseButton = screen.getByText("Courses");
+        expect(screen.queryByLabelText("Next")).not.toBeInTheDocument();
+        courseButton.click();
+        expect(screen.queryByText("Next")).toBeInTheDocument();
+
+        let j = 0;
+        const nextButton = screen.getByText("Next");
+        while (j < COURSES.length - NUM_COURSES_DISPLAYED) {
+            for (let i = j; i < NUM_COURSES_DISPLAYED; i++) {
+                expect(
+                    screen.queryByText(COURSES[i].id + " : " + COURSES[i].name)
+                ).toBeInTheDocument();
+            }
+            j = j + NUM_COURSES_DISPLAYED;
+            nextButton.click();
+        }
     });
 });
