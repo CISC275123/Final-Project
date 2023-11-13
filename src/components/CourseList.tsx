@@ -1,3 +1,4 @@
+/* eslint-disable no-extra-parens */
 import React, { useState } from "react";
 import { Course } from "../interfaces/course";
 import { CourseCard } from "./CourseCard";
@@ -50,6 +51,7 @@ export const CourseList = ({
                             editCourse={editCourse}
                             resetView={resetCourseView}
                             default_courses={default_courses}
+                            handleClick={handleCourseView}
                         ></CourseView>
                     );
                 } else {

@@ -4,4 +4,5 @@ export interface Year {
     name: string;
     /*type: YearType;*/
     semesters: Semester[];
+    id: number;
 }

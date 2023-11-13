@@ -8,22 +8,21 @@ export const CourseEdit = ({
     course,
     editCourse,
     switchEdit,
-    resetView,
     default_courses
 }: {
     course: Course;
     editCourse: (courseID: string, newCourse: Course) => void;
     switchEdit: () => void;
-    resetView: () => void;
     default_courses: Course[];
 }) => {
-    const [newCourse, setNewCourse] = useState<Course>(course);
     const [newName, setName] = useState<string>(course.name);
     const [newCredits, setCredits] = useState<number>(course.credits);
     const [newDesc, setDesc] = useState<string>(course.description);
 
     const cId = course.id.replace(/\s/g, "");
 
+    // Saves the changes step-by-step by creating new courses, each course containing the desired change.
+    // TO DO : Reduce code so that it accomplishes this without creating multiple new instances of a course.
     const saveChanges = () => {
         const newCourseName: Course = {
             ...course,

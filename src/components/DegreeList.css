@@ -1,0 +1,16 @@
+.degree_list {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: left;
+}
+
+.degree_buttons {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    padding: 0rem 20rem 0rem 20rem;
+    text-align: center;
+    align-content: center;
+}

@@ -1,22 +1,28 @@
-import React, { FC, useState, useEffect } from "react";
-import { Button, Form } from "react-bootstrap";
-import { Course } from "../../interfaces/course";
-import sample from "../../data/courses.json";
-import "./SemesterList.css";
-import { SemesterCard } from "./SemesterCard";
+/* eslint-disable no-extra-parens */
+import React, { useState } from "react";
+import { Button } from "react-bootstrap";
+import "./Semester/SemesterList.css";
+import { Semester } from "../interfaces/semester";
 import { SemesterView } from "./SemesterView";
-import { Semester } from "../../interfaces/semester";
+import { SemesterCard } from "./SemesterCard";
+import { Degree } from "../interfaces/degree";
+import { Year } from "../interfaces/year";
 
-export interface SemesterInterfaceProps {
+export const SemesterList = ({
+    semesterList,
+    setSemesterList,
+    degree,
+    year
+}: {
     semesterList: Semester[];
-    setSemesterList: (list: Semester[]) => void;
-    setIsSemesterCard: (isCard: boolean) => void;
-    idCounter: number;
-    setIdCounter: (num: number) => void;
-}
-
-export const SemesterList = ({ courses }: { courses: Course[] }) => {
-    const [semesterList, setSemesterList] = useState<Semester[]>([]);
+    setSemesterList: (
+        semesterList: Semester[],
+        degree: Degree,
+        year: Year
+    ) => void;
+    degree: Degree;
+    year: Year;
+}) => {
     const [isMakeSemesterCard, setIsMakeSemesterCard] =
         useState<boolean>(false);
     const [displayId, setDisplayId] = useState<null | number>(null);
@@ -30,16 +36,6 @@ export const SemesterList = ({ courses }: { courses: Course[] }) => {
         setDisplayId(null);
     };
 
-    // useEffect(() => {
-    //     const newSemester: SemesterStructure = {
-    //         semesterTitle: semesterTitle,
-    //         maxCredits: maxCredits,
-    //         currentCredits: 0
-    //     };
-    //     const newSemesterList = [...semesterList, newSemester];
-    //     setSemesterList(newSemesterList);
-    // }, [semesterTitle, maxCredits]);
-
     function showMakeSemesterCard() {
         setIsMakeSemesterCard(!isMakeSemesterCard);
     }
@@ -52,7 +48,7 @@ export const SemesterList = ({ courses }: { courses: Course[] }) => {
         const newSemesterList = semesterList.filter(
             (sem: Semester): boolean => inputID !== sem.id
         );
-        setSemesterList(newSemesterList);
+        setSemesterList(newSemesterList, degree, year);
         console.log("Delete");
     }
 
@@ -103,7 +99,6 @@ export const SemesterList = ({ courses }: { courses: Course[] }) => {
                                 <div className="popup-container">
                                     <div className="popup">
                                         <SemesterView
-                                            courses={courses}
                                             semester={semester}
                                             resetView={resetCourseView}
                                         ></SemesterView>
@@ -126,6 +121,8 @@ export const SemesterList = ({ courses }: { courses: Course[] }) => {
                             setIsSemesterCard={setIsMakeSemesterCard}
                             idCounter={idCounter}
                             setIdCounter={setIdCounter}
+                            degree={degree}
+                            year={year}
                         ></SemesterCard>
                         <button onClick={hideMakeSemesterCard}>Close</button>
                     </div>

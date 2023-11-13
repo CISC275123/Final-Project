@@ -1,9 +1,9 @@
+/* eslint-disable no-extra-parens */
 import "./App.css";
 import React, { useState } from "react";
 import { Course } from "./interfaces/course";
 import { Year } from "./interfaces/year";
 import { Degree } from "./interfaces/degree";
-import { CourseList } from "./components/CourseList";
 import { DegreeList } from "./components/DegreeList";
 
 import logo from "./images/logo.png";
@@ -12,82 +12,56 @@ import sample from "./data/courses.json";
 import { Button } from "react-bootstrap";
 
 import { Semester } from "./interfaces/semester";
-import { SemesterList } from "./components/Semester/SemesterList";
+import { CourseList } from "./components/CourseList";
+import { HomePage } from "./components/HomePage";
 
+// Creates default list of courses pulling from a JSON file.
 const COURSES = sample.map(
     (course): Course => ({
         id: course.id,
         name: course.name,
         credits: course.credits as unknown as number,
-        prerequisites: course.prereqs as unknown as string,
+        prerequisites: course.prereqs as unknown as string[],
         restrictions: course.restrictions as unknown as string,
         description: course.description,
-        corequisites: course.coreqs as unknown as string
+        corequisites: course.coreqs as unknown as string[]
     })
 );
 
-// Testing Degrees with test data
-const SEMESTERS: Semester[] = [
-    {
-        title: "Fall",
-        courseList: COURSES,
-        id: 0,
-        notes: "",
-        maxCredits: 18,
-        currentCredits: 0,
-        courses: []
-    },
-    {
-        title: "Spring",
-        courseList: COURSES,
-        id: 1,
-        notes: "",
-        maxCredits: 18,
-        currentCredits: 0,
-        courses: []
-    },
-    {
-        title: "Winter",
-        courseList: COURSES,
-        id: 2,
-        notes: "",
-        maxCredits: 6,
-        currentCredits: 0,
-        courses: []
-    },
-    {
-        title: "Summer",
-        courseList: COURSES,
-        id: 3,
-        notes: "",
-        maxCredits: 6,
-        currentCredits: 0,
-        courses: []
-    }
-];
-
-const YEARS: Year[] = [
-    { name: "Year 1", semesters: SEMESTERS },
-    { name: "Year 2", semesters: SEMESTERS },
-    { name: "Year 3", semesters: SEMESTERS },
-    { name: "Year 4", semesters: SEMESTERS }
-];
-const DEGREES: Degree[] = [
-    { name: "Degree 1", years: YEARS },
-    { name: "Degree 2", years: YEARS }
-];
+// sets the number of courses to be displayed on a single page.
+const NUM_COURSES_DISPLAYED = 3;
 
 function App(): JSX.Element {
-    const [courses, setCourses] = useState<Course[]>(COURSES);
-    const [display, setDisplay] = useState<boolean>(true);
-    const [currIndex, setIndex] = useState<number>(0);
-    const [isEditing, setEditing] = useState<boolean>(false);
-    const [isDegree, setDegree] = useState<boolean>(false);
-    const [showComponentSemester, setShowComponentSemester] = useState(false);
+    // VARs holding list information on the user's degree plan
+    const [globalCourseList, setGlobalCourseList] = useState<Course[]>(COURSES);
+    const [degreeList, setDegreeList] = useState<Degree[]>([]);
 
+    // VARs used to control display of elements
+    const [courseDisplay, setCourseDisplay] = useState<boolean>(false);
+    const [isEditing, setEditing] = useState<boolean>(true);
+    const [isDegree, setDegree] = useState<boolean>(false);
+    const [isHome, setIsHome] = useState<boolean>(true);
+
+    // IDs used to differentiate instances of objects
+    const [degreeId, setDegreeId] = useState<number>(1);
+    const [yearId, setYearId] = useState<number>(1);
+
+    // Index used to scroll through the display of courses
+    const [currIndex, setIndex] = useState<number>(0);
+
+    // Used to edit a course. Replaces the target course with a modified course.
+    // Works by passing in a target course ID and a new instance of the course.
+    // It then maps, searching for the target ID and replaces if it matches!
+    //
+    // INPUTS:
+    // courseID: string => The string course code with NO SPACES such as 'CISC101'
+    // newCourse: Course => The new course instance containing the changes.
+    //
+    // OUTPUTS:
+    // Modifies the state variable containing the list of courses.
     function editCourse(courseID: string, newCourse: Course) {
-        setCourses(
-            courses.map(
+        setGlobalCourseList(
+            globalCourseList.map(
                 (course: Course): Course =>
                     course.id.replace(/\s/g, "") === courseID
                         ? newCourse
@@ -96,134 +70,266 @@ function App(): JSX.Element {
         );
     }
 
+    // Used to add a new degree plan. Takes user input for the name of the degree plan.
+    //
+    // INPUTS:
+    // name: string => user input, a unique name given by the user so that they can easily remember it.
+    //
+    // OUTPUTS:
+    // Modifies the state variable containing the list of Degrees. Adds the new degree to it.
+    function addDegree(name: string) {
+        const newDegree: Degree = {
+            name: name,
+            years: [],
+            id: degreeId
+        };
+        const newId = degreeId + 1;
+        setDegreeId(newId);
+        setDegreeList([...degreeList, newDegree]);
+    }
+
+    // Used to add a new instance of a Year to a degree. Takes user Input for the name.
+    // Typically we want the name to be "Year [1-4]" or "Freshman", "Sophomore", etc ...
+    //
+    // TO DO : Remove the user input and make it a drop down to select one of the 4 names: ["Freshman", "Sophomore", "Junior", "Senior"]
+    //
+    // INPUTS:
+    // name: string => user input, a unique name given by the user so that they can easily remember it.
+    // degree: Degree => The target degree in which the year should be added.
+    //
+    // OUTPUTS:
+    // Modifies the state variable containing the list of Degrees. Finds the matching degree and replaces it with the new, modified one
+    // containing the added Year.
+    function addYear(name: string, degree: Degree) {
+        const newYear: Year = {
+            name: name,
+            semesters: [],
+            id: yearId
+        };
+
+        const newId = yearId + 1;
+        setYearId(newId);
+
+        const updatedDegree: Degree = {
+            ...degree,
+            years: [...degree.years, newYear]
+        };
+
+        setDegreeList(
+            degreeList.map(
+                (d: Degree): Degree =>
+                    d.id === updatedDegree.id ? updatedDegree : d
+            )
+        );
+    }
+
+    // Used to delete a year from a Degree plan
+    //
+    // INPUTS:
+    // targetYear: Year => the target year to delete.
+    // targetDegree: Degree => The target degree in which the year should be removed.
+    //
+    // OUTPUTS:
+    // Creates a new list of yeuars containing everything except the target year using filter.
+    // Creates a new degree instance with the new list of years.
+    // Replaces the target degree in the current list of degrees with the updated one.
+    function deleteYear(targetYear: Year, targetDegree: Degree) {
+        const newYearList: Year[] = targetDegree.years.filter(
+            (year: Year): boolean => year.id !== targetYear.id
+        );
+
+        const newDegree: Degree = { ...targetDegree, years: newYearList };
+
+        setDegreeList(
+            degreeList.map(
+                (degree: Degree): Degree =>
+                    degree.id === targetDegree.id ? newDegree : degree
+            )
+        );
+    }
+
+    // Used to add/remove semesters from a Year under Degrees.
+    //
+    // INPUTS:
+    // newSemesterList: Semester[] => the new list of semesters containing the desired updates.
+    // targetDegree: Degree => The target degree in which to update the Years.
+    // targetYear: Year => the target Year in which to update the semesters.
+    //
+    // OUTPUTS:
+    // Finds the correct Year and Degree before modifying the Degree list. Finds the correct degree ID and replaces
+    // the old version with the new, updated Degree.
+    function updateSemesterList(
+        newSemesterList: Semester[],
+        targetDegree: Degree,
+        targetYear: Year
+    ) {
+        const newYear: Year = {
+            ...targetYear,
+            semesters: newSemesterList
+        };
+
+        const newYearList: Year[] = targetDegree.years.map(
+            (y: Year): Year => (y.id === targetYear.id ? newYear : y)
+        );
+
+        const newDegree: Degree = {
+            ...targetDegree,
+            years: newYearList
+        };
+
+        setDegreeList(
+            degreeList.map(
+                (d: Degree): Degree =>
+                    d.id === targetDegree.id ? newDegree : d
+            )
+        );
+    }
+
+    // Used to remove degree plans.
+    //
+    // INPUTS:
+    // id: number => the id of the degree to remove.
+    //
+    // OUTPUTS:
+    // Removes the correct ID from the list of degrees and updates the state variable containing the list of degrees.
+    function removeDegree(id: number) {
+        const newDegrees: Degree[] = degreeList.filter(
+            (degree: Degree): boolean => degree.id !== id
+        );
+        setDegreeList(newDegrees);
+    }
+
+    // Used to display/hide the relevant buttons when editing a course. Takes in a boolean to set the value of isEditing to.
     function switchEditing(edit: boolean) {
         setEditing(edit);
     }
 
-    const NUM_COURSES_DISPLAYED = 3;
-
-    const handleClickSemester = () => {
-        setShowComponentSemester(!showComponentSemester);
-    };
-
     return (
-        <div className="App">
-            <body>
-                <header className="App-header">
-                    <nav>
-                        <a className="logo" href="index.html">
-                            <img src={logo} alt="Homepage logo"></img>
-                        </a>
-                        <p className="title">
-                            CISC275 - Introduction to Software Engineering
-                        </p>
-                        <ul className="nav_links">
-                            <li>
-                                <a href="#Home">Home</a>
-                            </li>
-                            <li>
-                                <Button
-                                    onClick={() => {
-                                        setDegree(false);
-                                        setShowComponentSemester(false);
-                                        setDisplay(!display);
-                                        setEditing(!isEditing);
-                                    }}
-                                >
-                                    Courses
-                                </Button>
-                            </li>
-                            <li>
-                                <Button
-                                    onClick={() => {
-                                        handleClickSemester();
-                                        switchEditing(true);
-                                        // Disables display for Degrees and Courses
-                                        setDegree(false);
-                                        setDisplay(false);
-                                    }}
-                                >
-                                    Semesters
-                                </Button>
-                            </li>
-                            <li>
-                                <Button
-                                    onClick={() => {
-                                        switchEditing(true);
-                                        setDegree(!isDegree);
-                                        setDisplay(false);
-                                        setShowComponentSemester(false);
-                                    }}
-                                >
-                                    Degrees
-                                </Button>
-                            </li>
-                        </ul>
-                    </nav>
-                </header>
-                <div>
-                    {" "}
-                    {showComponentSemester && (
-                        <SemesterList courses={courses}></SemesterList>
-                    )}
-                </div>
-
-                <div className="CourseButtons">
-                    <Button
-                        onClick={() =>
-                            currIndex > 0
-                                ? setIndex(currIndex - NUM_COURSES_DISPLAYED)
-                                : setIndex(currIndex)
-                        }
-                        hidden={isEditing}
+        <body className="App">
+            {/* Header containing navbar and site header information  */}
+            <header className="App-header">
+                <nav>
+                    <a
+                        className="logo"
+                        onClick={() => {
+                            switchEditing(true);
+                            setDegree(false);
+                            setCourseDisplay(false);
+                            setIsHome(true);
+                        }}
                     >
-                        Back
-                    </Button>
-                    <Button
-                        onClick={() => setDisplay(!display)}
-                        hidden={isEditing}
-                    >
-                        Show Courses
-                    </Button>
-                    <Button
-                        onClick={() =>
-                            currIndex < courses.length - NUM_COURSES_DISPLAYED
-                                ? setIndex(currIndex + NUM_COURSES_DISPLAYED)
-                                : setIndex(currIndex)
-                        }
-                        hidden={isEditing}
-                    >
-                        Next
-                    </Button>
-                </div>
-
-                {/* The beginning of the list of courses in the html  */}
-                <div className="CourseList">
-                    {display && (
-                        <CourseList
-                            courses={courses.slice(
-                                currIndex,
-                                currIndex + NUM_COURSES_DISPLAYED
-                            )}
-                            editCourse={editCourse}
-                            switchEditing={switchEditing}
-                            default_courses={COURSES}
-                        ></CourseList>
-                    )}
-                </div>
-
-                <div className="DegreeList">
-                    {isDegree && <DegreeList degrees={DEGREES}></DegreeList>}
-                </div>
-
-                <footer>
-                    <p>
-                        Created and Maintained by: Leon Giang, Jason Chan, Sibyl
-                        Roosen, Abdullah Maruf, Taylor Kadans
+                        <img src={logo} alt="Homepage logo"></img>
+                    </a>
+                    <p className="title">
+                        CISC275 - Introduction to Software Engineering
                     </p>
-                </footer>
-            </body>
-        </div>
+                    <ul className="nav_links">
+                        <li>
+                            <Button
+                                onClick={() => {
+                                    switchEditing(true);
+                                    setDegree(false);
+                                    setCourseDisplay(false);
+                                    setIsHome(true);
+                                }}
+                            >
+                                Home
+                            </Button>
+                        </li>
+                        <li>
+                            <Button
+                                onClick={() => {
+                                    setDegree(false);
+                                    setCourseDisplay(!courseDisplay);
+                                    setEditing(false);
+                                    setIsHome(false);
+                                }}
+                            >
+                                Courses
+                            </Button>
+                        </li>
+                        <li>
+                            <Button
+                                onClick={() => {
+                                    switchEditing(true);
+                                    setDegree(!isDegree);
+                                    setCourseDisplay(false);
+                                    setIsHome(false);
+                                }}
+                            >
+                                Degrees
+                            </Button>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+
+            {/* The default home page  */}
+            <div className="HomePage">{isHome && <HomePage></HomePage>}</div>
+
+            {/* Following are a part of the "COURSES" functionality  */}
+            <div hidden={!courseDisplay || isEditing} className="CourseButtons">
+                <Button
+                    onClick={() =>
+                        currIndex > 0
+                            ? setIndex(currIndex - NUM_COURSES_DISPLAYED)
+                            : setIndex(currIndex)
+                    }
+                    hidden={isEditing || currIndex <= 0}
+                >
+                    Back
+                </Button>
+                <Button
+                    onClick={() =>
+                        currIndex <
+                        globalCourseList.length - NUM_COURSES_DISPLAYED
+                            ? setIndex(currIndex + NUM_COURSES_DISPLAYED)
+                            : setIndex(currIndex)
+                    }
+                    hidden={
+                        isEditing ||
+                        currIndex >=
+                            globalCourseList.length - NUM_COURSES_DISPLAYED
+                    }
+                >
+                    Next
+                </Button>
+            </div>
+            <div hidden={!courseDisplay} className="CourseList">
+                {courseDisplay && (
+                    <CourseList
+                        courses={globalCourseList.slice(
+                            currIndex,
+                            currIndex + NUM_COURSES_DISPLAYED
+                        )}
+                        editCourse={editCourse}
+                        switchEditing={switchEditing}
+                        default_courses={COURSES}
+                    ></CourseList>
+                )}
+            </div>
+
+            {/* Following sets up the Degree Plan functionality  */}
+            <div hidden={!isDegree} className="DegreeList">
+                {isDegree && (
+                    <DegreeList
+                        degrees={degreeList}
+                        addDegree={addDegree}
+                        removeDegree={removeDegree}
+                        addYear={addYear}
+                        deleteYear={deleteYear}
+                        updateSemesterList={updateSemesterList}
+                    ></DegreeList>
+                )}
+            </div>
+
+            <footer>
+                <p>
+                    Created and Maintained by: Leon Giang, Jason Chan, Sibyl
+                    Roosen, Abdullah Maruf, Taylor Kadans
+                </p>
+            </footer>
+        </body>
     );
 }
 

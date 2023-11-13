@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Semester } from "../../interfaces/semester";
+/* eslint-disable no-extra-parens */
+import React from "react";
 import { Course } from "../../interfaces/course";
 import { Button } from "react-bootstrap";
 
@@ -18,7 +18,7 @@ export const SemesterAddCourse = ({
     }
     return (
         <div>
-            Available Semester Courses
+            <h2>Available Semester Courses</h2>
             <div>
                 {courses.map((course: Course) => (
                     <div key={course.name}>
@@ -32,10 +32,12 @@ export const SemesterAddCourse = ({
                     </div>
                 ))}
             </div>
-            Courses in Queue:
+            <h2>Courses in Queue:</h2>
             <div>
                 {addedCourses.map((c: Course) => (
-                    <div key={c.id}>{c.id}</div>
+                    <div key={c.id}>
+                        {c.id} ({c.credits} credits)
+                    </div>
                 ))}
             </div>
         </div>
