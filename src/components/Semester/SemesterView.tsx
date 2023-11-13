@@ -52,12 +52,12 @@ export const SemesterView = ({
         saveInfo();
     }
     return (
-        <div>
+        <div className="creditText">
             <h1>
                 {" "}
                 {semester.title} ID: {semester.id}
             </h1>
-            <h3>Maximum Credits Allowed: {semester.maxCredits} credits</h3>
+            <h3> Maximum Credits Allowed: {semester.maxCredits} credits</h3>
             <h3>Current Credits: {credits} credits</h3>
             <h3>Courses: </h3>
             {semester.courses.map((c) => (
@@ -66,10 +66,20 @@ export const SemesterView = ({
                     <Button onClick={() => removeCourse(c.id)}>Remove</Button>
                 </div>
             ))}
-            <Button onClick={displayCourses}>Add Course</Button>
-            <Button onClick={clearCourses}>Clear Courses</Button>
-            <Button onClick={resetView}>Exit</Button>
-            <Button onClick={saveInfo}>Save</Button>
+
+            <Button className="myCustom" onClick={displayCourses}>
+                Add Course
+            </Button>
+            <Button className="myCustom2" onClick={clearCourses}>
+                Clear Courses
+            </Button>
+            <Button className="myCustom3" onClick={resetView}>
+                Exit
+            </Button>
+            <Button className="myCustom4" onClick={saveInfo}>
+                Save
+            </Button>
+
             <h2>{semester.notes}</h2>
             {!isAddCourses && (
                 <Form.Group controlId="formNotes">
@@ -85,6 +95,7 @@ export const SemesterView = ({
             {isAddCourses && (
                 <div className="CourseButtons">
                     <Button
+                        className="backCustom"
                         onClick={() =>
                             currIndex > 0
                                 ? setIndex(currIndex - NUM_COURSES_DISPLAYED)
@@ -94,6 +105,7 @@ export const SemesterView = ({
                         Back
                     </Button>
                     <Button
+                        className="nextCustom"
                         onClick={() =>
                             currIndex < courses.length - NUM_COURSES_DISPLAYED
                                 ? setIndex(currIndex + NUM_COURSES_DISPLAYED)

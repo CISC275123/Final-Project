@@ -23,7 +23,12 @@ export const SemesterAddCourse = ({
                 {courses.map((course: Course) => (
                     <div key={course.name}>
                         {course.id} ({course.credits} Credits){" "}
-                        <Button onClick={() => addCourse(course)}>Add</Button>
+                        <Button
+                            className="Add_custom"
+                            onClick={() => addCourse(course)}
+                        >
+                            Add
+                        </Button>
                     </div>
                 ))}
             </div>
