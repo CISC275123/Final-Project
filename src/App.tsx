@@ -9,11 +9,14 @@ import { DegreeList } from "./components/DegreeList";
 import logo from "./images/logo.png";
 
 import sample from "./data/courses.json";
+import catalog from "./data/catalog.json";
 import { Button } from "react-bootstrap";
 
 import { Semester } from "./interfaces/semester";
 import { CourseList } from "./components/CourseList";
 import { HomePage } from "./components/HomePage";
+import { DepartmentCourses } from "./interfaces/departmentCourses";
+import { CourseObject } from "./interfaces/courseObject";
 
 // Creates default list of courses pulling from a JSON file.
 const COURSES = sample.map(
@@ -27,6 +30,38 @@ const COURSES = sample.map(
         corequisites: course.coreqs as unknown as string[]
     })
 );
+
+interface CourseInfo {
+    code: string;
+    name: string;
+    descr: string;
+    credits: string;
+    preReq: string;
+    restrict: string;
+    breadth: string;
+    typ: string;
+}
+function getDepartmentCourses() {
+    const updateData: { [key: string]: { [courseCode: string]: CourseInfo } } =
+        catalog;
+
+    for (const key in catalog) {
+        const courses = catalog[key];
+        console.log(`Key: ${key}`);
+        for (const courseCode in courses) {
+            const course = courses[courseCode];
+            console.log(`Course Code: ${course.code}`);
+            console.log(`Course Name: ${course.name}`);
+            console.log(`Description: ${course.descr}`);
+            console.log(`Credits: ${course.credits}`);
+            console.log(`Prerequisites: ${course.preReq}`);
+            console.log(`Restrictions: ${course.restrict}`);
+            console.log(`Breadth: ${course.breadth}`);
+            console.log(`Type: ${course.typ}`);
+            console.log("--------------------------------------");
+        }
+    }
+}
 
 // sets the number of courses to be displayed on a single page.
 const NUM_COURSES_DISPLAYED = 3;
@@ -78,6 +113,7 @@ function App(): JSX.Element {
     // OUTPUTS:
     // Modifies the state variable containing the list of Degrees. Adds the new degree to it.
     function addDegree(name: string) {
+        getDepartmentCourses();
         const newDegree: Degree = {
             name: name,
             years: [],
