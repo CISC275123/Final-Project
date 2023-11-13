@@ -156,7 +156,7 @@ describe("Course Tests", () => {
     beforeEach(() => {
         render(<App />);
     });
-    test("Users can see a list of courses, including the course code, and title", () => {
+    test("Users can see a list of courses, including the course code, title, and credits", () => {
         const courseButton = screen.getByText("Courses");
         expect(screen.queryByLabelText("Next")).not.toBeInTheDocument();
         courseButton.click();
@@ -169,6 +169,60 @@ describe("Course Tests", () => {
                 expect(
                     screen.queryByText(COURSES[i].id + " : " + COURSES[i].name)
                 ).toBeInTheDocument();
+                const credits = screen.getAllByText("credit", { exact: false });
+                for (let k = 0; k < credits.length; k++)
+                    expect(credits[k]).toBeInTheDocument();
+            }
+            j = j + NUM_COURSES_DISPLAYED;
+            nextButton.click();
+        }
+    });
+
+    test("Users can click on a course to view its information", () => {
+        const courseButton = screen.getByText("Courses");
+        courseButton.click();
+
+        let j = 0;
+        const nextButton = screen.getByText("Next");
+        while (j < COURSES.length - NUM_COURSES_DISPLAYED) {
+            for (let i = j; i < NUM_COURSES_DISPLAYED; i++) {
+                expect(screen.queryByLabelText("Edit")).not.toBeInTheDocument();
+                expect(screen.queryByLabelText("Exit")).not.toBeInTheDocument();
+                const courseButton = screen.getByText(
+                    COURSES[i].id + " : " + COURSES[i].name
+                );
+                courseButton.click();
+                expect(screen.queryByText("Next")).toBeInTheDocument();
+                expect(screen.queryByText("Exit")).toBeInTheDocument();
+
+                const exitButton = screen.getByText("Exit");
+                exitButton.click();
+            }
+            j = j + NUM_COURSES_DISPLAYED;
+            nextButton.click();
+        }
+    });
+
+    test("Users can edit a course", () => {
+        const courseButton = screen.getByText("Courses");
+        courseButton.click();
+
+        let j = 0;
+        const nextButton = screen.getByText("Next");
+        while (j < COURSES.length - NUM_COURSES_DISPLAYED) {
+            for (let i = j; i < NUM_COURSES_DISPLAYED; i++) {
+                const courseButton = screen.getByText(
+                    COURSES[i].id + " : " + COURSES[i].name
+                );
+                courseButton.click();
+
+                expect(screen.queryByLabelText("Save")).not.toBeInTheDocument();
+                const editButton = screen.getByText("Edit");
+                editButton.click();
+                expect(screen.queryByText("Save")).toBeInTheDocument();
+
+                const exitButton = screen.getByText("Exit");
+                exitButton.click();
             }
             j = j + NUM_COURSES_DISPLAYED;
             nextButton.click();
