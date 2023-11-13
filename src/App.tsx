@@ -205,135 +205,131 @@ function App(): JSX.Element {
     }
 
     return (
-        <div className="App">
-            <body>
-                {/* Header containing navbar and site header information  */}
-                <header className="App-header">
-                    <nav>
-                        <a
-                            className="logo"
-                            onClick={() => {
-                                switchEditing(true);
-                                setDegree(false);
-                                setCourseDisplay(false);
-                                setIsHome(true);
-                            }}
-                        >
-                            <img src={logo} alt="Homepage logo"></img>
-                        </a>
-                        <p className="title">
-                            CISC275 - Introduction to Software Engineering
-                        </p>
-                        <ul className="nav_links">
-                            <li>
-                                <Button
-                                    onClick={() => {
-                                        switchEditing(true);
-                                        setDegree(false);
-                                        setCourseDisplay(false);
-                                        setIsHome(true);
-                                    }}
-                                >
-                                    Home
-                                </Button>
-                            </li>
-                            <li>
-                                <Button
-                                    onClick={() => {
-                                        setDegree(false);
-                                        setCourseDisplay(!courseDisplay);
-                                        setEditing(false);
-                                        setIsHome(false);
-                                    }}
-                                >
-                                    Courses
-                                </Button>
-                            </li>
-                            <li>
-                                <Button
-                                    onClick={() => {
-                                        switchEditing(true);
-                                        setDegree(!isDegree);
-                                        setCourseDisplay(false);
-                                        setIsHome(false);
-                                    }}
-                                >
-                                    Degrees
-                                </Button>
-                            </li>
-                        </ul>
-                    </nav>
-                </header>
-
-                {/* The default home page  */}
-                <div className="HomePage">
-                    {isHome && <HomePage></HomePage>}
-                </div>
-
-                {/* Following are a part of the "COURSES" functionality  */}
-                <div hidden={!courseDisplay} className="CourseButtons">
-                    <Button
-                        onClick={() =>
-                            currIndex > 0
-                                ? setIndex(currIndex - NUM_COURSES_DISPLAYED)
-                                : setIndex(currIndex)
-                        }
-                        hidden={isEditing || currIndex <= 0}
+        <body className="App">
+            {/* Header containing navbar and site header information  */}
+            <header className="App-header">
+                <nav>
+                    <a
+                        className="logo"
+                        onClick={() => {
+                            switchEditing(true);
+                            setDegree(false);
+                            setCourseDisplay(false);
+                            setIsHome(true);
+                        }}
                     >
-                        Back
-                    </Button>
-                    <Button
-                        onClick={() =>
-                            currIndex <
-                            globalCourseList.length - NUM_COURSES_DISPLAYED
-                                ? setIndex(currIndex + NUM_COURSES_DISPLAYED)
-                                : setIndex(currIndex)
-                        }
-                        hidden={
-                            isEditing ||
-                            currIndex >=
-                                globalCourseList.length - NUM_COURSES_DISPLAYED
-                        }
-                    >
-                        Next
-                    </Button>
-                </div>
-                <div hidden={!courseDisplay} className="CourseList">
-                    {courseDisplay && (
-                        <CourseList
-                            courses={globalCourseList.slice(
-                                currIndex,
-                                currIndex + NUM_COURSES_DISPLAYED
-                            )}
-                            editCourse={editCourse}
-                            switchEditing={switchEditing}
-                            default_courses={COURSES}
-                        ></CourseList>
-                    )}
-                </div>
-
-                {/* Following sets up the Degree Plan functionality  */}
-                <div hidden={!isDegree} className="DegreeList">
-                    {isDegree && (
-                        <DegreeList
-                            degrees={degreeList}
-                            addDegree={addDegree}
-                            removeDegree={removeDegree}
-                            addYear={addYear}
-                            deleteYear={deleteYear}
-                            updateSemesterList={updateSemesterList}
-                        ></DegreeList>
-                    )}
-                </div>
-
-                <footer>
-                    <p>
-                        Created and Maintained by: Leon Giang, Jason Chan, Sibyl
-                        Roosen, Abdullah Maruf, Taylor Kadans
+                        <img src={logo} alt="Homepage logo"></img>
+                    </a>
+                    <p className="title">
+                        CISC275 - Introduction to Software Engineering
                     </p>
-                </footer>
-            </body>
-        </div>
+                    <ul className="nav_links">
+                        <li>
+                            <Button
+                                onClick={() => {
+                                    switchEditing(true);
+                                    setDegree(false);
+                                    setCourseDisplay(false);
+                                    setIsHome(true);
+                                }}
+                            >
+                                Home
+                            </Button>
+                        </li>
+                        <li>
+                            <Button
+                                onClick={() => {
+                                    setDegree(false);
+                                    setCourseDisplay(!courseDisplay);
+                                    setEditing(false);
+                                    setIsHome(false);
+                                }}
+                            >
+                                Courses
+                            </Button>
+                        </li>
+                        <li>
+                            <Button
+                                onClick={() => {
+                                    switchEditing(true);
+                                    setDegree(!isDegree);
+                                    setCourseDisplay(false);
+                                    setIsHome(false);
+                                }}
+                            >
+                                Degrees
+                            </Button>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+
+            {/* The default home page  */}
+            <div className="HomePage">{isHome && <HomePage></HomePage>}</div>
+
+            {/* Following are a part of the "COURSES" functionality  */}
+            <div hidden={!courseDisplay || isEditing} className="CourseButtons">
+                <Button
+                    onClick={() =>
+                        currIndex > 0
+                            ? setIndex(currIndex - NUM_COURSES_DISPLAYED)
+                            : setIndex(currIndex)
+                    }
+                    hidden={isEditing || currIndex <= 0}
+                >
+                    Back
+                </Button>
+                <Button
+                    onClick={() =>
+                        currIndex <
+                        globalCourseList.length - NUM_COURSES_DISPLAYED
+                            ? setIndex(currIndex + NUM_COURSES_DISPLAYED)
+                            : setIndex(currIndex)
+                    }
+                    hidden={
+                        isEditing ||
+                        currIndex >=
+                            globalCourseList.length - NUM_COURSES_DISPLAYED
+                    }
+                >
+                    Next
+                </Button>
+            </div>
+            <div hidden={!courseDisplay} className="CourseList">
+                {courseDisplay && (
+                    <CourseList
+                        courses={globalCourseList.slice(
+                            currIndex,
+                            currIndex + NUM_COURSES_DISPLAYED
+                        )}
+                        editCourse={editCourse}
+                        switchEditing={switchEditing}
+                        default_courses={COURSES}
+                    ></CourseList>
+                )}
+            </div>
+
+            {/* Following sets up the Degree Plan functionality  */}
+            <div hidden={!isDegree} className="DegreeList">
+                {isDegree && (
+                    <DegreeList
+                        degrees={degreeList}
+                        addDegree={addDegree}
+                        removeDegree={removeDegree}
+                        addYear={addYear}
+                        deleteYear={deleteYear}
+                        updateSemesterList={updateSemesterList}
+                    ></DegreeList>
+                )}
+            </div>
+
+            <footer>
+                <p>
+                    Created and Maintained by: Leon Giang, Jason Chan, Sibyl
+                    Roosen, Abdullah Maruf, Taylor Kadans
+                </p>
+            </footer>
+        </body>
     );
 }
 
