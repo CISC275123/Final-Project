@@ -16,10 +16,10 @@ export const CourseEdit = ({
     default_courses: Course[];
 }) => {
     const [newName, setName] = useState<string>(course.name);
-    const [newCredits, setCredits] = useState<number>(course.credits);
-    const [newDesc, setDesc] = useState<string>(course.description);
+    const [newCredits, setCredits] = useState<string>(course.credits);
+    const [newDesc, setDesc] = useState<string>(course.descr);
 
-    const cId = course.id.replace(/\s/g, "");
+    const cId = course.code.replace(/\s/g, "");
 
     // Saves the changes step-by-step by creating new courses, each course containing the desired change.
     // TO DO : Reduce code so that it accomplishes this without creating multiple new instances of a course.
@@ -36,7 +36,7 @@ export const CourseEdit = ({
 
         const newCourseDesc: Course = {
             ...newCourseCredits,
-            description: newDesc
+            descr: newDesc
         };
 
         const newCourse: Course = {
@@ -48,7 +48,7 @@ export const CourseEdit = ({
 
     const resetDefault = () => {
         const defaultCourse = default_courses.filter(
-            (course: Course): boolean => course.id.replace(/\s/g, "") === cId
+            (course: Course): boolean => course.code.replace(/\s/g, "") === cId
         )[0];
 
         editCourse(cId, defaultCourse);
@@ -79,7 +79,10 @@ export const CourseEdit = ({
                         <div className="edit_credits_row">
                             <div className="edit_credits_box">
                                 <h4>
-                                    Credit{course.credits !== 1 ? "s:" : ":"}
+                                    Credit
+                                    {(course.credits as unknown as number) !== 1
+                                        ? "s:"
+                                        : ":"}
                                 </h4>
                                 <Form.Group
                                     className="credits_input"
@@ -89,7 +92,7 @@ export const CourseEdit = ({
                                         value={newCredits}
                                         type="string"
                                         onChange={(e) =>
-                                            setCredits(parseInt(e.target.value))
+                                            setCredits(e.target.value)
                                         }
                                     ></Form.Control>
                                 </Form.Group>

@@ -1,22 +1,9 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
-import sample from "../data/courses.json";
 import { Semester } from "../interfaces/semester";
 import { Course } from "../interfaces/course";
 import { Degree } from "../interfaces/degree";
 import { Year } from "../interfaces/year";
-
-const COURSES = sample.map(
-    (course): Course => ({
-        id: course.id,
-        name: course.name,
-        credits: course.credits as unknown as number,
-        prerequisites: [course.prereqs as unknown as string],
-        restrictions: course.restrictions as unknown as string,
-        description: course.description,
-        corequisites: [course.coreqs as unknown as string]
-    })
-);
 
 export const SemesterCard = ({
     semesterList,
@@ -25,7 +12,8 @@ export const SemesterCard = ({
     idCounter,
     setIdCounter,
     degree,
-    year
+    year,
+    defaultCourses
 }: {
     semesterList: Semester[];
     setSemesterList: (
@@ -38,6 +26,7 @@ export const SemesterCard = ({
     setIdCounter: (id: number) => void;
     degree: Degree;
     year: Year;
+    defaultCourses: Course[];
 }) => {
     const [maxCredits, setMaxCredits] = useState<number>(18);
     const [season, setSeason] = useState<string>("Fall");
@@ -66,7 +55,7 @@ export const SemesterCard = ({
             notes: "",
             maxCredits: maxCredits,
             currentCredits: 0, //variable will eventually have to be a state, so dynamic change for currentCredits
-            courseList: COURSES,
+            courseList: defaultCourses,
             courses: []
         };
         const newSemesterList = [...semesterList, newSemester];

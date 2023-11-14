@@ -27,11 +27,14 @@ export const SemesterView = ({
     function saveInfo() {
         semester.notes = semester.notes + description;
         for (const x of addedCourses) {
-            if (semester.currentCredits + x.credits <= semester.maxCredits) {
+            if (
+                ((semester.currentCredits + x.credits) as unknown as number) <=
+                semester.maxCredits
+            ) {
                 if (!semester.courses.includes(x)) {
                     semester.courses.push(x);
-                    semester.currentCredits =
-                        semester.currentCredits + x.credits;
+                    semester.currentCredits = (semester.currentCredits +
+                        x.credits) as unknown as number;
                 }
             }
         }
@@ -43,7 +46,7 @@ export const SemesterView = ({
         semester.currentCredits = 0;
     }
     function removeCourse(id: string, creds: number) {
-        semester.courses = semester.courses.filter((c: Course) => c.id != id);
+        semester.courses = semester.courses.filter((c: Course) => c.code != id);
         semester.currentCredits = semester.currentCredits - creds;
         saveInfo();
     }
@@ -57,9 +60,13 @@ export const SemesterView = ({
             <h3>Current Credits: {semester.currentCredits} credits</h3>
             <h3>Courses: </h3>
             {semester.courses.map((c) => (
-                <div key={c.id}>
-                    {c.id}{" "}
-                    <Button onClick={() => removeCourse(c.id, c.credits)}>
+                <div key={c.code}>
+                    {c.code}{" "}
+                    <Button
+                        onClick={() =>
+                            removeCourse(c.code, c.credits as unknown as number)
+                        }
+                    >
                         Remove
                     </Button>
                 </div>

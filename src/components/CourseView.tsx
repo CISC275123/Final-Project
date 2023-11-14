@@ -6,19 +6,6 @@ import { Button } from "react-bootstrap";
 import { CourseCard } from "./CourseCard";
 
 import "./CourseView.css";
-import sample from "../data/courses.json";
-
-const COURSES = sample.map(
-    (course): Course => ({
-        id: course.id,
-        name: course.name,
-        credits: course.credits as unknown as number,
-        prerequisites: course.prereqs as unknown as string[],
-        restrictions: course.restrictions as unknown as string,
-        description: course.description,
-        corequisites: course.coreqs as unknown as string[]
-    })
-);
 
 export const CourseView = ({
     course,
@@ -39,176 +26,177 @@ export const CourseView = ({
         setEdit(!edit);
     };
 
-    function findMatching(courses: string[]): Course[] {
-        const checking = courses.filter((c: string): boolean =>
-            c.includes("||")
-        );
+    // function findMatching(courses: string[]): Course[] {
+    //     const checking = courses.filter((c: string): boolean =>
+    //         c.includes("||")
+    //     );
 
-        if (checking.length > 0) {
-            const newCourses = courses.map((c: string) =>
-                c.includes("||") ? c.split("||") : c
-            );
+    //     if (checking.length > 0) {
+    //         const newCourses = courses.map((c: string) =>
+    //             c.includes("||") ? c.split("||") : c
+    //         );
 
-            const unpackedCourses = newCourses.flat();
+    //         const unpackedCourses = newCourses.flat();
 
-            // Finds the course object that matches all of the listed prerequisites.
-            const matching = COURSES.filter(
-                (course: Course): boolean =>
-                    unpackedCourses.filter((c: string): boolean =>
-                        c.includes(course.id.replace(/\s/g, ""))
-                    ).length > 0
-            );
+    //         // Finds the course object that matches all of the listed prerequisites.
+    //         const matching = default_courses.filter(
+    //             (course: Course): boolean =>
+    //                 unpackedCourses.filter((c: string): boolean =>
+    //                     c.includes(course.code.replace(/\s/g, ""))
+    //                 ).length > 0
+    //         );
 
-            return matching;
-        } else {
-            const matching = COURSES.filter(
-                (course: Course): boolean =>
-                    courses.filter((c: string): boolean =>
-                        c.includes(course.id.replace(/\s/g, ""))
-                    ).length > 0
-            );
-            return matching;
-        }
-    }
+    //         return matching;
+    //     } else {
+    //         const matching = default_courses.filter(
+    //             (course: Course): boolean =>
+    //                 courses.filter((c: string): boolean =>
+    //                     c.includes(course.code.replace(/\s/g, ""))
+    //                 ).length > 0
+    //         );
+    //         return matching;
+    //     }
+    // }
 
-    function findUnknown(courses: string[]): string[] {
-        const checking = courses.filter((c: string): boolean =>
-            c.includes("||")
-        );
+    // function findUnknown(courses: string[]): string[] {
+    //     const checking = courses.filter((c: string): boolean =>
+    //         c.includes("||")
+    //     );
 
-        if (checking.length > 0) {
-            const newCourses = courses.map((c: string) =>
-                c.includes("||") ? c.split("||") : ""
-            );
+    //     if (checking.length > 0) {
+    //         const newCourses = courses.map((c: string) =>
+    //             c.includes("||") ? c.split("||") : ""
+    //         );
 
-            const unpackedCourses = newCourses.flat();
+    //         const unpackedCourses = newCourses.flat();
 
-            const unknownCourses = unpackedCourses.filter(
-                (c: string): boolean =>
-                    COURSES.filter((course: Course): boolean =>
-                        c.includes(course.id.replace(/\s/g, ""))
-                    ).length <= 0
-            );
+    //         const unknownCourses = unpackedCourses.filter(
+    //             (c: string): boolean =>
+    //                 default_courses.filter((course: Course): boolean =>
+    //                     c.includes(course.code.replace(/\s/g, ""))
+    //                 ).length <= 0
+    //         );
 
-            // // Finds the course object that matches all of the listed prerequisites.
-            // const unknownCourses = COURSES.filter(
-            //     (course: Course): boolean =>
-            //         unpackedCourses.filter(
-            //             (c: string | null): boolean =>
-            //                 c !== null &&
-            //                 c.includes(course.id.replace(/\s/g, ""))
-            //         ).length < 0
-            // );
+    //         // // Finds the course object that matches all of the listed prerequisites.
+    //         // const unknownCourses = COURSES.filter(
+    //         //     (course: Course): boolean =>
+    //         //         unpackedCourses.filter(
+    //         //             (c: string | null): boolean =>
+    //         //                 c !== null &&
+    //         //                 c.includes(course.code.replace(/\s/g, ""))
+    //         //         ).length < 0
+    //         // );
 
-            return unknownCourses;
-        } else {
-            const unknownCourses = courses.filter(
-                (c: string): boolean =>
-                    COURSES.filter((course: Course): boolean =>
-                        c.includes(course.id.replace(/\s/g, ""))
-                    ).length <= 0
-            );
-            return unknownCourses;
-        }
+    //         return unknownCourses;
+    //     } else {
+    //         const unknownCourses = courses.filter(
+    //             (c: string): boolean =>
+    //                 default_courses.filter((course: Course): boolean =>
+    //                     c.includes(course.code.replace(/\s/g, ""))
+    //                 ).length <= 0
+    //         );
+    //         return unknownCourses;
+    //     }
 
-        // const unknownCourses: string[] = removeOR.filter(
-        //     (c: string): boolean =>
-        //         COURSES.filter(
-        //             (course: Course): boolean =>
-        //                 course.id.replace(/\s/g, "") === c
-        //         ).length === 0
-        // );
-    }
+    //     // const unknownCourses: string[] = removeOR.filter(
+    //     //     (c: string): boolean =>
+    //     //         COURSES.filter(
+    //     //             (course: Course): boolean =>
+    //     //                 course.code.replace(/\s/g, "") === c
+    //     //         ).length === 0
+    //     // );
+    // }
 
-    function showRequirements(preq_courses: string[]): ReactNode | string {
-        const reqs: Course[] = findMatching(preq_courses);
-        // const coreqs: Course[] = findMatching(coreq_courses);
+    // function showRequirements(preq_courses: string[]): ReactNode | string {
+    //     const reqs: Course[] = findMatching(preq_courses);
+    //     // const coreqs: Course[] = findMatching(coreq_courses);
 
-        const unknownReqs: string[] = findUnknown(preq_courses);
-        // const unknownCoreqs: string[] = findUnknown(coreq_courses);
+    //     const unknownReqs: string[] = findUnknown(preq_courses);
+    //     // const unknownCoreqs: string[] = findUnknown(coreq_courses);
 
-        // Finds the course objects that are listed as XXX OR XXX as a requirement.
-        const checking = preq_courses.filter((c: string): boolean =>
-            c.includes("||")
-        );
-        const orCourses = reqs.filter(
-            (course: Course): boolean =>
-                checking.filter((c: string): boolean =>
-                    c.includes(course.id.replace(/\s/g, ""))
-                ).length > 0
-        );
+    //     // Finds the course objects that are listed as XXX OR XXX as a requirement.
+    //     const checking = preq_courses.filter((c: string): boolean =>
+    //         c.includes("||")
+    //     );
+    //     const orCourses = reqs.filter(
+    //         (course: Course): boolean =>
+    //             checking.filter((c: string): boolean =>
+    //                 c.includes(course.code.replace(/\s/g, ""))
+    //             ).length > 0
+    //     );
 
-        if (orCourses.length > 0) {
-            // Finds the non-OR classes
-            const newMatching = reqs.filter(
-                (course: Course): boolean =>
-                    orCourses.filter(
-                        (course2: Course): boolean => course.id === course2.id
-                    ).length <= 0
-            );
-            return (
-                <div>
-                    <h2>
-                        {unknownReqs.map((c: string, index) => (
-                            <div key={index}>{c}</div>
-                        ))}
-                    </h2>
-                    <h3 className="orReqs_card">
-                        {orCourses.map((course: Course, index) => (
-                            <div key={course.id} onClick={resetView}>
-                                <CourseCard
-                                    key={course.id}
-                                    course={course}
-                                    handleClick={handleClick}
-                                ></CourseCard>
-                                {index < orCourses.length - 1 && <p>OR</p>}
-                            </div>
-                        ))}
-                    </h3>
-                    <h3 className="reqs_card">
-                        {newMatching.map((course: Course, index) => (
-                            <div key={index} onClick={resetView}>
-                                <CourseCard
-                                    key={course.id}
-                                    course={course}
-                                    handleClick={handleClick}
-                                ></CourseCard>
-                            </div>
-                        ))}
-                    </h3>
-                </div>
-            );
-        }
+    //     if (orCourses.length > 0) {
+    //         // Finds the non-OR classes
+    //         const newMatching = reqs.filter(
+    //             (course: Course): boolean =>
+    //                 orCourses.filter(
+    //                     (course2: Course): boolean =>
+    //                         course.code === course2.code
+    //                 ).length <= 0
+    //         );
+    //         return (
+    //             <div>
+    //                 <h2>
+    //                     {unknownReqs.map((c: string, index) => (
+    //                         <div key={index}>{c}</div>
+    //                     ))}
+    //                 </h2>
+    //                 <h3 className="orReqs_card">
+    //                     {orCourses.map((course: Course, index) => (
+    //                         <div key={course.code} onClick={resetView}>
+    //                             <CourseCard
+    //                                 key={course.code}
+    //                                 course={course}
+    //                                 handleClick={handleClick}
+    //                             ></CourseCard>
+    //                             {index < orCourses.length - 1 && <p>OR</p>}
+    //                         </div>
+    //                     ))}
+    //                 </h3>
+    //                 <h3 className="reqs_card">
+    //                     {newMatching.map((course: Course, index) => (
+    //                         <div key={index} onClick={resetView}>
+    //                             <CourseCard
+    //                                 key={course.code}
+    //                                 course={course}
+    //                                 handleClick={handleClick}
+    //                             ></CourseCard>
+    //                         </div>
+    //                     ))}
+    //                 </h3>
+    //             </div>
+    //         );
+    //     }
 
-        return (
-            <div>
-                <h2>{unknownReqs.map((c: string) => c)}</h2>
-                <h3 className="reqs_card">
-                    {reqs.map((course: Course, index) => (
-                        <div key={index} onClick={resetView}>
-                            <CourseCard
-                                key={course.id}
-                                course={course}
-                                handleClick={handleClick}
-                            ></CourseCard>
-                        </div>
-                    ))}
-                </h3>
-                {/* <h2>{unknownCoreqs.map((course: string) => course + " ")}</h2>
-                {coreqs.length > 0 && (
-                    <h3 className="coreq_card">
-                        {coreqs.map((course: Course) => (
-                            <CourseCard
-                                key={course.id}
-                                course={course}
-                                handleClick={handleClick}
-                            ></CourseCard>
-                        ))}
-                    </h3>
-                )} */}
-            </div>
-        );
-    }
+    //     return (
+    //         <div>
+    //             <h2>{unknownReqs.map((c: string) => c)}</h2>
+    //             <h3 className="reqs_card">
+    //                 {reqs.map((course: Course, index) => (
+    //                     <div key={index} onClick={resetView}>
+    //                         <CourseCard
+    //                             key={course.code}
+    //                             course={course}
+    //                             handleClick={handleClick}
+    //                         ></CourseCard>
+    //                     </div>
+    //                 ))}
+    //             </h3>
+    //             {/* <h2>{unknownCoreqs.map((course: string) => course + " ")}</h2>
+    //             {coreqs.length > 0 && (
+    //                 <h3 className="coreq_card">
+    //                     {coreqs.map((course: Course) => (
+    //                         <CourseCard
+    //                             key={course.code}
+    //                             course={course}
+    //                             handleClick={handleClick}
+    //                         ></CourseCard>
+    //                     ))}
+    //                 </h3>
+    //             )} */}
+    //         </div>
+    //     );
+    // }
 
     return (
         <div className="quiz_card">
@@ -243,31 +231,33 @@ export const CourseView = ({
                 <div className="course_view_card">
                     <div>
                         <h3 className="courseID">
-                            {course.id} : {course.name}
+                            {course.code} : {course.name}
                         </h3>
                         <p>
                             {course.credits} credit
-                            {course.credits !== 1 ? "s" : ""}
+                            {(course.credits as unknown as number) !== 1
+                                ? "s"
+                                : ""}
                         </p>
                     </div>
-                    <p>{course.description}</p>
+                    <p>{course.descr}</p>
 
                     <br />
 
-                    <div className="reqs_list">
+                    {/* <div className="reqs_list">
                         <h2>Prerequisites</h2>
                         <h5 className="reqs">
-                            {course.prerequisites === null
+                            {course.preReq === null
                                 ? "No Requirements"
-                                : showRequirements([...course.prerequisites])}
+                                : showRequirements([...course.preReq])}
                         </h5>
                         <h2>Restrictions</h2>
                         <h5 className="restrictions">
-                            {course.restrictions === null
+                            {course.restrict === null
                                 ? "No Restrictions"
-                                : course.restrictions}
+                                : course.restrict}
                         </h5>
-                    </div>
+                    </div> */}
                 </div>
             )}
         </div>

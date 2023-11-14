@@ -1,21 +1,48 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import App from "./App";
-import sample from "./data/courses.json";
+import catalog from "./data/catalog.json";
 import { Course } from "./interfaces/course";
 
 // Creates default list of courses pulling from a JSON file.
-const COURSES = sample.map(
-    (course): Course => ({
-        id: course.id,
-        name: course.name,
-        credits: course.credits as unknown as number,
-        prerequisites: course.prereqs as unknown as string[],
-        restrictions: course.restrictions as unknown as string,
-        description: course.description,
-        corequisites: course.coreqs as unknown as string[]
-    })
-);
+interface JSONCourse {
+    code: string;
+    name: string;
+    descr: string;
+    credits: string;
+    preReq: string;
+    restrict: string;
+    breadth: string;
+    typ: string;
+}
+
+let counter = 1;
+const updatedCourseData: {
+    [dept: string]: { [courseCode: string]: Course };
+} = {};
+
+const updateData: {
+    [department: string]: { [courseCode: string]: JSONCourse };
+} = catalog;
+
+for (const key in updateData) {
+    updatedCourseData[key] = {};
+    const courses = updateData[key];
+    for (const courseCode in courses) {
+        const course = courses[courseCode];
+        const courseWithId: Course = {
+            ...course,
+            id: counter
+        };
+        updatedCourseData[key][courseCode] = courseWithId;
+        counter++;
+    }
+}
+// Store the course list with IDs in the component's state
+const COURSES: Course[] = Object.values(updatedCourseData)
+    .map(Object.values)
+    .flat();
+
 const NUM_COURSES_DISPLAYED = 3;
 
 test("renders the course name somewhere", () => {
@@ -167,7 +194,9 @@ describe("Course Tests", () => {
         while (j < COURSES.length - NUM_COURSES_DISPLAYED) {
             for (let i = j; i < NUM_COURSES_DISPLAYED; i++) {
                 expect(
-                    screen.queryByText(COURSES[i].id + " : " + COURSES[i].name)
+                    screen.queryByText(
+                        COURSES[i].code + " : " + COURSES[i].name
+                    )
                 ).toBeInTheDocument();
                 const credits = screen.getAllByText("credit", { exact: false });
                 for (let k = 0; k < credits.length; k++)
@@ -189,7 +218,7 @@ describe("Course Tests", () => {
                 expect(screen.queryByLabelText("Edit")).not.toBeInTheDocument();
                 expect(screen.queryByLabelText("Exit")).not.toBeInTheDocument();
                 const courseButton = screen.getByText(
-                    COURSES[i].id + " : " + COURSES[i].name
+                    COURSES[i].code + " : " + COURSES[i].name
                 );
                 courseButton.click();
                 expect(screen.queryByText("Next")).toBeInTheDocument();
@@ -212,7 +241,7 @@ describe("Course Tests", () => {
         while (j < COURSES.length - NUM_COURSES_DISPLAYED) {
             for (let i = j; i < NUM_COURSES_DISPLAYED; i++) {
                 const courseButton = screen.getByText(
-                    COURSES[i].id + " : " + COURSES[i].name
+                    COURSES[i].code + " : " + COURSES[i].name
                 );
                 courseButton.click();
 

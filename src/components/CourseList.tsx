@@ -33,7 +33,7 @@ export const CourseList = ({
                 <>
                     {courses.map((course: Course) => (
                         <CourseCard
-                            key={course.id}
+                            key={course.code}
                             course={course}
                             handleClick={handleCourseView}
                         ></CourseCard>
@@ -41,7 +41,7 @@ export const CourseList = ({
                 </>
             )}
             {courses.map((course: Course) => {
-                const cId = course.id.replace(/\s/g, "");
+                const cId = course.code.replace(/\s/g, "");
                 if (displayId === cId) {
                     switchEditing(true);
                     return (

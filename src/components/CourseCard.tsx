@@ -12,18 +12,18 @@ export const CourseCard = ({
     return (
         <div
             className="course_view_card"
-            onClick={() => handleClick(course.id.replace(/\s/g, ""))}
+            onClick={() => handleClick(course.code.replace(/\s/g, ""))}
         >
             <div>
                 <h3 className="courseID">
-                    {course.id} : {course.name}
+                    {course.code} : {course.name}
                 </h3>
                 <p>
                     {course.credits} credit
-                    {course.credits !== 1 ? "s" : ""}
+                    {(course.credits as unknown as number) !== 1 ? "s" : ""}
                 </p>
             </div>
-            <p>{course.description.substring(0, 100)}...</p>
+            <p>{course.descr.substring(0, 100)}...</p>
         </div>
     );
 };

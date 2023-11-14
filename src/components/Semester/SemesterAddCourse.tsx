@@ -22,7 +22,7 @@ export const SemesterAddCourse = ({
             <div>
                 {courses.map((course: Course) => (
                     <div key={course.name}>
-                        {course.id} ({course.credits} Credits){" "}
+                        {course.code} ({course.credits} Credits){" "}
                         <Button onClick={() => addCourse(course)}>Add</Button>
                     </div>
                 ))}
@@ -30,8 +30,8 @@ export const SemesterAddCourse = ({
             <h2>Courses in Queue:</h2>
             <div>
                 {addedCourses.map((c: Course) => (
-                    <div key={c.id}>
-                        {c.id} ({c.credits} credits)
+                    <div key={c.code}>
+                        {c.code} ({c.credits} credits)
                     </div>
                 ))}
             </div>

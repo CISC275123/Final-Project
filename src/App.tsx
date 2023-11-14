@@ -1,6 +1,6 @@
 /* eslint-disable no-extra-parens */
 import "./App.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Course } from "./interfaces/course";
 import { Year } from "./interfaces/year";
 import { Degree } from "./interfaces/degree";
@@ -15,60 +15,13 @@ import { Button } from "react-bootstrap";
 import { Semester } from "./interfaces/semester";
 import { CourseList } from "./components/CourseList";
 import { HomePage } from "./components/HomePage";
-import { DepartmentCourses } from "./interfaces/departmentCourses";
-import { CourseObject } from "./interfaces/courseObject";
-
-// Creates default list of courses pulling from a JSON file.
-const COURSES = sample.map(
-    (course): Course => ({
-        id: course.id,
-        name: course.name,
-        credits: course.credits as unknown as number,
-        prerequisites: course.prereqs as unknown as string[],
-        restrictions: course.restrictions as unknown as string,
-        description: course.description,
-        corequisites: course.coreqs as unknown as string[]
-    })
-);
-
-interface CourseInfo {
-    code: string;
-    name: string;
-    descr: string;
-    credits: string;
-    preReq: string;
-    restrict: string;
-    breadth: string;
-    typ: string;
-}
-function getDepartmentCourses() {
-    const updateData: { [key: string]: { [courseCode: string]: CourseInfo } } =
-        catalog;
-
-    for (const key in catalog) {
-        const courses = catalog[key];
-        console.log(`Key: ${key}`);
-        for (const courseCode in courses) {
-            const course = courses[courseCode];
-            console.log(`Course Code: ${course.code}`);
-            console.log(`Course Name: ${course.name}`);
-            console.log(`Description: ${course.descr}`);
-            console.log(`Credits: ${course.credits}`);
-            console.log(`Prerequisites: ${course.preReq}`);
-            console.log(`Restrictions: ${course.restrict}`);
-            console.log(`Breadth: ${course.breadth}`);
-            console.log(`Type: ${course.typ}`);
-            console.log("--------------------------------------");
-        }
-    }
-}
 
 // sets the number of courses to be displayed on a single page.
 const NUM_COURSES_DISPLAYED = 3;
 
 function App(): JSX.Element {
     // VARs holding list information on the user's degree plan
-    const [globalCourseList, setGlobalCourseList] = useState<Course[]>(COURSES);
+    const [globalCourseList, setGlobalCourseList] = useState<Course[]>([]);
     const [degreeList, setDegreeList] = useState<Degree[]>([]);
 
     // VARs used to control display of elements
@@ -84,6 +37,50 @@ function App(): JSX.Element {
     // Index used to scroll through the display of courses
     const [currIndex, setIndex] = useState<number>(0);
 
+    useEffect(() => {
+        interface JSONCourse {
+            code: string;
+            name: string;
+            descr: string;
+            credits: string;
+            preReq: string;
+            restrict: string;
+            breadth: string;
+            typ: string;
+        }
+
+        // Creates default list of courses pulling from a JSON file.
+        let counter = 1;
+        const updatedCourseData: {
+            [dept: string]: { [courseCode: string]: Course };
+        } = {};
+
+        const updateData: {
+            [department: string]: { [courseCode: string]: JSONCourse };
+        } = catalog;
+
+        for (const key in updateData) {
+            updatedCourseData[key] = {};
+            const courses = updateData[key];
+            for (const courseCode in courses) {
+                const course = courses[courseCode];
+                const courseWithId: Course = {
+                    ...course,
+                    id: counter
+                };
+                updatedCourseData[key][courseCode] = courseWithId;
+                counter++;
+            }
+        }
+        // Store the course list with IDs in the component's state
+        const COURSES: Course[] = Object.values(updatedCourseData)
+            .map(Object.values)
+            .flat();
+
+        console.log(COURSES);
+        setGlobalCourseList(COURSES);
+    }, []);
+
     // Used to edit a course. Replaces the target course with a modified course.
     // Works by passing in a target course ID and a new instance of the course.
     // It then maps, searching for the target ID and replaces if it matches!
@@ -98,7 +95,7 @@ function App(): JSX.Element {
         setGlobalCourseList(
             globalCourseList.map(
                 (course: Course): Course =>
-                    course.id.replace(/\s/g, "") === courseID
+                    course.code.replace(/\s/g, "") === courseID
                         ? newCourse
                         : course
             )
@@ -113,7 +110,6 @@ function App(): JSX.Element {
     // OUTPUTS:
     // Modifies the state variable containing the list of Degrees. Adds the new degree to it.
     function addDegree(name: string) {
-        getDepartmentCourses();
         const newDegree: Degree = {
             name: name,
             years: [],
@@ -340,7 +336,7 @@ function App(): JSX.Element {
                         )}
                         editCourse={editCourse}
                         switchEditing={switchEditing}
-                        default_courses={COURSES}
+                        default_courses={globalCourseList}
                     ></CourseList>
                 )}
             </div>
@@ -355,6 +351,7 @@ function App(): JSX.Element {
                         addYear={addYear}
                         deleteYear={deleteYear}
                         updateSemesterList={updateSemesterList}
+                        defaultCourses={globalCourseList}
                     ></DegreeList>
                 )}
             </div>
