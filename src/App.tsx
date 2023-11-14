@@ -8,7 +8,7 @@ import { DegreeList } from "./components/DegreeList";
 
 import logo from "./images/logo.png";
 import catalog from "./data/catalog.json";
-import { Button } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 
 import { Semester } from "./interfaces/semester";
 import { CourseList } from "./components/CourseList";
@@ -23,7 +23,7 @@ function App(): JSX.Element {
     const [globalCourseList, setGlobalCourseList] = useState<Course[]>([]);
     const [degreeList, setDegreeList] = useState<Degree[]>([]);
 
-    // VARs used to hold the default course list with NO edits.
+    // VAR used to hold the default course list with NO edits.
     const [defaultCourses, setDefaultCourses] = useState<Course[]>([]);
 
     // VARs used to control display of elements
@@ -38,6 +38,11 @@ function App(): JSX.Element {
 
     // Index used to scroll through the display of courses
     const [currIndex, setIndex] = useState<number>(0);
+
+    // VAR used to track course department filter
+    const [departmentFilter, setDepartmentFilter] = useState<string>("All");
+    const [departments, setDepartments] = useState<string[]>([]);
+    const [filteredList, setFilteredList] = useState<Course[]>([]);
 
     // Creates global list of ALL courses in the catalog json.
     useEffect(() => {
@@ -62,16 +67,18 @@ function App(): JSX.Element {
             [department: string]: { [courseCode: string]: JSONCourse };
         } = catalog;
 
-        for (const key in updateData) {
-            updatedCourseData[key] = {};
-            const courses = updateData[key];
+        const depts = Object.keys(updateData);
+
+        for (const dept in updateData) {
+            updatedCourseData[dept] = {};
+            const courses = updateData[dept];
             for (const courseCode in courses) {
                 const course = courses[courseCode];
                 const courseWithId: Course = {
                     ...course,
                     id: counter
                 };
-                updatedCourseData[key][courseCode] = courseWithId;
+                updatedCourseData[dept][courseCode] = courseWithId;
                 counter++;
             }
         }
@@ -82,6 +89,8 @@ function App(): JSX.Element {
 
         setGlobalCourseList(COURSES);
         setDefaultCourses(COURSES);
+        setFilteredList(COURSES);
+        setDepartments([...depts, "All"]);
     }, []);
 
     // Used to edit a course. Replaces the target course with a modified course.
@@ -100,6 +109,20 @@ function App(): JSX.Element {
                 (course: Course): Course =>
                     course.id === courseID ? newCourse : course
             )
+        );
+
+        // if the user is currently filter courses, update the filtered course.
+        setFilteredList(
+            globalCourseList
+                .map(
+                    (course: Course): Course =>
+                        course.id === courseID ? newCourse : course
+                )
+                .filter(
+                    (course: Course): boolean =>
+                        departmentFilter === "All" ||
+                        course.code.slice(0, 4) === departmentFilter
+                )
         );
     }
 
@@ -235,6 +258,19 @@ function App(): JSX.Element {
         setEditing(edit);
     }
 
+    function changeFilter(event: React.ChangeEvent<HTMLSelectElement>) {
+        setDepartmentFilter(event.target.value);
+
+        setFilteredList(
+            globalCourseList.filter(
+                (course: Course): boolean =>
+                    event.target.value === "All" ||
+                    course.code.slice(0, 4) === event.target.value
+            )
+        );
+        setIndex(0);
+    }
+
     return (
         <body className="App">
             {/* Header containing navbar and site header information  */}
@@ -309,10 +345,22 @@ function App(): JSX.Element {
                 >
                     Back
                 </Button>
+                <Form.Group controlId="formSetFilter">
+                    <Form.Label>Filter: {departmentFilter}</Form.Label>
+                    <Form.Select
+                        onChange={changeFilter}
+                        value={departmentFilter}
+                    >
+                        {departments.map((dept, index) => (
+                            <option key={index} value={dept}>
+                                {dept}
+                            </option>
+                        ))}
+                    </Form.Select>
+                </Form.Group>
                 <Button
                     onClick={() =>
-                        currIndex <
-                        globalCourseList.length - NUM_COURSES_DISPLAYED
+                        currIndex < filteredList.length - NUM_COURSES_DISPLAYED
                             ? setIndex(currIndex + NUM_COURSES_DISPLAYED)
                             : setIndex(currIndex)
                     }
@@ -323,7 +371,7 @@ function App(): JSX.Element {
             <div hidden={!courseDisplay} className="CourseList">
                 {courseDisplay && (
                     <CourseList
-                        courses={globalCourseList.slice(
+                        courses={filteredList.slice(
                             currIndex,
                             currIndex + NUM_COURSES_DISPLAYED
                         )}
