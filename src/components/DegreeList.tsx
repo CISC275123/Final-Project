@@ -52,6 +52,27 @@ export const DegreeList = ({
         handleAddClick();
     };
 
+    const SaveDegrees: React.FC<{ degrees: Degree[] }> = ({ degrees }) => {
+        const downloadDegrees = () => {
+            const degreesJson = JSON.stringify(degrees, null, 2); // The third argument is for pretty formatting with 2 spaces
+
+            const blob = new Blob([degreesJson], { type: "application/json" });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "degrees.json";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+
+            // Revoke the ObjectURL to free up resources
+            URL.revokeObjectURL(url);
+        };
+
+        return <Button onClick={downloadDegrees}>Save Degrees</Button>;
+    };
+
     return (
         <div className="degree_page">
             <div className="degree_buttons">
@@ -97,6 +118,7 @@ export const DegreeList = ({
                         ))}
                     </>
                 )}
+                {!displayId && <SaveDegrees degrees={degrees} />}
                 {degrees.map((degree: Degree) => {
                     const dId = degree.id;
                     if (displayId === dId) {

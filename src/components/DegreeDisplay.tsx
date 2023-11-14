@@ -144,6 +144,7 @@ export const DegreeDisplay = ({
         );
         updateGlobalDegreeList(newDegrees);
     }
+
     return (
         <div className="DegreeList">
             {
