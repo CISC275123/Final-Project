@@ -18,14 +18,20 @@ export const CourseEdit = ({
     const [newName, setName] = useState<string>(course.name);
     const [newCredits, setCredits] = useState<string>(course.credits);
     const [newDesc, setDesc] = useState<string>(course.descr);
+    const [newCode, setCode] = useState<string>(course.code);
 
     const cId = course.id;
 
     // Saves the changes step-by-step by creating new courses, each course containing the desired change.
     // TO DO : Reduce code so that it accomplishes this without creating multiple new instances of a course.
     const saveChanges = () => {
-        const newCourseName: Course = {
+        const newCourseCode: Course = {
             ...course,
+            code: newCode
+        };
+
+        const newCourseName: Course = {
+            ...newCourseCode,
             name: newName
         };
 
@@ -60,6 +66,22 @@ export const CourseEdit = ({
                 <>
                     <hr />
                     <div className="edit_course">
+                        <div className="edit_code_row">
+                            <div className="edit_code_box">
+                                <h4>Course Code:</h4>
+                                <Form.Group
+                                    className="code_input"
+                                    controlId="editCodeFormId"
+                                >
+                                    <Form.Control
+                                        value={newCode}
+                                        onChange={(e) =>
+                                            setCode(e.target.value)
+                                        }
+                                    ></Form.Control>
+                                </Form.Group>
+                            </div>
+                        </div>
                         <div className="edit_name_row">
                             <div className="edit_name_box">
                                 <h4>Course Name:</h4>
