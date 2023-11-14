@@ -39,10 +39,13 @@ function App(): JSX.Element {
     // Index used to scroll through the display of courses
     const [currIndex, setIndex] = useState<number>(0);
 
-    // VAR used to track course department filter
+    // VARs used to track course department filter
     const [departmentFilter, setDepartmentFilter] = useState<string>("All");
     const [departments, setDepartments] = useState<string[]>(["All"]);
     const [filteredList, setFilteredList] = useState<Course[]>([]);
+
+    // VAR used to track what page in courses list the user is viewing
+    const [currentPage, setCurrentPage] = useState<number>(1);
 
     // Creates global list of ALL courses in the catalog json.
     useEffect(() => {
@@ -269,6 +272,17 @@ function App(): JSX.Element {
             )
         );
         setIndex(0);
+        setCurrentPage(1);
+    }
+
+    function changePage(page: number) {
+        const newIndex = (page - 1) * NUM_COURSES_DISPLAYED;
+        setIndex(newIndex);
+    }
+
+    function updateIndex(indx: number) {
+        setIndex(indx);
+        setCurrentPage(indx / NUM_COURSES_DISPLAYED + 1);
     }
 
     return (
@@ -339,8 +353,8 @@ function App(): JSX.Element {
                 <Button
                     onClick={() =>
                         currIndex > 0
-                            ? setIndex(currIndex - NUM_COURSES_DISPLAYED)
-                            : setIndex(currIndex)
+                            ? updateIndex(currIndex - NUM_COURSES_DISPLAYED)
+                            : updateIndex(currIndex)
                     }
                 >
                     Back
@@ -358,11 +372,29 @@ function App(): JSX.Element {
                         ))}
                     </Form.Select>
                 </Form.Group>
+                <Form.Group controlId="formSetPage">
+                    <Form.Label>
+                        Page: {currentPage}/
+                        {Math.ceil(filteredList.length / NUM_COURSES_DISPLAYED)}
+                    </Form.Label>
+                    <Form.Control
+                        type="number"
+                        value={currentPage}
+                        min={1}
+                        max={Math.ceil(
+                            filteredList.length / NUM_COURSES_DISPLAYED
+                        )}
+                        onChange={(e) => {
+                            setCurrentPage(parseInt(e.target.value));
+                            changePage(parseInt(e.target.value));
+                        }}
+                    ></Form.Control>
+                </Form.Group>
                 <Button
                     onClick={() =>
                         currIndex < filteredList.length - NUM_COURSES_DISPLAYED
-                            ? setIndex(currIndex + NUM_COURSES_DISPLAYED)
-                            : setIndex(currIndex)
+                            ? updateIndex(currIndex + NUM_COURSES_DISPLAYED)
+                            : updateIndex(currIndex)
                     }
                 >
                     Next
