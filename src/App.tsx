@@ -7,8 +7,6 @@ import { Degree } from "./interfaces/degree";
 import { DegreeList } from "./components/DegreeList";
 
 import logo from "./images/logo.png";
-
-import sample from "./data/courses.json";
 import catalog from "./data/catalog.json";
 import { Button } from "react-bootstrap";
 
@@ -17,12 +15,16 @@ import { CourseList } from "./components/CourseList";
 import { HomePage } from "./components/HomePage";
 
 // sets the number of courses to be displayed on a single page.
+// TO DO : Let the user choose this number
 const NUM_COURSES_DISPLAYED = 3;
 
 function App(): JSX.Element {
     // VARs holding list information on the user's degree plan
     const [globalCourseList, setGlobalCourseList] = useState<Course[]>([]);
     const [degreeList, setDegreeList] = useState<Degree[]>([]);
+
+    // VARs used to hold the default course list with NO edits.
+    const [defaultCourses, setDefaultCourses] = useState<Course[]>([]);
 
     // VARs used to control display of elements
     const [courseDisplay, setCourseDisplay] = useState<boolean>(false);
@@ -79,6 +81,7 @@ function App(): JSX.Element {
             .flat();
 
         setGlobalCourseList(COURSES);
+        setDefaultCourses(COURSES);
     }, []);
 
     // Used to edit a course. Replaces the target course with a modified course.
@@ -120,8 +123,6 @@ function App(): JSX.Element {
 
     // Used to add a new instance of a Year to a degree. Takes user Input for the name.
     // Typically we want the name to be "Year [1-4]" or "Freshman", "Sophomore", etc ...
-    //
-    // TO DO : Remove the user input and make it a drop down to select one of the 4 names: ["Freshman", "Sophomore", "Junior", "Senior"]
     //
     // INPUTS:
     // name: string => user input, a unique name given by the user so that they can easily remember it.
@@ -328,7 +329,7 @@ function App(): JSX.Element {
                         )}
                         editCourse={editCourse}
                         switchEditing={switchEditing}
-                        default_courses={globalCourseList}
+                        default_courses={defaultCourses}
                     ></CourseList>
                 )}
             </div>
