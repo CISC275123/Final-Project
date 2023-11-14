@@ -1,8 +1,8 @@
+/* eslint-disable no-extra-parens */
 import React, { useEffect, useState } from "react";
 import { Course } from "../interfaces/course";
 import { Button, Form } from "react-bootstrap";
 import { CourseList } from "./CourseList";
-import catalog from "../data/catalog.json";
 
 const NUM_COURSES_DISPLAYED = 3;
 

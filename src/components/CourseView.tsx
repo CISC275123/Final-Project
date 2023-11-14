@@ -11,6 +11,7 @@ export const CourseView = ({
     editCourse,
     resetView,
     default_courses,
+    convertCredits,
     handleClick
 }: {
     course: Course;
@@ -18,6 +19,7 @@ export const CourseView = ({
     resetView: () => void;
     default_courses: Course[];
     handleClick: (id: number) => void;
+    convertCredits: (course: Course) => number | string;
 }) => {
     const [edit, setEdit] = useState(false);
 
@@ -61,10 +63,8 @@ export const CourseView = ({
                             {course.code} : {course.name}
                         </h3>
                         <p>
-                            {course.credits} credit
-                            {(course.credits as unknown as number) !== 1
-                                ? "s"
-                                : ""}
+                            {convertCredits(course)} credit
+                            {convertCredits(course) !== 1 ? "s" : ""}
                         </p>
                     </div>
                     <p>{course.descr}</p>

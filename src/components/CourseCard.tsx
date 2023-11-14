@@ -1,13 +1,16 @@
+/* eslint-disable no-extra-parens */
 import React from "react";
 import { Course } from "../interfaces/course";
 import "./CourseCard.css";
 
 export const CourseCard = ({
     course,
-    handleClick
+    handleClick,
+    convertCredits
 }: {
     course: Course;
     handleClick: (courseID: number) => void;
+    convertCredits: (course: Course) => number | string;
 }) => {
     return (
         <div
@@ -19,8 +22,8 @@ export const CourseCard = ({
                     {course.code} : {course.name}
                 </h3>
                 <p>
-                    {course.credits} credit
-                    {(course.credits as unknown as number) !== 1 ? "s" : ""}
+                    {convertCredits(course)} credit
+                    {convertCredits(course) !== 1 ? "s" : ""}
                 </p>
             </div>
             <p>{course.descr.substring(0, 100)}...</p>

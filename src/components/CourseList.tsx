@@ -27,6 +27,17 @@ export const CourseList = ({
         setDisplayId(null);
     };
 
+    function convertCredits(course: Course): number | string {
+        const trimCred = course.credits.trim();
+
+        if (trimCred.slice(1, 2) === "-") {
+            return trimCred;
+        } else {
+            const cred: number = parseInt(course.credits.trim().slice(0, 1));
+            return cred;
+        }
+    }
+
     return (
         <div className="course_list">
             {!displayId && (
@@ -36,6 +47,7 @@ export const CourseList = ({
                             key={course.code}
                             course={course}
                             handleClick={handleCourseView}
+                            convertCredits={convertCredits}
                         ></CourseCard>
                     ))}
                 </>
@@ -52,6 +64,7 @@ export const CourseList = ({
                             resetView={resetCourseView}
                             default_courses={default_courses}
                             handleClick={handleCourseView}
+                            convertCredits={convertCredits}
                         ></CourseView>
                     );
                 } else {

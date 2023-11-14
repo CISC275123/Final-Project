@@ -100,12 +100,7 @@ export const CourseEdit = ({
                         </div>
                         <div className="edit_credits_row">
                             <div className="edit_credits_box">
-                                <h4>
-                                    Credit
-                                    {(course.credits as unknown as number) !== 1
-                                        ? "s:"
-                                        : ":"}
-                                </h4>
+                                <h4>Credits</h4>
                                 <Form.Group
                                     className="credits_input"
                                     controlId="editCreditsFormId"
