@@ -15,10 +15,10 @@ export const CourseView = ({
     handleClick
 }: {
     course: Course;
-    editCourse: (courseID: string, newCourse: Course) => void;
+    editCourse: (courseID: number, newCourse: Course) => void;
     resetView: () => void;
     default_courses: Course[];
-    handleClick: (id: string) => void;
+    handleClick: (id: number) => void;
 }) => {
     const [edit, setEdit] = useState(false);
 

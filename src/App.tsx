@@ -37,6 +37,7 @@ function App(): JSX.Element {
     // Index used to scroll through the display of courses
     const [currIndex, setIndex] = useState<number>(0);
 
+    // Creates global list of ALL courses in the catalog json.
     useEffect(() => {
         interface JSONCourse {
             code: string;
@@ -77,7 +78,6 @@ function App(): JSX.Element {
             .map(Object.values)
             .flat();
 
-        console.log(COURSES);
         setGlobalCourseList(COURSES);
     }, []);
 
@@ -91,13 +91,11 @@ function App(): JSX.Element {
     //
     // OUTPUTS:
     // Modifies the state variable containing the list of courses.
-    function editCourse(courseID: string, newCourse: Course) {
+    function editCourse(courseID: number, newCourse: Course) {
         setGlobalCourseList(
             globalCourseList.map(
                 (course: Course): Course =>
-                    course.code.replace(/\s/g, "") === courseID
-                        ? newCourse
-                        : course
+                    course.id === courseID ? newCourse : course
             )
         );
     }
@@ -307,7 +305,6 @@ function App(): JSX.Element {
                             ? setIndex(currIndex - NUM_COURSES_DISPLAYED)
                             : setIndex(currIndex)
                     }
-                    hidden={isEditing || currIndex <= 0}
                 >
                     Back
                 </Button>
@@ -317,11 +314,6 @@ function App(): JSX.Element {
                         globalCourseList.length - NUM_COURSES_DISPLAYED
                             ? setIndex(currIndex + NUM_COURSES_DISPLAYED)
                             : setIndex(currIndex)
-                    }
-                    hidden={
-                        isEditing ||
-                        currIndex >=
-                            globalCourseList.length - NUM_COURSES_DISPLAYED
                     }
                 >
                     Next

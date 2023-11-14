@@ -12,13 +12,13 @@ export const CourseList = ({
     default_courses
 }: {
     courses: Course[];
-    editCourse: (courseID: string, newCourse: Course) => void;
+    editCourse: (courseID: number, newCourse: Course) => void;
     switchEditing: (edit: boolean) => void;
     default_courses: Course[];
 }) => {
-    const [displayId, setDisplayId] = useState<null | string>(null);
+    const [displayId, setDisplayId] = useState<null | number>(null);
 
-    const handleCourseView = (id: string) => {
+    const handleCourseView = (id: number) => {
         setDisplayId(id);
     };
 
@@ -41,7 +41,7 @@ export const CourseList = ({
                 </>
             )}
             {courses.map((course: Course) => {
-                const cId = course.code.replace(/\s/g, "");
+                const cId = course.id;
                 if (displayId === cId) {
                     switchEditing(true);
                     return (
