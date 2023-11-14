@@ -203,19 +203,19 @@ export const CourseView = ({
             <div>
                 <Button
                     className="esc_button text-align-center"
+                    variant="danger"
+                    onClick={resetView}
+                >
+                    {"Exit"}
+                </Button>
+                <Button
+                    className="esc_button text-align-center"
                     variant="warning"
                     onClick={() => {
                         switchEdit();
                     }}
                 >
                     Edit
-                </Button>
-                <Button
-                    className="esc_button text-align-center"
-                    variant="danger"
-                    onClick={resetView}
-                >
-                    {"Exit"}
                 </Button>
             </div>
 

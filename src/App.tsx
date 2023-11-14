@@ -41,7 +41,7 @@ function App(): JSX.Element {
 
     // VAR used to track course department filter
     const [departmentFilter, setDepartmentFilter] = useState<string>("All");
-    const [departments, setDepartments] = useState<string[]>([]);
+    const [departments, setDepartments] = useState<string[]>(["All"]);
     const [filteredList, setFilteredList] = useState<Course[]>([]);
 
     // Creates global list of ALL courses in the catalog json.
@@ -90,7 +90,7 @@ function App(): JSX.Element {
         setGlobalCourseList(COURSES);
         setDefaultCourses(COURSES);
         setFilteredList(COURSES);
-        setDepartments([...depts, "All"]);
+        setDepartments([...departments, ...depts]);
     }, []);
 
     // Used to edit a course. Replaces the target course with a modified course.
