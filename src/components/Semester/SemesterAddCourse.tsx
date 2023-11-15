@@ -17,6 +17,13 @@ export const SemesterAddCourse = ({
         const newAddedCourse = [...addedCourses, c];
         setAddedCourses(newAddedCourse);
     }
+
+    function rmeoveCourse(c: Course) {
+        const removedCourse: Course[] = addedCourses.filter(
+            (course: Course): boolean => course.id !== c.id
+        );
+        setAddedCourses(removedCourse);
+    }
     function convertCredits(course: Course): number | string {
         const trimCred = course.credits.trim();
 
@@ -70,6 +77,12 @@ export const SemesterAddCourse = ({
                             course={course}
                             convertCredits={convertCredits}
                         ></CourseCard>
+                        <Button
+                            style={button}
+                            onClick={() => rmeoveCourse(course)}
+                        >
+                            Remove
+                        </Button>
                     </div>
                 ))}
             </div>
