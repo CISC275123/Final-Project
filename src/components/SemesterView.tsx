@@ -16,7 +16,7 @@ export const SemesterView = ({
     const [addedCourses, setAddedCourses] = useState<Course[]>([]);
     const [isAddCourses, setIsAddCourses] = useState<boolean>(false);
     const [currIndex, setIndex] = useState<number>(0);
-    const NUM_COURSES_DISPLAYED = 5;
+    const NUM_COURSES_DISPLAYED = 3;
 
     function displayCourses() {
         setIsAddCourses(!isAddCourses);
