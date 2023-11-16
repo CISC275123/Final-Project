@@ -9,12 +9,14 @@ export const CourseList = ({
     courses,
     editCourse,
     switchEditing,
-    default_courses
+    default_courses,
+    departments
 }: {
     courses: Course[];
     editCourse: (courseID: number, newCourse: Course) => void;
     switchEditing: (edit: boolean) => void;
     default_courses: Course[];
+    departments: string[];
 }) => {
     const [displayId, setDisplayId] = useState<null | number>(null);
 
@@ -63,8 +65,8 @@ export const CourseList = ({
                             editCourse={editCourse}
                             resetView={resetCourseView}
                             default_courses={default_courses}
-                            handleClick={handleCourseView}
                             convertCredits={convertCredits}
+                            departments={departments}
                         ></CourseView>
                     );
                 } else {

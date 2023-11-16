@@ -20603,7 +20603,7 @@
             "name": "Introduction to Data Mining",
             "descr": "Concepts, techniques, and algorithms for mining large data sets to discover structural patterns that can be used to make subsequent predictions. Emphasis on practical approaches and empirical evaluation. Use of a workbench of data mining tools, such as the Weka toolkit.",
             "credits": " 3",
-            "preReq": "CISC 220 and  MATH 205 or MATH 350.",
+            "preReq": "CISC 220 and MATH 205 or MATH 350.",
             "restrict": "",
             "breadth": "University: ; A&S: ",
             "typ": "Fall"
@@ -20683,7 +20683,7 @@
             "name": "Logic in Computer Science",
             "descr": "Formal introduction to first-order logic with emphasis on its relevance to computer science. Syntax, semantics, models, formal proofs and results on soundness, consistency, completeness, compactness and undecidability. Automated theorem proving also covered.",
             "credits": " 3",
-            "preReq": "CISC304 equivalent.",
+            "preReq": "CISC 304 equivalent.",
             "restrict": "Credit cannot be received for both CISC604 and CISC404.",
             "breadth": "University: ; A&S: ",
             "typ": ""
@@ -20803,7 +20803,7 @@
             "name": "Introduction to Computer Vision",
             "descr": "An introduction to the analysis of images and video in order to recognize, reconstruct, model, and otherwise infer static and dynamic properties of objects in the three-dimensional world. Studies the geometry of image formation; basic concepts in image processing such as smoothing, edge and feature detection, color, and texture; segmentation; shape representation including deformable templates; stereo vision; motion estimation and tracking; techniques for 3-D reconstruction; image registration methods.",
             "credits": " 3",
-            "preReq": "CISC220 equivalent",
+            "preReq": "CISC 220 equivalent",
             "restrict": "Credit cannot be received for both CISC 442 and CISC 642.",
             "breadth": "University: ; A&S: ",
             "typ": ""
@@ -20833,7 +20833,7 @@
             "name": "Simulation of Computer Networks",
             "descr": "Modeling and computer simulation of discrete systems using discrete event simulation techniques. Application to the performance evaluation and modeling of computer networks and networking protocols. Study and use of simulation systems such as OPNET, Qualnet, and ns-2.",
             "credits": " 3",
-            "preReq": "CISC450 or CISC 650.",
+            "preReq": "CISC 450 or CISC 650.",
             "restrict": "Credit cannot be received for both CISC653 and CISC453.",
             "breadth": "University: ; A&S: ",
             "typ": ""

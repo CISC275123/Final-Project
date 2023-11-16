@@ -36,7 +36,6 @@ export const SemesterAddCourse = ({
     }
 
     const card = {
-        color: "red",
         padding: "1rem"
     };
 

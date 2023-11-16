@@ -154,6 +154,7 @@ export const CourseDisplay = ({
                         editCourse={editCourse}
                         switchEditing={switchEditing}
                         default_courses={defaultCourses}
+                        departments={departments}
                     ></CourseList>
                 }
             </div>
