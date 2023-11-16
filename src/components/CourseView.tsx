@@ -7,6 +7,11 @@ import { Button } from "react-bootstrap";
 import "./CourseView.css";
 import { CourseCard } from "./CourseCard";
 
+// TO DO :
+// BUG : When prerequisites are "", the display is blank instead of stating "No Prerequisites"
+// BUG : When editing a course in "Filter" mode, returning via "save" or "exit" brings the user to a blank screen.
+// BUG : Sometimes fails to render any prereqs and, instead, gives blank screen of death
+
 export const CourseView = ({
     course,
     editCourse,
