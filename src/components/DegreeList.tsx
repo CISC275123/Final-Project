@@ -1,5 +1,5 @@
 /* eslint-disable no-extra-parens */
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Degree } from "../interfaces/degree";
 import { DegreeCard } from "./DegreeCard";
@@ -20,7 +20,7 @@ export const DegreeList = ({
     defaultCourses
 }: {
     degrees: Degree[];
-    addDegree: (name: string) => void;
+    addDegree: (name: string, degrees: Degree[]) => void;
     deleteYear: (targetYear: Year, targetDegree: Degree) => void;
     removeDegree: (id: number) => void;
     addYear: (name: string, degree: Degree) => void;
@@ -34,6 +34,7 @@ export const DegreeList = ({
     const [displayId, setDisplayId] = useState<null | number>(null);
     const [userInput, setUserInput] = useState<string>("Sample Degree");
     const [isAdding, setIsAdding] = useState<boolean>(false);
+    const [file, setFile] = useState();
 
     const handleDegreeView = (id: number) => {
         setDisplayId(id);
@@ -48,7 +49,7 @@ export const DegreeList = ({
     };
 
     const setUpDegree = () => {
-        addDegree(userInput);
+        addDegree(userInput, []);
         handleAddClick();
     };
 
@@ -72,6 +73,51 @@ export const DegreeList = ({
 
         return <Button onClick={downloadDegrees}>Save Degrees</Button>;
     };
+
+    const UploadDegreesButton: React.FC<{
+        onUpload: (degrees: Degree[]) => void;
+    }> = ({ onUpload }) => {
+        const handleFileUpload = (event: ChangeEvent<HTMLInputElement>) => {
+            const file = event.target.files?.[0];
+
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = (e) => {
+                    try {
+                        const degreesJson = e.target?.result as string;
+                        const parsedDegrees = JSON.parse(degreesJson);
+
+                        // Validate the structure if needed
+                        // For example, check if parsedDegrees is an array of Degree objects
+
+                        onUpload(parsedDegrees);
+                    } catch (error) {
+                        console.error("Error parsing JSON file:", error);
+                    }
+                };
+
+                reader.readAsText(file);
+            }
+        };
+
+        return (
+            <div>
+                <label htmlFor="fileInput">Upload Your Plans</label>
+                <br />
+                <input
+                    type="file"
+                    id="fileInput"
+                    accept=".json"
+                    onChange={handleFileUpload}
+                />
+            </div>
+        );
+    };
+
+    function handleUpload(degrees: Degree[]) {
+        addDegree("", degrees);
+    }
 
     return (
         <div className="degree_page">
@@ -119,6 +165,7 @@ export const DegreeList = ({
                     </>
                 )}
                 {!displayId && <SaveDegrees degrees={degrees} />}
+                {!displayId && <UploadDegreesButton onUpload={handleUpload} />}
                 {degrees.map((degree: Degree) => {
                     const dId = degree.id;
                     if (displayId === dId) {

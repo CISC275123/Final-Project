@@ -25,15 +25,30 @@ export const DegreeDisplay = ({
     //
     // OUTPUTS:
     // Modifies the state variable containing the list of Degrees. Adds the new degree to it.
-    function addDegree(name: string) {
-        const newDegree: Degree = {
-            name: name,
-            years: [],
-            id: degreeId
-        };
-        const newId = degreeId + 1;
-        setDegreeId(newId);
-        updateGlobalDegreeList([...globalDegreeList, newDegree]);
+    function addDegree(name: string, degrees: Degree[] = []): void {
+        if (degrees.length <= 0) {
+            const newDegree: Degree = {
+                name: name,
+                years: [],
+                id: degreeId
+            };
+            const newId = degreeId + 1;
+            setDegreeId(newId);
+            updateGlobalDegreeList([...globalDegreeList, newDegree]);
+        } else {
+            // Updates IDs in the imported degrees so there is no overlap.
+            const updateId: Degree[] = degrees.map(
+                (d: Degree, index): Degree => {
+                    const newId = degreeId + index;
+                    setDegreeId(newId + 1);
+                    return {
+                        ...d,
+                        id: newId
+                    };
+                }
+            );
+            updateGlobalDegreeList([...globalDegreeList, ...updateId]);
+        }
     }
 
     // Used to add a new instance of a Year to a degree. Takes user Input for the name.
