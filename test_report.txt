@@ -65,9 +65,21 @@ Browserslist: caniuse-lite is outdated. Please run:
       at addCourse (src/components/Semester/SemesterAddCourse.tsx:18:17)
 
   console.log
-    []
+    [
+      {
+        code: 'ACCT 166',
+        name: 'SPECIAL PROBLEM',
+        descr: '',
+        credits: ' 1-3',
+        preReq: '',
+        restrict: '',
+        breadth: 'University: ; A&S: ',
+        typ: '',
+        id: 1
+      }
+    ]
 
-      at saveInfo (src/components/SemesterView.tsx:42:17)
+      at saveInfo (src/components/SemesterView.tsx:47:17)
 
   console.log
     [
@@ -84,7 +96,7 @@ Browserslist: caniuse-lite is outdated. Please run:
       }
     ]
 
-      at saveInfo (src/components/SemesterView.tsx:43:17)
+      at saveInfo (src/components/SemesterView.tsx:48:17)
 
   console.log
     []
@@ -92,9 +104,21 @@ Browserslist: caniuse-lite is outdated. Please run:
       at addCourse (src/components/Semester/SemesterAddCourse.tsx:18:17)
 
   console.log
-    []
+    [
+      {
+        code: 'ACCT 166',
+        name: 'SPECIAL PROBLEM',
+        descr: '',
+        credits: ' 1-3',
+        preReq: '',
+        restrict: '',
+        breadth: 'University: ; A&S: ',
+        typ: '',
+        id: 1
+      }
+    ]
 
-      at saveInfo (src/components/SemesterView.tsx:42:17)
+      at saveInfo (src/components/SemesterView.tsx:47:17)
 
   console.log
     [
@@ -111,28 +135,38 @@ Browserslist: caniuse-lite is outdated. Please run:
       }
     ]
 
-      at saveInfo (src/components/SemesterView.tsx:43:17)
+      at saveInfo (src/components/SemesterView.tsx:48:17)
+
+  console.log
+    []
+
+      at saveInfo (src/components/SemesterView.tsx:47:17)
+
+  console.log
+    []
+
+      at saveInfo (src/components/SemesterView.tsx:48:17)
 
 FAIL src/App.test.tsx
   ✓ renders the course name somewhere (122 ms)
   Degree Tests
-    ✓ Users can add a new degree plan (45 ms)
-    ✓ Users can delete a new degree plan (38 ms)
-    ✓ Users can select a degree plan they made and view it (46 ms)
-    ✓ Users can exit a degree plan after clicking on it (30 ms)
-    ✓ Users can add a Year to a Degree Plan (43 ms)
-    ✓ Users can delete a Year from their Degree Plan (42 ms)
+    ✓ Users can add a new degree plan (47 ms)
+    ✓ Users can delete a new degree plan (39 ms)
+    ✓ Users can select a degree plan they made and view it (45 ms)
+    ✓ Users can exit a degree plan after clicking on it (31 ms)
+    ✓ Users can add a Year to a Degree Plan (60 ms)
+    ✓ Users can delete a Year from their Degree Plan (44 ms)
   Course Tests
-    ✕ Users can see a list of courses, including the course code, title, and credits (53 ms)
-    ✕ Users can click on a course to view its information (65 ms)
-    ✕ Users can edit a course (47 ms)
+    ✕ Users can see a list of courses, including the course code, title, and credits (56 ms)
+    ✕ Users can click on a course to view its information (68 ms)
+    ✕ Users can edit a course (48 ms)
   Semester Tests
-    ✓ Users can add a Semester from their Degree Plan (89 ms)
+    ✓ Users can add a Semester from their Degree Plan (92 ms)
     ✓ Users can add a new semester to a year (46 ms)
-    ✓ Users can delete a semester (41 ms)
-    ✓ Users can edit a semester (42 ms)
-    ✕ Users can add a course to a semester (69 ms)
-    ✕ Users can remove a course from a semester (59 ms)
+    ✓ Users can delete a semester (43 ms)
+    ✓ Users can edit a semester (45 ms)
+    ✓ Users can add a course to a semester (71 ms)
+    ✓ Users can remove a course from a semester (72 ms)
 
   ● Course Tests › Users can see a list of courses, including the course code, title, and credits
 
@@ -1641,82 +1675,36 @@ FAIL src/App.test.tsx
       at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
       at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
 
-  ● Semester Tests › Users can add a course to a semester
-
-    expect(received).toBeInTheDocument()
-
-    received value must be an HTMLElement or an SVGElement.
-    Received has value: null
-
-      437 |         const save = screen.getByText("Save");
-      438 |         save.click();
-    > 439 |         expect(screen.queryByText("Remove")).toBeInTheDocument();
-          |                                              ^
-      440 |     });
-      441 |
-      442 |     test("Users can remove a course from a semester", () => {
-
-      at __EXTERNAL_MATCHER_TRAP__ (node_modules/expect/build/index.js:386:30)
-      at Object.toBeInTheDocument (node_modules/expect/build/index.js:387:15)
-      at Object.<anonymous> (src/App.test.tsx:439:46)
-      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
-      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
-      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
-      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
-
-  ● Semester Tests › Users can remove a course from a semester
-
-    expect(received).toBeInTheDocument()
-
-    received value must be an HTMLElement or an SVGElement.
-    Received has value: null
-
-      474 |         const save = screen.getByText("Save");
-      475 |         save.click();
-    > 476 |         expect(screen.queryByText("Remove")).toBeInTheDocument();
-          |                                              ^
-      477 |         const remove = screen.getByText("Remove");
-      478 |         remove.click();
-      479 |         expect(screen.queryByText("Remove")).not.toBeInTheDocument();
-
-      at __EXTERNAL_MATCHER_TRAP__ (node_modules/expect/build/index.js:386:30)
-      at Object.toBeInTheDocument (node_modules/expect/build/index.js:387:15)
-      at Object.<anonymous> (src/App.test.tsx:476:46)
-      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
-      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
-      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
-      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
-
--------------------------|---------|----------|---------|---------|-----------------------
-File                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s     
--------------------------|---------|----------|---------|---------|-----------------------
-All files                |   52.13 |     39.6 |   42.65 |   52.28 |                       
- src                     |   83.78 |      100 |      75 |   83.78 |                       
-  App.tsx                |   83.78 |      100 |      75 |   83.78 | 88-104                
- src/components          |   46.93 |     34.4 |   39.51 |   47.09 |                       
-  CourseCard.tsx         |   66.66 |       50 |      50 |   66.66 | 18                    
-  CourseDisplay.tsx      |   45.71 |        0 |   23.07 |   45.71 | 56-91,99,132-139      
-  CourseEdit.tsx         |    3.84 |      100 |       0 |    3.84 | 18-157                
-  CourseList.tsx         |   26.31 |    33.33 |   16.66 |   26.31 | 24,28-39,48-73        
-  CourseView.tsx         |    1.61 |        0 |       0 |    1.61 | 30-185                
-  DegreeCard.tsx         |     100 |      100 |     100 |     100 |                       
-  DegreeDisplay.tsx      |     100 |       50 |     100 |     100 | 67-129                
-  DegreeList.tsx         |   66.66 |      100 |      80 |   66.66 | 57-70,93              
-  DegreeView.tsx         |      75 |      100 |    62.5 |      75 | 36,82,96              
-  HomePage.tsx           |     100 |      100 |     100 |     100 |                       
-  SemesterCard.tsx       |   72.22 |        0 |      60 |   72.22 | 36-45                 
-  SemesterList.tsx       |    90.9 |      100 |   81.81 |    90.9 | 39,47                 
-  SemesterView.tsx       |      50 |       50 |   27.27 |   51.72 | 25,35-37,47-54,66-106 
- src/components/Semester |      70 |      100 |   54.54 |      70 |                       
-  SemesterAddCourse.tsx  |      70 |      100 |   54.54 |      70 | 22-25,54,74-81        
- src/interfaces          |       0 |        0 |       0 |       0 |                       
-  course.ts              |       0 |        0 |       0 |       0 |                       
-  degree.ts              |       0 |        0 |       0 |       0 |                       
-  semester.ts            |       0 |        0 |       0 |       0 |                       
-  year.ts                |       0 |        0 |       0 |       0 |                       
--------------------------|---------|----------|---------|---------|-----------------------
+-------------------------|---------|----------|---------|---------|------------------------
+File                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s      
+-------------------------|---------|----------|---------|---------|------------------------
+All files                |   55.02 |    40.95 |   45.45 |    54.9 |                        
+ src                     |   83.78 |      100 |      75 |   83.78 |                        
+  App.tsx                |   83.78 |      100 |      75 |   83.78 | 88-104                 
+ src/components          |   50.49 |    36.08 |   42.74 |   50.33 |                        
+  CourseCard.tsx         |   66.66 |       50 |      50 |   66.66 | 18                     
+  CourseDisplay.tsx      |   45.71 |        0 |   23.07 |   45.71 | 56-91,99,132-139       
+  CourseEdit.tsx         |    3.84 |      100 |       0 |    3.84 | 18-157                 
+  CourseList.tsx         |   26.31 |    33.33 |   16.66 |   26.31 | 24,28-39,48-73         
+  CourseView.tsx         |    1.61 |        0 |       0 |    1.61 | 30-185                 
+  DegreeCard.tsx         |     100 |      100 |     100 |     100 |                        
+  DegreeDisplay.tsx      |     100 |       50 |     100 |     100 | 67-129                 
+  DegreeList.tsx         |   66.66 |      100 |      80 |   66.66 | 57-70,93               
+  DegreeView.tsx         |      75 |      100 |    62.5 |      75 | 36,82,96               
+  HomePage.tsx           |     100 |      100 |     100 |     100 |                        
+  SemesterCard.tsx       |   72.22 |        0 |      60 |   72.22 | 36-45                  
+  SemesterList.tsx       |    90.9 |      100 |   81.81 |    90.9 | 39,47                  
+  SemesterView.tsx       |   78.37 |    55.55 |   63.63 |   77.77 | 25,34,52-54,62,104-113 
+ src/components/Semester |      70 |      100 |   54.54 |      70 |                        
+  SemesterAddCourse.tsx  |      70 |      100 |   54.54 |      70 | 22-25,54,74-81         
+ src/interfaces          |       0 |        0 |       0 |       0 |                        
+  course.ts              |       0 |        0 |       0 |       0 |                        
+  degree.ts              |       0 |        0 |       0 |       0 |                        
+  semester.ts            |       0 |        0 |       0 |       0 |                        
+  year.ts                |       0 |        0 |       0 |       0 |                        
+-------------------------|---------|----------|---------|---------|------------------------
 Test Suites: 1 failed, 1 total
-Tests:       5 failed, 11 passed, 16 total
+Tests:       3 failed, 13 passed, 16 total
 Snapshots:   0 total
-Time:        4.171 s
+Time:        4.305 s
 Ran all test suites.
