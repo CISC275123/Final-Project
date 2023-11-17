@@ -14,8 +14,22 @@ import { DegreeDisplay } from "./components/DegreeDisplay";
 
 function App(): JSX.Element {
     // VARs holding list information on the user's degree plan
+    const [startingDegreeId, setStartingDegreeId] = useState<number>(1);
     const [globalCourseList, setGlobalCourseList] = useState<Course[]>([]);
-    const [globalDegreeList, setGlobalDegreeList] = useState<Degree[]>([]);
+    const [globalDegreeList, setGlobalDegreeList] = useState<Degree[]>(() => {
+        const rawSavedDegrees = localStorage.getItem("degrees");
+        if (rawSavedDegrees) {
+            const savedDegrees = JSON.parse(rawSavedDegrees);
+            setStartingDegreeId(
+                savedDegrees[
+                    savedDegrees.length > 0 ? savedDegrees.length - 1 : 0
+                ].id + 1
+            );
+            return savedDegrees;
+        } else {
+            return [];
+        }
+    });
     const [departments, setDepartments] = useState<string[]>(["All"]);
 
     // VARs used to control display of elements
@@ -76,6 +90,11 @@ function App(): JSX.Element {
         setGlobalCourseList(COURSES);
         setDepartments([...departments, ...depts]);
     }, []);
+
+    useEffect(() => {
+        // Save degree plans to local storage
+        localStorage.setItem("degrees", JSON.stringify(globalDegreeList));
+    }, [globalDegreeList]);
 
     return (
         <body className="App">
@@ -154,6 +173,7 @@ function App(): JSX.Element {
                         updateGlobalDegreeList={updateGlobalDegreeList}
                         globalCourseList={globalCourseList}
                         globalDegreeList={globalDegreeList}
+                        startingDegreeId={startingDegreeId}
                     ></DegreeDisplay>
                 )}
             </div>

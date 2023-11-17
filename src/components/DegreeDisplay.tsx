@@ -8,14 +8,16 @@ import { Course } from "../interfaces/course";
 export const DegreeDisplay = ({
     updateGlobalDegreeList,
     globalCourseList,
-    globalDegreeList
+    globalDegreeList,
+    startingDegreeId
 }: {
     updateGlobalDegreeList: (newList: Degree[]) => void;
     globalCourseList: Course[];
     globalDegreeList: Degree[];
+    startingDegreeId: number;
 }) => {
     // IDs used to differentiate instances of objects
-    const [degreeId, setDegreeId] = useState<number>(1);
+    const [degreeId, setDegreeId] = useState<number>(startingDegreeId);
     const [yearId, setYearId] = useState<number>(1);
 
     // Used to add a new degree plan. Takes user input for the name of the degree plan.

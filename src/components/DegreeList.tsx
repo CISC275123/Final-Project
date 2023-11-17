@@ -60,7 +60,7 @@ export const DegreeList = ({
             const url = URL.createObjectURL(blob);
 
             const a = document.createElement("a");
-            a.href = url;
+            a.href = URL.createObjectURL(blob);
             a.download = "degrees.json";
             document.body.appendChild(a);
             a.click();
@@ -118,6 +118,10 @@ export const DegreeList = ({
         addDegree("", degrees);
     }
 
+    const clearLocalStorage = () => {
+        localStorage.clear();
+    };
+
     return (
         <div className="degree_page">
             <div className="degree_buttons">
@@ -163,8 +167,15 @@ export const DegreeList = ({
                         ))}
                     </>
                 )}
-                {!displayId && <SaveDegrees degrees={degrees} />}
-                {!displayId && <UploadDegreesButton onUpload={handleUpload} />}
+                {!displayId && (
+                    <div>
+                        <SaveDegrees degrees={degrees} />
+                        <UploadDegreesButton onUpload={handleUpload} />
+                        <Button onClick={clearLocalStorage}>
+                            Clear Storage
+                        </Button>
+                    </div>
+                )}
                 {degrees.map((degree: Degree) => {
                     const dId = degree.id;
                     if (displayId === dId) {
