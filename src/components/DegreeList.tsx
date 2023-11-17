@@ -34,7 +34,6 @@ export const DegreeList = ({
     const [displayId, setDisplayId] = useState<null | number>(null);
     const [userInput, setUserInput] = useState<string>("Sample Degree");
     const [isAdding, setIsAdding] = useState<boolean>(false);
-    const [file, setFile] = useState();
 
     const handleDegreeView = (id: number) => {
         setDisplayId(id);

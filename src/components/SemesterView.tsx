@@ -27,7 +27,12 @@ export const SemesterView = ({
     function saveInfo() {
         semester.notes = semester.notes + description;
         for (const x of addedCourses) {
-            const y: number = +x.credits;
+            let y = 0;
+            if (x.credits.includes("-")) {
+                y = +x.credits.substring(x.credits.length - 1);
+            } else {
+                y = +x.credits;
+            }
             if (
                 ((semester.currentCredits + y) as unknown as number) <=
                 semester.maxCredits
@@ -35,11 +40,13 @@ export const SemesterView = ({
                 if (!semester.courses.includes(x)) {
                     semester.courses.push(x);
                     semester.currentCredits = (semester.currentCredits +
-                        x.credits) as unknown as number;
+                        y) as unknown as number;
                 }
             }
             console.log(semester.courses);
         }
+        console.log(semester.courses);
+        console.log(addedCourses);
         setAddedCourses([]);
     }
     function clearCourses() {
@@ -47,9 +54,15 @@ export const SemesterView = ({
         semester.courses = [];
         semester.currentCredits = 0;
     }
-    function removeCourse(id: string, creds: number) {
+    function removeCourse(id: string, creds: string) {
         semester.courses = semester.courses.filter((c: Course) => c.code != id);
-        semester.currentCredits = semester.currentCredits - creds;
+        let y = 0;
+        if (creds.includes("-")) {
+            y = +creds.substring(creds.length - 1);
+        } else {
+            y = +creds;
+        }
+        semester.currentCredits = semester.currentCredits - y;
         saveInfo();
     }
     return (
@@ -64,11 +77,7 @@ export const SemesterView = ({
             {semester.courses.map((c) => (
                 <div key={c.code}>
                     {c.code}{" "}
-                    <Button
-                        onClick={() =>
-                            removeCourse(c.code, c.credits as unknown as number)
-                        }
-                    >
+                    <Button onClick={() => removeCourse(c.code, c.credits)}>
                         Remove
                     </Button>
                 </div>
