@@ -14,8 +14,8 @@ export const SemesterAddCourse = ({
     setAddedCourses: (courseList: Course[]) => void;
 }) => {
     function addCourse(c: Course) {
-        const newAddedCourse = [...addedCourses, c];
-        setAddedCourses(newAddedCourse);
+        setAddedCourses([...addedCourses, c]);
+        console.log(addedCourses);
     }
 
     function rmeoveCourse(c: Course) {

@@ -27,17 +27,20 @@ export const SemesterView = ({
     function saveInfo() {
         semester.notes = semester.notes + description;
         for (const x of addedCourses) {
+            const y = +x.credits;
             if (
-                ((semester.currentCredits + x.credits) as unknown as number) <=
+                ((semester.currentCredits + y) as unknown as number) <=
                 semester.maxCredits
             ) {
                 if (!semester.courses.includes(x)) {
                     semester.courses.push(x);
                     semester.currentCredits = (semester.currentCredits +
-                        x.credits) as unknown as number;
+                        y) as unknown as number;
                 }
             }
         }
+        console.log(semester.courses);
+        console.log(addedCourses);
         setAddedCourses([]);
     }
     function clearCourses() {
