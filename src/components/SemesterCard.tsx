@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 import { Semester } from "../interfaces/semester";
-import { Course } from "../interfaces/course";
 import { Degree } from "../interfaces/degree";
 import { Year } from "../interfaces/year";
 
@@ -12,8 +11,7 @@ export const SemesterCard = ({
     idCounter,
     setIdCounter,
     degree,
-    year,
-    defaultCourses
+    year
 }: {
     semesterList: Semester[];
     setSemesterList: (
@@ -26,7 +24,6 @@ export const SemesterCard = ({
     setIdCounter: (id: number) => void;
     degree: Degree;
     year: Year;
-    defaultCourses: Course[];
 }) => {
     const [maxCredits, setMaxCredits] = useState<number>(18);
     const [season, setSeason] = useState<string>("Fall");
@@ -55,7 +52,6 @@ export const SemesterCard = ({
             notes: "",
             maxCredits: maxCredits,
             currentCredits: 0, //variable will eventually have to be a state, so dynamic change for currentCredits
-            courseList: defaultCourses,
             courses: []
         };
         const newSemesterList = [...semesterList, newSemester];

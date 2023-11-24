@@ -8,15 +8,13 @@ import "./DegreeView.css";
 import { SemesterList } from "./SemesterList";
 
 import { Semester } from "../interfaces/semester";
-import { Course } from "../interfaces/course";
 
 export const DegreeView = ({
     degree,
     resetView,
     addYear,
     deleteYear,
-    updateSemesterList,
-    defaultCourses
+    updateSemesterList
 }: {
     degree: Degree;
     resetView: () => void;
@@ -27,7 +25,6 @@ export const DegreeView = ({
         targetDegree: Degree,
         targetYear: Year
     ) => void;
-    defaultCourses: Course[];
 }) => {
     const [isAdding, setAdding] = useState<boolean>(false);
     const [userInput, setUserInput] = useState<string>("Freshman");
@@ -101,6 +98,13 @@ export const DegreeView = ({
                                 >
                                     Delete Year
                                 </Button>
+                                <Button
+                                    onClick={() =>
+                                        updateSemesterList([], degree, year)
+                                    }
+                                >
+                                    Clear Semesters
+                                </Button>
                                 {
                                     <SemesterList
                                         key={year.name}
@@ -108,7 +112,6 @@ export const DegreeView = ({
                                         setSemesterList={updateSemesterList}
                                         degree={degree}
                                         year={year}
-                                        defaultCourses={defaultCourses}
                                     />
                                 }
                             </div>

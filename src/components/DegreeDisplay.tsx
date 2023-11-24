@@ -3,16 +3,13 @@ import { Degree } from "../interfaces/degree";
 import { DegreeList } from "./DegreeList";
 import { Semester } from "../interfaces/semester";
 import { Year } from "../interfaces/year";
-import { Course } from "../interfaces/course";
 
 export const DegreeDisplay = ({
     updateGlobalDegreeList,
-    globalCourseList,
     globalDegreeList,
     startingDegreeId
 }: {
     updateGlobalDegreeList: (newList: Degree[]) => void;
-    globalCourseList: Course[];
     globalDegreeList: Degree[];
     startingDegreeId: number;
 }) => {
@@ -172,7 +169,6 @@ export const DegreeDisplay = ({
                     addYear={addYear}
                     deleteYear={deleteYear}
                     updateSemesterList={updateSemesterList}
-                    defaultCourses={globalCourseList}
                 ></DegreeList>
             }
         </div>

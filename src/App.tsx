@@ -171,7 +171,6 @@ function App(): JSX.Element {
                 {isDegree && (
                     <DegreeDisplay
                         updateGlobalDegreeList={updateGlobalDegreeList}
-                        globalCourseList={globalCourseList}
                         globalDegreeList={globalDegreeList}
                         startingDegreeId={startingDegreeId}
                     ></DegreeDisplay>
