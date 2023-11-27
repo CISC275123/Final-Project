@@ -1,29 +1,32 @@
+/* eslint-disable no-extra-parens */
 import React from "react";
 import { Course } from "../interfaces/course";
 import "./CourseCard.css";
 
 export const CourseCard = ({
     course,
-    handleClick
+    handleClick,
+    convertCredits
 }: {
     course: Course;
-    handleClick: (courseID: string) => void;
+    handleClick: (courseID: number) => void;
+    convertCredits: (course: Course) => number | string;
 }) => {
     return (
         <div
             className="course_view_card"
-            onClick={() => handleClick(course.id.replace(/\s/g, ""))}
+            onClick={() => handleClick(course.id)}
         >
             <div>
                 <h3 className="courseID">
-                    {course.id} : {course.name}
+                    {course.code} : {course.name}
                 </h3>
                 <p>
-                    {course.credits} credit
-                    {course.credits !== 1 ? "s" : ""}
+                    {convertCredits(course)} credit
+                    {convertCredits(course) !== 1 ? "s" : ""}
                 </p>
             </div>
-            <p>{course.description.substring(0, 100)}...</p>
+            <p>{course.descr.substring(0, 100)}...</p>
         </div>
     );
 };

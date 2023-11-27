@@ -2,6 +2,7 @@
 import React from "react";
 import { Course } from "../../interfaces/course";
 import { Button } from "react-bootstrap";
+import { CourseCard } from "../CourseCard";
 
 export const SemesterAddCourse = ({
     courses,
@@ -13,18 +14,56 @@ export const SemesterAddCourse = ({
     setAddedCourses: (courseList: Course[]) => void;
 }) => {
     function addCourse(c: Course) {
-        const newAddedCourse = [...addedCourses, c];
-        setAddedCourses(newAddedCourse);
+        setAddedCourses([...addedCourses, c]);
     }
+
+    function rmeoveCourse(c: Course) {
+        const removedCourse: Course[] = addedCourses.filter(
+            (course: Course): boolean => course.id !== c.id
+        );
+        setAddedCourses(removedCourse);
+    }
+    function convertCredits(course: Course): number | string {
+        const trimCred = course.credits.trim();
+
+        if (trimCred.slice(1, 2) === "-") {
+            return trimCred;
+        } else {
+            const cred: number = parseInt(course.credits.trim().slice(0, 1));
+            return cred;
+        }
+    }
+
+    const card = {
+        padding: "1rem"
+    };
+
+    const button = {
+        width: "100%"
+    };
+
     return (
         <div>
             <h2>Available Semester Courses</h2>
             <div>
                 {courses.map((course: Course) => (
+<<<<<<< HEAD
                     <div key={course.name}>
                         {course.id} ({course.credits} Credits){" "}
                         <Button
                             className="Add_custom"
+=======
+                    <div style={card} key={course.id}>
+                        <CourseCard
+                            handleClick={() => {
+                                null;
+                            }}
+                            course={course}
+                            convertCredits={convertCredits}
+                        ></CourseCard>
+                        <Button
+                            style={button}
+>>>>>>> de25018b7a9fcf49a6660b06d9a01933a8bca817
                             onClick={() => addCourse(course)}
                         >
                             Add
@@ -34,9 +73,21 @@ export const SemesterAddCourse = ({
             </div>
             <h2>Courses in Queue:</h2>
             <div>
-                {addedCourses.map((c: Course) => (
-                    <div key={c.id}>
-                        {c.id} ({c.credits} credits)
+                {addedCourses.map((course: Course) => (
+                    <div style={card} key={course.id}>
+                        <CourseCard
+                            handleClick={() => {
+                                null;
+                            }}
+                            course={course}
+                            convertCredits={convertCredits}
+                        ></CourseCard>
+                        <Button
+                            style={button}
+                            onClick={() => rmeoveCourse(course)}
+                        >
+                            Remove
+                        </Button>
                     </div>
                 ))}
             </div>
