@@ -1,5 +1,5 @@
 /* eslint-disable no-extra-parens */
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Year } from "../interfaces/year";
 import { Degree } from "../interfaces/degree";
