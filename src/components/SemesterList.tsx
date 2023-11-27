@@ -1,5 +1,5 @@
 /* eslint-disable no-extra-parens */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import "./Semester/SemesterList.css";
 import { Semester } from "../interfaces/semester";
@@ -7,9 +7,7 @@ import { SemesterView } from "./SemesterView";
 import { SemesterCard } from "./SemesterCard";
 import { Degree } from "../interfaces/degree";
 import { Year } from "../interfaces/year";
-import { Course } from "../interfaces/course";
 import { SemesterViewCard } from "./SemesterViewCard";
-import { StringLiteral } from "typescript";
 
 export const SemesterList = ({
     isDataSaved,
@@ -31,15 +29,21 @@ export const SemesterList = ({
     const [isMakeSemesterCard, setIsMakeSemesterCard] =
         useState<boolean>(false);
     const [displayId, setDisplayId] = useState<null | number>(null);
-    const [idCounter, setIdCounter] = useState<number>(() => {
+    const [idCounter, setIdCounter] = useState<number>(1);
+
+    useEffect(() => {
         if (isDataSaved) {
-            return semesterList.length > 0
-                ? semesterList[semesterList.length - 1].id + 1
-                : semesterList[0].id + 1;
+            if (semesterList.length > 1) {
+                setIdCounter(semesterList[semesterList.length - 1].id + 1);
+            } else if (semesterList.length === 1) {
+                setIdCounter(semesterList[0].id + 1);
+            } else {
+                setIdCounter(1);
+            }
         } else {
-            return 1;
+            setIdCounter(1);
         }
-    });
+    }, []);
 
     const handleCourseView = (id: number) => {
         setDisplayId(id);
