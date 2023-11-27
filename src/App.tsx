@@ -14,7 +14,7 @@ import { Button } from "react-bootstrap";
 import { Semester } from "./interfaces/semester";
 import { CourseList } from "./components/CourseList";
 import { HomePage } from "./components/HomePage";
-
+import "./components/HomePage.css";
 // Creates default list of courses pulling from a JSON file.
 const COURSES = sample.map(
     (course): Course => ({
@@ -238,6 +238,7 @@ function App(): JSX.Element {
                         </li>
                         <li>
                             <Button
+                                className="Courseshome"
                                 onClick={() => {
                                     setDegree(false);
                                     setCourseDisplay(!courseDisplay);
@@ -250,6 +251,7 @@ function App(): JSX.Element {
                         </li>
                         <li>
                             <Button
+                                className="Degreesbutton"
                                 onClick={() => {
                                     switchEditing(true);
                                     setDegree(!isDegree);
@@ -270,6 +272,7 @@ function App(): JSX.Element {
             {/* Following are a part of the "COURSES" functionality  */}
             <div hidden={!courseDisplay || isEditing} className="CourseButtons">
                 <Button
+                    className="backApp"
                     onClick={() =>
                         currIndex > 0
                             ? setIndex(currIndex - NUM_COURSES_DISPLAYED)
@@ -280,6 +283,7 @@ function App(): JSX.Element {
                     Back
                 </Button>
                 <Button
+                    className="nextApp"
                     onClick={() =>
                         currIndex <
                         globalCourseList.length - NUM_COURSES_DISPLAYED
@@ -323,7 +327,7 @@ function App(): JSX.Element {
                 )}
             </div>
 
-            <footer>
+            <footer className="footerCustom">
                 <p>
                     Created and Maintained by: Leon Giang, Jason Chan, Sibyl
                     Roosen, Abdullah Maruf, Taylor Kadans

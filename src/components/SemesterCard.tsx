@@ -5,6 +5,7 @@ import { Semester } from "../interfaces/semester";
 import { Course } from "../interfaces/course";
 import { Degree } from "../interfaces/degree";
 import { Year } from "../interfaces/year";
+import "./Semester/SemesterList.css";
 
 const COURSES = sample.map(
     (course): Course => ({
@@ -75,7 +76,7 @@ export const SemesterCard = ({
     }
 
     return (
-        <div>
+        <div className="semestercardContainer">
             <Form.Group controlId="chooseSeason">
                 <Form.Label>Semester</Form.Label>
                 <Form.Select onChange={updateSeason} value={season}>

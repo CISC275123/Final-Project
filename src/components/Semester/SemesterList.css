@@ -26,7 +26,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 20000;
+    z-index: 2;
 }
 
 .popup {
@@ -39,6 +39,14 @@
     justify-content: center;
     overflow: hidden;
     border-radius: 20px;
+    color: white;
+}
+.SemesterviewContainer {
+    z-index: 7;
+    font-family: "Times New Roman", Times, serif;
+}
+.semestercardContainer {
+    z-index: 8;
 }
 .popup::before {
     content: "";
@@ -113,6 +121,10 @@
     margin-bottom: 10px;
     border-color: #24252a;
 }
+.Add_custom:hover {
+    background-color: #24252a;
+    border-color: orange;
+}
 .backCustom {
     background-color: orange;
     border-color: #24252a;
@@ -124,7 +136,7 @@
 .creditText {
     font-family: "Times New Roman", Times, serif;
     animation: animate 5s linear 1;
-    z-index: 2;
+    z-index: 20;
     color: white;
 }
 @keyframes animate {
@@ -163,118 +175,12 @@
     background-color: #24252a;
     border-color: orange;
 }
-
-.popup-container {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 20000;
-}
-.myCustom {
+.Deleteyear {
     background-color: orange;
-    margin-right: 10px;
     border-color: #24252a;
-}
-.myCustom:hover {
-    background-color: #24252a;
-    border-color: orange;
-}
-.myCustom2 {
-    background-color: orange;
-    margin-right: 10px;
-    border-color: #24252a;
-}
-.myCustom2:hover {
-    background-color: #24252a;
-    border-color: orange;
-}
-.myCustom3 {
-    background-color: orange;
-    margin-right: 10px;
-    border-color: #24252a;
-}
-.myCustom3:hover {
-    background-color: #24252a;
-    border-color: orange;
-}
-.myCustom4 {
-    background-color: orange;
-    margin-right: 10px;
-    border-color: #24252a;
-}
-.myCustom4:hover {
-    background-color: #24252a;
-    border-color: orange;
-}
-.Add_custom {
-    background-color: orange;
     margin-bottom: 10px;
-    border-color: #24252a;
 }
-.backCustom {
-    background-color: orange;
-    border-color: #24252a;
-}
-.nextCustom {
-    background-color: orange;
-    border-color: #24252a;
-}
-.creditText {
-    font-family: "Times New Roman", Times, serif;
-    animation: animate 5s linear 1;
-    z-index: 2;
-    color: white;
-}
-@keyframes animate {
-    0% {
-        color: orange;
-    }
-    100% {
-        color: white;
-    }
-}
-
-.DeleteCustom {
-    background-color: orange;
-    margin-right: 10px;
-    border-color: #24252a;
-}
-.DeleteCustom:hover {
+.Deleteyear:hover {
     background-color: #24252a;
     border-color: orange;
-}
-.EditCustom {
-    background-color: orange;
-    margin-right: 10px;
-    border-color: #24252a;
-}
-.EditCustom:hover {
-    background-color: #24252a;
-    border-color: orange;
-}
-
-.AddSemesterButton {
-    background-color: orange;
-    border-color: #24252a;
-}
-.AddSemesterButton:hover {
-    background-color: #24252a;
-    border-color: orange;
-}
-
-.popup-container {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 20000;
 }

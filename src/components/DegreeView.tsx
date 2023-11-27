@@ -45,6 +45,7 @@ export const DegreeView = ({
                 </Button>
 
                 <Button
+                    className="AddYear"
                     onClick={() => {
                         setAdding(!isAdding);
                     }}
@@ -90,23 +91,26 @@ export const DegreeView = ({
                     <div className="year_view_rows">
                         {degree.years.map((year: Year) => (
                             <div className="year_view_column" key={year.name}>
-                                <h4 onClick={() => console.log(year.id)}>
-                                    {year.name}
-                                </h4>
-                                <Button
-                                    onClick={() => deleteYear(year, degree)}
-                                >
-                                    Delete Year
-                                </Button>
-                                {
-                                    <SemesterList
-                                        key={year.name}
-                                        semesterList={year.semesters}
-                                        setSemesterList={updateSemesterList}
-                                        degree={degree}
-                                        year={year}
-                                    />
-                                }
+                                <div className="moveFront">
+                                    <h4 onClick={() => console.log(year.id)}>
+                                        {year.name}
+                                    </h4>
+                                    <Button
+                                        className="Deleteyear"
+                                        onClick={() => deleteYear(year, degree)}
+                                    >
+                                        Delete Year
+                                    </Button>
+                                    {
+                                        <SemesterList
+                                            key={year.name}
+                                            semesterList={year.semesters}
+                                            setSemesterList={updateSemesterList}
+                                            degree={degree}
+                                            year={year}
+                                        />
+                                    }
+                                </div>
                             </div>
                         ))}
                     </div>

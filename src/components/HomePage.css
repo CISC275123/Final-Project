@@ -4,4 +4,38 @@
     align-items: center;
     justify-content: center;
     height: 30vh; /* Optional: Set a minimum height for vertical centering */
+    background-color: #494c5e;
+    font-family: "Times New Roman", Times, serif;
+    animation: animate 5s linear 1;
+    color: whitesmoke;
+}
+@keyframes animate {
+    0% {
+        color: orange;
+    }
+    100% {
+        color: whitesmoke;
+    }
+}
+.Cardgroup {
+    display: flex;
+    justify-content: space-between; /* To evenly space elements */
+    height: 45vh;
+    background-color: #494c5e;
+}
+
+.Cardstyle {
+    align-content: center;
+    width: 25%;
+    height: 100%;
+    margin: 10px;
+    border-color: #494c5e;
+}
+.Cardstyle img {
+    width: 100%; /* Make the image fill the width of its container */
+    height: 100%; /* Make the image fill the height of its container */
+    object-fit: cover; /* Ensure the image covers the entire container */
+}
+.footerCustom {
+    background-color: black;
 }
