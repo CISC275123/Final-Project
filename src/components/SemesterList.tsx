@@ -1,5 +1,5 @@
 /* eslint-disable no-extra-parens */
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import "./Semester/SemesterList.css";
 import { Semester } from "../interfaces/semester";
@@ -7,16 +7,15 @@ import { SemesterView } from "./SemesterView";
 import { SemesterCard } from "./SemesterCard";
 import { Degree } from "../interfaces/degree";
 import { Year } from "../interfaces/year";
-import { SemesterViewCard } from "./SemesterViewCard";
+import { Course } from "../interfaces/course";
 
 export const SemesterList = ({
-    isDataSaved,
     semesterList,
     setSemesterList,
     degree,
-    year
+    year,
+    defaultCourses
 }: {
-    isDataSaved: boolean;
     semesterList: Semester[];
     setSemesterList: (
         semesterList: Semester[],
@@ -25,25 +24,12 @@ export const SemesterList = ({
     ) => void;
     degree: Degree;
     year: Year;
+    defaultCourses: Course[];
 }) => {
     const [isMakeSemesterCard, setIsMakeSemesterCard] =
         useState<boolean>(false);
     const [displayId, setDisplayId] = useState<null | number>(null);
     const [idCounter, setIdCounter] = useState<number>(1);
-
-    useEffect(() => {
-        if (isDataSaved) {
-            if (semesterList.length > 1) {
-                setIdCounter(semesterList[semesterList.length - 1].id + 1);
-            } else if (semesterList.length === 1) {
-                setIdCounter(semesterList[0].id + 1);
-            } else {
-                setIdCounter(1);
-            }
-        } else {
-            setIdCounter(1);
-        }
-    }, []);
 
     const handleCourseView = (id: number) => {
         setDisplayId(id);
@@ -62,18 +48,11 @@ export const SemesterList = ({
     }
 
     function deleteSemester(inputID: number) {
-        const newSemesterList: Semester[] = semesterList.filter(
+        const newSemesterList = semesterList.filter(
             (sem: Semester): boolean => inputID !== sem.id
         );
         setSemesterList(newSemesterList, degree, year);
         console.log("Delete");
-    }
-
-    function toggle(id: number) {
-        const div = document.getElementById(id.toString());
-        if (div) {
-            div.style.display = div.style.display == "none" ? "block" : "none";
-        }
     }
 
     return (
@@ -93,13 +72,7 @@ export const SemesterList = ({
                                     key={semester.id}
                                     className="SemesterContainer"
                                 >
-                                    <SemesterViewCard
-                                        semester={semester}
-                                        handleView={handleCourseView}
-                                        toggle={toggle}
-                                        removeSemester={deleteSemester}
-                                    />
-                                    {/*<li className="Semester-li">
+                                    <li className="Semester-li">
                                         {semester.title}
                                     </li>
                                     <Button
@@ -118,18 +91,6 @@ export const SemesterList = ({
                                     >
                                         Delete Semester
                                     </Button>
-                                    <div>
-                                        <ul>
-                                            {semester.courses.map(
-                                                (course: Course) => (
-                                                    <li key={course.id}>
-                                                        {course.code}:{" "}
-                                                        {course.name}
-                                                    </li>
-                                                )
-                                            )}
-                                        </ul>
-                                                </div>*/}
                                 </div>
                             ))}
                         </>
@@ -165,6 +126,7 @@ export const SemesterList = ({
                             setIdCounter={setIdCounter}
                             degree={degree}
                             year={year}
+                            defaultCourses={defaultCourses}
                         ></SemesterCard>
                         <button onClick={hideMakeSemesterCard}>Close</button>
                     </div>
