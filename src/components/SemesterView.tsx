@@ -1,9 +1,10 @@
 /* eslint-disable no-extra-parens */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Semester } from "../interfaces/semester";
 import { SemesterAddCourse } from "./Semester/SemesterAddCourse";
 import { Course } from "../interfaces/course";
+import catalog from "../data/catalog.json";
 
 export const SemesterView = ({
     resetView,
@@ -17,6 +18,51 @@ export const SemesterView = ({
     const [isAddCourses, setIsAddCourses] = useState<boolean>(false);
     const [currIndex, setIndex] = useState<number>(0);
     const NUM_COURSES_DISPLAYED = 3;
+
+    const [baseCourses, setBaseCourses] = useState<Course[]>([]);
+
+    useEffect(() => {
+        interface JSONCourse {
+            code: string;
+            name: string;
+            descr: string;
+            credits: string;
+            preReq: string;
+            restrict: string;
+            breadth: string;
+            typ: string;
+        }
+
+        // Creates default list of courses pulling from a JSON file.
+        let counter = 1;
+        const updatedCourseData: {
+            [dept: string]: { [courseCode: string]: Course };
+        } = {};
+
+        const updateData: {
+            [department: string]: { [courseCode: string]: JSONCourse };
+        } = catalog;
+
+        for (const dept in updateData) {
+            updatedCourseData[dept] = {};
+            const courses = updateData[dept];
+            for (const courseCode in courses) {
+                const course = courses[courseCode];
+                const courseWithId: Course = {
+                    ...course,
+                    id: counter
+                };
+                updatedCourseData[dept][courseCode] = courseWithId;
+                counter++;
+            }
+        }
+        // Store the course list with IDs in the component's state
+        const COURSES: Course[] = Object.values(updatedCourseData)
+            .map(Object.values)
+            .flat();
+
+        setBaseCourses(COURSES);
+    }, []);
 
     function displayCourses() {
         setIsAddCourses(!isAddCourses);
@@ -44,8 +90,6 @@ export const SemesterView = ({
                 }
             }
         }
-        console.log(semester.courses);
-        console.log(addedCourses);
         setAddedCourses([]);
     }
     function clearCourses() {
@@ -111,7 +155,7 @@ export const SemesterView = ({
                     <Button
                         onClick={() =>
                             currIndex <
-                            semester.courseList.length - NUM_COURSES_DISPLAYED
+                            baseCourses.length - NUM_COURSES_DISPLAYED
                                 ? setIndex(currIndex + NUM_COURSES_DISPLAYED)
                                 : setIndex(currIndex)
                         }
@@ -122,7 +166,7 @@ export const SemesterView = ({
             )}
             {isAddCourses && (
                 <SemesterAddCourse
-                    courses={semester.courseList.slice(
+                    courses={baseCourses.slice(
                         currIndex,
                         currIndex + NUM_COURSES_DISPLAYED
                     )}

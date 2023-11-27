@@ -28,8 +28,29 @@ const NUM_COURSES_DISPLAYED = 3;
 
 function App(): JSX.Element {
     // VARs holding list information on the user's degree plan
+    const [startingDegreeId, setStartingDegreeId] = useState<number>(1);
     const [globalCourseList, setGlobalCourseList] = useState<Course[]>([]);
-    const [globalDegreeList, setGlobalDegreeList] = useState<Degree[]>([]);
+    const [isDataSaved, setIsDataSaved] = useState<boolean>(false);
+    const [globalDegreeList, setGlobalDegreeList] = useState<Degree[]>(() => {
+        const rawSavedDegrees = localStorage.getItem("degrees");
+        if (rawSavedDegrees) {
+            setIsDataSaved(true);
+            const savedDegrees = JSON.parse(rawSavedDegrees);
+            if (savedDegrees.length > 0) {
+                setStartingDegreeId(
+                    savedDegrees[
+                        savedDegrees.length > 0 ? savedDegrees.length - 1 : 0
+                    ].id + 1
+                );
+                return savedDegrees;
+            }
+            setIsDataSaved(false);
+            return [];
+        } else {
+            setIsDataSaved(false);
+            return [];
+        }
+    });
     const [departments, setDepartments] = useState<string[]>(["All"]);
 
     // VARs used to control display of elements
@@ -82,6 +103,7 @@ function App(): JSX.Element {
                 counter++;
             }
         }
+
         // Store the course list with IDs in the component's state
         const COURSES: Course[] = Object.values(updatedCourseData)
             .map(Object.values)
@@ -90,6 +112,11 @@ function App(): JSX.Element {
         setGlobalCourseList(COURSES);
         setDepartments([...departments, ...depts]);
     }, []);
+
+    useEffect(() => {
+        // Save degree plans to local storage
+        localStorage.setItem("degrees", JSON.stringify(globalDegreeList));
+    }, [globalDegreeList]);
 
     return (
         <body className="App">
@@ -192,9 +219,10 @@ function App(): JSX.Element {
             <div className="DegreeList">
                 {isDegree && (
                     <DegreeDisplay
+                        isDataSaved={isDataSaved}
                         updateGlobalDegreeList={updateGlobalDegreeList}
-                        globalCourseList={globalCourseList}
                         globalDegreeList={globalDegreeList}
+                        startingDegreeId={startingDegreeId}
                     ></DegreeDisplay>
                 )}
             </div>

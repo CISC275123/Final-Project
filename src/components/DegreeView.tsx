@@ -8,16 +8,16 @@ import "./DegreeView.css";
 import { SemesterList } from "./SemesterList";
 
 import { Semester } from "../interfaces/semester";
-import { Course } from "../interfaces/course";
 
 export const DegreeView = ({
+    isDataSaved,
     degree,
     resetView,
     addYear,
     deleteYear,
-    updateSemesterList,
-    defaultCourses
+    updateSemesterList
 }: {
+    isDataSaved: boolean;
     degree: Degree;
     resetView: () => void;
     addYear: (name: string, degree: Degree) => void;
@@ -27,7 +27,6 @@ export const DegreeView = ({
         targetDegree: Degree,
         targetYear: Year
     ) => void;
-    defaultCourses: Course[];
 }) => {
     const [isAdding, setAdding] = useState<boolean>(false);
     const [userInput, setUserInput] = useState<string>("Freshman");
@@ -101,8 +100,16 @@ export const DegreeView = ({
                                 >
                                     Delete Year
                                 </Button>
+                                <Button
+                                    onClick={() =>
+                                        updateSemesterList([], degree, year)
+                                    }
+                                >
+                                    Clear Semesters
+                                </Button>
                                 {
                                     <SemesterList
+                                        isDataSaved={isDataSaved}
                                         key={year.name}
                                         semesterList={year.semesters}
                                         setSemesterList={updateSemesterList}

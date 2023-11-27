@@ -24,6 +24,8 @@ export const CourseEdit = ({
 
     // Saves the changes step-by-step by creating new courses, each course containing the desired change.
     // TO DO : Reduce code so that it accomplishes this without creating multiple new instances of a course.
+    // BUG : Editing a course after scrolling several pages and saving leads the user to a blank screen.
+    // -----> ONLY HAPPENS WHEN FILTER IS SET AND EDITING.
     const saveChanges = () => {
         const newCourseCode: Course = {
             ...course,
