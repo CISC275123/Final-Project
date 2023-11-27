@@ -123,7 +123,6 @@ function App(): JSX.Element {
                         </li>
                         <li>
                             <Button
-                                className="Courseshome"
                                 onClick={() => {
                                     setDegree(false);
                                     setCourseDisplay(!courseDisplay);
@@ -135,7 +134,6 @@ function App(): JSX.Element {
                         </li>
                         <li>
                             <Button
-                                className="Degreesbutton"
                                 onClick={() => {
                                     setDegree(!isDegree);
                                     setCourseDisplay(false);
@@ -201,7 +199,7 @@ function App(): JSX.Element {
                 )}
             </div>
 
-            <footer className="footerCustom">
+            <footer>
                 <p>
                     Created and Maintained by: Leon Giang, Jason Chan, Sibyl
                     Roosen, Abdullah Maruf, Taylor Kadans

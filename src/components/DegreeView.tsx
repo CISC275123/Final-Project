@@ -48,7 +48,6 @@ export const DegreeView = ({
                 </Button>
 
                 <Button
-                    className="AddYear"
                     onClick={() => {
                         setAdding(!isAdding);
                     }}

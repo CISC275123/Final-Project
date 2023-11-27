@@ -4,8 +4,7 @@ import { Button, Form } from "react-bootstrap";
 import { Semester } from "../interfaces/semester";
 import { SemesterAddCourse } from "./Semester/SemesterAddCourse";
 import { Course } from "../interfaces/course";
-import "./SemesterView.css";
-import "./Semester/SemesterList.css";
+
 export const SemesterView = ({
     resetView,
     semester
@@ -66,7 +65,7 @@ export const SemesterView = ({
         saveInfo();
     }
     return (
-        <div className="SemesterviewContainer">
+        <div>
             <h1>
                 {" "}
                 {semester.title} ID: {semester.id}
@@ -82,18 +81,10 @@ export const SemesterView = ({
                     </Button>
                 </div>
             ))}
-            <Button className="myCustom" onClick={displayCourses}>
-                Show Courses
-            </Button>
-            <Button className="myCustom2" onClick={clearCourses}>
-                Clear Courses
-            </Button>
-            <Button className="myCustom3" onClick={resetView}>
-                Exit
-            </Button>
-            <Button className="myCustom4" onClick={saveInfo}>
-                Save
-            </Button>
+            <Button onClick={displayCourses}>Show Courses</Button>
+            <Button onClick={clearCourses}>Clear Courses</Button>
+            <Button onClick={resetView}>Exit</Button>
+            <Button onClick={saveInfo}>Save</Button>
             <h2>{semester.notes}</h2>
             {!isAddCourses && (
                 <Form.Group controlId="formNotes">
@@ -109,7 +100,6 @@ export const SemesterView = ({
             {isAddCourses && (
                 <div className="CourseButtons">
                     <Button
-                        className="backCourse"
                         onClick={() =>
                             currIndex > 0
                                 ? setIndex(currIndex - NUM_COURSES_DISPLAYED)
@@ -119,7 +109,6 @@ export const SemesterView = ({
                         Back
                     </Button>
                     <Button
-                        className="next"
                         onClick={() =>
                             currIndex <
                             semester.courseList.length - NUM_COURSES_DISPLAYED

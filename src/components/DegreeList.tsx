@@ -76,11 +76,7 @@ export const DegreeList = ({
     return (
         <div className="degree_page">
             <div className="degree_buttons">
-                <Button
-                    className="degreeAddbutton"
-                    hidden={displayId !== null}
-                    onClick={handleAddClick}
-                >
+                <Button hidden={displayId !== null} onClick={handleAddClick}>
                     Add
                 </Button>
                 {isAdding && (
