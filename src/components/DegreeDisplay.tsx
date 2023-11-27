@@ -24,10 +24,15 @@ export const DegreeDisplay = ({
     //
     // OUTPUTS:
     // Modifies the state variable containing the list of Degrees. Adds the new degree to it.
-    function addDegree(name: string, degrees: Degree[] = []): void {
+    function addDegree(
+        name: string,
+        degrees: Degree[] = [],
+        plan: string
+    ): void {
         if (degrees.length <= 0) {
             const newDegree: Degree = {
                 name: name,
+                plan: plan,
                 years: [],
                 id: degreeId
             };
