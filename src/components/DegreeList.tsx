@@ -149,9 +149,6 @@ export const DegreeList = ({
                                 event: React.ChangeEvent<HTMLInputElement>
                             ) => setUserInputName(event.target.value)}
                         ></Form.Control>
-                        <Form.Select>
-                            {console.log(Object.keys(plans))}
-                        </Form.Select>
                         <Button
                             variant="success"
                             className="save_edit_btn"

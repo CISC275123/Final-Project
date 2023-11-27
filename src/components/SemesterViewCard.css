@@ -13,6 +13,10 @@
     margin-right: 1rem;
 }
 
+.SemesterContainer {
+    margin-top: 1rem;
+}
+
 @media only screen and (max-width: 420px) {
     h3,
     p {
