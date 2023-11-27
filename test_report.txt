@@ -16,25 +16,25 @@
       at performUnitOfWork (node_modules/react-dom/cjs/react-dom.development.js:22787:5)
 
 FAIL src/App.test.tsx
-  ✓ renders the course name somewhere (123 ms)
+  ✓ renders the course name somewhere (121 ms)
   Degree Tests
     ✓ Users can add a new degree plan (58 ms)
-    ✕ Users can delete a new degree plan (52 ms)
-    ✕ Users can select a degree plan they made and view it (35 ms)
-    ✕ Users can exit a degree plan after clicking on it (39 ms)
+    ✕ Users can delete a new degree plan (47 ms)
+    ✕ Users can select a degree plan they made and view it (36 ms)
+    ✕ Users can exit a degree plan after clicking on it (40 ms)
     ✕ Users can add a Year to a Degree Plan (44 ms)
-    ✕ Users can delete a Year from their Degree Plan (46 ms)
+    ✕ Users can delete a Year from their Degree Plan (43 ms)
   Course Tests
-    ✕ Users can see a list of courses, including the course code, title, and credits (53 ms)
-    ✕ Users can click on a course to view its information (58 ms)
-    ✕ Users can edit a course (59 ms)
+    ✕ Users can see a list of courses, including the course code, title, and credits (55 ms)
+    ✕ Users can click on a course to view its information (57 ms)
+    ✕ Users can edit a course (56 ms)
   Semester Tests
     ✕ Users can add a Semester from their Degree Plan (38 ms)
     ✕ Users can add a new semester to a year (32 ms)
-    ✕ Users can delete a semester (36 ms)
-    ✕ Users can edit a semester (37 ms)
-    ✕ Users can add a course to a semester (48 ms)
-    ✕ Users can remove a course from a semester (48 ms)
+    ✕ Users can delete a semester (41 ms)
+    ✕ Users can edit a semester (40 ms)
+    ✕ Users can add a course to a semester (47 ms)
+    ✕ Users can remove a course from a semester (51 ms)
 
   ● Degree Tests › Users can delete a new degree plan
 
@@ -118,7 +118,6 @@ FAIL src/App.test.tsx
           [36m/>[39m
           [36m<div[39m
             [33mclass[39m=[32m"CourseList"[39m
-            [33mhidden[39m=[32m""[39m
           [36m/>[39m
           [36m<div[39m
             [33mclass[39m=[32m"DegreeList"[39m
@@ -322,7 +321,6 @@ FAIL src/App.test.tsx
           [36m/>[39m
           [36m<div[39m
             [33mclass[39m=[32m"CourseList"[39m
-            [33mhidden[39m=[32m""[39m
           [36m/>[39m
           [36m<div[39m
             [33mclass[39m=[32m"DegreeList"[39m
@@ -550,7 +548,6 @@ FAIL src/App.test.tsx
           [36m/>[39m
           [36m<div[39m
             [33mclass[39m=[32m"CourseList"[39m
-            [33mhidden[39m=[32m""[39m
           [36m/>[39m
           [36m<div[39m
             [33mclass[39m=[32m"DegreeList"[39m
@@ -802,7 +799,6 @@ FAIL src/App.test.tsx
           [36m/>[39m
           [36m<div[39m
             [33mclass[39m=[32m"CourseList"[39m
-            [33mhidden[39m=[32m""[39m
           [36m/>[39m
           [36m<div[39m
             [33mclass[39m=[32m"DegreeList"[39m
@@ -1078,7 +1074,6 @@ FAIL src/App.test.tsx
           [36m/>[39m
           [36m<div[39m
             [33mclass[39m=[32m"CourseList"[39m
-            [33mhidden[39m=[32m""[39m
           [36m/>[39m
           [36m<div[39m
             [33mclass[39m=[32m"DegreeList"[39m
@@ -2885,7 +2880,6 @@ FAIL src/App.test.tsx
           [36m/>[39m
           [36m<div[39m
             [33mclass[39m=[32m"CourseList"[39m
-            [33mhidden[39m=[32m""[39m
           [36m/>[39m
           [36m<div[39m
             [33mclass[39m=[32m"DegreeList"[39m
@@ -3209,7 +3203,6 @@ FAIL src/App.test.tsx
           [36m/>[39m
           [36m<div[39m
             [33mclass[39m=[32m"CourseList"[39m
-            [33mhidden[39m=[32m""[39m
           [36m/>[39m
           [36m<div[39m
             [33mclass[39m=[32m"DegreeList"[39m
@@ -3557,7 +3550,6 @@ FAIL src/App.test.tsx
           [36m/>[39m
           [36m<div[39m
             [33mclass[39m=[32m"CourseList"[39m
-            [33mhidden[39m=[32m""[39m
           [36m/>[39m
           [36m<div[39m
             [33mclass[39m=[32m"DegreeList"[39m
@@ -3929,7 +3921,6 @@ FAIL src/App.test.tsx
           [36m/>[39m
           [36m<div[39m
             [33mclass[39m=[32m"CourseList"[39m
-            [33mhidden[39m=[32m""[39m
           [36m/>[39m
           [36m<div[39m
             [33mclass[39m=[32m"DegreeList"[39m
@@ -4325,7 +4316,6 @@ FAIL src/App.test.tsx
           [36m/>[39m
           [36m<div[39m
             [33mclass[39m=[32m"CourseList"[39m
-            [33mhidden[39m=[32m""[39m
           [36m/>[39m
           [36m<div[39m
             [33mclass[39m=[32m"DegreeList"[39m
@@ -4745,7 +4735,6 @@ FAIL src/App.test.tsx
           [36m/>[39m
           [36m<div[39m
             [33mclass[39m=[32m"CourseList"[39m
-            [33mhidden[39m=[32m""[39m
           [36m/>[39m
           [36m<div[39m
             [33mclass[39m=[32m"DegreeList"[39m
@@ -5035,7 +5024,7 @@ FAIL src/App.test.tsx
 -------------------------|---------|----------|---------|---------|------------------------------------
 File                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                  
 -------------------------|---------|----------|---------|---------|------------------------------------
-All files                |   26.54 |    16.66 |   14.64 |    26.6 |                                    
+All files                |   26.47 |    16.66 |   14.55 |   26.54 |                                    
  src                     |   88.46 |    91.66 |      80 |   88.46 |                                    
   App.tsx                |   88.46 |    91.66 |      80 |   88.46 | 115-131                            
  src/components          |   18.46 |     8.92 |   10.94 |   18.51 |                                    
@@ -5050,11 +5039,11 @@ All files                |   26.54 |    16.66 |   14.64 |    26.6 |
   DegreeView.tsx         |    7.69 |        0 |       0 |    7.69 | 31-105                             
   HomePage.tsx           |     100 |      100 |     100 |     100 |                                    
   SemesterCard.tsx       |    5.55 |        0 |       0 |    5.55 | 28-86                              
-  SemesterList.tsx       |    3.22 |        0 |       0 |    3.22 | 30-152                             
+  SemesterList.tsx       |    3.22 |        0 |       0 |    3.22 | 30-150                             
   SemesterView.tsx       |       2 |        0 |       0 |    2.04 | 16-157                             
   SemesterViewCard.tsx   |   16.66 |      100 |       0 |   16.66 | 19-39                              
- src/components/Semester |    5.55 |        0 |       0 |    5.55 |                                    
-  SemesterAddCourse.tsx  |    5.55 |        0 |       0 |    5.55 | 17-69                              
+ src/components/Semester |    5.26 |        0 |       0 |    5.26 |                                    
+  SemesterAddCourse.tsx  |    5.26 |        0 |       0 |    5.26 | 17-80                              
  src/interfaces          |       0 |        0 |       0 |       0 |                                    
   course.ts              |       0 |        0 |       0 |       0 |                                    
   degree.ts              |       0 |        0 |       0 |       0 |                                    
@@ -5065,5 +5054,5 @@ All files                |   26.54 |    16.66 |   14.64 |    26.6 |
 Test Suites: 1 failed, 1 total
 Tests:       14 failed, 2 passed, 16 total
 Snapshots:   0 total
-Time:        4.147 s
+Time:        4.373 s
 Ran all test suites.
