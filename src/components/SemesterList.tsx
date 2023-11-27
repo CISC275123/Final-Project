@@ -7,6 +7,9 @@ import { SemesterView } from "./SemesterView";
 import { SemesterCard } from "./SemesterCard";
 import { Degree } from "../interfaces/degree";
 import { Year } from "../interfaces/year";
+import { Course } from "../interfaces/course";
+import { SemesterViewCard } from "./SemesterViewCard";
+import { StringLiteral } from "typescript";
 
 export const SemesterList = ({
     isDataSaved,
@@ -55,11 +58,18 @@ export const SemesterList = ({
     }
 
     function deleteSemester(inputID: number) {
-        const newSemesterList = semesterList.filter(
+        const newSemesterList: Semester[] = semesterList.filter(
             (sem: Semester): boolean => inputID !== sem.id
         );
         setSemesterList(newSemesterList, degree, year);
         console.log("Delete");
+    }
+
+    function toggle(id: number) {
+        const div = document.getElementById(id.toString());
+        if (div) {
+            div.style.display = div.style.display == "none" ? "block" : "none";
+        }
     }
 
     return (
@@ -79,7 +89,13 @@ export const SemesterList = ({
                                     key={semester.id}
                                     className="SemesterContainer"
                                 >
-                                    <li className="Semester-li">
+                                    <SemesterViewCard
+                                        semester={semester}
+                                        handleView={handleCourseView}
+                                        toggle={toggle}
+                                        removeSemester={deleteSemester}
+                                    />
+                                    {/*<li className="Semester-li">
                                         {semester.title}
                                     </li>
                                     <Button
@@ -96,6 +112,18 @@ export const SemesterList = ({
                                     >
                                         Delete Semester
                                     </Button>
+                                    <div>
+                                        <ul>
+                                            {semester.courses.map(
+                                                (course: Course) => (
+                                                    <li key={course.id}>
+                                                        {course.code}:{" "}
+                                                        {course.name}
+                                                    </li>
+                                                )
+                                            )}
+                                        </ul>
+                                                </div>*/}
                                 </div>
                             ))}
                         </>

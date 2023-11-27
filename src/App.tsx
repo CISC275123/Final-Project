@@ -22,12 +22,15 @@ function App(): JSX.Element {
         if (rawSavedDegrees) {
             setIsDataSaved(true);
             const savedDegrees = JSON.parse(rawSavedDegrees);
-            setStartingDegreeId(
-                savedDegrees[
-                    savedDegrees.length > 0 ? savedDegrees.length - 1 : 0
-                ].id + 1
-            );
-            return savedDegrees;
+            if (savedDegrees.length > 0) {
+                setStartingDegreeId(
+                    savedDegrees[
+                        savedDegrees.length > 0 ? savedDegrees.length - 1 : 0
+                    ].id + 1
+                );
+                return savedDegrees;
+            }
+            return [];
         } else {
             return [];
         }
@@ -84,6 +87,7 @@ function App(): JSX.Element {
                 counter++;
             }
         }
+
         // Store the course list with IDs in the component's state
         const COURSES: Course[] = Object.values(updatedCourseData)
             .map(Object.values)
