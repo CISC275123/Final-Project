@@ -1,5 +1,5 @@
 /* eslint-disable no-extra-parens */
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Degree } from "../interfaces/degree";
 import { DegreeCard } from "./DegreeCard";
@@ -9,8 +9,8 @@ import "./DegreeList.css";
 import { Semester } from "../interfaces/semester";
 import { Year } from "../interfaces/year";
 
-import { DegreeBase } from "../interfaces/degreebase";
-import degreebases from "../data/degrees.json";
+// import { DegreeBase } from "../interfaces/degreebase";
+// import degreebases from "../data/degrees.json";
 
 export const DegreeList = ({
     isDataSaved,
@@ -35,15 +35,15 @@ export const DegreeList = ({
 }) => {
     const [displayId, setDisplayId] = useState<null | number>(null);
     const [userInputName, setUserInputName] = useState<string>("Sample Degree");
-    const [userInputPlan, setUserInputPlan] = useState<string>("CS BA");
+    // const [userInputPlan, setUserInputPlan] = useState<string>("CS BA");
     const [isAdding, setIsAdding] = useState<boolean>(false);
 
-    const [plans, setPlans] = useState<Record<string, DegreeBase>>();
+    // const [plans, setPlans] = useState<Record<string, DegreeBase>>();
 
-    useEffect(() => {
-        const data: Record<string, DegreeBase> = degreebases;
-        setPlans(data);
-    }, []);
+    // useEffect(() => {
+    //     const data: Record<string, DegreeBase> = degreebases;
+    //     setPlans(data);
+    // }, []);
 
     const handleDegreeView = (id: number) => {
         setDisplayId(id);
@@ -58,7 +58,7 @@ export const DegreeList = ({
     };
 
     const setUpDegree = () => {
-        addDegree(userInputName, [], userInputPlan);
+        addDegree(userInputName, [], "");
         handleAddClick();
     };
 
