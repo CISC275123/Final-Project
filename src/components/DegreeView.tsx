@@ -8,13 +8,15 @@ import "./DegreeView.css";
 import { SemesterList } from "./SemesterList";
 
 import { Semester } from "../interfaces/semester";
+import { Course } from "../interfaces/course";
 
 export const DegreeView = ({
     degree,
     resetView,
     addYear,
     deleteYear,
-    updateSemesterList
+    updateSemesterList,
+    defaultCourses
 }: {
     degree: Degree;
     resetView: () => void;
@@ -25,6 +27,7 @@ export const DegreeView = ({
         targetDegree: Degree,
         targetYear: Year
     ) => void;
+    defaultCourses: Course[];
 }) => {
     const [isAdding, setAdding] = useState<boolean>(false);
     const [userInput, setUserInput] = useState<string>("Freshman");
@@ -91,26 +94,23 @@ export const DegreeView = ({
                     <div className="year_view_rows">
                         {degree.years.map((year: Year) => (
                             <div className="year_view_column" key={year.name}>
-                                <div className="moveFront">
-                                    <h4 onClick={() => console.log(year.id)}>
-                                        {year.name}
-                                    </h4>
-                                    <Button
-                                        className="Deleteyear"
-                                        onClick={() => deleteYear(year, degree)}
-                                    >
-                                        Delete Year
-                                    </Button>
-                                    {
-                                        <SemesterList
-                                            key={year.name}
-                                            semesterList={year.semesters}
-                                            setSemesterList={updateSemesterList}
-                                            degree={degree}
-                                            year={year}
-                                        />
-                                    }
-                                </div>
+                                <h4 onClick={() => console.log(year.id)}>
+                                    {year.name}
+                                </h4>
+                                <Button
+                                    onClick={() => deleteYear(year, degree)}
+                                >
+                                    Delete Year
+                                </Button>
+                                {
+                                    <SemesterList
+                                        key={year.name}
+                                        semesterList={year.semesters}
+                                        setSemesterList={updateSemesterList}
+                                        degree={degree}
+                                        year={year}
+                                    />
+                                }
                             </div>
                         ))}
                     </div>

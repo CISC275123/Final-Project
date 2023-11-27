@@ -7,12 +7,14 @@ import { SemesterView } from "./SemesterView";
 import { SemesterCard } from "./SemesterCard";
 import { Degree } from "../interfaces/degree";
 import { Year } from "../interfaces/year";
+import { Course } from "../interfaces/course";
 
 export const SemesterList = ({
     semesterList,
     setSemesterList,
     degree,
-    year
+    year,
+    defaultCourses
 }: {
     semesterList: Semester[];
     setSemesterList: (
@@ -22,6 +24,7 @@ export const SemesterList = ({
     ) => void;
     degree: Degree;
     year: Year;
+    defaultCourses: Course[];
 }) => {
     const [isMakeSemesterCard, setIsMakeSemesterCard] =
         useState<boolean>(false);
@@ -123,6 +126,7 @@ export const SemesterList = ({
                             setIdCounter={setIdCounter}
                             degree={degree}
                             year={year}
+                            defaultCourses={defaultCourses}
                         ></SemesterCard>
                         <button onClick={hideMakeSemesterCard}>Close</button>
                     </div>

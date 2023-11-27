@@ -17,7 +17,7 @@ export const SemesterView = ({
     const [addedCourses, setAddedCourses] = useState<Course[]>([]);
     const [isAddCourses, setIsAddCourses] = useState<boolean>(false);
     const [currIndex, setIndex] = useState<number>(0);
-    const NUM_COURSES_DISPLAYED = 5;
+    const NUM_COURSES_DISPLAYED = 3;
 
     function displayCourses() {
         setIsAddCourses(!isAddCourses);
@@ -28,14 +28,25 @@ export const SemesterView = ({
     function saveInfo() {
         semester.notes = semester.notes + description;
         for (const x of addedCourses) {
-            if (semester.currentCredits + x.credits <= semester.maxCredits) {
+            let y = 0;
+            if (x.credits.includes("-")) {
+                y = +x.credits.substring(x.credits.length - 1);
+            } else {
+                y = +x.credits;
+            }
+            if (
+                ((semester.currentCredits + y) as unknown as number) <=
+                semester.maxCredits
+            ) {
                 if (!semester.courses.includes(x)) {
                     semester.courses.push(x);
-                    semester.currentCredits =
-                        semester.currentCredits + x.credits;
+                    semester.currentCredits = (semester.currentCredits +
+                        y) as unknown as number;
                 }
             }
         }
+        console.log(semester.courses);
+        console.log(addedCourses);
         setAddedCourses([]);
     }
     function clearCourses() {
@@ -43,9 +54,15 @@ export const SemesterView = ({
         semester.courses = [];
         semester.currentCredits = 0;
     }
-    function removeCourse(id: string, creds: number) {
-        semester.courses = semester.courses.filter((c: Course) => c.id != id);
-        semester.currentCredits = semester.currentCredits - creds;
+    function removeCourse(id: string, creds: string) {
+        semester.courses = semester.courses.filter((c: Course) => c.code != id);
+        let y = 0;
+        if (creds.includes("-")) {
+            y = +creds.substring(creds.length - 1);
+        } else {
+            y = +creds;
+        }
+        semester.currentCredits = semester.currentCredits - y;
         saveInfo();
     }
     return (
@@ -58,9 +75,9 @@ export const SemesterView = ({
             <h3>Current Credits: {semester.currentCredits} credits</h3>
             <h3>Courses: </h3>
             {semester.courses.map((c) => (
-                <div key={c.id}>
-                    {c.id}{" "}
-                    <Button onClick={() => removeCourse(c.id, c.credits)}>
+                <div key={c.code}>
+                    {c.code}{" "}
+                    <Button onClick={() => removeCourse(c.code, c.credits)}>
                         Remove
                     </Button>
                 </div>

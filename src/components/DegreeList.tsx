@@ -8,6 +8,7 @@ import { DegreeView } from "./DegreeView";
 import "./DegreeList.css";
 import { Semester } from "../interfaces/semester";
 import { Year } from "../interfaces/year";
+import { Course } from "../interfaces/course";
 
 export const DegreeList = ({
     degrees,
@@ -15,7 +16,8 @@ export const DegreeList = ({
     addYear,
     deleteYear,
     removeDegree,
-    updateSemesterList
+    updateSemesterList,
+    defaultCourses
 }: {
     degrees: Degree[];
     addDegree: (name: string) => void;
@@ -27,6 +29,7 @@ export const DegreeList = ({
         targetDegree: Degree,
         targetYear: Year
     ) => void;
+    defaultCourses: Course[];
 }) => {
     const [displayId, setDisplayId] = useState<null | number>(null);
     const [userInput, setUserInput] = useState<string>("Sample Degree");
@@ -47,6 +50,27 @@ export const DegreeList = ({
     const setUpDegree = () => {
         addDegree(userInput);
         handleAddClick();
+    };
+
+    const SaveDegrees: React.FC<{ degrees: Degree[] }> = ({ degrees }) => {
+        const downloadDegrees = () => {
+            const degreesJson = JSON.stringify(degrees, null, 2); // The third argument is for pretty formatting with 2 spaces
+
+            const blob = new Blob([degreesJson], { type: "application/json" });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "degrees.json";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+
+            // Revoke the ObjectURL to free up resources
+            URL.revokeObjectURL(url);
+        };
+
+        return <Button onClick={downloadDegrees}>Save Degrees</Button>;
     };
 
     return (
@@ -98,6 +122,7 @@ export const DegreeList = ({
                         ))}
                     </>
                 )}
+                {!displayId && <SaveDegrees degrees={degrees} />}
                 {degrees.map((degree: Degree) => {
                     const dId = degree.id;
                     if (displayId === dId) {
@@ -109,6 +134,7 @@ export const DegreeList = ({
                                 addYear={addYear}
                                 deleteYear={deleteYear}
                                 updateSemesterList={updateSemesterList}
+                                defaultCourses={defaultCourses}
                             ></DegreeView>
                         );
                     } else {

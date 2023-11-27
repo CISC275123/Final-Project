@@ -11,21 +11,27 @@ export const CourseEdit = ({
     default_courses
 }: {
     course: Course;
-    editCourse: (courseID: string, newCourse: Course) => void;
+    editCourse: (courseID: number, newCourse: Course) => void;
     switchEdit: () => void;
     default_courses: Course[];
 }) => {
     const [newName, setName] = useState<string>(course.name);
-    const [newCredits, setCredits] = useState<number>(course.credits);
-    const [newDesc, setDesc] = useState<string>(course.description);
+    const [newCredits, setCredits] = useState<string>(course.credits);
+    const [newDesc, setDesc] = useState<string>(course.descr);
+    const [newCode, setCode] = useState<string>(course.code);
 
-    const cId = course.id.replace(/\s/g, "");
+    const cId = course.id;
 
     // Saves the changes step-by-step by creating new courses, each course containing the desired change.
     // TO DO : Reduce code so that it accomplishes this without creating multiple new instances of a course.
     const saveChanges = () => {
-        const newCourseName: Course = {
+        const newCourseCode: Course = {
             ...course,
+            code: newCode
+        };
+
+        const newCourseName: Course = {
+            ...newCourseCode,
             name: newName
         };
 
@@ -36,7 +42,7 @@ export const CourseEdit = ({
 
         const newCourseDesc: Course = {
             ...newCourseCredits,
-            description: newDesc
+            descr: newDesc
         };
 
         const newCourse: Course = {
@@ -48,7 +54,7 @@ export const CourseEdit = ({
 
     const resetDefault = () => {
         const defaultCourse = default_courses.filter(
-            (course: Course): boolean => course.id.replace(/\s/g, "") === cId
+            (course: Course): boolean => course.id === cId
         )[0];
 
         editCourse(cId, defaultCourse);
@@ -60,6 +66,22 @@ export const CourseEdit = ({
                 <>
                     <hr />
                     <div className="edit_course">
+                        <div className="edit_code_row">
+                            <div className="edit_code_box">
+                                <h4>Course Code:</h4>
+                                <Form.Group
+                                    className="code_input"
+                                    controlId="editCodeFormId"
+                                >
+                                    <Form.Control
+                                        value={newCode}
+                                        onChange={(e) =>
+                                            setCode(e.target.value)
+                                        }
+                                    ></Form.Control>
+                                </Form.Group>
+                            </div>
+                        </div>
                         <div className="edit_name_row">
                             <div className="edit_name_box">
                                 <h4>Course Name:</h4>
@@ -78,9 +100,7 @@ export const CourseEdit = ({
                         </div>
                         <div className="edit_credits_row">
                             <div className="edit_credits_box">
-                                <h4>
-                                    Credit{course.credits !== 1 ? "s:" : ":"}
-                                </h4>
+                                <h4>Credits</h4>
                                 <Form.Group
                                     className="credits_input"
                                     controlId="editCreditsFormId"
@@ -89,7 +109,7 @@ export const CourseEdit = ({
                                         value={newCredits}
                                         type="string"
                                         onChange={(e) =>
-                                            setCredits(parseInt(e.target.value))
+                                            setCredits(e.target.value)
                                         }
                                     ></Form.Control>
                                 </Form.Group>

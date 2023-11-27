@@ -9,16 +9,18 @@ export const CourseList = ({
     courses,
     editCourse,
     switchEditing,
-    default_courses
+    default_courses,
+    departments
 }: {
     courses: Course[];
-    editCourse: (courseID: string, newCourse: Course) => void;
+    editCourse: (courseID: number, newCourse: Course) => void;
     switchEditing: (edit: boolean) => void;
     default_courses: Course[];
+    departments: string[];
 }) => {
-    const [displayId, setDisplayId] = useState<null | string>(null);
+    const [displayId, setDisplayId] = useState<null | number>(null);
 
-    const handleCourseView = (id: string) => {
+    const handleCourseView = (id: number) => {
         setDisplayId(id);
     };
 
@@ -27,21 +29,33 @@ export const CourseList = ({
         setDisplayId(null);
     };
 
+    function convertCredits(course: Course): number | string {
+        const trimCred = course.credits.trim();
+
+        if (trimCred.slice(1, 2) === "-") {
+            return trimCred;
+        } else {
+            const cred: number = parseInt(course.credits.trim().slice(0, 1));
+            return cred;
+        }
+    }
+
     return (
         <div className="course_list">
             {!displayId && (
                 <>
                     {courses.map((course: Course) => (
                         <CourseCard
-                            key={course.id}
+                            key={course.code}
                             course={course}
                             handleClick={handleCourseView}
+                            convertCredits={convertCredits}
                         ></CourseCard>
                     ))}
                 </>
             )}
             {courses.map((course: Course) => {
-                const cId = course.id.replace(/\s/g, "");
+                const cId = course.id;
                 if (displayId === cId) {
                     switchEditing(true);
                     return (
@@ -51,7 +65,8 @@ export const CourseList = ({
                             editCourse={editCourse}
                             resetView={resetCourseView}
                             default_courses={default_courses}
-                            handleClick={handleCourseView}
+                            convertCredits={convertCredits}
+                            departments={departments}
                         ></CourseView>
                     );
                 } else {

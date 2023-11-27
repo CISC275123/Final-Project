@@ -1,9 +1,11 @@
 export interface Course {
-    id: string;
+    id: number;
+    code: string;
     name: string;
-    credits: number;
-    prerequisites: string[];
-    restrictions: string;
-    description: string;
-    corequisites: string[];
+    descr: string;
+    credits: string;
+    preReq: string;
+    restrict: string;
+    breadth: string;
+    typ: string;
 }
