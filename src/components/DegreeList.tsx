@@ -10,6 +10,7 @@ import { Semester } from "../interfaces/semester";
 import { Year } from "../interfaces/year";
 
 export const DegreeList = ({
+    isDataSaved,
     degrees,
     addDegree,
     addYear,
@@ -17,6 +18,7 @@ export const DegreeList = ({
     removeDegree,
     updateSemesterList
 }: {
+    isDataSaved: boolean;
     degrees: Degree[];
     addDegree: (name: string, degrees: Degree[]) => void;
     deleteYear: (targetYear: Year, targetDegree: Degree) => void;
@@ -178,6 +180,7 @@ export const DegreeList = ({
                     if (displayId === dId) {
                         return (
                             <DegreeView
+                                isDataSaved={isDataSaved}
                                 key={degree.id}
                                 degree={degree}
                                 resetView={resetDegreeView}

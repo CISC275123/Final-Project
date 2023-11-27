@@ -16,9 +16,11 @@ function App(): JSX.Element {
     // VARs holding list information on the user's degree plan
     const [startingDegreeId, setStartingDegreeId] = useState<number>(1);
     const [globalCourseList, setGlobalCourseList] = useState<Course[]>([]);
+    const [isDataSaved, setIsDataSaved] = useState<boolean>(false);
     const [globalDegreeList, setGlobalDegreeList] = useState<Degree[]>(() => {
         const rawSavedDegrees = localStorage.getItem("degrees");
         if (rawSavedDegrees) {
+            setIsDataSaved(true);
             const savedDegrees = JSON.parse(rawSavedDegrees);
             setStartingDegreeId(
                 savedDegrees[
@@ -170,6 +172,7 @@ function App(): JSX.Element {
             <div className="DegreeList">
                 {isDegree && (
                     <DegreeDisplay
+                        isDataSaved={isDataSaved}
                         updateGlobalDegreeList={updateGlobalDegreeList}
                         globalDegreeList={globalDegreeList}
                         startingDegreeId={startingDegreeId}

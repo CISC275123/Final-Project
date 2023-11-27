@@ -5,10 +5,12 @@ import { Semester } from "../interfaces/semester";
 import { Year } from "../interfaces/year";
 
 export const DegreeDisplay = ({
+    isDataSaved,
     updateGlobalDegreeList,
     globalDegreeList,
     startingDegreeId
 }: {
+    isDataSaved: boolean;
     updateGlobalDegreeList: (newList: Degree[]) => void;
     globalDegreeList: Degree[];
     startingDegreeId: number;
@@ -163,6 +165,7 @@ export const DegreeDisplay = ({
         <div className="DegreeList">
             {
                 <DegreeList
+                    isDataSaved={isDataSaved}
                     degrees={globalDegreeList}
                     addDegree={addDegree}
                     removeDegree={removeDegree}
