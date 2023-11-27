@@ -9,22 +9,8 @@ import { Button } from "react-bootstrap";
 import catalog from "./data/catalog.json";
 
 import { HomePage } from "./components/HomePage";
-
-// Creates default list of courses pulling from a JSON file.
-const COURSES = sample.map(
-    (course): Course => ({
-        id: course.id,
-        name: course.name,
-        credits: course.credits as unknown as number,
-        prerequisites: course.prereqs as unknown as string[],
-        restrictions: course.restrictions as unknown as string,
-        description: course.description,
-        corequisites: course.coreqs as unknown as string[]
-    })
-);
-
-// sets the number of courses to be displayed on a single page.
-const NUM_COURSES_DISPLAYED = 3;
+import { CourseDisplay } from "./components/CourseDisplay";
+import { DegreeDisplay } from "./components/DegreeDisplay";
 
 function App(): JSX.Element {
     // VARs holding list information on the user's degree plan
@@ -177,34 +163,6 @@ function App(): JSX.Element {
             {/* The default home page  */}
             <div className="HomePage">{isHome && <HomePage></HomePage>}</div>
 
-            {/* Following are a part of the "COURSES" functionality  */}
-            <div hidden={!courseDisplay || isEditing} className="CourseButtons">
-                <Button
-                    onClick={() =>
-                        currIndex > 0
-                            ? setIndex(currIndex - NUM_COURSES_DISPLAYED)
-                            : setIndex(currIndex)
-                    }
-                    hidden={isEditing || currIndex <= 0}
-                >
-                    Back
-                </Button>
-                <Button
-                    onClick={() =>
-                        currIndex <
-                        globalCourseList.length - NUM_COURSES_DISPLAYED
-                            ? setIndex(currIndex + NUM_COURSES_DISPLAYED)
-                            : setIndex(currIndex)
-                    }
-                    hidden={
-                        isEditing ||
-                        currIndex >=
-                            globalCourseList.length - NUM_COURSES_DISPLAYED
-                    }
-                >
-                    Next
-                </Button>
-            </div>
             <div hidden={!courseDisplay} className="CourseList">
                 {courseDisplay && (
                     <CourseDisplay
