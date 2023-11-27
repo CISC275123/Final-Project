@@ -85,6 +85,7 @@ function App(): JSX.Element {
                 counter++;
             }
         }
+
         // Store the course list with IDs in the component's state
         const COURSES: Course[] = Object.values(updatedCourseData)
             .map(Object.values)

@@ -1,5 +1,5 @@
 /* eslint-disable no-extra-parens */
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Degree } from "../interfaces/degree";
 import { DegreeCard } from "./DegreeCard";
@@ -8,6 +8,9 @@ import { DegreeView } from "./DegreeView";
 import "./DegreeList.css";
 import { Semester } from "../interfaces/semester";
 import { Year } from "../interfaces/year";
+
+import { DegreeBase } from "../interfaces/degreebase";
+import degreebases from "../data/degrees.json";
 
 export const DegreeList = ({
     degrees,
@@ -18,7 +21,7 @@ export const DegreeList = ({
     updateSemesterList
 }: {
     degrees: Degree[];
-    addDegree: (name: string, degrees: Degree[]) => void;
+    addDegree: (name: string, degrees: Degree[], plan: string) => void;
     deleteYear: (targetYear: Year, targetDegree: Degree) => void;
     removeDegree: (id: number) => void;
     addYear: (name: string, degree: Degree) => void;
@@ -29,8 +32,16 @@ export const DegreeList = ({
     ) => void;
 }) => {
     const [displayId, setDisplayId] = useState<null | number>(null);
-    const [userInput, setUserInput] = useState<string>("Sample Degree");
+    const [userInputName, setUserInputName] = useState<string>("Sample Degree");
+    const [userInputPlan, setUserInputPlan] = useState<string>("CS BA");
     const [isAdding, setIsAdding] = useState<boolean>(false);
+
+    const [plans, setPlans] = useState<Record<string, DegreeBase>>();
+
+    useEffect(() => {
+        const data: Record<string, DegreeBase> = degreebases;
+        setPlans(data);
+    }, []);
 
     const handleDegreeView = (id: number) => {
         setDisplayId(id);
@@ -45,7 +56,7 @@ export const DegreeList = ({
     };
 
     const setUpDegree = () => {
-        addDegree(userInput, []);
+        addDegree(userInputName, [], userInputPlan);
         handleAddClick();
     };
 
@@ -112,7 +123,7 @@ export const DegreeList = ({
     };
 
     function handleUpload(degrees: Degree[]) {
-        addDegree("", degrees);
+        addDegree("", degrees, "");
     }
 
     const clearLocalStorage = () => {
@@ -133,11 +144,14 @@ export const DegreeList = ({
                         </Form.Label>
                         <Form.Control
                             type="string"
-                            value={userInput}
+                            value={userInputName}
                             onChange={(
                                 event: React.ChangeEvent<HTMLInputElement>
-                            ) => setUserInput(event.target.value)}
+                            ) => setUserInputName(event.target.value)}
                         ></Form.Control>
+                        <Form.Select>
+                            {console.log(Object.keys(plans))}
+                        </Form.Select>
                         <Button
                             variant="success"
                             className="save_edit_btn"
