@@ -19,14 +19,15 @@ function App(): JSX.Element {
     const [globalDegreeList, setGlobalDegreeList] = useState<Degree[]>(() => {
         const rawSavedDegrees = localStorage.getItem("degrees");
         if (rawSavedDegrees) {
-            /*const savedDegrees = JSON.parse(rawSavedDegrees);
-            setStartingDegreeId(
-                savedDegrees[
-                    savedDegrees.length > 0 ? savedDegrees.length - 1 : 0
-                ].id + 1
-            );
-            return savedDegrees;*/
-            localStorage.clear();
+            const savedDegrees = JSON.parse(rawSavedDegrees);
+            if (savedDegrees.length > 0) {
+                setStartingDegreeId(
+                    savedDegrees[
+                        savedDegrees.length > 0 ? savedDegrees.length - 1 : 0
+                    ].id + 1
+                );
+                return savedDegrees;
+            }
             return [];
         } else {
             return [];
