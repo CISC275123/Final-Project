@@ -7,6 +7,8 @@ import { SemesterView } from "./SemesterView";
 import { SemesterCard } from "./SemesterCard";
 import { Degree } from "../interfaces/degree";
 import { Year } from "../interfaces/year";
+import { Course } from "../interfaces/course";
+import { SemesterViewCard } from "./SemesterViewCard";
 
 export const SemesterList = ({
     semesterList,
@@ -45,7 +47,7 @@ export const SemesterList = ({
     }
 
     function deleteSemester(inputID: number) {
-        const newSemesterList = semesterList.filter(
+        const newSemesterList: Semester[] = semesterList.filter(
             (sem: Semester): boolean => inputID !== sem.id
         );
         setSemesterList(newSemesterList, degree, year);
@@ -69,7 +71,12 @@ export const SemesterList = ({
                                     key={semester.id}
                                     className="SemesterContainer"
                                 >
-                                    <li className="Semester-li">
+                                    <SemesterViewCard
+                                        semester={semester}
+                                        handleView={handleCourseView}
+                                        removeSemester={deleteSemester}
+                                    />
+                                    {/*<li className="Semester-li">
                                         {semester.title}
                                     </li>
                                     <Button
@@ -86,6 +93,18 @@ export const SemesterList = ({
                                     >
                                         Delete Semester
                                     </Button>
+                                    <div>
+                                        <ul>
+                                            {semester.courses.map(
+                                                (course: Course) => (
+                                                    <li key={course.id}>
+                                                        {course.code}:{" "}
+                                                        {course.name}
+                                                    </li>
+                                                )
+                                            )}
+                                        </ul>
+                                                </div>*/}
                                 </div>
                             ))}
                         </>
