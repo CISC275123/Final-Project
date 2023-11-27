@@ -10,12 +10,14 @@ import { SemesterList } from "./SemesterList";
 import { Semester } from "../interfaces/semester";
 
 export const DegreeView = ({
+    isDataSaved,
     degree,
     resetView,
     addYear,
     deleteYear,
     updateSemesterList
 }: {
+    isDataSaved: boolean;
     degree: Degree;
     resetView: () => void;
     addYear: (name: string, degree: Degree) => void;
@@ -107,6 +109,7 @@ export const DegreeView = ({
                                 </Button>
                                 {
                                     <SemesterList
+                                        isDataSaved={isDataSaved}
                                         key={year.name}
                                         semesterList={year.semesters}
                                         setSemesterList={updateSemesterList}
