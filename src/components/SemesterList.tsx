@@ -9,6 +9,7 @@ import { Degree } from "../interfaces/degree";
 import { Year } from "../interfaces/year";
 import { Course } from "../interfaces/course";
 import { SemesterViewCard } from "./SemesterViewCard";
+import { StringLiteral } from "typescript";
 
 export const SemesterList = ({
     semesterList,
@@ -54,6 +55,13 @@ export const SemesterList = ({
         console.log("Delete");
     }
 
+    function toggle(id: number) {
+        const div = document.getElementById(id.toString());
+        if (div) {
+            div.style.display = div.style.display == "none" ? "block" : "none";
+        }
+    }
+
     return (
         <div>
             <Button
@@ -74,6 +82,7 @@ export const SemesterList = ({
                                     <SemesterViewCard
                                         semester={semester}
                                         handleView={handleCourseView}
+                                        toggle={toggle}
                                         removeSemester={deleteSemester}
                                     />
                                     {/*<li className="Semester-li">

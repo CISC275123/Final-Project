@@ -1,0 +1,21 @@
+.semester_view_card {
+    background-color: #24252a;
+    border-radius: 1rem;
+    padding: 2rem;
+}
+
+.degreeName {
+    color: orange;
+    margin-right: 1rem;
+}
+.credits {
+    color: white;
+    margin-right: 1rem;
+}
+
+@media only screen and (max-width: 420px) {
+    h3,
+    p {
+        font-size: 0.8rem;
+    }
+}
