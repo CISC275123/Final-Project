@@ -125,6 +125,7 @@ function App(): JSX.Element {
                     <ul className="nav_links">
                         <li>
                             <Button
+                                className="Home"
                                 onClick={() => {
                                     setDegree(false);
                                     setCourseDisplay(false);
@@ -136,6 +137,7 @@ function App(): JSX.Element {
                         </li>
                         <li>
                             <Button
+                                className="Courseshome"
                                 onClick={() => {
                                     setDegree(false);
                                     setCourseDisplay(!courseDisplay);
@@ -147,6 +149,7 @@ function App(): JSX.Element {
                         </li>
                         <li>
                             <Button
+                                className="Degreesbutton"
                                 onClick={() => {
                                     setDegree(!isDegree);
                                     setCourseDisplay(false);
@@ -161,7 +164,10 @@ function App(): JSX.Element {
             </header>
 
             {/* The default home page  */}
-            <div className="HomePage">{isHome && <HomePage></HomePage>}</div>
+            <div className="HomePage">
+                {isHome && <HomePage></HomePage>}
+                <div className="bubbles"></div>
+            </div>
 
             {/* Course List Functionality */}
             <div className="CourseList">
@@ -186,7 +192,7 @@ function App(): JSX.Element {
                 )}
             </div>
 
-            <footer>
+            <footer className="footerCustom">
                 <p>
                     Created and Maintained by: Leon Giang, Jason Chan, Sibyl
                     Roosen, Abdullah Maruf, Taylor Kadans

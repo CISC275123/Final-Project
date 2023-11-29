@@ -15,3 +15,11 @@
         font-size: 0.8rem;
     }
 }
+.remove {
+    background-color: orange;
+    border-color: #24252a;
+}
+.remove:hover {
+    background-color: #24252a;
+    border-color: orange;
+}

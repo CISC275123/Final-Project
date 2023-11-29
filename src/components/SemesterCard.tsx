@@ -3,6 +3,7 @@ import { Form } from "react-bootstrap";
 import { Semester } from "../interfaces/semester";
 import { Degree } from "../interfaces/degree";
 import { Year } from "../interfaces/year";
+import "./Semester/SemesterList.css";
 
 export const SemesterCard = ({
     semesterList,
@@ -60,7 +61,7 @@ export const SemesterCard = ({
     }
 
     return (
-        <div>
+        <div className="semestercardContainer">
             <Form.Group controlId="chooseSeason">
                 <Form.Label>Semester</Form.Label>
                 <Form.Select onChange={updateSeason} value={season}>

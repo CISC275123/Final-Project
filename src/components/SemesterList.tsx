@@ -103,6 +103,7 @@ export const SemesterList = ({
                                         {semester.title}
                                     </li>
                                     <Button
+                                        className="EditCustom"
                                         onClick={() => {
                                             handleCourseView(semester.id);
                                         }}
@@ -110,6 +111,7 @@ export const SemesterList = ({
                                         Edit Semester
                                     </Button>{" "}
                                     <Button
+                                        className="DeleteCustom"
                                         onClick={() => {
                                             deleteSemester(semester.id);
                                         }}

@@ -81,3 +81,164 @@ footer {
         display: block;
     }
 }
+.Courseshome {
+    background-color: #24252a;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+    color: orange;
+    border-color: orange;
+}
+.Courseshome:hover {
+    color: white;
+    background-color: #24252a;
+    border-color: orange;
+    z-index: 2;
+    box-shadow: 0 0 10px orange, 0 0 20px orange, 0 0 40px orange,
+        0 0 80px orange, 0 0 160px orange;
+}
+.Courseshome::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -30px;
+    width: 0;
+    height: 100%;
+    background-color: orange;
+    transform: skewx(35deg);
+    transition: 1s;
+    z-index: -1;
+}
+.Courseshome:hover:before {
+    width: 100%;
+}
+.Degreesbutton {
+    background-color: #24252a;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+    color: orange;
+    border-color: orange;
+}
+.Degreesbutton:hover {
+    color: white;
+    background-color: #24252a;
+    border-color: orange;
+    z-index: 2;
+    box-shadow: 0 0 10px orange, 0 0 20px orange, 0 0 40px orange,
+        0 0 80px orange, 0 0 160px orange;
+}
+.Degreesbutton::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -30px;
+    width: 0;
+    height: 100%;
+    background-color: orange;
+    transform: skewx(35deg);
+    transition: 1s;
+    z-index: -1;
+}
+.Degreesbutton:hover:before {
+    width: 100%;
+}
+
+.nextApp {
+    background-color: #24252a;
+    position: relative;
+    top: 0;
+    left: 0;
+
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+    color: orange;
+    border-color: orange;
+}
+.nextApp:hover {
+    color: white;
+    background-color: #24252a;
+    border-color: orange;
+    z-index: 2;
+    box-shadow: 0 0 10px orange, 0 0 20px orange, 0 0 40px orange,
+        0 0 80px orange, 0 0 160px orange;
+}
+.nextApp::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -30px;
+    width: 0;
+    height: 100%;
+    background-color: orange;
+    transform: skewx(35deg);
+    transition: 1s;
+    z-index: -1;
+}
+.nextApp:before {
+    width: 100%;
+}
+
+.Home {
+    background-color: #24252a;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+    color: orange;
+    border-color: orange;
+}
+.Home:hover {
+    color: white;
+    background-color: #24252a;
+    border-color: orange;
+    z-index: 2;
+    box-shadow: 0 0 10px orange, 0 0 20px orange, 0 0 40px orange,
+        0 0 80px orange, 0 0 160px orange;
+}
+.Home::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -28px;
+    width: 0;
+    height: 100%;
+    background-color: orange;
+    transform: skewx(35deg);
+    transition: 1s;
+    z-index: -1;
+}
+.Home:hover:before {
+    width: 100%;
+}
+/* .HomePage {
+    background-color: #494c5e;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+}
+.bubbles {
+    position: relative;
+    display: flex;
+    z-index: 987878;
+}
+.bubbles span {
+    z-index: 987878;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    background-color: orange;
+} */

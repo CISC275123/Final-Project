@@ -1,0 +1,16 @@
+.nextCourseDisplay {
+    background-color: orange;
+    border-color: #24252a;
+}
+.nextCourseDisplay:hover {
+    background-color: #24252a;
+    border-color: orange;
+}
+.backCourseDisplay {
+    background-color: orange;
+    border-color: #24252a;
+}
+.backCourseDisplay:hover {
+    background-color: #24252a;
+    border-color: orange;
+}
