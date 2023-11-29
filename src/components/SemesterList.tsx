@@ -31,15 +31,7 @@ export const SemesterList = ({
     const [isMakeSemesterCard, setIsMakeSemesterCard] =
         useState<boolean>(false);
     const [displayId, setDisplayId] = useState<null | number>(null);
-    const [idCounter, setIdCounter] = useState<number>(() => {
-        if (isDataSaved) {
-            return semesterList.length > 0
-                ? semesterList[semesterList.length - 1].id + 1
-                : semesterList[0].id + 1;
-        } else {
-            return 1;
-        }
-    });
+    const [idCounter, setIdCounter] = useState<number>(1);
 
     const handleCourseView = (id: number) => {
         setDisplayId(id);

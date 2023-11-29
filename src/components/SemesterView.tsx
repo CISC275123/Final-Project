@@ -20,6 +20,14 @@ export const SemesterView = ({
     const NUM_COURSES_DISPLAYED = 3;
 
     const [baseCourses, setBaseCourses] = useState<Course[]>([]);
+    // VARs used to track course department filter
+    const [departmentFilter, setDepartmentFilter] = useState<string>("All");
+    const [filteredList, setFilteredList] = useState<Course[]>([]);
+
+    // VAR used to track what page in courses list the user is viewing
+    const [currentPage, setCurrentPage] = useState<number>(1);
+    const [localCourses, setLocalCourses] =
+        useState<Course[]>(globalCourseList);
 
     useEffect(() => {
         interface JSONCourse {
@@ -108,6 +116,26 @@ export const SemesterView = ({
         semester.currentCredits = semester.currentCredits - y;
         saveInfo();
     }
+
+    function changeFilter(event: React.ChangeEvent<HTMLSelectElement>) {
+        setDepartmentFilter(event.target.value);
+
+        setFilteredList(
+            localCourses.filter(
+                (course: Course): boolean =>
+                    event.target.value === "All" ||
+                    course.code.slice(0, 4) === event.target.value
+            )
+        );
+        setIndex(0);
+        setCurrentPage(1);
+    }
+
+    function changePage(page: number) {
+        const newIndex = (page - 1) * NUM_COURSES_DISPLAYED;
+        setIndex(newIndex);
+    }
+
     return (
         <div>
             <h1>
@@ -131,7 +159,40 @@ export const SemesterView = ({
             <Button onClick={saveInfo}>Save</Button>
             <h2>{semester.notes}</h2>
             {!isAddCourses && (
-                <Form.Group controlId="formNotes">
+                <div>
+                    <Form.Group controlId="formNotes">
+                        <Form.Label>Filter: {departmentFilter}</Form.Label>
+                        <Form.Select
+                            onChange={changeFilter}
+                            value={departmentFilter}
+                        >
+                            {departments.map((dept, index) => (
+                                <option key={index} value={dept}>
+                                    {dept}
+                                </option>
+                            ))}
+                        </Form.Select>
+                    </Form.Group>
+                    <Form.Group controlId="formSetPage">
+                        <Form.Label>
+                            Page: {currentPage}/
+                            {Math.ceil(FileList.length / NUM_COURSES_DISPLAYED)}
+                        </Form.Label>
+                        <Form.Control
+                            type="number"
+                            value={currentPage}
+                            min={1}
+                            max={Math.ceil(
+                                filteredList.length / NUM_COURSES_DISPLAYED
+                            )}
+                            onChange={(e) => {
+                                setCurrentPage(parseInt(e.target.value));
+                                changePage(parseInt(e.target.value));
+                            }}
+                        ></Form.Control>
+                    </Form.Group>
+                </div>
+                /*<Form.Group controlId="formNotes">
                     <Form.Label>Notes:</Form.Label>
                     <Form.Control
                         as="textarea"
@@ -139,7 +200,7 @@ export const SemesterView = ({
                         value={description}
                         onChange={updateDescription}
                     />
-                </Form.Group>
+                </Form.Group>*/
             )}
             {isAddCourses && (
                 <div className="CourseButtons">
