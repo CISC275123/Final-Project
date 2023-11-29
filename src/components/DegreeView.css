@@ -48,7 +48,7 @@
         transform: rotate(350deg);
     }
 }
-*/ .year_view_column::before {
+/* .year_view_column::before {
     content: "";
     position: absolute;
     width: 150px;
@@ -70,7 +70,7 @@
     100% {
         transform: rotate(350deg);
     }
-}
+} */
 .moveFront {
     z-index: 9;
 }
@@ -82,6 +82,19 @@
     border-color: #24252a;
 }
 .AddYear:hover {
+    background-color: #24252a;
+    border-color: orange;
+}
+.degreeZindex {
+}
+.fixZ {
+    z-index: 8;
+}
+.sampleDegreeButtons {
+    background-color: orange;
+    border-color: #24252a;
+}
+.sampleDegreeButtons:hover {
     background-color: #24252a;
     border-color: orange;
 }

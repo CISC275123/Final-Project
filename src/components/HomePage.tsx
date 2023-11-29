@@ -8,7 +8,55 @@ import thirdpic from "./3rdpic.jpg";
 import ud2 from "./ud2.jpg";
 export const HomePage = () => {
     return (
-        <div>
+        <div className="homebg">
+            <div className="bubbles">
+                <span style={{ fontSize: 11 }}></span>
+                <span style={{ fontSize: 12 }}></span>
+                <span style={{ fontSize: 24 }}></span>
+                <span style={{ fontSize: 10 }}></span>
+                <span style={{ fontSize: 14 }}></span>
+                <span style={{ fontSize: 23 }}></span>
+                <span style={{ fontSize: 18 }}></span>
+                <span style={{ fontSize: 16 }}></span>
+                <span style={{ fontSize: 19 }}></span>
+                <span style={{ fontSize: 20 }}></span>
+                <span style={{ fontSize: 22 }}></span>
+                <span style={{ fontSize: 25 }}></span>
+                <span style={{ fontSize: 18 }}></span>
+                <span style={{ fontSize: 21 }}></span>
+                <span style={{ fontSize: 15 }}></span>
+                <span style={{ fontSize: 13 }}></span>
+                <span style={{ fontSize: 26 }}></span>
+                <span style={{ fontSize: 17 }}></span>
+                <span style={{ fontSize: 13 }}></span>
+                <span style={{ fontSize: 28 }}></span>
+                <span style={{ fontSize: 11 }}></span>
+                <span style={{ fontSize: 12 }}></span>
+                <span style={{ fontSize: 24 }}></span>
+                <span style={{ fontSize: 10 }}></span>
+                <span style={{ fontSize: 14 }}></span>
+                <span style={{ fontSize: 23 }}></span>
+                <span style={{ fontSize: 18 }}></span>
+                <span style={{ fontSize: 16 }}></span>
+                <span style={{ fontSize: 19 }}></span>
+                <span style={{ fontSize: 20 }}></span>
+                <span style={{ fontSize: 22 }}></span>
+                <span style={{ fontSize: 25 }}></span>
+                <span style={{ fontSize: 18 }}></span>
+                <span style={{ fontSize: 21 }}></span>
+                <span style={{ fontSize: 15 }}></span>
+                <span style={{ fontSize: 13 }}></span>
+                <span style={{ fontSize: 26 }}></span>
+                <span style={{ fontSize: 17 }}></span>
+                <span style={{ fontSize: 13 }}></span>
+                <span style={{ fontSize: 28 }}></span>
+                {/* <span className="style2"></span>
+                <span className="style3"></span>
+                <span className="style"></span>
+                <span className="style"></span>
+                <span className="style"></span> */}
+                <span></span>
+            </div>
             <div className="center-container">
                 <h1>Welcome to the Course Schedular!</h1>
                 <h3>

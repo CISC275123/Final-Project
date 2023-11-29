@@ -47,12 +47,6 @@ export const SemesterAddCourse = ({
             <h2>Available Semester Courses</h2>
             <div>
                 {courses.map((course: Course) => (
-<<<<<<< HEAD
-                    <div key={course.name}>
-                        {course.id} ({course.credits} Credits){" "}
-                        <Button
-                            className="Add_custom"
-=======
                     <div style={card} key={course.id}>
                         <CourseCard
                             handleClick={() => {
@@ -63,7 +57,6 @@ export const SemesterAddCourse = ({
                         ></CourseCard>
                         <Button
                             style={button}
->>>>>>> de25018b7a9fcf49a6660b06d9a01933a8bca817
                             onClick={() => addCourse(course)}
                         >
                             Add

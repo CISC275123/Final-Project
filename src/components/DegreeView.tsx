@@ -93,31 +93,35 @@ export const DegreeView = ({
                     <div className="year_view_rows">
                         {degree.years.map((year: Year) => (
                             <div className="year_view_column" key={year.name}>
-                                <h4 onClick={() => console.log(year.id)}>
-                                    {year.name}
-                                </h4>
-                                <Button
-                                    onClick={() => deleteYear(year, degree)}
-                                >
-                                    Delete Year
-                                </Button>
-                                <Button
-                                    onClick={() =>
-                                        updateSemesterList([], degree, year)
+                                <div className="fixZ">
+                                    <h4 onClick={() => console.log(year.id)}>
+                                        {year.name}
+                                    </h4>
+                                    <Button
+                                        className="sampleDegreeButtons"
+                                        onClick={() => deleteYear(year, degree)}
+                                    >
+                                        Delete Year
+                                    </Button>
+                                    <Button
+                                        className="sampleDegreeButtons"
+                                        onClick={() =>
+                                            updateSemesterList([], degree, year)
+                                        }
+                                    >
+                                        Clear Semesters
+                                    </Button>
+                                    {
+                                        <SemesterList
+                                            isDataSaved={isDataSaved}
+                                            key={year.name}
+                                            semesterList={year.semesters}
+                                            setSemesterList={updateSemesterList}
+                                            degree={degree}
+                                            year={year}
+                                        />
                                     }
-                                >
-                                    Clear Semesters
-                                </Button>
-                                {
-                                    <SemesterList
-                                        isDataSaved={isDataSaved}
-                                        key={year.name}
-                                        semesterList={year.semesters}
-                                        setSemesterList={updateSemesterList}
-                                        degree={degree}
-                                        year={year}
-                                    />
-                                }
+                                </div>
                             </div>
                         ))}
                     </div>

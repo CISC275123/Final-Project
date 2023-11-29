@@ -125,6 +125,7 @@ function App(): JSX.Element {
                     <ul className="nav_links">
                         <li>
                             <Button
+                                className="Home"
                                 onClick={() => {
                                     setDegree(false);
                                     setCourseDisplay(false);
@@ -163,7 +164,10 @@ function App(): JSX.Element {
             </header>
 
             {/* The default home page  */}
-            <div className="HomePage">{isHome && <HomePage></HomePage>}</div>
+            <div className="HomePage">
+                {isHome && <HomePage></HomePage>}
+                <div className="bubbles"></div>
+            </div>
 
             {/* Course List Functionality */}
             <div className="CourseList">

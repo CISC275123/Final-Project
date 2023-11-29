@@ -4,24 +4,25 @@
     align-items: center;
     justify-content: center;
     height: 30vh; /* Optional: Set a minimum height for vertical centering */
-    background-color: #494c5e;
+    /* background-color: #494c5e; */
     font-family: "Times New Roman", Times, serif;
     animation: animate 5s linear 1;
     color: whitesmoke;
+    z-index: 4;
 }
-@keyframes animate {
+/* @keyframes animate {
     0% {
         color: orange;
     }
     100% {
         color: whitesmoke;
     }
-}
+} */
 .Cardgroup {
     display: flex;
     justify-content: space-between; /* To evenly space elements */
     height: 45vh;
-    background-color: #494c5e;
+    /* background-color: #494c5e; */
 }
 
 .Cardstyle {
@@ -37,5 +38,41 @@
     object-fit: cover; /* Ensure the image covers the entire container */
 }
 .footerCustom {
-    background-color: black;
+    background-color: #494c5e;
+}
+.homebg {
+    background-color: #494c5e;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+}
+.bubbles {
+    position: relative;
+    display: flex;
+    z-index: 3;
+}
+.bubbles span {
+    z-index: 987878;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    background-color: orange;
+    margin: 0 4px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 10px rgba(255, 166, 0, 0.501), 0 0 50px orange,
+        0 0 100px orange;
+    animation: animateBG 15s linear infinite;
+}
+.bubbles span:nth-child(even) {
+    background-color: brown;
+    box-shadow: 0 0 0 10px rgb(185, 92, 92), 0 0 50px brown, 0 0 100px brown;
+}
+@keyframes animateBG {
+    0% {
+        transform: translateY(100vh) scale(0);
+    }
+    100% {
+        transform: translateY(-10vh) scale(1);
+    }
 }
