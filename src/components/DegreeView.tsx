@@ -8,6 +8,7 @@ import "./DegreeView.css";
 import { SemesterList } from "./SemesterList";
 
 import { Semester } from "../interfaces/semester";
+import { Course } from "../interfaces/course";
 
 export const DegreeView = ({
     isDataSaved,
@@ -34,6 +35,24 @@ export const DegreeView = ({
 
     function updateSelection(event: React.ChangeEvent<HTMLSelectElement>) {
         setUserInput(event.target.value);
+    }
+
+    function getAllCourses(): Course[] {
+        const allCourses: Course[] = degree.years.flatMap((year) =>
+            year.semesters.flatMap((semester) => semester.courses)
+        );
+
+        return allCourses;
+    }
+
+    function getMissingReqs(): string[] {
+        return degree.plan.major.filter(
+            (code: string) =>
+                getAllCourses().filter(
+                    (course: Course): boolean =>
+                        course.code.replace(/\s/g, "") === code
+                ).length <= 0
+        );
     }
 
     return (
@@ -96,7 +115,7 @@ export const DegreeView = ({
                     </Button>
                     {showReqs && (
                         <div className="degReqs">
-                            <ul className="univReqs">
+                            {/* <ul className="univReqs">
                                 {degree.plan.university.map((req) => (
                                     <li key={req}>{req}</li>
                                 ))}
@@ -105,10 +124,11 @@ export const DegreeView = ({
                                 {degree.plan.college.map((req) => (
                                     <li key={req}>{req}</li>
                                 ))}
-                            </ul>
+                            </ul> */}
+                            <h1>You are missing the following courses:</h1>
                             <ul className="majorReqs">
-                                {degree.plan.major.map((req) => (
-                                    <li key={req}>{req}</li>
+                                {getMissingReqs().map((req) => (
+                                    <option key={req}>{req}</option>
                                 ))}
                             </ul>
                         </div>
