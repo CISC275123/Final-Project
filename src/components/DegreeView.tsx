@@ -1,5 +1,5 @@
 /* eslint-disable no-extra-parens */
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Year } from "../interfaces/year";
 import { Degree } from "../interfaces/degree";
@@ -8,6 +8,7 @@ import "./DegreeView.css";
 import { SemesterList } from "./SemesterList";
 
 import { Semester } from "../interfaces/semester";
+import { Course } from "../interfaces/course";
 
 export const DegreeView = ({
     isDataSaved,
@@ -30,9 +31,28 @@ export const DegreeView = ({
 }) => {
     const [isAdding, setAdding] = useState<boolean>(false);
     const [userInput, setUserInput] = useState<string>("Freshman");
+    const [showReqs, setShowReqs] = useState<boolean>(false);
 
     function updateSelection(event: React.ChangeEvent<HTMLSelectElement>) {
         setUserInput(event.target.value);
+    }
+
+    function getAllCourses(): Course[] {
+        const allCourses: Course[] = degree.years.flatMap((year) =>
+            year.semesters.flatMap((semester) => semester.courses)
+        );
+
+        return allCourses;
+    }
+
+    function getMissingReqs(): string[] {
+        return degree.plan.major.filter(
+            (code: string) =>
+                getAllCourses().filter(
+                    (course: Course): boolean =>
+                        course.code.replace(/\s/g, "") === code
+                ).length <= 0
+        );
     }
 
     return (
@@ -89,12 +109,34 @@ export const DegreeView = ({
             {true && (
                 <div className="degree_page">
                     <h2>{degree.name}</h2>
+                    <h2>{degree.plan.name}</h2>
+                    <Button onClick={() => setShowReqs(!showReqs)}>
+                        Show Degree Requirements
+                    </Button>
+                    {showReqs && (
+                        <div className="degReqs">
+                            {/* <ul className="univReqs">
+                                {degree.plan.university.map((req) => (
+                                    <li key={req}>{req}</li>
+                                ))}
+                            </ul>
+                            <ul className="collegeReqs">
+                                {degree.plan.college.map((req) => (
+                                    <li key={req}>{req}</li>
+                                ))}
+                            </ul> */}
+                            <h1>You are missing the following courses:</h1>
+                            <ul className="majorReqs">
+                                {getMissingReqs().map((req) => (
+                                    <option key={req}>{req}</option>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
                     <div className="year_view_rows">
                         {degree.years.map((year: Year) => (
                             <div className="year_view_column" key={year.name}>
-                                <h4 onClick={() => console.log(year.id)}>
-                                    {year.name}
-                                </h4>
+                                <h4>{year.name}</h4>
                                 <Button
                                     onClick={() => deleteYear(year, degree)}
                                 >

@@ -30,8 +30,10 @@ function App(): JSX.Element {
                 );
                 return savedDegrees;
             }
+            setIsDataSaved(false);
             return [];
         } else {
+            setIsDataSaved(false);
             return [];
         }
     });

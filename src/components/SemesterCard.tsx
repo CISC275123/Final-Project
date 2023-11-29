@@ -43,7 +43,7 @@ export const SemesterCard = ({
     }
 
     function saveAndExit() {
-        const newID = idCounter;
+        const newID = idCounter + 1;
         setIdCounter(newID);
         const title = `${season} Semester ${userYear}`;
         const newSemester: Semester = {

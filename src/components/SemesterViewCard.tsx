@@ -1,3 +1,4 @@
+/* eslint-disable no-extra-parens */
 import React from "react";
 import { Button } from "react-bootstrap";
 import { Semester } from "../interfaces/semester";

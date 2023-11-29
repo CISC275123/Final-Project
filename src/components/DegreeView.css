@@ -19,3 +19,12 @@
     margin-top: 0.5rem;
     padding: 1rem 1rem 5rem 1rem;
 }
+
+.degReqs {
+    display: inline;
+}
+
+.degReqs li {
+    color: black;
+    list-style: none;
+}
