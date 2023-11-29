@@ -26,8 +26,8 @@ export const SemesterView = ({
 
     // VAR used to track what page in courses list the user is viewing
     const [currentPage, setCurrentPage] = useState<number>(1);
-    const [localCourses, setLocalCourses] =
-        useState<Course[]>(globalCourseList);
+    //const [localCourses, setLocalCourses] =
+    //    useState<Course[]>(globalCourseList);
 
     useEffect(() => {
         interface JSONCourse {
@@ -117,7 +117,7 @@ export const SemesterView = ({
         saveInfo();
     }
 
-    function changeFilter(event: React.ChangeEvent<HTMLSelectElement>) {
+    /*function changeFilter(event: React.ChangeEvent<HTMLSelectElement>) {
         setDepartmentFilter(event.target.value);
 
         setFilteredList(
@@ -129,7 +129,7 @@ export const SemesterView = ({
         );
         setIndex(0);
         setCurrentPage(1);
-    }
+    }*/
 
     function changePage(page: number) {
         const newIndex = (page - 1) * NUM_COURSES_DISPLAYED;
@@ -159,7 +159,7 @@ export const SemesterView = ({
             <Button onClick={saveInfo}>Save</Button>
             <h2>{semester.notes}</h2>
             {!isAddCourses && (
-                <div>
+                /*<div>
                     <Form.Group controlId="formNotes">
                         <Form.Label>Filter: {departmentFilter}</Form.Label>
                         <Form.Select
@@ -191,8 +191,8 @@ export const SemesterView = ({
                             }}
                         ></Form.Control>
                     </Form.Group>
-                </div>
-                /*<Form.Group controlId="formNotes">
+                </div>*/
+                <Form.Group controlId="formNotes">
                     <Form.Label>Notes:</Form.Label>
                     <Form.Control
                         as="textarea"
@@ -200,7 +200,7 @@ export const SemesterView = ({
                         value={description}
                         onChange={updateDescription}
                     />
-                </Form.Group>*/
+                </Form.Group>
             )}
             {isAddCourses && (
                 <div className="CourseButtons">
