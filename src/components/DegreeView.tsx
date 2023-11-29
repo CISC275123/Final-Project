@@ -30,6 +30,7 @@ export const DegreeView = ({
 }) => {
     const [isAdding, setAdding] = useState<boolean>(false);
     const [userInput, setUserInput] = useState<string>("Freshman");
+    const [showReqs, setShowReqs] = useState<boolean>(false);
 
     function updateSelection(event: React.ChangeEvent<HTMLSelectElement>) {
         setUserInput(event.target.value);
@@ -89,12 +90,33 @@ export const DegreeView = ({
             {true && (
                 <div className="degree_page">
                     <h2>{degree.name}</h2>
+                    <h2>{degree.plan.name}</h2>
+                    <Button onClick={() => setShowReqs(!showReqs)}>
+                        Show Degree Requirements
+                    </Button>
+                    {showReqs && (
+                        <div className="degReqs">
+                            <ul className="univReqs">
+                                {degree.plan.university.map((req) => (
+                                    <li key={req}>{req}</li>
+                                ))}
+                            </ul>
+                            <ul className="collegeReqs">
+                                {degree.plan.college.map((req) => (
+                                    <li key={req}>{req}</li>
+                                ))}
+                            </ul>
+                            <ul className="majorReqs">
+                                {degree.plan.major.map((req) => (
+                                    <li key={req}>{req}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
                     <div className="year_view_rows">
                         {degree.years.map((year: Year) => (
                             <div className="year_view_column" key={year.name}>
-                                <h4 onClick={() => console.log(year.id)}>
-                                    {year.name}
-                                </h4>
+                                <h4>{year.name}</h4>
                                 <Button
                                     onClick={() => deleteYear(year, degree)}
                                 >
