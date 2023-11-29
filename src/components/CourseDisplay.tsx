@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Course } from "../interfaces/course";
 import { Button, Form } from "react-bootstrap";
 import { CourseList } from "./CourseList";
+import "./CourseDisplay.css";
 
 const NUM_COURSES_DISPLAYED = 3;
 
@@ -95,6 +96,7 @@ export const CourseDisplay = ({
         <div>
             <div hidden={isEditing} className="CourseButtons">
                 <Button
+                    className="backCourseDisplay"
                     onClick={() =>
                         currIndex > 0
                             ? updateIndex(currIndex - NUM_COURSES_DISPLAYED)
@@ -135,6 +137,7 @@ export const CourseDisplay = ({
                     ></Form.Control>
                 </Form.Group>
                 <Button
+                    className="nextCourseDisplay"
                     onClick={() =>
                         currIndex < filteredList.length - NUM_COURSES_DISPLAYED
                             ? updateIndex(currIndex + NUM_COURSES_DISPLAYED)

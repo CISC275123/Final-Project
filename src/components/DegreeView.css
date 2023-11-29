@@ -14,10 +14,89 @@
 }
 
 .year_view_column {
-    border: dotted orange;
-    background-color: gray;
-    margin-top: 0.5rem;
-    padding: 1rem 1rem 5rem 1rem;
+    background-color: #24252a;
+    padding: 20px;
+    z-index: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 20px;
+    color: white;
+}
+.year_view_column::before {
+    content: "";
+    position: absolute;
+    width: 150px;
+    height: 1000%;
+    background: linear-gradient(#24272a, orange);
+    animation: animate2 4s linear infinite;
+}
+.year_view_column::after {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    background: #24252a;
+    border-radius: 16px;
+}
+@keyframes animate2 {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(350deg);
+    }
+}
+/* .year_view_column::before {
+    content: "";
+    position: absolute;
+    width: 150px;
+    height: 1000%;
+    background: linear-gradient(#24252a, orange);
+    animation: animate2 4s linear infinite;
+}
+.year_view_column::after {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    background: #24252a;
+    border-radius: 16px;
+}
+@keyframes animate2 {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(350deg);
+    }
+} */
+.moveFront {
+    z-index: 9;
+}
+.degree_card {
+    background-color: bisque;
+}
+.AddYear {
+    background-color: orange;
+    border-color: #24252a;
+}
+.AddYear:hover {
+    background-color: #24252a;
+    border-color: orange;
+}
+.degreeZindex {
+}
+.fixZ {
+    z-index: 8;
+}
+.sampleDegreeButtons {
+    background-color: orange;
+    border-color: #24252a;
+}
+.sampleDegreeButtons:hover {
+    background-color: #24252a;
+    border-color: orange;
 }
 
 .degReqs {

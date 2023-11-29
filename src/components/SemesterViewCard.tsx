@@ -4,6 +4,7 @@ import { Button } from "react-bootstrap";
 import { Semester } from "../interfaces/semester";
 import { Course } from "../interfaces/course";
 import "./SemesterViewCard.css";
+import "./DegreeView.css";
 
 export const SemesterViewCard = ({
     semester,
@@ -23,16 +24,25 @@ export const SemesterViewCard = ({
                 Current Registered Credits: {semester.currentCredits}
             </h6>
             <Button
+                className="sampleDegreeButtons"
                 onClick={() => {
                     handleView(semester.id);
                 }}
             >
                 Edit Semester
             </Button>{" "}
-            <Button onClick={() => removeSemester(semester.id)}>
+            <Button
+                className="sampleDegreeButtons"
+                onClick={() => removeSemester(semester.id)}
+            >
                 Delete Semester
             </Button>{" "}
-            <Button onClick={() => toggle(semester.id)}>Show Courses</Button>
+            <Button
+                className="sampleDegreeButtons"
+                onClick={() => toggle(semester.id)}
+            >
+                Show Courses
+            </Button>
             <div id={semester.id.toString()}>
                 <ul>
                     {semester.courses.map((course: Course) => (
