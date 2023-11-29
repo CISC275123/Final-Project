@@ -1,6 +1,6 @@
 export interface DegreeBase {
     name: string;
-    university: string[];
+    university: Record<string, string[]>;
     college: string[];
     major: string[];
 }

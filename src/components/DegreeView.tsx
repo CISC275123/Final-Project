@@ -55,6 +55,28 @@ export const DegreeView = ({
         );
     }
 
+    function univReqs() {
+        const reqs = Object.keys(degree.plan.university);
+        const coursesMeetingReqs = Object.values(degree.plan.university);
+
+        const reqsMet: boolean[] = [];
+
+        for (const indx in reqs) {
+            const check = reqs[indx].split("-", 2);
+            if (parseInt(indx) === 0) {
+                const test = coursesMeetingReqs[indx];
+
+                test.filter(
+                    (code: string) =>
+                        getAllCourses().filter(
+                            (course: Course): boolean =>
+                                course.code.replace(/\s/g, "") === code
+                        ).length <= 0
+                );
+            }
+        }
+    }
+
     return (
         <div className="degree_card">
             <div>
@@ -111,7 +133,12 @@ export const DegreeView = ({
                 <div className="degree_page">
                     <h2>{degree.name}</h2>
                     <h2>{degree.plan.name}</h2>
-                    <Button onClick={() => setShowReqs(!showReqs)}>
+                    <Button
+                        onClick={() => {
+                            setShowReqs(!showReqs);
+                            univReqs();
+                        }}
+                    >
                         Show Degree Requirements
                     </Button>
                     {showReqs && (
