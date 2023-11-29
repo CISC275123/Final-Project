@@ -228,6 +228,7 @@ export const SemesterView = ({
             {isAddCourses && (
                 <SemesterAddCourse
                     courses={baseCourses.slice(
+                        //Change so that after filtered passes filtered list instead
                         currIndex,
                         currIndex + NUM_COURSES_DISPLAYED
                     )}
