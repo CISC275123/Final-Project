@@ -85,8 +85,6 @@
     background-color: #24252a;
     border-color: orange;
 }
-.degreeZindex {
-}
 .fixZ {
     z-index: 8;
 }
@@ -106,4 +104,21 @@
 .degReqs li {
     color: black;
     list-style: none;
+}
+
+.univReqs p {
+    color: black;
+}
+
+.matchingCourses {
+    margin-left: 1rem;
+    display: inline-block;
+}
+
+.collegeReqs p {
+    color: black;
+}
+
+.majorReqs p {
+    color: black;
 }
