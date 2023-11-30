@@ -3116,18 +3116,12 @@
             },
             "major": {
                 "Core-25": [
-                    "ACCT166",
-                    "ACCT352",
                     "CISC108",
                     "CISC181",
                     "CISC210",
                     "CISC220",
                     "CISC260",
                     "CISC275",
-                    "CISC357",
-                    "CISC366",
-                    "CISC465",
-                    "CISC466",
                     "MATH210",
                     "MATH241"
                 ]
