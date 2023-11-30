@@ -45,7 +45,7 @@ export const SemesterAddCourse = ({
     return (
         <div>
             <h2>Available Semester Courses</h2>
-            <div>
+            <div className="outline">
                 {courses.map((course: Course) => (
                     <div style={card} key={course.id}>
                         <CourseCard
