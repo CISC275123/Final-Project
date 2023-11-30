@@ -73,6 +73,7 @@ export const SemesterAddCourse = ({
                     <Form.Control
                         type="string"
                         value={userSearchCourse}
+                        placeholder="Enter Course ID"
                         onChange={(
                             event: React.ChangeEvent<HTMLInputElement>
                         ) => {
