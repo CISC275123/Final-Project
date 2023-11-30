@@ -19,7 +19,6 @@ export const SemesterView = ({
     const [addedCourses, setAddedCourses] = useState<Course[]>([]);
     const [isAddCourses, setIsAddCourses] = useState<boolean>(false);
     const [currIndex, setIndex] = useState<number>(0);
-    const NUM_COURSES_DISPLAYED = 3;
 
     const [baseCourses, setBaseCourses] = useState<Course[]>([]);
     // VARs used to track course department filter
@@ -133,11 +132,6 @@ export const SemesterView = ({
         setCurrentPage(1);
     }*/
 
-    function changePage(page: number) {
-        const newIndex = (page - 1) * NUM_COURSES_DISPLAYED;
-        setIndex(newIndex);
-    }
-
     return (
         <div className="SemesterviewContainer">
             <h1>
@@ -213,37 +207,8 @@ export const SemesterView = ({
                 </Form.Group>
             )}
             {isAddCourses && (
-                <div className="CourseButtons">
-                    <Button
-                        className="backCourse"
-                        onClick={() =>
-                            currIndex > 0
-                                ? setIndex(currIndex - NUM_COURSES_DISPLAYED)
-                                : setIndex(currIndex)
-                        }
-                    >
-                        Back
-                    </Button>
-                    <Button
-                        className="next"
-                        onClick={() =>
-                            currIndex <
-                            baseCourses.length - NUM_COURSES_DISPLAYED
-                                ? setIndex(currIndex + NUM_COURSES_DISPLAYED)
-                                : setIndex(currIndex)
-                        }
-                    >
-                        Next
-                    </Button>
-                </div>
-            )}
-            {isAddCourses && (
                 <SemesterAddCourse
-                    courses={baseCourses.slice(
-                        //Change so that after filtered passes filtered list instead
-                        currIndex,
-                        currIndex + NUM_COURSES_DISPLAYED
-                    )}
+                    courses={baseCourses}
                     addedCourses={addedCourses}
                     setAddedCourses={setAddedCourses}
                 ></SemesterAddCourse>
