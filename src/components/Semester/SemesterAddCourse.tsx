@@ -1,8 +1,10 @@
 /* eslint-disable no-extra-parens */
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Course } from "../../interfaces/course";
 import { Button, Form } from "react-bootstrap";
 import { CourseCard } from "../CourseCard";
+
+import "./SemesterAddCourse.css";
 
 export const SemesterAddCourse = ({
     courses,
@@ -37,14 +39,6 @@ export const SemesterAddCourse = ({
             return cred;
         }
     }
-
-    const card = {
-        padding: "1rem"
-    };
-
-    const button = {
-        width: "100%"
-    };
 
     function searchCourses(search: string) {
         const filteredCourses = courses.filter(
@@ -124,7 +118,7 @@ export const SemesterAddCourse = ({
                 {listCourses
                     .slice(currIndex, currIndex + NUM_COURSES_DISPLAYED)
                     .map((course: Course) => (
-                        <div style={card} key={course.id}>
+                        <div className="addCourseCard" key={course.id}>
                             <CourseCard
                                 handleClick={() => {
                                     null;
@@ -132,10 +126,7 @@ export const SemesterAddCourse = ({
                                 course={course}
                                 convertCredits={convertCredits}
                             ></CourseCard>
-                            <Button
-                                style={button}
-                                onClick={() => addCourse(course)}
-                            >
+                            <Button onClick={() => addCourse(course)}>
                                 Add
                             </Button>
                         </div>
@@ -144,7 +135,7 @@ export const SemesterAddCourse = ({
             <h2>Courses in Queue:</h2>
             <div>
                 {addedCourses.map((course: Course) => (
-                    <div style={card} key={course.id}>
+                    <div className="addCourseCard" key={course.code}>
                         <CourseCard
                             handleClick={() => {
                                 null;
@@ -152,10 +143,7 @@ export const SemesterAddCourse = ({
                             course={course}
                             convertCredits={convertCredits}
                         ></CourseCard>
-                        <Button
-                            style={button}
-                            onClick={() => rmeoveCourse(course)}
-                        >
+                        <Button onClick={() => rmeoveCourse(course)}>
                             Remove
                         </Button>
                     </div>
