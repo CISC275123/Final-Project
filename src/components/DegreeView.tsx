@@ -201,6 +201,9 @@ export const DegreeView = ({
     // CS BS is MISSING 6 credits in Six additional credits of computer science technical electives numbered 301 or above, except for CISC 355, CISC 356, CISC 357, CISC 465, CISC 366 and CISC 466
     // AND 12 credits in advanced courses in a focus area approved by the student’s CISC advisor and the CISC Undergraduate Coordinator
 
+    // A SINGLE COURSE WILL COUNT FOR ALL SIMILAR CATEGORIES. FOR EXAMPLE, A MATH BREADTH COURSE WILL COUNT FOR ALL MATH BREADTH CATEGORIES EVEN WHEN
+    // DEGREE STATES IT REQUIRES XX CREDITS IN ADDITION TO BREADTH ALREADY TAKEN.
+
     return (
         <div className="degree_card">
             <div>
