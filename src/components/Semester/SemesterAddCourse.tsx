@@ -29,7 +29,7 @@ export const SemesterAddCourse = ({
         }
         if (c.restrict !== "") {
             alert(
-                "Warning: This course has the following restrictions: " +
+                "Warning: Please make sure you are eligible. This course has the following restrictions: " +
                     c.restrict
             );
         }
