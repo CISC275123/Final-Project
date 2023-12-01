@@ -105,13 +105,13 @@ export const SemesterView = ({
                 semester.maxCredits
             ) {
                 if (!semester.courses.includes(x)) {
-                    semester.courses.push(x);
                     semester.currentCredits = (semester.currentCredits +
                         y) as unknown as number;
                 }
             }
         }
 
+        // Fixes saving bug
         const newSemesterList: Semester[] = targetYear.semesters.map(
             (sem: Semester): Semester =>
                 sem.id === semester.id
