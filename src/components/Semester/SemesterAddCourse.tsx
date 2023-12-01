@@ -21,6 +21,18 @@ export const SemesterAddCourse = ({
     const [listCourses, setListCourses] = useState<Course[]>(courses);
     function addCourse(c: Course) {
         setAddedCourses([...addedCourses, c]);
+        if (c.preReq !== "") {
+            alert(
+                "Warning: Please make sure you meet these prerequisite courses: " +
+                    c.preReq
+            );
+        }
+        if (c.restrict !== "") {
+            alert(
+                "Warning: This course has the following restrictions: " +
+                    c.restrict
+            );
+        }
     }
 
     function rmeoveCourse(c: Course) {
