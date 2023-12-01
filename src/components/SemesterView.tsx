@@ -7,13 +7,26 @@ import { Course } from "../interfaces/course";
 import "./SemesterView.css";
 import "./Semester/SemesterList.css";
 import catalog from "../data/catalog.json";
+import { Year } from "../interfaces/year";
+import { Degree } from "../interfaces/degree";
+import { CourseDisplay } from "./CourseDisplay";
 
 export const SemesterView = ({
     resetView,
-    semester
+    semester,
+    setSemesterList,
+    targetDegree,
+    targetYear
 }: {
     resetView: () => void;
     semester: Semester;
+    setSemesterList: (
+        semesterList: Semester[],
+        degree: Degree,
+        year: Year
+    ) => void;
+    targetDegree: Degree;
+    targetYear: Year;
 }) => {
     const [description, setDescription] = useState<string>("");
     const [addedCourses, setAddedCourses] = useState<Course[]>([]);
@@ -80,7 +93,6 @@ export const SemesterView = ({
         setDescription(event.target.value);
     }
     function saveInfo() {
-        semester.notes = semester.notes + description;
         for (const x of addedCourses) {
             let y = 0;
             if (x.credits.includes("-")) {
@@ -99,6 +111,15 @@ export const SemesterView = ({
                 }
             }
         }
+
+        const newSemesterList: Semester[] = targetYear.semesters.map(
+            (sem: Semester): Semester =>
+                sem.id === semester.id
+                    ? { ...sem, courses: [...sem.courses, ...addedCourses] }
+                    : sem
+        );
+
+        setSemesterList(newSemesterList, targetDegree, targetYear);
         setAddedCourses([]);
     }
     function clearCourses() {
