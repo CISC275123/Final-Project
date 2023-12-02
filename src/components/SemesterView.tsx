@@ -9,7 +9,6 @@ import "./Semester/SemesterList.css";
 import catalog from "../data/catalog.json";
 import { Year } from "../interfaces/year";
 import { Degree } from "../interfaces/degree";
-import { CourseDisplay } from "./CourseDisplay";
 
 export const SemesterView = ({
     resetView,
@@ -28,7 +27,6 @@ export const SemesterView = ({
     targetDegree: Degree;
     targetYear: Year;
 }) => {
-    const [description, setDescription] = useState<string>("");
     const [addedCourses, setAddedCourses] = useState<Course[]>([]);
     const [isAddCourses, setIsAddCourses] = useState<boolean>(false);
     const [currIndex, setIndex] = useState<number>(0);
@@ -88,9 +86,6 @@ export const SemesterView = ({
 
     function displayCourses() {
         setIsAddCourses(!isAddCourses);
-    }
-    function updateDescription(event: React.ChangeEvent<HTMLTextAreaElement>) {
-        setDescription(event.target.value);
     }
     function saveInfo() {
         for (const x of addedCourses) {
@@ -182,51 +177,6 @@ export const SemesterView = ({
             <Button className="myCustom4" onClick={saveInfo}>
                 Save
             </Button>
-            <h2>{semester.notes}</h2>
-            {!isAddCourses && (
-                /*<div>
-                    <Form.Group controlId="formNotes">
-                        <Form.Label>Filter: {departmentFilter}</Form.Label>
-                        <Form.Select
-                            onChange={changeFilter}
-                            value={departmentFilter}
-                        >
-                            {departments.map((dept, index) => (
-                                <option key={index} value={dept}>
-                                    {dept}
-                                </option>
-                            ))}
-                        </Form.Select>
-                    </Form.Group>
-                    <Form.Group controlId="formSetPage">
-                        <Form.Label>
-                            Page: {currentPage}/
-                            {Math.ceil(FileList.length / NUM_COURSES_DISPLAYED)}
-                        </Form.Label>
-                        <Form.Control
-                            type="number"
-                            value={currentPage}
-                            min={1}
-                            max={Math.ceil(
-                                filteredList.length / NUM_COURSES_DISPLAYED
-                            )}
-                            onChange={(e) => {
-                                setCurrentPage(parseInt(e.target.value));
-                                changePage(parseInt(e.target.value));
-                            }}
-                        ></Form.Control>
-                    </Form.Group>
-                </div>*/
-                <Form.Group controlId="formNotes">
-                    <Form.Label>Notes:</Form.Label>
-                    <Form.Control
-                        as="textarea"
-                        rows={3}
-                        value={description}
-                        onChange={updateDescription}
-                    />
-                </Form.Group>
-            )}
             {isAddCourses && (
                 <SemesterAddCourse
                     courses={baseCourses}
