@@ -20453,7 +20453,7 @@
             "name": "Simulation of Computer Networks",
             "descr": "Modeling and computer simulation of discrete systems using discrete event simulation techniques. Application to the performance evaluation and modeling of computer networks and networking protocols. Study and use of simulation systems such as OPNET, Qualnet, and ns-2.",
             "credits": " 3",
-            "preReq": "CISC 450, or equivalent.",
+            "preReq": "CISC 450 or equivalent.",
             "restrict": "",
             "breadth": "University: ; A&S: ",
             "typ": "Verify offering with Dept"
@@ -20553,7 +20553,7 @@
             "name": "Advanced Software Engineering",
             "descr": "Understand and apply a complete modern software engineering process. Topics include requirements analysis, specification, design, implementation, verification, and project management. Real-life team projects cover all aspects of the software development lifecycle, from the requirements to acceptance testing.",
             "credits": " 3",
-            "preReq": "CISC 275. CISC 361 is recommended.",
+            "preReq": "CISC 275",
             "restrict": "Students who received credit in CISC675 are not eligible to take this course without permission.",
             "breadth": "University: ; A&S: ",
             "typ": "Fall and Spring"
@@ -20773,7 +20773,7 @@
             "name": "Computational Biology and Bioinformatics",
             "descr": "Concepts, methodologies, and tools in bioinformatics. Abstraction of biological problems for computational solutions. Genome sequencing and assembly, bio-sequence analysis and comparison and database search, dynamics programming, hidden Markov models, and phylogenetic trees.",
             "credits": " 3",
-            "preReq": "CISC220 or permission of instructor.",
+            "preReq": "CISC 220 or permission of instructor.",
             "restrict": "Credit can not be earned for both CISC636 and CISC436.",
             "breadth": "University: ; A&S: ",
             "typ": ""
@@ -20783,7 +20783,7 @@
             "name": "Database Systems",
             "descr": "Physical and logical organization of databases. Data retrieval languages, relational database languages, security and integrity, concurrency, distributed databases.",
             "credits": " 3",
-            "preReq": "CISC220 or equivalent.",
+            "preReq": "CISC 220 or equivalent.",
             "restrict": "Students who received credit in CISC437 are not eligible to take this course without permission.",
             "breadth": "University: ; A&S: ",
             "typ": "Fall"
@@ -20793,7 +20793,7 @@
             "name": "Computer Graphics",
             "descr": "Computer graphics technology, two- and three-dimensional systems, graphics software systems, modeling and object hierarchy, and animation.",
             "credits": " 3",
-            "preReq": "CISC220 or equivalent.",
+            "preReq": "CISC 220 or equivalent.",
             "restrict": "Students who received credit in CISC440 are not eligible to take this course without permission.",
             "breadth": "University: ; A&S: ",
             "typ": "Spring"
@@ -20803,7 +20803,7 @@
             "name": "Introduction to Computer Vision",
             "descr": "An introduction to the analysis of images and video in order to recognize, reconstruct, model, and otherwise infer static and dynamic properties of objects in the three-dimensional world. Studies the geometry of image formation; basic concepts in image processing such as smoothing, edge and feature detection, color, and texture; segmentation; shape representation including deformable templates; stereo vision; motion estimation and tracking; techniques for 3-D reconstruction; image registration methods.",
             "credits": " 3",
-            "preReq": "CISC 220 equivalent",
+            "preReq": "CISC 220 or equivalent",
             "restrict": "Credit cannot be received for both CISC 442 and CISC 642.",
             "breadth": "University: ; A&S: ",
             "typ": ""
@@ -20863,7 +20863,7 @@
             "name": "Computer Systems: Architecture",
             "descr": "Recent advances in computer architecture and their impact on architectural design. Multicomputer and multiprocessor architectures. Parallel machines.",
             "credits": " 3",
-            "preReq": "CISC360 or equivalent.",
+            "preReq": "CISC 360 or equivalent.",
             "restrict": "",
             "breadth": "University: ; A&S: ",
             "typ": "Fall"
@@ -20873,7 +20873,7 @@
             "name": "Operating Systems",
             "descr": "Comparison and analysis of strategies for the management of memory, processors, I/O devices and file systems.",
             "credits": " 3",
-            "preReq": "CISC260 or equivalent",
+            "preReq": "CISC 260 or equivalent",
             "restrict": "",
             "breadth": "University: ; A&S: ",
             "typ": ""
@@ -20883,7 +20883,7 @@
             "name": "Introduction to Network Security",
             "descr": "Detailed, in-depth overview of pressing network security problems and discusses potential solutions. Covers a broad variety of security topics, such as cryptography, authentication, denial-of-service attacks, worms, viruses, etc. Lecture and optional reading provide background information on the key network security concepts, and course projects create opportunity to exercise concepts learned in class.",
             "credits": " 3",
-            "preReq": "CISC450 or CISC 650.",
+            "preReq": "CISC 450 or CISC 650.",
             "restrict": "Credit cannot be received for both CISC664 and CISC464.",
             "breadth": "University: ; A&S: ",
             "typ": ""
@@ -20923,7 +20923,7 @@
             "name": "Programming Languages",
             "descr": "Selection, use and implementation of appropriate language(s) for given problems. Syntax, semantics, pragmatics, parameter passing and abstract data types.",
             "credits": " 3",
-            "preReq": "CISC303 or equivalent.",
+            "preReq": "CISC 303 or equivalent.",
             "restrict": "Credit cannot be received for both CISC670 and CISC470.",
             "breadth": "University: ; A&S: ",
             "typ": ""
@@ -20953,7 +20953,7 @@
             "name": "Artificial Intelligence",
             "descr": "Programming techniques for problems not amenable to algorithmic solutions. Problem formulation, search strategies, state spaces, applications of logic, knowledge representation, planning and application areas.",
             "credits": " 3",
-            "preReq": "CISC220.",
+            "preReq": "CISC 220.",
             "restrict": "Students who received credit in CISC481, CGSC481, or CGSC 681 are not eligible to take this course without permission.",
             "breadth": "University: ; A&S: ",
             "typ": ""

@@ -1,0 +1,12 @@
+.addCourseCard {
+    border: dotted 0.5px orange;
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    max-height: 25vh;
+}
+
+.addCourseCard Button {
+    margin: 0% 25% 0 25%;
+}
