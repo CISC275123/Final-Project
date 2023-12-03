@@ -4,9 +4,4 @@
     display: flex;
     flex-direction: column;
     align-content: center;
-    max-height: 25vh;
-}
-
-.addCourseCard Button {
-    margin: 0% 25% 0 25%;
 }
