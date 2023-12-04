@@ -99,37 +99,6 @@ export const SemesterList = ({
                                         toggle={toggle}
                                         removeSemester={deleteSemester}
                                     />
-                                    {/*<li className="Semester-li">
-                                        {semester.title}
-                                    </li>
-                                    <Button
-                                        className="EditCustom"
-                                        onClick={() => {
-                                            handleCourseView(semester.id);
-                                        }}
-                                    >
-                                        Edit Semester
-                                    </Button>{" "}
-                                    <Button
-                                        className="DeleteCustom"
-                                        onClick={() => {
-                                            deleteSemester(semester.id);
-                                        }}
-                                    >
-                                        Delete Semester
-                                    </Button>
-                                    <div>
-                                        <ul>
-                                            {semester.courses.map(
-                                                (course: Course) => (
-                                                    <li key={course.id}>
-                                                        {course.code}:{" "}
-                                                        {course.name}
-                                                    </li>
-                                                )
-                                            )}
-                                        </ul>
-                                                </div>*/}
                                 </div>
                             ))}
                         </>

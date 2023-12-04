@@ -60,6 +60,10 @@ export const SemesterCard = ({
         setIsSemesterCard(false);
     }
 
+    function cancel() {
+        setIsSemesterCard(false);
+    }
+
     return (
         <div className="semestercardContainer">
             <Form.Group controlId="chooseSeason">
@@ -88,6 +92,13 @@ export const SemesterCard = ({
                         }}
                     >
                         Save
+                    </button>
+                    <button
+                        onClick={() => {
+                            cancel();
+                        }}
+                    >
+                        Cancel
                     </button>
                 </div>
             </div>
