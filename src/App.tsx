@@ -137,7 +137,7 @@ function App(): JSX.Element {
                         </li>
                         <li>
                             <Button
-                                className="Courseshome"
+                                className="Home"
                                 onClick={() => {
                                     setDegree(false);
                                     setCourseDisplay(!courseDisplay);
@@ -149,7 +149,7 @@ function App(): JSX.Element {
                         </li>
                         <li>
                             <Button
-                                className="Degreesbutton"
+                                className="Home"
                                 onClick={() => {
                                     setDegree(!isDegree);
                                     setCourseDisplay(false);

@@ -15,13 +15,13 @@
     align-content: center;
 }
 .degreeAddbutton {
-    background-color: orange;
+    background-color: #4fc3dc;
     border-color: #24252a;
     transition: 1s;
 }
 .degreeAddbutton:hover {
     background-color: #24252a;
-    border-color: orange;
+    border-color: #4fc3dc;
     /* box-shadow: 0 0 10px orange, 0 0 20px orange, 0 0 40px orange,
         0 0 80px orange, 0 0 160px orange; */
     letter-spacing: 0.25em;

@@ -53,7 +53,7 @@
     position: absolute;
     width: 150px;
     height: 1000%;
-    background: linear-gradient(#24252a, orange);
+    background: linear-gradient(#29242a9b, #4fc3dc);
     animation: animate2 4s linear infinite;
 }
 .popup::after {
@@ -81,56 +81,56 @@
     z-index: -1; /* Push the overlay behind the popup */
 }
 .myCustom {
-    background-color: orange;
+    background-color: #4fc3dc;
     margin-right: 10px;
     border-color: #24252a;
 }
 .myCustom:hover {
     background-color: #24252a;
-    border-color: orange;
+    border-color: #4fc3dc;
 }
 .myCustom2 {
-    background-color: orange;
+    background-color: #4fc3dc;
     margin-right: 10px;
     border-color: #24252a;
 }
 .myCustom2:hover {
     background-color: #24252a;
-    border-color: orange;
+    border-color: #4fc3dc;
 }
 .myCustom3 {
-    background-color: orange;
+    background-color: #4fc3dc;
     margin-right: 10px;
     border-color: #24252a;
 }
 .myCustom3:hover {
     background-color: #24252a;
-    border-color: orange;
+    border-color: #4fc3dc;
 }
 .myCustom4 {
-    background-color: orange;
+    background-color: #4fc3dc;
     margin-right: 10px;
     border-color: #24252a;
 }
 .myCustom4:hover {
     background-color: #24252a;
-    border-color: orange;
+    border-color: #4fc3dc;
 }
 .Add_custom {
-    background-color: orange;
+    background-color: #4fc3dc;
     margin-bottom: 10px;
     border-color: #24252a;
 }
 .Add_custom:hover {
     background-color: #24252a;
-    border-color: orange;
+    border-color: #4fc3dc;
 }
 .backCustom {
-    background-color: orange;
+    background-color: #4fc3dc;
     border-color: #24252a;
 }
 .nextCustom {
-    background-color: orange;
+    background-color: #4fc3dc;
     border-color: #24252a;
 }
 .creditText {
@@ -149,38 +149,38 @@
 } */
 
 .DeleteCustom {
-    background-color: orange;
+    background-color: #4fc3dc;
     margin-right: 10px;
     border-color: #24252a;
 }
 .DeleteCustom:hover {
     background-color: #24252a;
-    border-color: orange;
+    border-color: #4fc3dc;
 }
 .EditCustom {
-    background-color: orange;
+    background-color: #4fc3dc;
     margin-right: 10px;
     border-color: #24252a;
 }
 .EditCustom:hover {
     background-color: #24252a;
-    border-color: orange;
+    border-color: #4fc3dc;
 }
 
 .AddSemesterButton {
-    background-color: orange;
+    background-color: #4fc3dc;
     border-color: #24252a;
 }
 .AddSemesterButton:hover {
     background-color: #24252a;
-    border-color: orange;
+    border-color: #4fc3dc;
 }
 .Deleteyear {
-    background-color: orange;
+    background-color: #4fc3dc;
     border-color: #24252a;
     margin-bottom: 10px;
 }
 .Deleteyear:hover {
     background-color: #24252a;
-    border-color: orange;
+    border-color: #4fc3dc;
 }

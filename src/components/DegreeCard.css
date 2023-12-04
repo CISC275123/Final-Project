@@ -5,7 +5,7 @@
 }
 
 .degreeName {
-    color: orange;
+    color: #4fc3dc;
     margin-right: 1rem;
 }
 
@@ -16,10 +16,10 @@
     }
 }
 .remove {
-    background-color: orange;
+    background-color: #4fc3dc;
     border-color: #24252a;
 }
 .remove:hover {
     background-color: #24252a;
-    border-color: orange;
+    border-color: #4fc3dc;
 }

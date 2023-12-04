@@ -81,41 +81,7 @@ footer {
         display: block;
     }
 }
-.Courseshome {
-    background-color: #24252a;
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    overflow: hidden;
-    color: orange;
-    border-color: orange;
-}
-.Courseshome:hover {
-    color: white;
-    background-color: #24252a;
-    border-color: orange;
-    z-index: 2;
-    box-shadow: 0 0 10px orange, 0 0 20px orange, 0 0 40px orange,
-        0 0 80px orange, 0 0 160px orange;
-}
-.Courseshome::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -30px;
-    width: 0;
-    height: 100%;
-    background-color: orange;
-    transform: skewx(35deg);
-    transition: 1s;
-    z-index: -1;
-}
-.Courseshome:hover:before {
-    width: 100%;
-}
+
 .Degreesbutton {
     background-color: #24252a;
     position: relative;
@@ -125,16 +91,16 @@ footer {
     height: 100%;
     display: flex;
     overflow: hidden;
-    color: orange;
-    border-color: orange;
+    color: #4fc3dc;
+    border-color: #4fc3dc;
 }
 .Degreesbutton:hover {
     color: white;
     background-color: #24252a;
-    border-color: orange;
+    border-color: #4fc3dc;
     z-index: 2;
-    box-shadow: 0 0 10px orange, 0 0 20px orange, 0 0 40px orange,
-        0 0 80px orange, 0 0 160px orange;
+    box-shadow: 0 0 10px #4fc3dc, 0 0 20px #4fc3dc, 0 0 40px #4fc3dc,
+        0 0 80px #4fc3dc, 0 0 160px #4fc3dc;
 }
 .Degreesbutton::before {
     content: "";
@@ -143,7 +109,7 @@ footer {
     left: -30px;
     width: 0;
     height: 100%;
-    background-color: orange;
+    background-color: #4fc3dc;
     transform: skewx(35deg);
     transition: 1s;
     z-index: -1;
@@ -161,16 +127,16 @@ footer {
     height: 100%;
     display: flex;
     overflow: hidden;
-    color: orange;
-    border-color: orange;
+    color: #4fc3dc;
+    border-color: #4fc3dc;
 }
 .nextApp:hover {
     color: white;
     background-color: #24252a;
-    border-color: orange;
+    border-color: #4fc3dc;
     z-index: 2;
-    box-shadow: 0 0 10px orange, 0 0 20px orange, 0 0 40px orange,
-        0 0 80px orange, 0 0 160px orange;
+    box-shadow: 0 0 10px #4fc3dc, 0 0 20px #4fc3dc, 0 0 40px #4fc3dc,
+        0 0 80px #4fc3dc, 0 0 160px #4fc3dc;
 }
 .nextApp::before {
     content: "";
@@ -179,7 +145,7 @@ footer {
     left: -30px;
     width: 0;
     height: 100%;
-    background-color: orange;
+    background-color: #4fc3dc;
     transform: skewx(35deg);
     transition: 1s;
     z-index: -1;
@@ -197,16 +163,16 @@ footer {
     height: 100%;
     display: flex;
     overflow: hidden;
-    color: orange;
-    border-color: orange;
+    color: #4fc3dc;
+    border-color: #4fc3dc;
 }
 .Home:hover {
     color: white;
     background-color: #24252a;
-    border-color: orange;
+    border-color: #4fc3dc;
     z-index: 2;
-    box-shadow: 0 0 10px orange, 0 0 20px orange, 0 0 40px orange,
-        0 0 80px orange, 0 0 160px orange;
+    box-shadow: 0 0 10px #4fc3dc, 0 0 20px #4fc3dc, 0 0 40px #4fc3dc,
+        0 0 80px #4fc3dc, 0 0 160px #4fc3dc;
 }
 .Home::before {
     content: "";
@@ -215,7 +181,7 @@ footer {
     left: -28px;
     width: 0;
     height: 100%;
-    background-color: orange;
+    background-color: #4fc3dc;
     transform: skewx(35deg);
     transition: 1s;
     z-index: -1;

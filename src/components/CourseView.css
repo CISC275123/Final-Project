@@ -4,7 +4,7 @@
     flex-direction: column;
     gap: 20px;
     text-align: left;
-    color: orange;
+    color: #4fc3dc;
 }
 
 .reqs_list h5 {
@@ -12,11 +12,11 @@
 }
 
 .reqs_title {
-    color: orange;
+    color: #4fc3dc;
 }
 
 .reqs {
-    color: orange;
+    color: #4fc3dc;
 }
 
 .reqs h2 {

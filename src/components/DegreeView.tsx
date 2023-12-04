@@ -111,7 +111,10 @@ export const DegreeView = ({
                 <div className="degree_page">
                     <h2>{degree.name}</h2>
                     <h2>{degree.plan.name}</h2>
-                    <Button onClick={() => setShowReqs(!showReqs)}>
+                    <Button
+                        className="SDR"
+                        onClick={() => setShowReqs(!showReqs)}
+                    >
                         Show Degree Requirements
                     </Button>
                     {showReqs && (
