@@ -8,17 +8,20 @@ import "./SemesterAddCourse.css";
 export const SemesterAddCourse = ({
     courses,
     addedCourses,
-    setAddedCourses
+    setAddedCourses,
+    addedCredits,
+    setAddedCredits
 }: {
     courses: Course[];
     addedCourses: Course[];
     setAddedCourses: (courseList: Course[]) => void;
+    addedCredits: number;
+    setAddedCredits: (x: number) => void;
 }) => {
     const NUM_COURSES_DISPLAYED = 3;
     const [currIndex, setIndex] = useState<number>(0);
     const [userSearchCourse, setUserSearchCourse] = useState<string>("");
     const [listCourses, setListCourses] = useState<Course[]>(courses);
-    const [addedCredits, setAddedCredits] = useState<number>(0);
     function addCourse(c: Course) {
         let y = 0;
         if (c.credits.includes("-")) {

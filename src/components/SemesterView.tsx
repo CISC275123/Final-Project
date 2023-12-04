@@ -28,6 +28,7 @@ export const SemesterView = ({
     targetYear: Year;
 }) => {
     const [addedCourses, setAddedCourses] = useState<Course[]>([]);
+    const [addedCredits, setAddedCredits] = useState<number>(0);
     const [isAddCourses, setIsAddCourses] = useState<boolean>(false);
     const [currIndex, setIndex] = useState<number>(0);
 
@@ -108,14 +109,25 @@ export const SemesterView = ({
 
         // Fixes saving bug
         const newSemesterList: Semester[] = targetYear.semesters.map(
-            (sem: Semester): Semester =>
-                sem.id === semester.id
-                    ? { ...sem, courses: [...sem.courses, ...addedCourses] }
-                    : sem
+            (sem: Semester): Semester => {
+                if (sem.id === semester.id) {
+                    const newCourses = addedCourses.filter(
+                        (newCourse) =>
+                            !sem.courses.some(
+                                (existingCourse) =>
+                                    existingCourse.id === newCourse.id
+                            )
+                    );
+                    return { ...sem, courses: [...sem.courses, ...newCourses] };
+                } else {
+                    return sem;
+                }
+            }
         );
 
         setSemesterList(newSemesterList, targetDegree, targetYear);
         setAddedCourses([]);
+        setAddedCredits(0);
     }
     function clearCourses() {
         setAddedCourses([]);
@@ -181,7 +193,11 @@ export const SemesterView = ({
                 <SemesterAddCourse
                     courses={baseCourses}
                     addedCourses={addedCourses}
-                    setAddedCourses={setAddedCourses}
+                    setAddedCourses={
+                        setAddedCourses as (courseList: Course[]) => void
+                    }
+                    addedCredits={addedCredits}
+                    setAddedCredits={setAddedCredits}
                 ></SemesterAddCourse>
             )}
         </div>
