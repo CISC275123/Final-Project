@@ -84,6 +84,23 @@ export const SemesterList = ({
             >
                 Add Semester
             </Button>
+            {isMakeSemesterCard && (
+                <div className="popup-container">
+                    <div className="popup">
+                        <SemesterCard
+                            semesterList={semesterList}
+                            setSemesterList={setSemesterList}
+                            setIsSemesterCard={setIsMakeSemesterCard}
+                            idCounter={idCounter}
+                            setIdCounter={setIdCounter}
+                            degree={degree}
+                            year={year}
+                        ></SemesterCard>
+                        <button onClick={hideMakeSemesterCard}>Close</button>
+                    </div>
+                    <div className="background-overlay"></div>
+                </div>
+            )}
             <div className="List">
                 <ul>
                     {!displayId && (
@@ -126,23 +143,6 @@ export const SemesterList = ({
                     })}
                 </ul>
             </div>
-            {isMakeSemesterCard && (
-                <div className="popup-container">
-                    <div className="popup">
-                        <SemesterCard
-                            semesterList={semesterList}
-                            setSemesterList={setSemesterList}
-                            setIsSemesterCard={setIsMakeSemesterCard}
-                            idCounter={idCounter}
-                            setIdCounter={setIdCounter}
-                            degree={degree}
-                            year={year}
-                        ></SemesterCard>
-                        <button onClick={hideMakeSemesterCard}>Close</button>
-                    </div>
-                    <div className="background-overlay"></div>
-                </div>
-            )}
         </div>
     );
 };

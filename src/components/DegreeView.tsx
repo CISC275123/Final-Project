@@ -206,13 +206,13 @@ export const DegreeView = ({
 
     return (
         <div className="degree_card">
-            <div>
+            <div className="degButtons">
                 <Button
                     className="esc_button text-align-center"
                     variant="danger"
                     onClick={resetView}
                 >
-                    {"Exit"}
+                    Exit
                 </Button>
 
                 <Button
@@ -223,104 +223,94 @@ export const DegreeView = ({
                 >
                     Add Year
                 </Button>
-                {isAdding && (
-                    <Form.Group controlId="formAddDegree">
-                        <br />
-                        <Form.Label>Name your new Year:</Form.Label>
-                        <Form.Select
-                            onChange={updateSelection}
-                            value={userInput}
-                        >
-                            <option value="Freshman">Freshman</option>
-                            <option value="Sophomore">Sophomore</option>
-                            <option value="Junior">Junior</option>
-                            <option value="Senior">Senior</option>
-                        </Form.Select>
-                        <Button
-                            variant="success"
-                            className="save_edit_btn"
-                            onClick={() => {
-                                addYear(userInput, degree);
-                                setAdding(!isAdding);
-                            }}
-                        >
-                            Save
-                        </Button>
-                        <Button
-                            variant="warning"
-                            onClick={() => setAdding(!isAdding)}
-                        >
-                            Cancel
-                        </Button>
-                    </Form.Group>
-                )}
             </div>
-
-            {true && (
-                <div className="degree_page">
-                    <h2>{degree.name}</h2>
-                    <h2>{degree.plan.name}</h2>
+            {isAdding && (
+                <Form.Group controlId="formAddDegree" className="formAddDegree">
+                    <br />
+                    <Form.Label>Name your new Year:</Form.Label>
+                    <Form.Select onChange={updateSelection} value={userInput}>
+                        <option value="Freshman">Freshman</option>
+                        <option value="Sophomore">Sophomore</option>
+                        <option value="Junior">Junior</option>
+                        <option value="Senior">Senior</option>
+                    </Form.Select>
                     <Button
-                        className="SDR"
-                        onClick={() => setShowReqs(!showReqs)}
+                        variant="success"
+                        className="save_edit_btn"
+                        onClick={() => {
+                            addYear(userInput, degree);
+                            setAdding(!isAdding);
+                        }}
                     >
-                        {showReqs
-                            ? "Close to refresh requirement check"
-                            : "Run Requirement Check"}
+                        Save
                     </Button>
-                    {showReqs && (
-                        <div className="degReqs">
-                            <div className="univReqs">
-                                <h2>University Requirements</h2>
-                                {displayUnivReqs()}
-                            </div>
-                            <div className="collegeReqs">
-                                <h2>College Requirements</h2>
-                                {displayCollegeReqs()}
-                            </div>
-                            <div className="majorReqs">
-                                <h2>Major Requirements</h2>
-                                {displayMajorReqs()}
-                            </div>
-                        </div>
-                    )}
-                    <div className="year_view_rows">
-                        {degree.years.map((year: Year) => (
-                            <div className="year_view_column" key={year.name}>
-                                <div className="fixZ">
-                                    <h4 onClick={() => console.log(year.id)}>
-                                        {year.name}
-                                    </h4>
-                                    <Button
-                                        className="sampleDegreeButtons"
-                                        onClick={() => deleteYear(year, degree)}
-                                    >
-                                        Delete Year
-                                    </Button>
-                                    <Button
-                                        className="sampleDegreeButtons"
-                                        onClick={() =>
-                                            updateSemesterList([], degree, year)
-                                        }
-                                    >
-                                        Clear Semesters
-                                    </Button>
-                                    {
-                                        <SemesterList
-                                            isDataSaved={isDataSaved}
-                                            key={year.name}
-                                            semesterList={year.semesters}
-                                            setSemesterList={updateSemesterList}
-                                            degree={degree}
-                                            year={year}
-                                        />
-                                    }
-                                </div>
-                            </div>
-                        ))}
+                    <Button
+                        variant="warning"
+                        onClick={() => setAdding(!isAdding)}
+                    >
+                        Cancel
+                    </Button>
+                </Form.Group>
+            )}
+
+            <h2>{degree.name}</h2>
+            <h2>{degree.plan.name}</h2>
+            <Button className="SDR" onClick={() => setShowReqs(!showReqs)}>
+                {showReqs
+                    ? "Close to refresh requirement check"
+                    : "Run Requirement Check"}
+            </Button>
+            {showReqs && (
+                <div className="degReqs">
+                    <div className="univReqs">
+                        <h2>University Requirements</h2>
+                        {displayUnivReqs()}
+                    </div>
+                    <div className="collegeReqs">
+                        <h2>College Requirements</h2>
+                        {displayCollegeReqs()}
+                    </div>
+                    <div className="majorReqs">
+                        <h2>Major Requirements</h2>
+                        {displayMajorReqs()}
                     </div>
                 </div>
             )}
+            <div className="year_view_rows">
+                {degree.years.map((year: Year) => (
+                    <div className="year_view_column" key={year.name}>
+                        <div className="fixZ">
+                            <h4 onClick={() => console.log(year.id)}>
+                                {year.name}
+                            </h4>
+                            <Button
+                                className="sampleDegreeButtons"
+                                onClick={() => deleteYear(year, degree)}
+                            >
+                                Delete Year
+                            </Button>
+                            <Button
+                                className="sampleDegreeButtons"
+                                onClick={() =>
+                                    updateSemesterList([], degree, year)
+                                }
+                            >
+                                Clear Semesters
+                            </Button>
+                            {
+                                <SemesterList
+                                    isDataSaved={isDataSaved}
+                                    key={year.name}
+                                    semesterList={year.semesters}
+                                    setSemesterList={updateSemesterList}
+                                    degree={degree}
+                                    year={year}
+                                />
+                            }
+                        </div>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };

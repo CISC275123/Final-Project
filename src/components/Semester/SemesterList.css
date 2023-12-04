@@ -2,6 +2,7 @@
     padding: 2rem;
     list-style-type: none;
     z-index: 2000;
+    width: 70vw;
 }
 
 .SemesterContainer {
