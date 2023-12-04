@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { Course } from "../../interfaces/course";
 import { Button, Form } from "react-bootstrap";
 import { CourseCard } from "../CourseCard";
-
 import "./SemesterAddCourse.css";
 
 export const SemesterAddCourse = ({
@@ -19,23 +18,40 @@ export const SemesterAddCourse = ({
     const [currIndex, setIndex] = useState<number>(0);
     const [userSearchCourse, setUserSearchCourse] = useState<string>("");
     const [listCourses, setListCourses] = useState<Course[]>(courses);
+    const [addedCredits, setAddedCredits] = useState<number>(0);
     function addCourse(c: Course) {
+        let y = 0;
+        if (c.credits.includes("-")) {
+            const x = +c.credits.substring(c.credits.length - 1);
+            y = +x;
+        } else {
+            y = +c.credits;
+        }
         if (addedCourses.some((item) => item === c)) {
             alert("This course has already been added to the queue");
-        } else {
-            setAddedCourses([...addedCourses, c]);
+        } else if (addedCredits + y <= 18) {
+            // Check for prerequisite and restriction warnings
             if (c.preReq !== "") {
                 alert(
                     "Warning: Please make sure you meet these prerequisite courses: " +
                         c.preReq
                 );
-            }
-            if (c.restrict !== "") {
+            } else if (c.restrict !== "") {
                 alert(
                     "Warning: Please make sure you are eligible. This course has the following restrictions: " +
                         c.restrict
                 );
             }
+
+            // Add course and update credits
+            if (c.credits.includes("-")) {
+                setAddedCredits(addedCredits + y);
+            } else {
+                setAddedCredits(addedCredits + +c.credits);
+            }
+            setAddedCourses([...addedCourses, c]);
+        } else {
+            alert("Too many credits added to queue.");
         }
     }
 
