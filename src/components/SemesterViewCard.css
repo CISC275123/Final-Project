@@ -1,6 +1,7 @@
 .semester_view_card {
     background-color: #24252a;
-    border-radius: 1rem;
+    border-color: orange;
+    border-radius: 3rem;
     padding: 2rem;
 }
 

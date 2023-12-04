@@ -140,7 +140,7 @@ function App(): JSX.Element {
                                 className="Home"
                                 onClick={() => {
                                     setDegree(false);
-                                    setCourseDisplay(!courseDisplay);
+                                    setCourseDisplay(true);
                                     setIsHome(false);
                                 }}
                             >
@@ -151,7 +151,7 @@ function App(): JSX.Element {
                             <Button
                                 className="Home"
                                 onClick={() => {
-                                    setDegree(!isDegree);
+                                    setDegree(true);
                                     setCourseDisplay(false);
                                     setIsHome(false);
                                 }}
@@ -165,7 +165,9 @@ function App(): JSX.Element {
 
             {/* The default home page  */}
             <div className="HomePage">
-                {isHome && <HomePage></HomePage>}
+                {(isHome || (!isDegree && !courseDisplay)) && (
+                    <HomePage></HomePage>
+                )}
                 <div className="bubbles"></div>
             </div>
 

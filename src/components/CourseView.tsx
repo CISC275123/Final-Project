@@ -54,17 +54,13 @@ export const CourseView = ({
                     course={course}
                     convertCredits={convertCredits}
                 ></CourseCard>
-                {index < courses.length ? "AND" : ""}
+                {index < courses.length - 1 ? "AND" : ""}
             </div>
         ));
     }
 
     function findPreReqs(str: string) {
-        if (
-            str.indexOf("or") === -1 ||
-            str.indexOf("(or") > 0 ||
-            str.indexOf("or)") > 0
-        ) {
+        if (str.indexOf("or") === -1) {
             const indxOfPreReqs: number[][] = departments.map((dept) =>
                 Array.from(str.matchAll(new RegExp(dept, "gi"))).map(
                     (item) => item.index || 0
@@ -83,8 +79,12 @@ export const CourseView = ({
                 findCourse(prereq)
             );
 
-            if (prereqCourses.length <= 0) {
-                return course.preReq;
+            const containsUndefined: boolean =
+                prereqCourses.filter((item): boolean => item === undefined)
+                    .length > 0;
+
+            if (prereqCourses.length <= 0 || containsUndefined) {
+                return containsUndefined ? course.preReq : "No Prerequisites";
             } else {
                 return displayPreReqs(prereqCourses);
             }
@@ -118,11 +118,11 @@ export const CourseView = ({
                 const leftAndCourse: string[] = indxOfAnd.map((indx) =>
                     str.slice(indx - 8, indx)
                 );
-                const rightAndCourses: string[] = indxOfAnd.map((indx) =>
+                const rightAndCourse: string[] = indxOfAnd.map((indx) =>
                     str.slice(indx + 4, indx + 13)
                 );
                 const mergeAndCourses = leftAndCourse.concat(
-                    rightAndCourses.filter(
+                    rightAndCourse.filter(
                         (course) => leftAndCourse.indexOf(course) < 0
                     )
                 );
@@ -137,8 +137,6 @@ export const CourseView = ({
                         {listOrCourses(prereqCourses)}
                     </div>
                 );
-            } else if (prereqCourses.length <= 0) {
-                return course.preReq;
             } else {
                 return listOrCourses(prereqCourses);
             }
@@ -150,8 +148,9 @@ export const CourseView = ({
     }
 
     function findCourse(strCourse: string): Course {
+        const trimmedStrCourse = strCourse.trim();
         const foundCourse: Course[] = default_courses.filter(
-            (course: Course): boolean => course.code === strCourse
+            (course: Course): boolean => course.code === trimmedStrCourse
         );
 
         return foundCourse[0];

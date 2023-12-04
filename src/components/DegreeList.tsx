@@ -39,9 +39,7 @@ export const DegreeList = ({
     const [userInputName, setUserInputName] = useState<string>("Sample Degree");
     const [plans, setPlans] = useState<DegreeBase[]>([]);
     const [userInputPlan, setUserInputPlan] = useState<DegreeBase>(() => {
-        const degs: {
-            [department: string]: { [degreePlan: string]: DegreeBase };
-        } = degreebases;
+        const degs = degreebases;
 
         // Store the course list with IDs in the component's state
         const degPlans: DegreeBase[] = Object.values(degs)

@@ -143,6 +143,9 @@ export const SemesterList = ({
                                         <SemesterView
                                             semester={semester}
                                             resetView={resetCourseView}
+                                            setSemesterList={setSemesterList}
+                                            targetDegree={degree}
+                                            targetYear={year}
                                         ></SemesterView>
                                     </div>
                                     <div className="background-overlay"></div>

@@ -17,6 +17,7 @@ export const DegreeCard = ({
         <div className="degree_view_card">
             <div onClick={() => handleClick(degree.id)}>
                 <h3 className="degreeName">{degree.name}</h3>
+                <h3 className="degreeName">{degree.plan.name}</h3>
             </div>
             <Button className="remove" onClick={() => removeDegree(degree.id)}>
                 Remove
