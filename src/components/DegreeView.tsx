@@ -220,6 +220,10 @@ export const DegreeView = ({
                 </Button>
 
                 <Button
+                    style={{
+                        background: "#4fc3dc",
+                        color: "white"
+                    }}
                     className="AddYear"
                     onClick={() => {
                         setAdding(!isAdding);
@@ -259,7 +263,14 @@ export const DegreeView = ({
 
             <h2>{degree.name}</h2>
             <h2>{degree.plan.name}</h2>
-            <Button className="SDR" onClick={() => setShowReqs(!showReqs)}>
+            <Button
+                style={{
+                    background: "#4fc3dc",
+                    color: "white"
+                }}
+                className="SDR"
+                onClick={() => setShowReqs(!showReqs)}
+            >
                 {showReqs
                     ? "Close to refresh requirement check"
                     : "Run Requirement Check"}
@@ -294,6 +305,10 @@ export const DegreeView = ({
                                 Delete Year
                             </Button>
                             <Button
+                                style={{
+                                    background: "#4fc3dc",
+                                    color: "white"
+                                }}
                                 className="sampleDegreeButtons"
                                 onClick={() =>
                                     updateSemesterList([], degree, year)
@@ -302,18 +317,20 @@ export const DegreeView = ({
                                 Clear Semesters
                             </Button>
                             {
-                                <SemesterList
-                                    isDataSaved={isDataSaved}
-                                    key={year.name}
-                                    semesterList={year.semesters}
-                                    setSemesterList={updateSemesterList}
-                                    degree={degree}
-                                    year={year}
-                                    updateGlobalCourseList={
-                                        updateGlobalCourseList
-                                    }
-                                    globalCourseList={globalCourseList}
-                                />
+                                <div>
+                                    <SemesterList
+                                        isDataSaved={isDataSaved}
+                                        key={year.name}
+                                        semesterList={year.semesters}
+                                        setSemesterList={updateSemesterList}
+                                        degree={degree}
+                                        year={year}
+                                        updateGlobalCourseList={
+                                            updateGlobalCourseList
+                                        }
+                                        globalCourseList={globalCourseList}
+                                    />
+                                </div>
                             }
                         </div>
                     </div>

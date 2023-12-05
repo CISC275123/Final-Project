@@ -74,25 +74,21 @@ export const DegreeList = ({
         handleAddClick();
     }
 
-    const SaveDegrees: React.FC<{ degrees: Degree[] }> = ({ degrees }) => {
-        const downloadDegrees = () => {
-            const degreesJson = JSON.stringify(degrees, null, 2); // The third argument is for pretty formatting with 2 spaces
+    const downloadDegrees = () => {
+        const degreesJson = JSON.stringify(degrees, null, 2); // The third argument is for pretty formatting with 2 spaces
 
-            const blob = new Blob([degreesJson], { type: "application/json" });
-            const url = URL.createObjectURL(blob);
+        const blob = new Blob([degreesJson], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
 
-            const a = document.createElement("a");
-            a.href = URL.createObjectURL(blob);
-            a.download = "degrees.json";
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = "degrees.json";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
 
-            // Revoke the ObjectURL to free up resources
-            URL.revokeObjectURL(url);
-        };
-
-        return <Button onClick={downloadDegrees}>Save Degrees</Button>;
+        // Revoke the ObjectURL to free up resources
+        URL.revokeObjectURL(url);
     };
 
     const UploadDegreesButton: React.FC<{
@@ -156,13 +152,17 @@ export const DegreeList = ({
         <div className="degree_page">
             <div className="degree_buttons">
                 <Button
+                    style={{
+                        background: "#4fc3dc",
+                        color: "white"
+                    }}
                     className="degreeAddbutton"
                     hidden={displayId !== null}
                     onClick={handleAddClick}
                 >
                     Add
                 </Button>
-                {isAdding && (
+                {!displayId && isAdding && (
                     <Form.Group controlId="formAddDegree">
                         <br />
                         <Form.Label>
@@ -188,13 +188,24 @@ export const DegreeList = ({
                             ))}
                         </Form.Select>
                         <Button
+                            style={{
+                                background: "#4fc3dc",
+                                color: "white"
+                            }}
                             variant="success"
                             className="save_edit_btn"
                             onClick={setUpDegree}
                         >
                             Save
                         </Button>
-                        <Button variant="warning" onClick={handleAddClick}>
+                        <Button
+                            style={{
+                                background: "#4fc3dc",
+                                color: "white"
+                            }}
+                            variant="warning"
+                            onClick={handleAddClick}
+                        >
                             Cancel
                         </Button>
                     </Form.Group>
@@ -214,10 +225,26 @@ export const DegreeList = ({
                     </>
                 )}
                 {!displayId && (
-                    <div>
-                        <SaveDegrees degrees={degrees} />
-                        <UploadDegreesButton onUpload={handleUpload} />
-                        <Button onClick={clearLocalStorage}>
+                    <div className="storageButtons">
+                        <Button
+                            style={{
+                                background: "#4fc3dc",
+                                color: "white"
+                            }}
+                            onClick={downloadDegrees}
+                        >
+                            Save Degrees
+                        </Button>
+                        <div>
+                            <UploadDegreesButton onUpload={handleUpload} />
+                        </div>
+                        <Button
+                            style={{
+                                background: "#4fc3dc",
+                                color: "white"
+                            }}
+                            onClick={clearLocalStorage}
+                        >
                             Clear Storage
                         </Button>
                     </div>

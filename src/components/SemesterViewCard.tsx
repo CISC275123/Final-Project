@@ -106,33 +106,31 @@ export const SemesterViewCard = ({
                 Show Courses
             </Button>
             <div className="listCourses">
-                <ul>
-                    {!displayId &&
-                        semester.courses.map((course: Course) => (
-                            <li
-                                key={course.id}
-                                onClick={() => setDisplayId(course.id)}
-                            >
-                                {course.code}: {course.name}
-                            </li>
-                        ))}
-                    {semester.courses.map((course: Course) => {
-                        if (course.id === displayId) {
-                            return (
-                                <CourseView
-                                    course={course}
-                                    editCourse={editCourse}
-                                    resetView={resetCourseView}
-                                    default_courses={defaultCourses}
-                                    convertCredits={convertCredits}
-                                    departments={[]}
-                                ></CourseView>
-                            );
-                        } else {
-                            return null;
-                        }
-                    })}
-                </ul>
+                {!displayId &&
+                    semester.courses.map((course: Course) => (
+                        <li
+                            key={course.id}
+                            onClick={() => setDisplayId(course.id)}
+                        >
+                            {course.code}: {course.name}
+                        </li>
+                    ))}
+                {semester.courses.map((course: Course) => {
+                    if (course.id === displayId) {
+                        return (
+                            <CourseView
+                                course={course}
+                                editCourse={editCourse}
+                                resetView={resetCourseView}
+                                default_courses={defaultCourses}
+                                convertCredits={convertCredits}
+                                departments={[]}
+                            ></CourseView>
+                        );
+                    } else {
+                        return null;
+                    }
+                })}
             </div>
         </div>
     );

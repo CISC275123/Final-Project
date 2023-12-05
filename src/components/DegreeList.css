@@ -12,6 +12,7 @@
     padding: 0rem 20rem 0rem 20rem;
     text-align: center;
     align-content: center;
+    margin-top: 1rem;
 }
 .degreeAddbutton {
     background-color: #4fc3dc;
@@ -23,5 +24,21 @@
     border-color: #4fc3dc;
     /* box-shadow: 0 0 10px orange, 0 0 20px orange, 0 0 40px orange,
         0 0 80px orange, 0 0 160px orange; */
-    letter-spacing: 0.25em;
+    letter-spacing: 0.1em;
+}
+
+.storageButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.storageButtons Button {
+    transition: 1s;
+    background-color: #24252a;
+    border-color: #4fc3dc;
+}
+
+.storageButtons Button:hover {
+    letter-spacing: 0.1em;
 }

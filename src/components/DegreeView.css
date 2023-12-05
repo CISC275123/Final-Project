@@ -111,10 +111,6 @@
     border-color: #4fc3dc;
 }
 
-.degReqs {
-    display: inline;
-}
-
 .SDR {
     background-color: #4fc3dc;
     border-color: #24252a;
@@ -145,4 +141,13 @@
 
 .majorReqs p {
     color: white;
+}
+
+.degReqs div {
+    display: flex;
+    flex-direction: column;
+}
+
+.degReqs h2 {
+    align-self: center;
 }

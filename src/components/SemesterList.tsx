@@ -84,6 +84,10 @@ export const SemesterList = ({
     return (
         <div>
             <Button
+                style={{
+                    background: "#4fc3dc",
+                    color: "white"
+                }}
                 className="AddSemesterButton"
                 onClick={showMakeSemesterCard}
             >
@@ -108,7 +112,7 @@ export const SemesterList = ({
             )}
             <div className="List">
                 <ul>
-                    {!displayId && (
+                    {true && (
                         <>
                             {semesterList.map((semester: Semester) => (
                                 <div

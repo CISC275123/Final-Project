@@ -137,20 +137,6 @@ export const SemesterView = ({
         saveInfo();
     }
 
-    /*function changeFilter(event: React.ChangeEvent<HTMLSelectElement>) {
-        setDepartmentFilter(event.target.value);
-
-        setFilteredList(
-            localCourses.filter(
-                (course: Course): boolean =>
-                    event.target.value === "All" ||
-                    course.code.slice(0, 4) === event.target.value
-            )
-        );
-        setIndex(0);
-        setCurrentPage(1);
-    }*/
-
     return (
         <div className="SemesterviewContainer">
             <h1>
