@@ -65,6 +65,7 @@
     animation: animateBG 15s linear infinite;
     animation-duration: calc(125s / var(--fontSize));
     z-index: 10;
+    /* turned bubbles into a ray */
     min-width: 100%;
 }
 .bubbles span:nth-child(even) {
