@@ -11,6 +11,7 @@ import { Year } from "../interfaces/year";
 
 import { DegreeBase } from "../interfaces/degreebase";
 import degreebases from "../data/degrees.json";
+import { Course } from "../interfaces/course";
 
 export const DegreeList = ({
     isDataSaved,
@@ -20,7 +21,9 @@ export const DegreeList = ({
     addYear,
     deleteYear,
     removeDegree,
-    updateSemesterList
+    updateSemesterList,
+    updateGlobalCourseList,
+    globalCourseList
 }: {
     isDataSaved: boolean;
     degrees: Degree[];
@@ -34,6 +37,8 @@ export const DegreeList = ({
         targetDegree: Degree,
         targetYear: Year
     ) => void;
+    updateGlobalCourseList: (newList: Course[]) => void;
+    globalCourseList: Course[];
 }) => {
     const [displayId, setDisplayId] = useState<null | number>(null);
     const [userInputName, setUserInputName] = useState<string>("Sample Degree");
@@ -229,6 +234,8 @@ export const DegreeList = ({
                                 addYear={addYear}
                                 deleteYear={deleteYear}
                                 updateSemesterList={updateSemesterList}
+                                updateGlobalCourseList={updateGlobalCourseList}
+                                globalCourseList={globalCourseList}
                             ></DegreeView>
                         );
                     } else {

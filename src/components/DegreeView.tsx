@@ -18,7 +18,9 @@ export const DegreeView = ({
     resetView,
     addYear,
     deleteYear,
-    updateSemesterList
+    updateSemesterList,
+    updateGlobalCourseList,
+    globalCourseList
 }: {
     isDataSaved: boolean;
     degree: Degree;
@@ -30,6 +32,8 @@ export const DegreeView = ({
         targetDegree: Degree,
         targetYear: Year
     ) => void;
+    updateGlobalCourseList: (newList: Course[]) => void;
+    globalCourseList: Course[];
 }) => {
     const [isAdding, setAdding] = useState<boolean>(false);
     const [userInput, setUserInput] = useState<string>("Freshman");
@@ -305,6 +309,10 @@ export const DegreeView = ({
                                     setSemesterList={updateSemesterList}
                                     degree={degree}
                                     year={year}
+                                    updateGlobalCourseList={
+                                        updateGlobalCourseList
+                                    }
+                                    globalCourseList={globalCourseList}
                                 />
                             }
                         </div>

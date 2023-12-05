@@ -4,17 +4,22 @@ import { DegreeList } from "./DegreeList";
 import { Semester } from "../interfaces/semester";
 import { Year } from "../interfaces/year";
 import { DegreeBase } from "../interfaces/degreebase";
+import { Course } from "../interfaces/course";
 
 export const DegreeDisplay = ({
     isDataSaved,
     updateGlobalDegreeList,
     globalDegreeList,
-    startingDegreeId
+    startingDegreeId,
+    updateGlobalCourseList,
+    globalCourseList
 }: {
     isDataSaved: boolean;
     updateGlobalDegreeList: (newList: Degree[]) => void;
     globalDegreeList: Degree[];
     startingDegreeId: number;
+    updateGlobalCourseList: (newList: Course[]) => void;
+    globalCourseList: Course[];
 }) => {
     // IDs used to differentiate instances of objects
     const [degreeId, setDegreeId] = useState<number>(startingDegreeId);
@@ -172,6 +177,8 @@ export const DegreeDisplay = ({
                     addYear={addYear}
                     deleteYear={deleteYear}
                     updateSemesterList={updateSemesterList}
+                    updateGlobalCourseList={updateGlobalCourseList}
+                    globalCourseList={globalCourseList}
                 ></DegreeList>
             }
         </div>

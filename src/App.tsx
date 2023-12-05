@@ -188,6 +188,8 @@ function App(): JSX.Element {
                     <DegreeDisplay
                         isDataSaved={isDataSaved}
                         updateGlobalDegreeList={updateGlobalDegreeList}
+                        updateGlobalCourseList={updateGlobalCourseList}
+                        globalCourseList={globalCourseList}
                         globalDegreeList={globalDegreeList}
                         startingDegreeId={startingDegreeId}
                     ></DegreeDisplay>

@@ -4,6 +4,7 @@ import { Course } from "../interfaces/course";
 import { Button, Form } from "react-bootstrap";
 import { CourseList } from "./CourseList";
 import "./CourseDisplay.css";
+import catalog from "../data/catalog.json";
 
 const NUM_COURSES_DISPLAYED = 3;
 
@@ -30,17 +31,55 @@ export const CourseDisplay = ({
 
     // VARs used to track course department filter
     const [departmentFilter, setDepartmentFilter] = useState<string>("All");
-    const [filteredList, setFilteredList] = useState<Course[]>([]);
+    const [filteredList, setFilteredList] =
+        useState<Course[]>(globalCourseList);
 
     // VAR used to track what page in courses list the user is viewing
     const [currentPage, setCurrentPage] = useState<number>(1);
 
     // Creates global list of ALL courses in the catalog json.
     useEffect(() => {
-        updateGlobalCourseList(globalCourseList);
-        setLocalCourses(globalCourseList);
-        setDefaultCourses(globalCourseList);
-        setFilteredList(globalCourseList);
+        interface JSONCourse {
+            code: string;
+            name: string;
+            descr: string;
+            credits: string;
+            preReq: string;
+            restrict: string;
+            breadth: string;
+            typ: string;
+        }
+
+        // Creates default list of courses pulling from a JSON file.
+        let counter = 1;
+        const updatedCourseData: {
+            [dept: string]: { [courseCode: string]: Course };
+        } = {};
+
+        const updateData: {
+            [department: string]: { [courseCode: string]: JSONCourse };
+        } = catalog;
+
+        for (const dept in updateData) {
+            updatedCourseData[dept] = {};
+            const courses = updateData[dept];
+            for (const courseCode in courses) {
+                const course = courses[courseCode];
+                const courseWithId: Course = {
+                    ...course,
+                    id: counter
+                };
+                updatedCourseData[dept][courseCode] = courseWithId;
+                counter++;
+            }
+        }
+
+        // Store the course list with IDs in the component's state
+        const COURSES: Course[] = Object.values(updatedCourseData)
+            .map(Object.values)
+            .flat();
+
+        setDefaultCourses(COURSES);
     }, []);
 
     // Used to edit a course. Replaces the target course with a modified course.
@@ -54,13 +93,40 @@ export const CourseDisplay = ({
     // OUTPUTS:
     // Modifies the state variable containing the list of courses.
     function editCourse(courseID: number, newCourse: Course) {
-        const newList: Course[] = localCourses.map(
-            (course: Course): Course =>
-                course.id === courseID ? newCourse : course
-        );
-        updateGlobalCourseList(newList);
-        setLocalCourses(newList);
-        setFilteredList(newList);
+        if (departmentFilter === "All") {
+            const newList: Course[] = localCourses.map(
+                (course: Course): Course =>
+                    course.id === courseID ? newCourse : course
+            );
+            updateGlobalCourseList(newList);
+            setLocalCourses(newList);
+            setFilteredList(newList);
+        } else {
+            // List is filtered to number of courses that match Department selected. Need to treat it differently.
+            const newList: Course[] = filteredList.map(
+                (course: Course): Course =>
+                    course.id === courseID ? newCourse : course
+            );
+            setFilteredList(newList);
+
+            const updatedLocalList = localCourses.map((localCourse) => {
+                // Check if there is a matching course in newList
+                const matchingCourse = newList.find(
+                    (newCourse) => newCourse.id === localCourse.id
+                );
+
+                // If there is a match, replace the course in localList with the updated course from newList
+                if (matchingCourse) {
+                    return matchingCourse;
+                }
+
+                // If there is no match, keep the original course in localList
+                return localCourse;
+            });
+
+            updateGlobalCourseList(updatedLocalList);
+            setLocalCourses(updatedLocalList);
+        }
     }
 
     // Used to display/hide the relevant buttons when editing a course. Takes in a boolean to set the value of isEditing to.

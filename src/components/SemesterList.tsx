@@ -8,13 +8,16 @@ import { SemesterCard } from "./SemesterCard";
 import { Degree } from "../interfaces/degree";
 import { Year } from "../interfaces/year";
 import { SemesterViewCard } from "./SemesterViewCard";
+import { Course } from "../interfaces/course";
 
 export const SemesterList = ({
     isDataSaved,
     semesterList,
     setSemesterList,
     degree,
-    year
+    year,
+    updateGlobalCourseList,
+    globalCourseList
 }: {
     isDataSaved: boolean;
     semesterList: Semester[];
@@ -25,6 +28,8 @@ export const SemesterList = ({
     ) => void;
     degree: Degree;
     year: Year;
+    updateGlobalCourseList: (newList: Course[]) => void;
+    globalCourseList: Course[];
 }) => {
     const [isMakeSemesterCard, setIsMakeSemesterCard] =
         useState<boolean>(false);
@@ -115,6 +120,13 @@ export const SemesterList = ({
                                         handleView={handleCourseView}
                                         toggle={toggle}
                                         removeSemester={deleteSemester}
+                                        updateGlobalCourseList={
+                                            updateGlobalCourseList
+                                        }
+                                        globalCourseList={globalCourseList}
+                                        setSemesterList={setSemesterList}
+                                        degree={degree}
+                                        year={year}
                                     />
                                 </div>
                             ))}

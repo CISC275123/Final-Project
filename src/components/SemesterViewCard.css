@@ -24,3 +24,13 @@
         font-size: 0.8rem;
     }
 }
+
+.listCourses ul {
+    list-style: none;
+}
+
+.listCourses li {
+    border: 2px dotted #4fc3dc;
+    padding: 1rem;
+    margin: 0.5rem;
+}
