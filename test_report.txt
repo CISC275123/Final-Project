@@ -15,26 +15,52 @@
       at completeUnitOfWork (node_modules/react-dom/cjs/react-dom.development.js:22812:16)
       at performUnitOfWork (node_modules/react-dom/cjs/react-dom.development.js:22787:5)
 
-FAIL src/App.test.tsx
-  ✓ renders the course name somewhere (121 ms)
+  console.error
+    Warning: Cannot update a component (`CourseDisplay`) while rendering a different component (`CourseList`). To locate the bad setState() call inside `CourseList`, follow the stack trace as described in https://reactjs.org/link/setstate-in-render
+        at CourseList (/home/runner/work/Final-Project/Final-Project/src/components/CourseList.tsx:9:5)
+        at div
+        at div
+        at CourseDisplay (/home/runner/work/Final-Project/Final-Project/src/components/CourseDisplay.tsx:12:5)
+        at div
+        at body
+        at App (/home/runner/work/Final-Project/Final-Project/src/App.tsx:17:53)
+
+      132 |     // Used to display/hide the relevant buttons when editing a course. Takes in a boolean to set the value of isEditing to.
+      133 |     function switchEditing(edit: boolean) {
+    > 134 |         setEditing(edit);
+          |         ^
+      135 |     }
+      136 |
+      137 |     function changeFilter(event: React.ChangeEvent<HTMLSelectElement>) {
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:67:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:43:5)
+      at warnAboutRenderPhaseUpdatesInDEV (node_modules/react-dom/cjs/react-dom.development.js:24002:15)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:21836:3)
+      at setEditing (node_modules/react-dom/cjs/react-dom.development.js:16139:5)
+      at switchEditing (src/components/CourseDisplay.tsx:134:9)
+      at src/components/CourseList.tsx:60:21
+
+FAIL src/App.test.tsx (23.716 s)
+  ✓ renders the course name somewhere (132 ms)
   Degree Tests
-    ✓ Users can add a new degree plan (58 ms)
-    ✕ Users can delete a new degree plan (47 ms)
-    ✕ Users can select a degree plan they made and view it (36 ms)
-    ✕ Users can exit a degree plan after clicking on it (40 ms)
-    ✕ Users can add a Year to a Degree Plan (44 ms)
-    ✕ Users can delete a Year from their Degree Plan (43 ms)
+    ✓ Users can add a new degree plan (67 ms)
+    ✕ Users can delete a new degree plan (56 ms)
+    ✕ Users can select a degree plan they made and view it (56 ms)
+    ✕ Users can exit a degree plan after clicking on it (45 ms)
+    ✕ Users can add a Year to a Degree Plan (46 ms)
+    ✕ Users can delete a Year from their Degree Plan (55 ms)
   Course Tests
-    ✕ Users can see a list of courses, including the course code, title, and credits (55 ms)
-    ✕ Users can click on a course to view its information (57 ms)
-    ✕ Users can edit a course (56 ms)
+    ✓ Users can see a list of courses, including the course code, title, and credits (7232 ms)
+    ✓ Users can click on a course to view its information (6823 ms)
+    ✓ Users can edit a course (6614 ms)
   Semester Tests
-    ✕ Users can add a Semester from their Degree Plan (38 ms)
-    ✕ Users can add a new semester to a year (32 ms)
-    ✕ Users can delete a semester (41 ms)
-    ✕ Users can edit a semester (40 ms)
-    ✕ Users can add a course to a semester (47 ms)
-    ✕ Users can remove a course from a semester (51 ms)
+    ✕ Users can add a Semester from their Degree Plan (37 ms)
+    ✕ Users can add a new semester to a year (35 ms)
+    ✕ Users can delete a semester (35 ms)
+    ✕ Users can edit a semester (41 ms)
+    ✕ Users can add a course to a semester (38 ms)
+    ✕ Users can remove a course from a semester (39 ms)
 
   ● Degree Tests › Users can delete a new degree plan
 
@@ -44,7 +70,7 @@ FAIL src/App.test.tsx
 
     Ignored nodes: comments, <script />, <style />
     [36m<button[39m
-      [33mclass[39m=[32m"btn btn-primary"[39m
+      [33mclass[39m=[32m"remove btn btn-primary"[39m
       [33mtype[39m=[32m"button"[39m
     [36m>[39m
       [0mRemove[0m
@@ -52,7 +78,7 @@ FAIL src/App.test.tsx
 
     Ignored nodes: comments, <script />, <style />
     [36m<button[39m
-      [33mclass[39m=[32m"btn btn-primary"[39m
+      [33mclass[39m=[32m"remove btn btn-primary"[39m
       [33mtype[39m=[32m"button"[39m
     [36m>[39m
       [0mRemove[0m
@@ -88,7 +114,7 @@ FAIL src/App.test.tsx
               [36m>[39m
                 [36m<li>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"Home btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mHome[0m
@@ -96,7 +122,7 @@ FAIL src/App.test.tsx
                 [36m</li>[39m
                 [36m<li>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"Home btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mCourses[0m
@@ -104,7 +130,7 @@ FAIL src/App.test.tsx
                 [36m</li>[39m
                 [36m<li>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"Home btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mDegrees[0m
@@ -115,7 +141,11 @@ FAIL src/App.test.tsx
           [36m</header>[39m
           [36m<div[39m
             [33mclass[39m=[32m"HomePage"[39m
-          [36m/>[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"bubbles"[39m
+            [36m/>[39m
+          [36m</div>[39m
           [36m<div[39m
             [33mclass[39m=[32m"CourseList"[39m
           [36m/>[39m
@@ -132,7 +162,7 @@ FAIL src/App.test.tsx
                   [33mclass[39m=[32m"degree_buttons"[39m
                 [36m>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"degreeAddbutton btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mAdd[0m
@@ -150,9 +180,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -167,9 +202,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -206,7 +246,9 @@ FAIL src/App.test.tsx
               [36m</div>[39m
             [36m</div>[39m
           [36m</div>[39m
-          [36m<footer>[39m
+          [36m<footer[39m
+            [33mclass[39m=[32m"footerCustom"[39m
+          [36m>[39m
             [36m<p>[39m
               [0mCreated and Maintained by: Leon Giang, Jason Chan, Sibyl Roosen, Abdullah Maruf, Taylor Kadans[0m
             [36m</p>[39m
@@ -291,7 +333,7 @@ FAIL src/App.test.tsx
               [36m>[39m
                 [36m<li>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"Home btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mHome[0m
@@ -299,7 +341,7 @@ FAIL src/App.test.tsx
                 [36m</li>[39m
                 [36m<li>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"Home btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mCourses[0m
@@ -307,7 +349,7 @@ FAIL src/App.test.tsx
                 [36m</li>[39m
                 [36m<li>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"Home btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mDegrees[0m
@@ -318,7 +360,11 @@ FAIL src/App.test.tsx
           [36m</header>[39m
           [36m<div[39m
             [33mclass[39m=[32m"HomePage"[39m
-          [36m/>[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"bubbles"[39m
+            [36m/>[39m
+          [36m</div>[39m
           [36m<div[39m
             [33mclass[39m=[32m"CourseList"[39m
           [36m/>[39m
@@ -335,7 +381,7 @@ FAIL src/App.test.tsx
                   [33mclass[39m=[32m"degree_buttons"[39m
                 [36m>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"degreeAddbutton btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mAdd[0m
@@ -353,9 +399,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -370,9 +421,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -387,9 +443,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -426,7 +487,9 @@ FAIL src/App.test.tsx
               [36m</div>[39m
             [36m</div>[39m
           [36m</div>[39m
-          [36m<footer>[39m
+          [36m<footer[39m
+            [33mclass[39m=[32m"footerCustom"[39m
+          [36m>[39m
             [36m<p>[39m
               [0mCreated and Maintained by: Leon Giang, Jason Chan, Sibyl Roosen, Abdullah Maruf, Taylor Kadans[0m
             [36m</p>[39m
@@ -518,7 +581,7 @@ FAIL src/App.test.tsx
               [36m>[39m
                 [36m<li>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"Home btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mHome[0m
@@ -526,7 +589,7 @@ FAIL src/App.test.tsx
                 [36m</li>[39m
                 [36m<li>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"Home btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mCourses[0m
@@ -534,7 +597,7 @@ FAIL src/App.test.tsx
                 [36m</li>[39m
                 [36m<li>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"Home btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mDegrees[0m
@@ -545,7 +608,11 @@ FAIL src/App.test.tsx
           [36m</header>[39m
           [36m<div[39m
             [33mclass[39m=[32m"HomePage"[39m
-          [36m/>[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"bubbles"[39m
+            [36m/>[39m
+          [36m</div>[39m
           [36m<div[39m
             [33mclass[39m=[32m"CourseList"[39m
           [36m/>[39m
@@ -562,7 +629,7 @@ FAIL src/App.test.tsx
                   [33mclass[39m=[32m"degree_buttons"[39m
                 [36m>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"degreeAddbutton btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mAdd[0m
@@ -580,9 +647,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -597,9 +669,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -614,9 +691,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -631,9 +713,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -670,7 +757,9 @@ FAIL src/App.test.tsx
               [36m</div>[39m
             [36m</div>[39m
           [36m</div>[39m
-          [36m<footer>[39m
+          [36m<footer[39m
+            [33mclass[39m=[32m"footerCustom"[39m
+          [36m>[39m
             [36m<p>[39m
               [0mCreated and Maintained by: Leon Giang, Jason Chan, Sibyl Roosen, Abdullah Maruf, Taylor Kadans[0m
             [36m</p>[39m
@@ -769,7 +858,7 @@ FAIL src/App.test.tsx
               [36m>[39m
                 [36m<li>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"Home btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mHome[0m
@@ -777,7 +866,7 @@ FAIL src/App.test.tsx
                 [36m</li>[39m
                 [36m<li>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"Home btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mCourses[0m
@@ -785,7 +874,7 @@ FAIL src/App.test.tsx
                 [36m</li>[39m
                 [36m<li>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"Home btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mDegrees[0m
@@ -796,7 +885,11 @@ FAIL src/App.test.tsx
           [36m</header>[39m
           [36m<div[39m
             [33mclass[39m=[32m"HomePage"[39m
-          [36m/>[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"bubbles"[39m
+            [36m/>[39m
+          [36m</div>[39m
           [36m<div[39m
             [33mclass[39m=[32m"CourseList"[39m
           [36m/>[39m
@@ -813,7 +906,7 @@ FAIL src/App.test.tsx
                   [33mclass[39m=[32m"degree_buttons"[39m
                 [36m>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"degreeAddbutton btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mAdd[0m
@@ -831,9 +924,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -848,9 +946,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -865,9 +968,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -882,9 +990,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -899,9 +1012,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -938,7 +1056,9 @@ FAIL src/App.test.tsx
               [36m</div>[39m
             [36m</div>[39m
           [36m</div>[39m
-          [36m<footer>[39m
+          [36m<footer[39m
+            [33mclass[39m=[32m"footerCustom"[39m
+          [36m>[39m
             [36m<p>[39m
               [0mCreated and Maintained by: Leon Giang, Jason Chan, Sibyl Roosen, Abdullah Maruf, Taylor Kadans[0m
             [36m</p>[39m
@@ -1044,7 +1164,7 @@ FAIL src/App.test.tsx
               [36m>[39m
                 [36m<li>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"Home btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mHome[0m
@@ -1052,7 +1172,7 @@ FAIL src/App.test.tsx
                 [36m</li>[39m
                 [36m<li>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"Home btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mCourses[0m
@@ -1060,7 +1180,7 @@ FAIL src/App.test.tsx
                 [36m</li>[39m
                 [36m<li>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"Home btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mDegrees[0m
@@ -1071,7 +1191,11 @@ FAIL src/App.test.tsx
           [36m</header>[39m
           [36m<div[39m
             [33mclass[39m=[32m"HomePage"[39m
-          [36m/>[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"bubbles"[39m
+            [36m/>[39m
+          [36m</div>[39m
           [36m<div[39m
             [33mclass[39m=[32m"CourseList"[39m
           [36m/>[39m
@@ -1088,7 +1212,7 @@ FAIL src/App.test.tsx
                   [33mclass[39m=[32m"degree_buttons"[39m
                 [36m>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"degreeAddbutton btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mAdd[0m
@@ -1106,9 +1230,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -1123,9 +1252,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -1140,9 +1274,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -1157,9 +1296,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -1174,9 +1318,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -1191,9 +1340,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -1230,7 +1384,9 @@ FAIL src/App.test.tsx
               [36m</div>[39m
             [36m</div>[39m
           [36m</div>[39m
-          [36m<footer>[39m
+          [36m<footer[39m
+            [33mclass[39m=[32m"footerCustom"[39m
+          [36m>[39m
             [36m<p>[39m
               [0mCreated and Maintained by: Leon Giang, Jason Chan, Sibyl Roosen, Abdullah Maruf, Taylor Kadans[0m
             [36m</p>[39m
@@ -1253,1513 +1409,6 @@ FAIL src/App.test.tsx
       at node_modules/@testing-library/dom/dist/query-helpers.js:66:13
       at getByText (node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
       at Object.<anonymous> (src/App.test.tsx:165:29)
-      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
-      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
-      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
-      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
-
-  ● Course Tests › Users can see a list of courses, including the course code, title, and credits
-
-    expect(received).toBeInTheDocument()
-
-    received value must be an HTMLElement or an SVGElement.
-    Received has value: null
-
-      198 |                         COURSES[i].code + " : " + COURSES[i].name
-      199 |                     )
-    > 200 |                 ).toBeInTheDocument();
-          |                   ^
-      201 |                 const credits = screen.getAllByText("credit", { exact: false });
-      202 |                 for (let k = 0; k < credits.length; k++)
-      203 |                     expect(credits[k]).toBeInTheDocument();
-
-      at __EXTERNAL_MATCHER_TRAP__ (node_modules/expect/build/index.js:386:30)
-      at Object.toBeInTheDocument (node_modules/expect/build/index.js:387:15)
-      at Object.<anonymous> (src/App.test.tsx:200:19)
-      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
-      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
-      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
-      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
-
-  ● Course Tests › Users can click on a course to view its information
-
-    TestingLibraryElementError: Unable to find an element with the text: ACCT 166 : SPECIAL PROBLEM. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<body>[39m
-      [36m<div>[39m
-        [36m<body[39m
-          [33mclass[39m=[32m"App"[39m
-        [36m>[39m
-          [36m<header[39m
-            [33mclass[39m=[32m"App-header"[39m
-          [36m>[39m
-            [36m<nav>[39m
-              [36m<a[39m
-                [33mclass[39m=[32m"logo"[39m
-              [36m>[39m
-                [36m<img[39m
-                  [33malt[39m=[32m"Homepage logo"[39m
-                  [33msrc[39m=[32m"logo.png"[39m
-                [36m/>[39m
-              [36m</a>[39m
-              [36m<p[39m
-                [33mclass[39m=[32m"title"[39m
-              [36m>[39m
-                [0mCISC275 - Introduction to Software Engineering[0m
-              [36m</p>[39m
-              [36m<ul[39m
-                [33mclass[39m=[32m"nav_links"[39m
-              [36m>[39m
-                [36m<li>[39m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
-                    [33mtype[39m=[32m"button"[39m
-                  [36m>[39m
-                    [0mHome[0m
-                  [36m</button>[39m
-                [36m</li>[39m
-                [36m<li>[39m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
-                    [33mtype[39m=[32m"button"[39m
-                  [36m>[39m
-                    [0mCourses[0m
-                  [36m</button>[39m
-                [36m</li>[39m
-                [36m<li>[39m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
-                    [33mtype[39m=[32m"button"[39m
-                  [36m>[39m
-                    [0mDegrees[0m
-                  [36m</button>[39m
-                [36m</li>[39m
-              [36m</ul>[39m
-            [36m</nav>[39m
-          [36m</header>[39m
-          [36m<div[39m
-            [33mclass[39m=[32m"HomePage"[39m
-          [36m/>[39m
-          [36m<div[39m
-            [33mclass[39m=[32m"CourseList"[39m
-          [36m>[39m
-            [36m<div>[39m
-              [36m<div[39m
-                [33mclass[39m=[32m"CourseButtons"[39m
-              [36m>[39m
-                [36m<button[39m
-                  [33mclass[39m=[32m"btn btn-primary"[39m
-                  [33mtype[39m=[32m"button"[39m
-                [36m>[39m
-                  [0mBack[0m
-                [36m</button>[39m
-                [36m<div>[39m
-                  [36m<label[39m
-                    [33mclass[39m=[32m"form-label"[39m
-                    [33mfor[39m=[32m"formSetFilter"[39m
-                  [36m>[39m
-                    [0mFilter: [0m
-                    [0mAll[0m
-                  [36m</label>[39m
-                  [36m<select[39m
-                    [33mclass[39m=[32m"form-select"[39m
-                    [33mid[39m=[32m"formSetFilter"[39m
-                  [36m>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"All"[39m
-                    [36m>[39m
-                      [0mAll[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"ACCT"[39m
-                    [36m>[39m
-                      [0mACCT[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"AGED"[39m
-                    [36m>[39m
-                      [0mAGED[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"AGRI"[39m
-                    [36m>[39m
-                      [0mAGRI[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"AFSC"[39m
-                    [36m>[39m
-                      [0mAFSC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"AFRA"[39m
-                    [36m>[39m
-                      [0mAFRA[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"ANFS"[39m
-                    [36m>[39m
-                      [0mANFS[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"ANTH"[39m
-                    [36m>[39m
-                      [0mANTH[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"APEC"[39m
-                    [36m>[39m
-                      [0mAPEC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"ARAB"[39m
-                    [36m>[39m
-                      [0mARAB[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"ART "[39m
-                    [36m>[39m
-                      [0mART [0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"ARTC"[39m
-                    [36m>[39m
-                      [0mARTC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"ARTH"[39m
-                    [36m>[39m
-                      [0mARTH[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"ARSC"[39m
-                    [36m>[39m
-                      [0mARSC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"ASIA"[39m
-                    [36m>[39m
-                      [0mASIA[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"BHAN"[39m
-                    [36m>[39m
-                      [0mBHAN[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"BISC"[39m
-                    [36m>[39m
-                      [0mBISC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"BMEG"[39m
-                    [36m>[39m
-                      [0mBMEG[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"BREG"[39m
-                    [36m>[39m
-                      [0mBREG[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"BUEC"[39m
-                    [36m>[39m
-                      [0mBUEC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"BUAD"[39m
-                    [36m>[39m
-                      [0mBUAD[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"DIST"[39m
-                    [36m>[39m
-                      [0mDIST[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"CHEG"[39m
-                    [36m>[39m
-                      [0mCHEG[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"CHEM"[39m
-                    [36m>[39m
-                      [0mCHEM[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"CHIN"[39m
-                    [36m>[39m
-                      [0mCHIN[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"CIEG"[39m
-                    [36m>[39m
-                      [0mCIEG[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"CGSC"[39m
-                    [36m>[39m
-                      [0mCGSC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"CMLT"[39m
-                    [36m>[39m
-                      [0mCMLT[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"COMM"[39m
-                    [36m>[39m
-                      [0mCOMM[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"CSCD"[39m
-                    [36m>[39m
-                      [0mCSCD[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"CISC"[39m
-                    [36m>[39m
-                      [0mCISC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"CPEG"[39m
-                    [36m>[39m
-                      [0mCPEG[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"CRJU"[39m
-                    [36m>[39m
-                      [0mCRJU[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"DANC"[39m
-                    [36m>[39m
-                      [0mDANC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"DISA"[39m
-                    [36m>[39m
-                      [0mDISA[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"ECON"[39m
-                    [36m>[39m
-                      [0mECON[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"EDUC"[39m
-                    [36m>[39m
-                      [0mEDUC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"ELEG"[39m
-                    [36m>[39m
-                      [0mELEG[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"ENEP"[39m
-                    [36m>[39m
-                      [0mENEP[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"EGGG"[39m
-                    [36m>[39m
-                      [0mEGGG[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"ENGL"[39m
-                    [36m>[39m
-                      [0mENGL[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"ENWC"[39m
-                    [36m>[39m
-                      [0mENWC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"ENTR"[39m
-                    [36m>[39m
-                      [0mENTR[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"ENSC"[39m
-                    [36m>[39m
-                      [0mENSC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"ENVR"[39m
-                    [36m>[39m
-                      [0mENVR[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"GEOG"[39m
-                    [36m>[39m
-                      [0mGEOG[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"FASH"[39m
-                    [36m>[39m
-                      [0mFASH[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"FINC"[39m
-                    [36m>[39m
-                      [0mFINC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"FREN"[39m
-                    [36m>[39m
-                      [0mFREN[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"GAME"[39m
-                    [36m>[39m
-                      [0mGAME[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"GEOL"[39m
-                    [36m>[39m
-                      [0mGEOL[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"GRMN"[39m
-                    [36m>[39m
-                      [0mGRMN[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"GREK"[39m
-                    [36m>[39m
-                      [0mGREK[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"HLPR"[39m
-                    [36m>[39m
-                      [0mHLPR[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"HDES"[39m
-                    [36m>[39m
-                      [0mHDES[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"HLTH"[39m
-                    [36m>[39m
-                      [0mHLTH[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"HEBR"[39m
-                    [36m>[39m
-                      [0mHEBR[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"HIST"[39m
-                    [36m>[39m
-                      [0mHIST[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"HONR"[39m
-                    [36m>[39m
-                      [0mHONR[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"HOSP"[39m
-                    [36m>[39m
-                      [0mHOSP[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"HDFS"[39m
-                    [36m>[39m
-                      [0mHDFS[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"ITAL"[39m
-                    [36m>[39m
-                      [0mITAL[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"JAPN"[39m
-                    [36m>[39m
-                      [0mJAPN[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"JWST"[39m
-                    [36m>[39m
-                      [0mJWST[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"JOUR"[39m
-                    [36m>[39m
-                      [0mJOUR[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"KAAP"[39m
-                    [36m>[39m
-                      [0mKAAP[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"LARC"[39m
-                    [36m>[39m
-                      [0mLARC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"LLCU"[39m
-                    [36m>[39m
-                      [0mLLCU[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"LATN"[39m
-                    [36m>[39m
-                      [0mLATN[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"LAMS"[39m
-                    [36m>[39m
-                      [0mLAMS[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"LEAD"[39m
-                    [36m>[39m
-                      [0mLEAD[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"LEST"[39m
-                    [36m>[39m
-                      [0mLEST[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"LING"[39m
-                    [36m>[39m
-                      [0mLING[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"MISY"[39m
-                    [36m>[39m
-                      [0mMISY[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"MAST"[39m
-                    [36m>[39m
-                      [0mMAST[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"MATH"[39m
-                    [36m>[39m
-                      [0mMATH[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"MCST"[39m
-                    [36m>[39m
-                      [0mMCST[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"MSEG"[39m
-                    [36m>[39m
-                      [0mMSEG[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"MEEG"[39m
-                    [36m>[39m
-                      [0mMEEG[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"MMSC"[39m
-                    [36m>[39m
-                      [0mMMSC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"MLSC"[39m
-                    [36m>[39m
-                      [0mMLSC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"MSST"[39m
-                    [36m>[39m
-                      [0mMSST[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"MUSC"[39m
-                    [36m>[39m
-                      [0mMUSC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"MUED"[39m
-                    [36m>[39m
-                      [0mMUED[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"NSCI"[39m
-                    [36m>[39m
-                      [0mNSCI[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"NURS"[39m
-                    [36m>[39m
-                      [0mNURS[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"NTDT"[39m
-                    [36m>[39m
-                      [0mNTDT[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"PHIL"[39m
-                    [36m>[39m
-                      [0mPHIL[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"PHYT"[39m
-                    [36m>[39m
-                      [0mPHYT[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"PHYS"[39m
-                    [36m>[39m
-                      [0mPHYS[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"PLSC"[39m
-                    [36m>[39m
-                      [0mPLSC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"POSC"[39m
-                    [36m>[39m
-                      [0mPOSC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"PORT"[39m
-                    [36m>[39m
-                      [0mPORT[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"PSYC"[39m
-                    [36m>[39m
-                      [0mPSYC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"RUSS"[39m
-                    [36m>[39m
-                      [0mRUSS[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"SCEN"[39m
-                    [36m>[39m
-                      [0mSCEN[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"SOCI"[39m
-                    [36m>[39m
-                      [0mSOCI[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"SPAN"[39m
-                    [36m>[39m
-                      [0mSPAN[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"SPTM"[39m
-                    [36m>[39m
-                      [0mSPTM[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"STAT"[39m
-                    [36m>[39m
-                      [0mSTAT[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"THEA"[39m
-                    [36m>[39m
-                      [0mTHEA[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"UNIV"[39m
-                    [36m>[39m
-                      [0mUNIV[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"SPPA"[39m
-                    [36m>[39m
-                      [0mSPPA[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"UAPP"[39m
-                    [36m>[39m
-                      [0mUAPP[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"WOMS"[39m
-                    [36m>[39m
-                      [0mWOMS[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"BINF"[39m
-                    [36m>[39m
-                      [0mBINF[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"BMSC"[39m
-                    [36m>[39m
-                      [0mBMSC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"BMBA"[39m
-                    [36m>[39m
-                      [0mBMBA[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"EAMC"[39m
-                    [36m>[39m
-                      [0mEAMC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"SMED"[39m
-                    [36m>[39m
-                      [0mSMED[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"EDLM"[39m
-                    [36m>[39m
-                      [0mEDLM[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"EPID"[39m
-                    [36m>[39m
-                      [0mEPID[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"EVAL"[39m
-                    [36m>[39m
-                      [0mEVAL[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"FSAN"[39m
-                    [36m>[39m
-                      [0mFSAN[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"HSAD"[39m
-                    [36m>[39m
-                      [0mHSAD[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"MALS"[39m
-                    [36m>[39m
-                      [0mMALS[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"PRES"[39m
-                    [36m>[39m
-                      [0mPRES[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"PCS "[39m
-                    [36m>[39m
-                      [0mPCS [0m
-                    [36m</option>[39m
-                  [36m</select>[39m
-                [36m</div>[39m
-                [36m<div>[39m
-                  [36m<label[39m
-                    [33mclass[39m=[32m"form-label"[39m
-                    [33mfor[39m=[32m"formSetPage"[39m
-                  [36m>[39m
-                    [0mPage: [0m
-                    [0m1[0m
-                    [0m/[0m
-                    [0m0[0m
-                  [36m</label>[39m
-                  [36m<input[39m
-                    [33mclass[39m=[32m"form-control"[39m
-                    [33mid[39m=[32m"formSetPage"[39m
-                    [33mmax[39m=[32m"0"[39m
-                    [33mmin[39m=[32m"1"[39m
-                    [33mtype[39m=[32m"number"[39m
-                    [33mvalue[39m=[32m"1"[39m
-                  [36m/>[39m
-                [36m</div>[39m
-                [36m<button[39m
-                  [33mclass[39m=[32m"btn btn-primary"[39m
-                  [33mtype[39m=[32m"button"[39m
-                [36m>[39m
-                  [0mNext[0m
-                [36m</button>[39m
-              [36m</div>[39m
-              [36m<div[39m
-                [33mclass[39m=[32m"CourseList"[39m
-              [36m>[39m
-                [36m<div[39m
-                  [33mclass[39m=[32m"course_list"[39m
-                [36m/>[39m
-              [36m</div>[39m
-            [36m</div>[39m
-          [36m</div>[39m
-          [36m<div[39m
-            [33mclass[39m=[32m"DegreeList"[39m
-          [36m/>[39m
-          [36m<footer>[39m
-            [36m<p>[39m
-              [0mCreated and Maintained by: Leon Giang, Jason Chan, Sibyl Roosen, Abdullah Maruf, Taylor Kadans[0m
-            [36m</p>[39m
-          [36m</footer>[39m
-        [36m</body>[39m
-      [36m</div>[39m
-    [36m</body>[39m
-
-      218 |                 expect(screen.queryByLabelText("Edit")).not.toBeInTheDocument();
-      219 |                 expect(screen.queryByLabelText("Exit")).not.toBeInTheDocument();
-    > 220 |                 const courseButton = screen.getByText(
-          |                                             ^
-      221 |                     COURSES[i].code + " : " + COURSES[i].name
-      222 |                 );
-      223 |                 courseButton.click();
-
-      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:38:19)
-      at node_modules/@testing-library/dom/dist/query-helpers.js:90:38
-      at node_modules/@testing-library/dom/dist/query-helpers.js:62:17
-      at getByText (node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
-      at Object.<anonymous> (src/App.test.tsx:220:45)
-      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
-      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
-      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
-      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
-
-  ● Course Tests › Users can edit a course
-
-    TestingLibraryElementError: Unable to find an element with the text: ACCT 166 : SPECIAL PROBLEM. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<body>[39m
-      [36m<div>[39m
-        [36m<body[39m
-          [33mclass[39m=[32m"App"[39m
-        [36m>[39m
-          [36m<header[39m
-            [33mclass[39m=[32m"App-header"[39m
-          [36m>[39m
-            [36m<nav>[39m
-              [36m<a[39m
-                [33mclass[39m=[32m"logo"[39m
-              [36m>[39m
-                [36m<img[39m
-                  [33malt[39m=[32m"Homepage logo"[39m
-                  [33msrc[39m=[32m"logo.png"[39m
-                [36m/>[39m
-              [36m</a>[39m
-              [36m<p[39m
-                [33mclass[39m=[32m"title"[39m
-              [36m>[39m
-                [0mCISC275 - Introduction to Software Engineering[0m
-              [36m</p>[39m
-              [36m<ul[39m
-                [33mclass[39m=[32m"nav_links"[39m
-              [36m>[39m
-                [36m<li>[39m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
-                    [33mtype[39m=[32m"button"[39m
-                  [36m>[39m
-                    [0mHome[0m
-                  [36m</button>[39m
-                [36m</li>[39m
-                [36m<li>[39m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
-                    [33mtype[39m=[32m"button"[39m
-                  [36m>[39m
-                    [0mCourses[0m
-                  [36m</button>[39m
-                [36m</li>[39m
-                [36m<li>[39m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
-                    [33mtype[39m=[32m"button"[39m
-                  [36m>[39m
-                    [0mDegrees[0m
-                  [36m</button>[39m
-                [36m</li>[39m
-              [36m</ul>[39m
-            [36m</nav>[39m
-          [36m</header>[39m
-          [36m<div[39m
-            [33mclass[39m=[32m"HomePage"[39m
-          [36m/>[39m
-          [36m<div[39m
-            [33mclass[39m=[32m"CourseList"[39m
-          [36m>[39m
-            [36m<div>[39m
-              [36m<div[39m
-                [33mclass[39m=[32m"CourseButtons"[39m
-              [36m>[39m
-                [36m<button[39m
-                  [33mclass[39m=[32m"btn btn-primary"[39m
-                  [33mtype[39m=[32m"button"[39m
-                [36m>[39m
-                  [0mBack[0m
-                [36m</button>[39m
-                [36m<div>[39m
-                  [36m<label[39m
-                    [33mclass[39m=[32m"form-label"[39m
-                    [33mfor[39m=[32m"formSetFilter"[39m
-                  [36m>[39m
-                    [0mFilter: [0m
-                    [0mAll[0m
-                  [36m</label>[39m
-                  [36m<select[39m
-                    [33mclass[39m=[32m"form-select"[39m
-                    [33mid[39m=[32m"formSetFilter"[39m
-                  [36m>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"All"[39m
-                    [36m>[39m
-                      [0mAll[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"ACCT"[39m
-                    [36m>[39m
-                      [0mACCT[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"AGED"[39m
-                    [36m>[39m
-                      [0mAGED[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"AGRI"[39m
-                    [36m>[39m
-                      [0mAGRI[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"AFSC"[39m
-                    [36m>[39m
-                      [0mAFSC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"AFRA"[39m
-                    [36m>[39m
-                      [0mAFRA[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"ANFS"[39m
-                    [36m>[39m
-                      [0mANFS[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"ANTH"[39m
-                    [36m>[39m
-                      [0mANTH[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"APEC"[39m
-                    [36m>[39m
-                      [0mAPEC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"ARAB"[39m
-                    [36m>[39m
-                      [0mARAB[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"ART "[39m
-                    [36m>[39m
-                      [0mART [0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"ARTC"[39m
-                    [36m>[39m
-                      [0mARTC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"ARTH"[39m
-                    [36m>[39m
-                      [0mARTH[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"ARSC"[39m
-                    [36m>[39m
-                      [0mARSC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"ASIA"[39m
-                    [36m>[39m
-                      [0mASIA[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"BHAN"[39m
-                    [36m>[39m
-                      [0mBHAN[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"BISC"[39m
-                    [36m>[39m
-                      [0mBISC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"BMEG"[39m
-                    [36m>[39m
-                      [0mBMEG[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"BREG"[39m
-                    [36m>[39m
-                      [0mBREG[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"BUEC"[39m
-                    [36m>[39m
-                      [0mBUEC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"BUAD"[39m
-                    [36m>[39m
-                      [0mBUAD[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"DIST"[39m
-                    [36m>[39m
-                      [0mDIST[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"CHEG"[39m
-                    [36m>[39m
-                      [0mCHEG[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"CHEM"[39m
-                    [36m>[39m
-                      [0mCHEM[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"CHIN"[39m
-                    [36m>[39m
-                      [0mCHIN[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"CIEG"[39m
-                    [36m>[39m
-                      [0mCIEG[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"CGSC"[39m
-                    [36m>[39m
-                      [0mCGSC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"CMLT"[39m
-                    [36m>[39m
-                      [0mCMLT[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"COMM"[39m
-                    [36m>[39m
-                      [0mCOMM[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"CSCD"[39m
-                    [36m>[39m
-                      [0mCSCD[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"CISC"[39m
-                    [36m>[39m
-                      [0mCISC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"CPEG"[39m
-                    [36m>[39m
-                      [0mCPEG[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"CRJU"[39m
-                    [36m>[39m
-                      [0mCRJU[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"DANC"[39m
-                    [36m>[39m
-                      [0mDANC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"DISA"[39m
-                    [36m>[39m
-                      [0mDISA[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"ECON"[39m
-                    [36m>[39m
-                      [0mECON[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"EDUC"[39m
-                    [36m>[39m
-                      [0mEDUC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"ELEG"[39m
-                    [36m>[39m
-                      [0mELEG[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"ENEP"[39m
-                    [36m>[39m
-                      [0mENEP[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"EGGG"[39m
-                    [36m>[39m
-                      [0mEGGG[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"ENGL"[39m
-                    [36m>[39m
-                      [0mENGL[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"ENWC"[39m
-                    [36m>[39m
-                      [0mENWC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"ENTR"[39m
-                    [36m>[39m
-                      [0mENTR[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"ENSC"[39m
-                    [36m>[39m
-                      [0mENSC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"ENVR"[39m
-                    [36m>[39m
-                      [0mENVR[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"GEOG"[39m
-                    [36m>[39m
-                      [0mGEOG[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"FASH"[39m
-                    [36m>[39m
-                      [0mFASH[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"FINC"[39m
-                    [36m>[39m
-                      [0mFINC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"FREN"[39m
-                    [36m>[39m
-                      [0mFREN[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"GAME"[39m
-                    [36m>[39m
-                      [0mGAME[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"GEOL"[39m
-                    [36m>[39m
-                      [0mGEOL[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"GRMN"[39m
-                    [36m>[39m
-                      [0mGRMN[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"GREK"[39m
-                    [36m>[39m
-                      [0mGREK[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"HLPR"[39m
-                    [36m>[39m
-                      [0mHLPR[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"HDES"[39m
-                    [36m>[39m
-                      [0mHDES[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"HLTH"[39m
-                    [36m>[39m
-                      [0mHLTH[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"HEBR"[39m
-                    [36m>[39m
-                      [0mHEBR[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"HIST"[39m
-                    [36m>[39m
-                      [0mHIST[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"HONR"[39m
-                    [36m>[39m
-                      [0mHONR[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"HOSP"[39m
-                    [36m>[39m
-                      [0mHOSP[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"HDFS"[39m
-                    [36m>[39m
-                      [0mHDFS[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"ITAL"[39m
-                    [36m>[39m
-                      [0mITAL[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"JAPN"[39m
-                    [36m>[39m
-                      [0mJAPN[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"JWST"[39m
-                    [36m>[39m
-                      [0mJWST[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"JOUR"[39m
-                    [36m>[39m
-                      [0mJOUR[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"KAAP"[39m
-                    [36m>[39m
-                      [0mKAAP[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"LARC"[39m
-                    [36m>[39m
-                      [0mLARC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"LLCU"[39m
-                    [36m>[39m
-                      [0mLLCU[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"LATN"[39m
-                    [36m>[39m
-                      [0mLATN[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"LAMS"[39m
-                    [36m>[39m
-                      [0mLAMS[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"LEAD"[39m
-                    [36m>[39m
-                      [0mLEAD[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"LEST"[39m
-                    [36m>[39m
-                      [0mLEST[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"LING"[39m
-                    [36m>[39m
-                      [0mLING[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"MISY"[39m
-                    [36m>[39m
-                      [0mMISY[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"MAST"[39m
-                    [36m>[39m
-                      [0mMAST[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"MATH"[39m
-                    [36m>[39m
-                      [0mMATH[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"MCST"[39m
-                    [36m>[39m
-                      [0mMCST[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"MSEG"[39m
-                    [36m>[39m
-                      [0mMSEG[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"MEEG"[39m
-                    [36m>[39m
-                      [0mMEEG[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"MMSC"[39m
-                    [36m>[39m
-                      [0mMMSC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"MLSC"[39m
-                    [36m>[39m
-                      [0mMLSC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"MSST"[39m
-                    [36m>[39m
-                      [0mMSST[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"MUSC"[39m
-                    [36m>[39m
-                      [0mMUSC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"MUED"[39m
-                    [36m>[39m
-                      [0mMUED[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"NSCI"[39m
-                    [36m>[39m
-                      [0mNSCI[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"NURS"[39m
-                    [36m>[39m
-                      [0mNURS[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"NTDT"[39m
-                    [36m>[39m
-                      [0mNTDT[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"PHIL"[39m
-                    [36m>[39m
-                      [0mPHIL[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"PHYT"[39m
-                    [36m>[39m
-                      [0mPHYT[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"PHYS"[39m
-                    [36m>[39m
-                      [0mPHYS[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"PLSC"[39m
-                    [36m>[39m
-                      [0mPLSC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"POSC"[39m
-                    [36m>[39m
-                      [0mPOSC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"PORT"[39m
-                    [36m>[39m
-                      [0mPORT[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"PSYC"[39m
-                    [36m>[39m
-                      [0mPSYC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"RUSS"[39m
-                    [36m>[39m
-                      [0mRUSS[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"SCEN"[39m
-                    [36m>[39m
-                      [0mSCEN[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"SOCI"[39m
-                    [36m>[39m
-                      [0mSOCI[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"SPAN"[39m
-                    [36m>[39m
-                      [0mSPAN[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"SPTM"[39m
-                    [36m>[39m
-                      [0mSPTM[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"STAT"[39m
-                    [36m>[39m
-                      [0mSTAT[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"THEA"[39m
-                    [36m>[39m
-                      [0mTHEA[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"UNIV"[39m
-                    [36m>[39m
-                      [0mUNIV[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"SPPA"[39m
-                    [36m>[39m
-                      [0mSPPA[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"UAPP"[39m
-                    [36m>[39m
-                      [0mUAPP[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"WOMS"[39m
-                    [36m>[39m
-                      [0mWOMS[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"BINF"[39m
-                    [36m>[39m
-                      [0mBINF[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"BMSC"[39m
-                    [36m>[39m
-                      [0mBMSC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"BMBA"[39m
-                    [36m>[39m
-                      [0mBMBA[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"EAMC"[39m
-                    [36m>[39m
-                      [0mEAMC[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"SMED"[39m
-                    [36m>[39m
-                      [0mSMED[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"EDLM"[39m
-                    [36m>[39m
-                      [0mEDLM[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"EPID"[39m
-                    [36m>[39m
-                      [0mEPID[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"EVAL"[39m
-                    [36m>[39m
-                      [0mEVAL[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"FSAN"[39m
-                    [36m>[39m
-                      [0mFSAN[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"HSAD"[39m
-                    [36m>[39m
-                      [0mHSAD[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"MALS"[39m
-                    [36m>[39m
-                      [0mMALS[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"PRES"[39m
-                    [36m>[39m
-                      [0mPRES[0m
-                    [36m</option>[39m
-                    [36m<option[39m
-                      [33mvalue[39m=[32m"PCS "[39m
-                    [36m>[39m
-                      [0mPCS [0m
-                    [36m</option>[39m
-                  [36m</select>[39m
-                [36m</div>[39m
-                [36m<div>[39m
-                  [36m<label[39m
-                    [33mclass[39m=[32m"form-label"[39m
-                    [33mfor[39m=[32m"formSetPage"[39m
-                  [36m>[39m
-                    [0mPage: [0m
-                    [0m1[0m
-                    [0m/[0m
-                    [0m0[0m
-                  [36m</label>[39m
-                  [36m<input[39m
-                    [33mclass[39m=[32m"form-control"[39m
-                    [33mid[39m=[32m"formSetPage"[39m
-                    [33mmax[39m=[32m"0"[39m
-                    [33mmin[39m=[32m"1"[39m
-                    [33mtype[39m=[32m"number"[39m
-                    [33mvalue[39m=[32m"1"[39m
-                  [36m/>[39m
-                [36m</div>[39m
-                [36m<button[39m
-                  [33mclass[39m=[32m"btn btn-primary"[39m
-                  [33mtype[39m=[32m"button"[39m
-                [36m>[39m
-                  [0mNext[0m
-                [36m</button>[39m
-              [36m</div>[39m
-              [36m<div[39m
-                [33mclass[39m=[32m"CourseList"[39m
-              [36m>[39m
-                [36m<div[39m
-                  [33mclass[39m=[32m"course_list"[39m
-                [36m/>[39m
-              [36m</div>[39m
-            [36m</div>[39m
-          [36m</div>[39m
-          [36m<div[39m
-            [33mclass[39m=[32m"DegreeList"[39m
-          [36m/>[39m
-          [36m<footer>[39m
-            [36m<p>[39m
-              [0mCreated and Maintained by: Leon Giang, Jason Chan, Sibyl Roosen, Abdullah Maruf, Taylor Kadans[0m
-            [36m</p>[39m
-          [36m</footer>[39m
-        [36m</body>[39m
-      [36m</div>[39m
-    [36m</body>[39m
-
-      241 |         while (j < COURSES.length - NUM_COURSES_DISPLAYED) {
-      242 |             for (let i = j; i < NUM_COURSES_DISPLAYED; i++) {
-    > 243 |                 const courseButton = screen.getByText(
-          |                                             ^
-      244 |                     COURSES[i].code + " : " + COURSES[i].name
-      245 |                 );
-      246 |                 courseButton.click();
-
-      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:38:19)
-      at node_modules/@testing-library/dom/dist/query-helpers.js:90:38
-      at node_modules/@testing-library/dom/dist/query-helpers.js:62:17
-      at getByText (node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
-      at Object.<anonymous> (src/App.test.tsx:243:45)
       at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
       at runJest (node_modules/@jest/core/build/runJest.js:404:19)
       at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
@@ -2850,7 +1499,7 @@ FAIL src/App.test.tsx
               [36m>[39m
                 [36m<li>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"Home btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mHome[0m
@@ -2858,7 +1507,7 @@ FAIL src/App.test.tsx
                 [36m</li>[39m
                 [36m<li>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"Home btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mCourses[0m
@@ -2866,7 +1515,7 @@ FAIL src/App.test.tsx
                 [36m</li>[39m
                 [36m<li>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"Home btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mDegrees[0m
@@ -2877,7 +1526,11 @@ FAIL src/App.test.tsx
           [36m</header>[39m
           [36m<div[39m
             [33mclass[39m=[32m"HomePage"[39m
-          [36m/>[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"bubbles"[39m
+            [36m/>[39m
+          [36m</div>[39m
           [36m<div[39m
             [33mclass[39m=[32m"CourseList"[39m
           [36m/>[39m
@@ -2894,7 +1547,7 @@ FAIL src/App.test.tsx
                   [33mclass[39m=[32m"degree_buttons"[39m
                 [36m>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"degreeAddbutton btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mAdd[0m
@@ -2912,9 +1565,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -2929,9 +1587,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -2946,9 +1609,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -2963,9 +1631,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -2980,9 +1653,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -2997,9 +1675,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -3014,9 +1697,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -3053,7 +1741,9 @@ FAIL src/App.test.tsx
               [36m</div>[39m
             [36m</div>[39m
           [36m</div>[39m
-          [36m<footer>[39m
+          [36m<footer[39m
+            [33mclass[39m=[32m"footerCustom"[39m
+          [36m>[39m
             [36m<p>[39m
               [0mCreated and Maintained by: Leon Giang, Jason Chan, Sibyl Roosen, Abdullah Maruf, Taylor Kadans[0m
             [36m</p>[39m
@@ -3173,7 +1863,7 @@ FAIL src/App.test.tsx
               [36m>[39m
                 [36m<li>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"Home btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mHome[0m
@@ -3181,7 +1871,7 @@ FAIL src/App.test.tsx
                 [36m</li>[39m
                 [36m<li>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"Home btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mCourses[0m
@@ -3189,7 +1879,7 @@ FAIL src/App.test.tsx
                 [36m</li>[39m
                 [36m<li>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"Home btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mDegrees[0m
@@ -3200,7 +1890,11 @@ FAIL src/App.test.tsx
           [36m</header>[39m
           [36m<div[39m
             [33mclass[39m=[32m"HomePage"[39m
-          [36m/>[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"bubbles"[39m
+            [36m/>[39m
+          [36m</div>[39m
           [36m<div[39m
             [33mclass[39m=[32m"CourseList"[39m
           [36m/>[39m
@@ -3217,7 +1911,7 @@ FAIL src/App.test.tsx
                   [33mclass[39m=[32m"degree_buttons"[39m
                 [36m>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"degreeAddbutton btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mAdd[0m
@@ -3235,9 +1929,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -3252,9 +1951,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -3269,9 +1973,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -3286,9 +1995,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -3303,9 +2017,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -3320,9 +2039,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -3337,9 +2061,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -3354,9 +2083,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -3393,7 +2127,9 @@ FAIL src/App.test.tsx
               [36m</div>[39m
             [36m</div>[39m
           [36m</div>[39m
-          [36m<footer>[39m
+          [36m<footer[39m
+            [33mclass[39m=[32m"footerCustom"[39m
+          [36m>[39m
             [36m<p>[39m
               [0mCreated and Maintained by: Leon Giang, Jason Chan, Sibyl Roosen, Abdullah Maruf, Taylor Kadans[0m
             [36m</p>[39m
@@ -3520,7 +2256,7 @@ FAIL src/App.test.tsx
               [36m>[39m
                 [36m<li>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"Home btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mHome[0m
@@ -3528,7 +2264,7 @@ FAIL src/App.test.tsx
                 [36m</li>[39m
                 [36m<li>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"Home btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mCourses[0m
@@ -3536,7 +2272,7 @@ FAIL src/App.test.tsx
                 [36m</li>[39m
                 [36m<li>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"Home btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mDegrees[0m
@@ -3547,7 +2283,11 @@ FAIL src/App.test.tsx
           [36m</header>[39m
           [36m<div[39m
             [33mclass[39m=[32m"HomePage"[39m
-          [36m/>[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"bubbles"[39m
+            [36m/>[39m
+          [36m</div>[39m
           [36m<div[39m
             [33mclass[39m=[32m"CourseList"[39m
           [36m/>[39m
@@ -3564,7 +2304,7 @@ FAIL src/App.test.tsx
                   [33mclass[39m=[32m"degree_buttons"[39m
                 [36m>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"degreeAddbutton btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mAdd[0m
@@ -3582,9 +2322,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -3599,9 +2344,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -3616,9 +2366,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -3633,9 +2388,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -3650,9 +2410,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -3667,9 +2432,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -3684,9 +2454,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -3701,9 +2476,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -3718,9 +2498,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -3757,7 +2542,9 @@ FAIL src/App.test.tsx
               [36m</div>[39m
             [36m</div>[39m
           [36m</div>[39m
-          [36m<footer>[39m
+          [36m<footer[39m
+            [33mclass[39m=[32m"footerCustom"[39m
+          [36m>[39m
             [36m<p>[39m
               [0mCreated and Maintained by: Leon Giang, Jason Chan, Sibyl Roosen, Abdullah Maruf, Taylor Kadans[0m
             [36m</p>[39m
@@ -3891,7 +2678,7 @@ FAIL src/App.test.tsx
               [36m>[39m
                 [36m<li>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"Home btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mHome[0m
@@ -3899,7 +2686,7 @@ FAIL src/App.test.tsx
                 [36m</li>[39m
                 [36m<li>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"Home btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mCourses[0m
@@ -3907,7 +2694,7 @@ FAIL src/App.test.tsx
                 [36m</li>[39m
                 [36m<li>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"Home btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mDegrees[0m
@@ -3918,7 +2705,11 @@ FAIL src/App.test.tsx
           [36m</header>[39m
           [36m<div[39m
             [33mclass[39m=[32m"HomePage"[39m
-          [36m/>[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"bubbles"[39m
+            [36m/>[39m
+          [36m</div>[39m
           [36m<div[39m
             [33mclass[39m=[32m"CourseList"[39m
           [36m/>[39m
@@ -3935,7 +2726,7 @@ FAIL src/App.test.tsx
                   [33mclass[39m=[32m"degree_buttons"[39m
                 [36m>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"degreeAddbutton btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mAdd[0m
@@ -3953,9 +2744,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -3970,9 +2766,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -3987,9 +2788,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -4004,9 +2810,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -4021,9 +2832,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -4038,9 +2854,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -4055,9 +2876,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -4072,9 +2898,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -4089,9 +2920,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -4106,9 +2942,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -4145,7 +2986,9 @@ FAIL src/App.test.tsx
               [36m</div>[39m
             [36m</div>[39m
           [36m</div>[39m
-          [36m<footer>[39m
+          [36m<footer[39m
+            [33mclass[39m=[32m"footerCustom"[39m
+          [36m>[39m
             [36m<p>[39m
               [0mCreated and Maintained by: Leon Giang, Jason Chan, Sibyl Roosen, Abdullah Maruf, Taylor Kadans[0m
             [36m</p>[39m
@@ -4286,7 +3129,7 @@ FAIL src/App.test.tsx
               [36m>[39m
                 [36m<li>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"Home btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mHome[0m
@@ -4294,7 +3137,7 @@ FAIL src/App.test.tsx
                 [36m</li>[39m
                 [36m<li>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"Home btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mCourses[0m
@@ -4302,7 +3145,7 @@ FAIL src/App.test.tsx
                 [36m</li>[39m
                 [36m<li>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"Home btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mDegrees[0m
@@ -4313,7 +3156,11 @@ FAIL src/App.test.tsx
           [36m</header>[39m
           [36m<div[39m
             [33mclass[39m=[32m"HomePage"[39m
-          [36m/>[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"bubbles"[39m
+            [36m/>[39m
+          [36m</div>[39m
           [36m<div[39m
             [33mclass[39m=[32m"CourseList"[39m
           [36m/>[39m
@@ -4330,7 +3177,7 @@ FAIL src/App.test.tsx
                   [33mclass[39m=[32m"degree_buttons"[39m
                 [36m>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"degreeAddbutton btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mAdd[0m
@@ -4348,9 +3195,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -4365,9 +3217,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -4382,9 +3239,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -4399,9 +3261,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -4416,9 +3283,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -4433,9 +3305,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -4450,9 +3327,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -4467,9 +3349,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -4484,9 +3371,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -4501,9 +3393,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -4518,9 +3415,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -4557,7 +3459,9 @@ FAIL src/App.test.tsx
               [36m</div>[39m
             [36m</div>[39m
           [36m</div>[39m
-          [36m<footer>[39m
+          [36m<footer[39m
+            [33mclass[39m=[32m"footerCustom"[39m
+          [36m>[39m
             [36m<p>[39m
               [0mCreated and Maintained by: Leon Giang, Jason Chan, Sibyl Roosen, Abdullah Maruf, Taylor Kadans[0m
             [36m</p>[39m
@@ -4705,7 +3609,7 @@ FAIL src/App.test.tsx
               [36m>[39m
                 [36m<li>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"Home btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mHome[0m
@@ -4713,7 +3617,7 @@ FAIL src/App.test.tsx
                 [36m</li>[39m
                 [36m<li>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"Home btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mCourses[0m
@@ -4721,7 +3625,7 @@ FAIL src/App.test.tsx
                 [36m</li>[39m
                 [36m<li>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"Home btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mDegrees[0m
@@ -4732,7 +3636,11 @@ FAIL src/App.test.tsx
           [36m</header>[39m
           [36m<div[39m
             [33mclass[39m=[32m"HomePage"[39m
-          [36m/>[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"bubbles"[39m
+            [36m/>[39m
+          [36m</div>[39m
           [36m<div[39m
             [33mclass[39m=[32m"CourseList"[39m
           [36m/>[39m
@@ -4749,7 +3657,7 @@ FAIL src/App.test.tsx
                   [33mclass[39m=[32m"degree_buttons"[39m
                 [36m>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mclass[39m=[32m"degreeAddbutton btn btn-primary"[39m
                     [33mtype[39m=[32m"button"[39m
                   [36m>[39m
                     [0mAdd[0m
@@ -4767,9 +3675,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -4784,9 +3697,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -4801,9 +3719,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -4818,9 +3741,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -4835,9 +3763,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -4852,9 +3785,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -4869,9 +3807,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -4886,9 +3829,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -4903,9 +3851,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -4920,9 +3873,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -4937,9 +3895,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -4954,9 +3917,14 @@ FAIL src/App.test.tsx
                       [36m>[39m
                         [0mSample Degree[0m
                       [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
                     [36m</div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mRemove[0m
@@ -4993,7 +3961,9 @@ FAIL src/App.test.tsx
               [36m</div>[39m
             [36m</div>[39m
           [36m</div>[39m
-          [36m<footer>[39m
+          [36m<footer[39m
+            [33mclass[39m=[32m"footerCustom"[39m
+          [36m>[39m
             [36m<p>[39m
               [0mCreated and Maintained by: Leon Giang, Jason Chan, Sibyl Roosen, Abdullah Maruf, Taylor Kadans[0m
             [36m</p>[39m
@@ -5021,38 +3991,38 @@ FAIL src/App.test.tsx
       at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
       at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
 
--------------------------|---------|----------|---------|---------|------------------------------------
-File                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                  
--------------------------|---------|----------|---------|---------|------------------------------------
-All files                |   26.47 |    16.66 |   14.55 |   26.54 |                                    
- src                     |   88.46 |    91.66 |      80 |   88.46 |                                    
-  App.tsx                |   88.46 |    91.66 |      80 |   88.46 | 115-131                            
- src/components          |   18.46 |     8.92 |   10.94 |   18.51 |                                    
-  CourseCard.tsx         |   33.33 |        0 |       0 |   33.33 | 15-18                              
-  CourseDisplay.tsx      |   45.71 |        0 |   23.07 |   45.71 | 56-91,99,132-139                   
-  CourseEdit.tsx         |    3.84 |      100 |       0 |    3.84 | 18-159                             
-  CourseList.tsx         |   26.31 |    33.33 |   16.66 |   26.31 | 24,28-39,48-73                     
-  CourseView.tsx         |    1.61 |        0 |       0 |    1.61 | 30-185                             
-  DegreeCard.tsx         |      50 |      100 |   33.33 |      50 | 18-21                              
-  DegreeDisplay.tsx      |   26.47 |     9.09 |   15.38 |   26.47 | 46-166                             
-  DegreeList.tsx         |   46.93 |       70 |   46.66 |   46.93 | 49,53,67-80,90-109,128,132,152,192 
-  DegreeView.tsx         |    7.69 |        0 |       0 |    7.69 | 31-105                             
-  HomePage.tsx           |     100 |      100 |     100 |     100 |                                    
-  SemesterCard.tsx       |    5.55 |        0 |       0 |    5.55 | 28-86                              
-  SemesterList.tsx       |    3.22 |        0 |       0 |    3.22 | 30-150                             
-  SemesterView.tsx       |       2 |        0 |       0 |    2.04 | 16-157                             
-  SemesterViewCard.tsx   |   16.66 |      100 |       0 |   16.66 | 19-39                              
- src/components/Semester |    5.26 |        0 |       0 |    5.26 |                                    
-  SemesterAddCourse.tsx  |    5.26 |        0 |       0 |    5.26 | 17-80                              
- src/interfaces          |       0 |        0 |       0 |       0 |                                    
-  course.ts              |       0 |        0 |       0 |       0 |                                    
-  degree.ts              |       0 |        0 |       0 |       0 |                                    
-  degreebase.ts          |       0 |        0 |       0 |       0 |                                    
-  semester.ts            |       0 |        0 |       0 |       0 |                                    
-  year.ts                |       0 |        0 |       0 |       0 |                                    
--------------------------|---------|----------|---------|---------|------------------------------------
+-------------------------|---------|----------|---------|---------|-----------------------------------------
+File                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                       
+-------------------------|---------|----------|---------|---------|-----------------------------------------
+All files                |    30.3 |    25.31 |    19.6 |   30.53 |                                         
+ src                     |   86.53 |    92.85 |      70 |   86.53 |                                         
+  App.tsx                |   86.53 |    92.85 |      70 |   86.53 | 48,115-132                              
+ src/components          |   26.88 |    21.77 |   18.85 |   27.06 |                                         
+  CourseCard.tsx         |     100 |      100 |     100 |     100 |                                         
+  CourseDisplay.tsx      |   51.78 |     7.14 |    37.5 |   51.78 | 96-128,138-153,167,200-201              
+  CourseEdit.tsx         |    40.9 |      100 |      10 |    40.9 | 30-38,42-46,65-143                      
+  CourseList.tsx         |     100 |      100 |     100 |     100 |                                         
+  CourseView.tsx         |    23.8 |    34.37 |   15.15 |   24.19 | 37-53,66,72,75,79,89-163                
+  DegreeCard.tsx         |      50 |      100 |   33.33 |      50 | 18-22                                   
+  DegreeDisplay.tsx      |   24.24 |        0 |   14.28 |   24.24 | 37-45,70-165                            
+  DegreeList.tsx         |   49.15 |       70 |   47.36 |   49.15 | 61,65,79-92,102-121,140,144-152,176,228 
+  DegreeView.tsx         |    1.75 |        0 |       0 |    1.78 | 38-299                                  
+  HomePage.tsx           |     100 |      100 |     100 |     100 |                                         
+  SemesterCard.tsx       |       5 |        0 |       0 |       5 | 29-98                                   
+  SemesterList.tsx       |    3.22 |        0 |       0 |    3.22 | 35-153                                  
+  SemesterView.tsx       |    1.92 |        0 |       0 |    1.96 | 30-166                                  
+  SemesterViewCard.tsx   |    3.44 |        0 |       0 |    3.44 | 37-132                                  
+ src/components/Semester |    2.04 |        0 |       0 |    2.08 |                                         
+  SemesterAddCourse.tsx  |    2.04 |        0 |       0 |    2.08 | 21-182                                  
+ src/interfaces          |       0 |        0 |       0 |       0 |                                         
+  course.ts              |       0 |        0 |       0 |       0 |                                         
+  degree.ts              |       0 |        0 |       0 |       0 |                                         
+  degreebase.ts          |       0 |        0 |       0 |       0 |                                         
+  semester.ts            |       0 |        0 |       0 |       0 |                                         
+  year.ts                |       0 |        0 |       0 |       0 |                                         
+-------------------------|---------|----------|---------|---------|-----------------------------------------
 Test Suites: 1 failed, 1 total
-Tests:       14 failed, 2 passed, 16 total
+Tests:       11 failed, 5 passed, 16 total
 Snapshots:   0 total
-Time:        4.373 s
+Time:        24.965 s
 Ran all test suites.
