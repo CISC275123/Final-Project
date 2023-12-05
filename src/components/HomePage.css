@@ -4,4 +4,86 @@
     align-items: center;
     justify-content: center;
     height: 30vh; /* Optional: Set a minimum height for vertical centering */
+    /* background-color: #494c5e; */
+    font-family: "Times New Roman", Times, serif;
+    animation: animate 5s linear 1;
+    color: whitesmoke;
+    z-index: 4986;
+}
+/* @keyframes animate {
+    0% {
+        color: orange;
+    }
+    100% {
+        color: whitesmoke;
+    }
+} */
+.Cardgroup {
+    display: flex;
+    justify-content: space-between; /* To evenly space elements */
+    height: 45vh;
+    /* background-color: #494c5e; */
+}
+
+.Cardstyle {
+    align-content: center;
+    width: 25%;
+    height: 100%;
+    margin: 10px;
+    border-color: #494c5e;
+}
+.Cardstyle img {
+    width: 100%; /* Make the image fill the width of its container */
+    height: 100%; /* Make the image fill the height of its container */
+    object-fit: cover; /* Ensure the image covers the entire container */
+}
+.footerCustom {
+    background-color: #494c5e;
+}
+.homebg {
+    background-color: #0c192c;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+}
+.bubbles {
+    position: relative;
+    display: flex;
+    z-index: 10;
+}
+.bubbles span {
+    z-index: 987878;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    background-color: #922dff;
+    margin: 0 4px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 10px #bc2dff44, 0 0 50px #922dff, 0 0 100px #922dff;
+    animation: animateBG 15s linear infinite;
+    animation-duration: calc(125s / var(--fontSize));
+    z-index: 10;
+    min-width: 100%;
+}
+.bubbles span:nth-child(even) {
+    background-color: #4fc3dc;
+    box-shadow: 0 0 0 10px #4fc3dc44, 0 0 50px #4fc3dc, 0 0 100px #4fc3dc;
+    z-index: 10;
+}
+@keyframes animateBG {
+    0% {
+        transform: translateY(100vh) scale(0);
+    }
+    100% {
+        transform: translateY(-10vh) scale(1);
+    }
+}
+.textHome {
+    z-index: 12;
+    text-align: center;
+}
+.middlecard {
+    border-radius: 50%;
 }

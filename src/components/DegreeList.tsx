@@ -9,21 +9,26 @@ import "./DegreeList.css";
 import { Semester } from "../interfaces/semester";
 import { Year } from "../interfaces/year";
 
-// import { DegreeBase } from "../interfaces/degreebase";
-// import degreebases from "../data/degrees.json";
+import { DegreeBase } from "../interfaces/degreebase";
+import degreebases from "../data/degrees.json";
+import { Course } from "../interfaces/course";
 
 export const DegreeList = ({
     isDataSaved,
     degrees,
     addDegree,
+    uploadDegrees,
     addYear,
     deleteYear,
     removeDegree,
-    updateSemesterList
+    updateSemesterList,
+    updateGlobalCourseList,
+    globalCourseList
 }: {
     isDataSaved: boolean;
     degrees: Degree[];
-    addDegree: (name: string, degrees: Degree[], plan: string) => void;
+    addDegree: (name: string, plan: DegreeBase) => void;
+    uploadDegrees: (degrees: Degree[]) => void;
     deleteYear: (targetYear: Year, targetDegree: Degree) => void;
     removeDegree: (id: number) => void;
     addYear: (name: string, degree: Degree) => void;
@@ -32,18 +37,25 @@ export const DegreeList = ({
         targetDegree: Degree,
         targetYear: Year
     ) => void;
+    updateGlobalCourseList: (newList: Course[]) => void;
+    globalCourseList: Course[];
 }) => {
     const [displayId, setDisplayId] = useState<null | number>(null);
     const [userInputName, setUserInputName] = useState<string>("Sample Degree");
-    // const [userInputPlan, setUserInputPlan] = useState<string>("CS BA");
+    const [plans, setPlans] = useState<DegreeBase[]>([]);
+    const [userInputPlan, setUserInputPlan] = useState<DegreeBase>(() => {
+        const degs = degreebases;
+
+        // Store the course list with IDs in the component's state
+        const degPlans: DegreeBase[] = Object.values(degs)
+            .map(Object.values)
+            .flat();
+
+        setPlans(degPlans);
+
+        return degPlans[0];
+    });
     const [isAdding, setIsAdding] = useState<boolean>(false);
-
-    // const [plans, setPlans] = useState<Record<string, DegreeBase>>();
-
-    // useEffect(() => {
-    //     const data: Record<string, DegreeBase> = degreebases;
-    //     setPlans(data);
-    // }, []);
 
     const handleDegreeView = (id: number) => {
         setDisplayId(id);
@@ -57,10 +69,10 @@ export const DegreeList = ({
         setIsAdding(!isAdding);
     };
 
-    const setUpDegree = () => {
-        addDegree(userInputName, [], "");
+    function setUpDegree() {
+        addDegree(userInputName, userInputPlan);
         handleAddClick();
-    };
+    }
 
     const SaveDegrees: React.FC<{ degrees: Degree[] }> = ({ degrees }) => {
         const downloadDegrees = () => {
@@ -125,17 +137,29 @@ export const DegreeList = ({
     };
 
     function handleUpload(degrees: Degree[]) {
-        addDegree("", degrees, "");
+        uploadDegrees(degrees);
     }
 
     const clearLocalStorage = () => {
         localStorage.clear();
     };
 
+    function updateSelection(event: React.ChangeEvent<HTMLSelectElement>) {
+        const findPlan = plans.filter(
+            (plan): boolean => plan.name === event.target.value
+        )[0];
+        console.log("Setting as plan: " + findPlan.name);
+        setUserInputPlan(findPlan);
+    }
+
     return (
         <div className="degree_page">
             <div className="degree_buttons">
-                <Button hidden={displayId !== null} onClick={handleAddClick}>
+                <Button
+                    className="degreeAddbutton"
+                    hidden={displayId !== null}
+                    onClick={handleAddClick}
+                >
                     Add
                 </Button>
                 {isAdding && (
@@ -151,6 +175,18 @@ export const DegreeList = ({
                                 event: React.ChangeEvent<HTMLInputElement>
                             ) => setUserInputName(event.target.value)}
                         ></Form.Control>
+                        <br />
+                        <Form.Label>Select your desired degree</Form.Label>
+                        <Form.Select
+                            value={userInputPlan.name}
+                            onChange={updateSelection}
+                        >
+                            {plans.map((plan, index) => (
+                                <option key={index} value={plan.name}>
+                                    {plan.name}
+                                </option>
+                            ))}
+                        </Form.Select>
                         <Button
                             variant="success"
                             className="save_edit_btn"
@@ -198,6 +234,8 @@ export const DegreeList = ({
                                 addYear={addYear}
                                 deleteYear={deleteYear}
                                 updateSemesterList={updateSemesterList}
+                                updateGlobalCourseList={updateGlobalCourseList}
+                                globalCourseList={globalCourseList}
                             ></DegreeView>
                         );
                     } else {

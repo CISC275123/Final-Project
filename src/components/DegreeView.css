@@ -1,7 +1,23 @@
-.degree_page {
+.degree_card {
+    margin: 1rem;
     display: flex;
     flex-direction: column;
-    max-width: 100vw;
+    align-items: center;
+    background-color: #494c5e;
+    color: #4fc3dc;
+}
+
+.degButtons {
+    margin: 1rem;
+}
+
+.formAddDegree {
+    margin: 1rem 0 1rem 0;
+    width: 50%;
+}
+
+.formAddDegree Button {
+    margin: 0.5rem;
 }
 
 .year_view_rows {
@@ -10,12 +26,123 @@
     justify-content: space-between;
     align-content: center;
     align-items: center;
-    max-width: 200vw;
 }
 
 .year_view_column {
-    border: dotted orange;
-    background-color: gray;
-    margin-top: 0.5rem;
-    padding: 1rem 1rem 5rem 1rem;
+    background-color: #24252a;
+    margin: 1rem;
+    padding: 20px;
+    z-index: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 20px;
+    color: #4fc3dc;
+}
+.year_view_column::before {
+    content: "";
+    position: absolute;
+    width: 150px;
+    height: 1000%;
+    background: linear-gradient(#24272a, #4fc3dc);
+    animation: animate2 4s linear infinite;
+}
+.year_view_column::after {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    background: #24252a;
+    border-radius: 16px;
+}
+@keyframes animate2 {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(350deg);
+    }
+}
+/* .year_view_column::before {
+    content: "";
+    position: absolute;
+    width: 150px;
+    height: 1000%;
+    background: linear-gradient(#24252a, orange);
+    animation: animate2 4s linear infinite;
+}
+.year_view_column::after {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    background: #24252a;
+    border-radius: 16px;
+}
+@keyframes animate2 {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(350deg);
+    }
+} */
+.moveFront {
+    z-index: 9;
+}
+.AddYear {
+    background-color: #4fc3dc;
+    border-color: #24252a;
+    margin-left: 10px;
+}
+.AddYear:hover {
+    background-color: #24252a;
+    border-color: #4fc3dc;
+}
+.fixZ {
+    z-index: 8;
+}
+.sampleDegreeButtons {
+    background-color: #4fc3dc;
+    border-color: #24252a;
+}
+.sampleDegreeButtons:hover {
+    background-color: #24252a;
+    border-color: #4fc3dc;
+}
+
+.degReqs {
+    display: inline;
+}
+
+.SDR {
+    background-color: #4fc3dc;
+    border-color: #24252a;
+    margin-bottom: 10px;
+}
+.SDR:hover {
+    background-color: #24252a;
+    border-color: #4fc3dc;
+}
+/* .newforAllbuttons{
+
+}
+.newforAllbuttons:hover{
+
+} */
+.univReqs p {
+    color: white;
+}
+
+.matchingCourses {
+    margin-left: 1rem;
+    display: inline-block;
+}
+
+.collegeReqs p {
+    color: white;
+}
+
+.majorReqs p {
+    color: white;
 }

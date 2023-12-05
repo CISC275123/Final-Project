@@ -1,11 +1,12 @@
 .semester_view_card {
     background-color: #24252a;
-    border-radius: 1rem;
+    border-color: orange;
+    border-radius: 3rem;
     padding: 2rem;
 }
 
 .degreeName {
-    color: orange;
+    color: #4fc3dc;
     margin-right: 1rem;
 }
 .credits {
@@ -22,4 +23,14 @@
     p {
         font-size: 0.8rem;
     }
+}
+
+.listCourses ul {
+    list-style: none;
+}
+
+.listCourses li {
+    border: 2px dotted #4fc3dc;
+    padding: 1rem;
+    margin: 0.5rem;
 }

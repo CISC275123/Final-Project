@@ -9,8 +9,19 @@
 .degree_buttons {
     display: flex;
     flex-direction: column;
-    margin-top: 1rem;
     padding: 0rem 20rem 0rem 20rem;
     text-align: center;
     align-content: center;
+}
+.degreeAddbutton {
+    background-color: #4fc3dc;
+    border-color: #24252a;
+    transition: 1s;
+}
+.degreeAddbutton:hover {
+    background-color: #24252a;
+    border-color: #4fc3dc;
+    /* box-shadow: 0 0 10px orange, 0 0 20px orange, 0 0 40px orange,
+        0 0 80px orange, 0 0 160px orange; */
+    letter-spacing: 0.25em;
 }

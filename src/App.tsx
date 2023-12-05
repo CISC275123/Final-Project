@@ -125,6 +125,7 @@ function App(): JSX.Element {
                     <ul className="nav_links">
                         <li>
                             <Button
+                                className="Home"
                                 onClick={() => {
                                     setDegree(false);
                                     setCourseDisplay(false);
@@ -136,9 +137,10 @@ function App(): JSX.Element {
                         </li>
                         <li>
                             <Button
+                                className="Home"
                                 onClick={() => {
                                     setDegree(false);
-                                    setCourseDisplay(!courseDisplay);
+                                    setCourseDisplay(true);
                                     setIsHome(false);
                                 }}
                             >
@@ -147,8 +149,9 @@ function App(): JSX.Element {
                         </li>
                         <li>
                             <Button
+                                className="Home"
                                 onClick={() => {
-                                    setDegree(!isDegree);
+                                    setDegree(true);
                                     setCourseDisplay(false);
                                     setIsHome(false);
                                 }}
@@ -161,7 +164,12 @@ function App(): JSX.Element {
             </header>
 
             {/* The default home page  */}
-            <div className="HomePage">{isHome && <HomePage></HomePage>}</div>
+            <div className="HomePage">
+                {(isHome || (!isDegree && !courseDisplay)) && (
+                    <HomePage></HomePage>
+                )}
+                <div className="bubbles"></div>
+            </div>
 
             {/* Course List Functionality */}
             <div className="CourseList">
@@ -180,13 +188,15 @@ function App(): JSX.Element {
                     <DegreeDisplay
                         isDataSaved={isDataSaved}
                         updateGlobalDegreeList={updateGlobalDegreeList}
+                        updateGlobalCourseList={updateGlobalCourseList}
+                        globalCourseList={globalCourseList}
                         globalDegreeList={globalDegreeList}
                         startingDegreeId={startingDegreeId}
                     ></DegreeDisplay>
                 )}
             </div>
 
-            <footer>
+            <footer className="footerCustom">
                 <p>
                     Created and Maintained by: Leon Giang, Jason Chan, Sibyl
                     Roosen, Abdullah Maruf, Taylor Kadans

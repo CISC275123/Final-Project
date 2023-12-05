@@ -3,17 +3,23 @@ import { Degree } from "../interfaces/degree";
 import { DegreeList } from "./DegreeList";
 import { Semester } from "../interfaces/semester";
 import { Year } from "../interfaces/year";
+import { DegreeBase } from "../interfaces/degreebase";
+import { Course } from "../interfaces/course";
 
 export const DegreeDisplay = ({
     isDataSaved,
     updateGlobalDegreeList,
     globalDegreeList,
-    startingDegreeId
+    startingDegreeId,
+    updateGlobalCourseList,
+    globalCourseList
 }: {
     isDataSaved: boolean;
     updateGlobalDegreeList: (newList: Degree[]) => void;
     globalDegreeList: Degree[];
     startingDegreeId: number;
+    updateGlobalCourseList: (newList: Course[]) => void;
+    globalCourseList: Course[];
 }) => {
     // IDs used to differentiate instances of objects
     const [degreeId, setDegreeId] = useState<number>(startingDegreeId);
@@ -26,35 +32,28 @@ export const DegreeDisplay = ({
     //
     // OUTPUTS:
     // Modifies the state variable containing the list of Degrees. Adds the new degree to it.
-    function addDegree(
-        name: string,
-        degrees: Degree[] = [],
-        plan: string
-    ): void {
-        if (degrees.length <= 0) {
-            const newDegree: Degree = {
-                name: name,
-                plan: plan,
-                years: [],
-                id: degreeId
+    function uploadDegrees(degrees: Degree[]): void {
+        // Updates IDs in the imported degrees so there is no overlap.
+        const updateId: Degree[] = degrees.map((d: Degree, index): Degree => {
+            const newId = degreeId + index;
+            setDegreeId(newId + 1);
+            return {
+                ...d,
+                id: newId
             };
-            const newId = degreeId + 1;
-            setDegreeId(newId);
-            updateGlobalDegreeList([...globalDegreeList, newDegree]);
-        } else {
-            // Updates IDs in the imported degrees so there is no overlap.
-            const updateId: Degree[] = degrees.map(
-                (d: Degree, index): Degree => {
-                    const newId = degreeId + index;
-                    setDegreeId(newId + 1);
-                    return {
-                        ...d,
-                        id: newId
-                    };
-                }
-            );
-            updateGlobalDegreeList([...globalDegreeList, ...updateId]);
-        }
+        });
+        updateGlobalDegreeList([...globalDegreeList, ...updateId]);
+    }
+    function addDegree(name: string, plan: DegreeBase): void {
+        const newDegree: Degree = {
+            name: name,
+            plan: plan,
+            years: [],
+            id: degreeId
+        };
+        const newId = degreeId + 1;
+        setDegreeId(newId);
+        updateGlobalDegreeList([...globalDegreeList, newDegree]);
     }
 
     // Used to add a new instance of a Year to a degree. Takes user Input for the name.
@@ -173,10 +172,13 @@ export const DegreeDisplay = ({
                     isDataSaved={isDataSaved}
                     degrees={globalDegreeList}
                     addDegree={addDegree}
+                    uploadDegrees={uploadDegrees}
                     removeDegree={removeDegree}
                     addYear={addYear}
                     deleteYear={deleteYear}
                     updateSemesterList={updateSemesterList}
+                    updateGlobalCourseList={updateGlobalCourseList}
+                    globalCourseList={globalCourseList}
                 ></DegreeList>
             }
         </div>

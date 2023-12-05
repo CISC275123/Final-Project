@@ -81,3 +81,130 @@ footer {
         display: block;
     }
 }
+
+.Degreesbutton {
+    background-color: #24252a;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+    color: #4fc3dc;
+    border-color: #4fc3dc;
+}
+.Degreesbutton:hover {
+    color: white;
+    background-color: #24252a;
+    border-color: #4fc3dc;
+    z-index: 2;
+    box-shadow: 0 0 10px #4fc3dc, 0 0 20px #4fc3dc, 0 0 40px #4fc3dc,
+        0 0 80px #4fc3dc, 0 0 160px #4fc3dc;
+}
+.Degreesbutton::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -30px;
+    width: 0;
+    height: 100%;
+    background-color: #4fc3dc;
+    transform: skewx(35deg);
+    transition: 1s;
+    z-index: -1;
+}
+.Degreesbutton:hover:before {
+    width: 100%;
+}
+
+.nextApp {
+    background-color: #24252a;
+    position: relative;
+    top: 0;
+    left: 0;
+
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+    color: #4fc3dc;
+    border-color: #4fc3dc;
+}
+.nextApp:hover {
+    color: white;
+    background-color: #24252a;
+    border-color: #4fc3dc;
+    z-index: 2;
+    box-shadow: 0 0 10px #4fc3dc, 0 0 20px #4fc3dc, 0 0 40px #4fc3dc,
+        0 0 80px #4fc3dc, 0 0 160px #4fc3dc;
+}
+.nextApp::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -30px;
+    width: 0;
+    height: 100%;
+    background-color: #4fc3dc;
+    transform: skewx(35deg);
+    transition: 1s;
+    z-index: -1;
+}
+.nextApp:before {
+    width: 100%;
+}
+
+.Home {
+    background-color: #24252a;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+    color: #4fc3dc;
+    border-color: #4fc3dc;
+}
+.Home:hover {
+    color: white;
+    background-color: #24252a;
+    border-color: #4fc3dc;
+    z-index: 2;
+    box-shadow: 0 0 10px #4fc3dc, 0 0 20px #4fc3dc, 0 0 40px #4fc3dc,
+        0 0 80px #4fc3dc, 0 0 160px #4fc3dc;
+}
+.Home::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -28px;
+    width: 0;
+    height: 100%;
+    background-color: #4fc3dc;
+    transform: skewx(35deg);
+    transition: 1s;
+    z-index: -1;
+}
+.Home:hover:before {
+    width: 100%;
+}
+/* .HomePage {
+    background-color: #494c5e;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+}
+.bubbles {
+    position: relative;
+    display: flex;
+    z-index: 987878;
+}
+.bubbles span {
+    z-index: 987878;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    background-color: orange;
+} */

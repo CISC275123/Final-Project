@@ -8,13 +8,16 @@ import { SemesterCard } from "./SemesterCard";
 import { Degree } from "../interfaces/degree";
 import { Year } from "../interfaces/year";
 import { SemesterViewCard } from "./SemesterViewCard";
+import { Course } from "../interfaces/course";
 
 export const SemesterList = ({
     isDataSaved,
     semesterList,
     setSemesterList,
     degree,
-    year
+    year,
+    updateGlobalCourseList,
+    globalCourseList
 }: {
     isDataSaved: boolean;
     semesterList: Semester[];
@@ -25,6 +28,8 @@ export const SemesterList = ({
     ) => void;
     degree: Degree;
     year: Year;
+    updateGlobalCourseList: (newList: Course[]) => void;
+    globalCourseList: Course[];
 }) => {
     const [isMakeSemesterCard, setIsMakeSemesterCard] =
         useState<boolean>(false);
@@ -84,74 +89,6 @@ export const SemesterList = ({
             >
                 Add Semester
             </Button>
-            <div className="List">
-                <ul>
-                    {!displayId && (
-                        <>
-                            {semesterList.map((semester: Semester) => (
-                                <div
-                                    key={semester.id}
-                                    className="SemesterContainer"
-                                >
-                                    <SemesterViewCard
-                                        semester={semester}
-                                        handleView={handleCourseView}
-                                        toggle={toggle}
-                                        removeSemester={deleteSemester}
-                                    />
-                                    {/*<li className="Semester-li">
-                                        {semester.title}
-                                    </li>
-                                    <Button
-                                        onClick={() => {
-                                            handleCourseView(semester.id);
-                                        }}
-                                    >
-                                        Edit Semester
-                                    </Button>{" "}
-                                    <Button
-                                        onClick={() => {
-                                            deleteSemester(semester.id);
-                                        }}
-                                    >
-                                        Delete Semester
-                                    </Button>
-                                    <div>
-                                        <ul>
-                                            {semester.courses.map(
-                                                (course: Course) => (
-                                                    <li key={course.id}>
-                                                        {course.code}:{" "}
-                                                        {course.name}
-                                                    </li>
-                                                )
-                                            )}
-                                        </ul>
-                                                </div>*/}
-                                </div>
-                            ))}
-                        </>
-                    )}
-                    {semesterList.map((semester: Semester) => {
-                        const cId = semester.id;
-                        if (displayId === cId) {
-                            return (
-                                <div className="popup-container">
-                                    <div className="popup">
-                                        <SemesterView
-                                            semester={semester}
-                                            resetView={resetCourseView}
-                                        ></SemesterView>
-                                    </div>
-                                    <div className="background-overlay"></div>
-                                </div>
-                            );
-                        } else {
-                            return null;
-                        }
-                    })}
-                </ul>
-            </div>
             {isMakeSemesterCard && (
                 <div className="popup-container">
                     <div className="popup">
@@ -169,6 +106,55 @@ export const SemesterList = ({
                     <div className="background-overlay"></div>
                 </div>
             )}
+            <div className="List">
+                <ul>
+                    {!displayId && (
+                        <>
+                            {semesterList.map((semester: Semester) => (
+                                <div
+                                    key={semester.id}
+                                    className="SemesterContainer"
+                                >
+                                    <SemesterViewCard
+                                        semester={semester}
+                                        handleView={handleCourseView}
+                                        toggle={toggle}
+                                        removeSemester={deleteSemester}
+                                        updateGlobalCourseList={
+                                            updateGlobalCourseList
+                                        }
+                                        globalCourseList={globalCourseList}
+                                        setSemesterList={setSemesterList}
+                                        degree={degree}
+                                        year={year}
+                                    />
+                                </div>
+                            ))}
+                        </>
+                    )}
+                    {semesterList.map((semester: Semester) => {
+                        const cId = semester.id;
+                        if (displayId === cId) {
+                            return (
+                                <div className="popup-container">
+                                    <div className="popup">
+                                        <SemesterView
+                                            semester={semester}
+                                            resetView={resetCourseView}
+                                            setSemesterList={setSemesterList}
+                                            targetDegree={degree}
+                                            targetYear={year}
+                                        ></SemesterView>
+                                    </div>
+                                    <div className="background-overlay"></div>
+                                </div>
+                            );
+                        } else {
+                            return null;
+                        }
+                    })}
+                </ul>
+            </div>
         </div>
     );
 };

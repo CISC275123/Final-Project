@@ -27,28 +27,12 @@ export const CourseEdit = ({
     // BUG : Editing a course after scrolling several pages and saving leads the user to a blank screen.
     // -----> ONLY HAPPENS WHEN FILTER IS SET AND EDITING.
     const saveChanges = () => {
-        const newCourseCode: Course = {
-            ...course,
-            code: newCode
-        };
-
-        const newCourseName: Course = {
-            ...newCourseCode,
-            name: newName
-        };
-
-        const newCourseCredits: Course = {
-            ...newCourseName,
-            credits: newCredits
-        };
-
-        const newCourseDesc: Course = {
-            ...newCourseCredits,
-            descr: newDesc
-        };
-
         const newCourse: Course = {
-            ...newCourseDesc
+            ...course,
+            code: newCode,
+            name: newName,
+            credits: newCredits,
+            descr: newDesc
         };
 
         editCourse(cId, newCourse);

@@ -1,23 +1,35 @@
 /* eslint-disable no-extra-parens */
 import React, { useEffect, useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { Semester } from "../interfaces/semester";
 import { SemesterAddCourse } from "./Semester/SemesterAddCourse";
 import { Course } from "../interfaces/course";
+import "./SemesterView.css";
+import "./Semester/SemesterList.css";
 import catalog from "../data/catalog.json";
+import { Year } from "../interfaces/year";
+import { Degree } from "../interfaces/degree";
 
 export const SemesterView = ({
     resetView,
-    semester
+    semester,
+    setSemesterList,
+    targetDegree,
+    targetYear
 }: {
     resetView: () => void;
     semester: Semester;
+    setSemesterList: (
+        semesterList: Semester[],
+        degree: Degree,
+        year: Year
+    ) => void;
+    targetDegree: Degree;
+    targetYear: Year;
 }) => {
-    const [description, setDescription] = useState<string>("");
     const [addedCourses, setAddedCourses] = useState<Course[]>([]);
+    const [addedCredits, setAddedCredits] = useState<number>(0);
     const [isAddCourses, setIsAddCourses] = useState<boolean>(false);
-    const [currIndex, setIndex] = useState<number>(0);
-    const NUM_COURSES_DISPLAYED = 3;
 
     const [baseCourses, setBaseCourses] = useState<Course[]>([]);
 
@@ -67,11 +79,7 @@ export const SemesterView = ({
     function displayCourses() {
         setIsAddCourses(!isAddCourses);
     }
-    function updateDescription(event: React.ChangeEvent<HTMLTextAreaElement>) {
-        setDescription(event.target.value);
-    }
     function saveInfo() {
-        semester.notes = semester.notes + description;
         for (const x of addedCourses) {
             let y = 0;
             if (x.credits.includes("-")) {
@@ -84,13 +92,33 @@ export const SemesterView = ({
                 semester.maxCredits
             ) {
                 if (!semester.courses.includes(x)) {
-                    semester.courses.push(x);
                     semester.currentCredits = (semester.currentCredits +
                         y) as unknown as number;
                 }
             }
         }
+
+        // Fixes saving bug
+        const newSemesterList: Semester[] = targetYear.semesters.map(
+            (sem: Semester): Semester => {
+                if (sem.id === semester.id) {
+                    const newCourses = addedCourses.filter(
+                        (newCourse) =>
+                            !sem.courses.some(
+                                (existingCourse) =>
+                                    existingCourse.id === newCourse.id
+                            )
+                    );
+                    return { ...sem, courses: [...sem.courses, ...newCourses] };
+                } else {
+                    return sem;
+                }
+            }
+        );
+
+        setSemesterList(newSemesterList, targetDegree, targetYear);
         setAddedCourses([]);
+        setAddedCredits(0);
     }
     function clearCourses() {
         setAddedCourses([]);
@@ -108,8 +136,23 @@ export const SemesterView = ({
         semester.currentCredits = semester.currentCredits - y;
         saveInfo();
     }
+
+    /*function changeFilter(event: React.ChangeEvent<HTMLSelectElement>) {
+        setDepartmentFilter(event.target.value);
+
+        setFilteredList(
+            localCourses.filter(
+                (course: Course): boolean =>
+                    event.target.value === "All" ||
+                    course.code.slice(0, 4) === event.target.value
+            )
+        );
+        setIndex(0);
+        setCurrentPage(1);
+    }*/
+
     return (
-        <div>
+        <div className="SemesterviewContainer">
             <h1>
                 {" "}
                 {semester.title} ID: {semester.id}
@@ -125,53 +168,27 @@ export const SemesterView = ({
                     </Button>
                 </div>
             ))}
-            <Button onClick={displayCourses}>Show Courses</Button>
-            <Button onClick={clearCourses}>Clear Courses</Button>
-            <Button onClick={resetView}>Exit</Button>
-            <Button onClick={saveInfo}>Save</Button>
-            <h2>{semester.notes}</h2>
-            {!isAddCourses && (
-                <Form.Group controlId="formNotes">
-                    <Form.Label>Notes:</Form.Label>
-                    <Form.Control
-                        as="textarea"
-                        rows={3}
-                        value={description}
-                        onChange={updateDescription}
-                    />
-                </Form.Group>
-            )}
-            {isAddCourses && (
-                <div className="CourseButtons">
-                    <Button
-                        onClick={() =>
-                            currIndex > 0
-                                ? setIndex(currIndex - NUM_COURSES_DISPLAYED)
-                                : setIndex(currIndex)
-                        }
-                    >
-                        Back
-                    </Button>
-                    <Button
-                        onClick={() =>
-                            currIndex <
-                            baseCourses.length - NUM_COURSES_DISPLAYED
-                                ? setIndex(currIndex + NUM_COURSES_DISPLAYED)
-                                : setIndex(currIndex)
-                        }
-                    >
-                        Next
-                    </Button>
-                </div>
-            )}
+            <Button className="myCustom" onClick={displayCourses}>
+                Show Courses
+            </Button>
+            <Button className="myCustom2" onClick={clearCourses}>
+                Clear Courses
+            </Button>
+            <Button className="myCustom3" onClick={resetView}>
+                Exit
+            </Button>
+            <Button className="myCustom4" onClick={saveInfo}>
+                Save
+            </Button>
             {isAddCourses && (
                 <SemesterAddCourse
-                    courses={baseCourses.slice(
-                        currIndex,
-                        currIndex + NUM_COURSES_DISPLAYED
-                    )}
+                    courses={baseCourses}
                     addedCourses={addedCourses}
-                    setAddedCourses={setAddedCourses}
+                    setAddedCourses={
+                        setAddedCourses as (courseList: Course[]) => void
+                    }
+                    addedCredits={addedCredits}
+                    setAddedCredits={setAddedCredits}
                 ></SemesterAddCourse>
             )}
         </div>
