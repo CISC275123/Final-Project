@@ -8,7 +8,6 @@ import "./DegreeView.css";
 import { CourseView } from "./CourseView";
 import { Degree } from "../interfaces/degree";
 import { Year } from "../interfaces/year";
-import { SemesterList } from "./SemesterList";
 
 export const SemesterViewCard = ({
     semester,

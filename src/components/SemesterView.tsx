@@ -1,6 +1,6 @@
 /* eslint-disable no-extra-parens */
 import React, { useEffect, useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { Semester } from "../interfaces/semester";
 import { SemesterAddCourse } from "./Semester/SemesterAddCourse";
 import { Course } from "../interfaces/course";
@@ -30,17 +30,8 @@ export const SemesterView = ({
     const [addedCourses, setAddedCourses] = useState<Course[]>([]);
     const [addedCredits, setAddedCredits] = useState<number>(0);
     const [isAddCourses, setIsAddCourses] = useState<boolean>(false);
-    const [currIndex, setIndex] = useState<number>(0);
 
     const [baseCourses, setBaseCourses] = useState<Course[]>([]);
-    // VARs used to track course department filter
-    const [departmentFilter, setDepartmentFilter] = useState<string>("All");
-    const [filteredList, setFilteredList] = useState<Course[]>([]);
-
-    // VAR used to track what page in courses list the user is viewing
-    const [currentPage, setCurrentPage] = useState<number>(1);
-    //const [localCourses, setLocalCourses] =
-    //    useState<Course[]>(globalCourseList);
 
     useEffect(() => {
         interface JSONCourse {

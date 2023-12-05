@@ -1,8 +1,6 @@
 import React from "react";
 import "./HomePage.css";
 import { Card } from "react-bootstrap";
-import Button from "react-bootstrap/Button";
-import UD from "./ud.jpg";
 import compsciImage from "./compscipic.jpg";
 import thirdpic from "./3rdpic.jpg";
 import ud2 from "./ud2.jpg";
