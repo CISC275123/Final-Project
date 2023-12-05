@@ -25,11 +25,8 @@
     }
 }
 
-.listCourses ul {
-    list-style: none;
-}
-
 .listCourses li {
+    list-style: none;
     border: 2px dotted #4fc3dc;
     padding: 1rem;
     margin: 0.5rem;

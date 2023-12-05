@@ -125,6 +125,10 @@ function App(): JSX.Element {
                     <ul className="nav_links">
                         <li>
                             <Button
+                                style={{
+                                    background: "#4fc3dc",
+                                    color: "white"
+                                }}
                                 className="Home"
                                 onClick={() => {
                                     setDegree(false);
@@ -137,6 +141,10 @@ function App(): JSX.Element {
                         </li>
                         <li>
                             <Button
+                                style={{
+                                    background: "#4fc3dc",
+                                    color: "white"
+                                }}
                                 className="Home"
                                 onClick={() => {
                                     setDegree(false);
@@ -149,6 +157,10 @@ function App(): JSX.Element {
                         </li>
                         <li>
                             <Button
+                                style={{
+                                    background: "#4fc3dc",
+                                    color: "white"
+                                }}
                                 className="Home"
                                 onClick={() => {
                                     setDegree(true);

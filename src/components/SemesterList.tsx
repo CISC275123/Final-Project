@@ -74,16 +74,13 @@ export const SemesterList = ({
         console.log("Delete");
     }
 
-    function toggle(id: number) {
-        const div = document.getElementById(id.toString());
-        if (div) {
-            div.style.display = div.style.display == "none" ? "block" : "none";
-        }
-    }
-
     return (
         <div>
             <Button
+                style={{
+                    background: "#4fc3dc",
+                    color: "white"
+                }}
                 className="AddSemesterButton"
                 onClick={showMakeSemesterCard}
             >
@@ -108,7 +105,7 @@ export const SemesterList = ({
             )}
             <div className="List">
                 <ul>
-                    {!displayId && (
+                    {true && (
                         <>
                             {semesterList.map((semester: Semester) => (
                                 <div
@@ -118,7 +115,6 @@ export const SemesterList = ({
                                     <SemesterViewCard
                                         semester={semester}
                                         handleView={handleCourseView}
-                                        toggle={toggle}
                                         removeSemester={deleteSemester}
                                         updateGlobalCourseList={
                                             updateGlobalCourseList

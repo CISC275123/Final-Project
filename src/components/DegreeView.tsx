@@ -87,6 +87,7 @@ export const DegreeView = ({
         setUserInput(event.target.value);
     }
 
+    // Gets all the courses the user is taking in the entire degree
     function getAllCourses(): Course[] {
         const allCourses: Course[] = degree.years.flatMap((year) =>
             year.semesters.flatMap((semester) => semester.courses)
@@ -116,7 +117,7 @@ export const DegreeView = ({
         return (
             <div>
                 {reqs.map((c, index) =>
-                    getUnivReqs(reqs, coursesMeetingReqs, index)
+                    getReqs(reqs, coursesMeetingReqs, index)
                 )}
             </div>
         );
@@ -125,10 +126,23 @@ export const DegreeView = ({
     function displayCollegeReqs(): ReactNode {
         const reqs = Object.keys(degree.plan.college);
         const coursesMeetingReqs = Object.values(degree.plan.college);
+
+        // const allCourses = getAllCourses();
+
+        // const removeDups: string[][] = coursesMeetingReqs.map((c: string[]) =>
+        //     c.map((item: string) =>
+        //         allCourses.map(
+        //             (course: Course) => course.code.replace(/\s/g, "") === item
+        //         )
+        //             ? ""
+        //             : item
+        //     )
+        // );
+
         return (
             <div>
                 {reqs.map((c, index) =>
-                    getUnivReqs(reqs, coursesMeetingReqs, index)
+                    getReqs(reqs, coursesMeetingReqs, index)
                 )}
             </div>
         );
@@ -140,7 +154,7 @@ export const DegreeView = ({
         return (
             <div>
                 {reqs.map((c, index) =>
-                    getUnivReqs(reqs, coursesMeetingReqs, index)
+                    getReqs(reqs, coursesMeetingReqs, index)
                 )}
             </div>
         );
@@ -149,7 +163,7 @@ export const DegreeView = ({
     // Given the requirement types, courses that fulfill those types, and an index for the type, returns HTML that states
     // whether the student fulfilled the requirement or not. If the student does, it will also list the courses that
     // fulfill that requirement
-    function getUnivReqs(
+    function getReqs(
         reqs: string[],
         coursesMeetingReqs: string[][],
         index: number
@@ -189,11 +203,24 @@ export const DegreeView = ({
                         })}
                     </div>
                 ) : (
-                    <p>
-                        {totalCredits}/{check[check.length - 1]} credits - You
-                        have NOT met the {check.slice(0, check.length - 1)}{" "}
-                        Requirement.
-                    </p>
+                    <div>
+                        <p>
+                            {totalCredits}/{check[check.length - 1]} credits -
+                            You have NOT met the{" "}
+                            {check.slice(0, check.length - 1)} Requirement.
+                        </p>
+                        {matchingCourses.length > 0 && (
+                            <p className="matchingCourses">Courses matching:</p>
+                        )}
+                        {matchingCourses.length > 0 &&
+                            matchingCourses.map((c) => {
+                                return (
+                                    <p className="matchingCourses" key={c}>
+                                        {c}
+                                    </p>
+                                );
+                            })}
+                    </div>
                 )}
             </div>
         );
@@ -220,6 +247,10 @@ export const DegreeView = ({
                 </Button>
 
                 <Button
+                    style={{
+                        background: "#4fc3dc",
+                        color: "white"
+                    }}
                     className="AddYear"
                     onClick={() => {
                         setAdding(!isAdding);
@@ -259,7 +290,14 @@ export const DegreeView = ({
 
             <h2>{degree.name}</h2>
             <h2>{degree.plan.name}</h2>
-            <Button className="SDR" onClick={() => setShowReqs(!showReqs)}>
+            <Button
+                style={{
+                    background: "#4fc3dc",
+                    color: "white"
+                }}
+                className="SDR"
+                onClick={() => setShowReqs(!showReqs)}
+            >
                 {showReqs
                     ? "Close to refresh requirement check"
                     : "Run Requirement Check"}
@@ -294,6 +332,10 @@ export const DegreeView = ({
                                 Delete Year
                             </Button>
                             <Button
+                                style={{
+                                    background: "#4fc3dc",
+                                    color: "white"
+                                }}
                                 className="sampleDegreeButtons"
                                 onClick={() =>
                                     updateSemesterList([], degree, year)
@@ -302,18 +344,20 @@ export const DegreeView = ({
                                 Clear Semesters
                             </Button>
                             {
-                                <SemesterList
-                                    isDataSaved={isDataSaved}
-                                    key={year.name}
-                                    semesterList={year.semesters}
-                                    setSemesterList={updateSemesterList}
-                                    degree={degree}
-                                    year={year}
-                                    updateGlobalCourseList={
-                                        updateGlobalCourseList
-                                    }
-                                    globalCourseList={globalCourseList}
-                                />
+                                <div>
+                                    <SemesterList
+                                        isDataSaved={isDataSaved}
+                                        key={year.name}
+                                        semesterList={year.semesters}
+                                        setSemesterList={updateSemesterList}
+                                        degree={degree}
+                                        year={year}
+                                        updateGlobalCourseList={
+                                            updateGlobalCourseList
+                                        }
+                                        globalCourseList={globalCourseList}
+                                    />
+                                </div>
                             }
                         </div>
                     </div>

@@ -12,7 +12,6 @@ import { Year } from "../interfaces/year";
 export const SemesterViewCard = ({
     semester,
     handleView,
-    toggle,
     removeSemester,
     updateGlobalCourseList,
     globalCourseList,
@@ -22,7 +21,6 @@ export const SemesterViewCard = ({
 }: {
     semester: Semester;
     handleView: (id: number) => void;
-    toggle: (id: number) => void;
     removeSemester: (id: number) => void;
     updateGlobalCourseList: (newList: Course[]) => void;
     globalCourseList: Course[];
@@ -37,6 +35,10 @@ export const SemesterViewCard = ({
     const [displayId, setDisplayId] = useState<null | number>(null);
 
     const [defaultCourses, setDefaultCourses] = useState<Course[]>([]);
+
+    const [coursesVisible, setCoursesVisible] = useState<boolean>(
+        semester.courses.length > 0
+    );
 
     const resetCourseView = () => {
         setDisplayId(null);
@@ -101,38 +103,41 @@ export const SemesterViewCard = ({
             </Button>{" "}
             <Button
                 className="sampleDegreeButtons"
-                onClick={() => toggle(semester.id)}
+                onClick={() => setCoursesVisible(!coursesVisible)}
             >
-                Show Courses
+                {semester.courses.length > 0
+                    ? coursesVisible
+                        ? "Hide Courses"
+                        : "Show Courses"
+                    : "No Courses"}
             </Button>
             <div className="listCourses">
-                <ul>
-                    {!displayId &&
-                        semester.courses.map((course: Course) => (
-                            <li
-                                key={course.id}
-                                onClick={() => setDisplayId(course.id)}
-                            >
-                                {course.code}: {course.name}
-                            </li>
-                        ))}
-                    {semester.courses.map((course: Course) => {
-                        if (course.id === displayId) {
-                            return (
-                                <CourseView
-                                    course={course}
-                                    editCourse={editCourse}
-                                    resetView={resetCourseView}
-                                    default_courses={defaultCourses}
-                                    convertCredits={convertCredits}
-                                    departments={[]}
-                                ></CourseView>
-                            );
-                        } else {
-                            return null;
-                        }
-                    })}
-                </ul>
+                {!displayId &&
+                    coursesVisible &&
+                    semester.courses.map((course: Course) => (
+                        <li
+                            key={course.id}
+                            onClick={() => setDisplayId(course.id)}
+                        >
+                            {course.code}: {course.name}
+                        </li>
+                    ))}
+                {semester.courses.map((course: Course) => {
+                    if (course.id === displayId) {
+                        return (
+                            <CourseView
+                                course={course}
+                                editCourse={editCourse}
+                                resetView={resetCourseView}
+                                default_courses={defaultCourses}
+                                convertCredits={convertCredits}
+                                departments={[]}
+                            ></CourseView>
+                        );
+                    } else {
+                        return null;
+                    }
+                })}
             </div>
         </div>
     );
