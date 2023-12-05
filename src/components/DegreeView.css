@@ -142,12 +142,3 @@
 .majorReqs p {
     color: white;
 }
-
-.degReqs div {
-    display: flex;
-    flex-direction: column;
-}
-
-.degReqs h2 {
-    align-self: center;
-}
