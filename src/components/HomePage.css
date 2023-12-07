@@ -65,7 +65,6 @@
     animation: animateBG 15s linear infinite;
     animation-duration: calc(125s / var(--fontSize));
     z-index: 10;
-    min-width: 100%;
 }
 .bubbles span:nth-child(even) {
     background-color: #4fc3dc;
