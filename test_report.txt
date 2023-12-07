@@ -41,26 +41,26 @@
       at switchEditing (src/components/CourseDisplay.tsx:134:9)
       at src/components/CourseList.tsx:60:21
 
-FAIL src/App.test.tsx (25.28 s)
-  ✓ renders the course name somewhere (147 ms)
+FAIL src/App.test.tsx (23.622 s)
+  ✓ renders the course name somewhere (139 ms)
   Degree Tests
-    ✓ Users can add a new degree plan (82 ms)
-    ✕ Users can delete a new degree plan (60 ms)
-    ✕ Users can select a degree plan they made and view it (61 ms)
-    ✕ Users can exit a degree plan after clicking on it (50 ms)
-    ✕ Users can add a Year to a Degree Plan (49 ms)
-    ✕ Users can delete a Year from their Degree Plan (65 ms)
+    ✓ Users can add a new degree plan (69 ms)
+    ✕ Users can delete a new degree plan (54 ms)
+    ✕ Users can select a degree plan they made and view it (56 ms)
+    ✕ Users can exit a degree plan after clicking on it (47 ms)
+    ✕ Users can add a Year to a Degree Plan (48 ms)
+    ✕ Users can delete a Year from their Degree Plan (63 ms)
   Course Tests
-    ✓ Users can see a list of courses, including the course code, title, and credits (7812 ms)
-    ✓ Users can click on a course to view its information (7185 ms)
-    ✓ Users can edit a course (7004 ms)
+    ✓ Users can see a list of courses, including the course code, title, and credits (7319 ms)
+    ✓ Users can click on a course to view its information (6810 ms)
+    ✓ Users can edit a course (6451 ms)
   Semester Tests
-    ✕ Users can add a Semester from their Degree Plan (44 ms)
-    ✕ Users can add a new semester to a year (45 ms)
-    ✕ Users can delete a semester (44 ms)
+    ✕ Users can add a Semester from their Degree Plan (36 ms)
+    ✕ Users can add a new semester to a year (37 ms)
+    ✕ Users can delete a semester (38 ms)
     ✕ Users can edit a semester (40 ms)
-    ✕ Users can add a course to a semester (43 ms)
-    ✕ Users can remove a course from a semester (41 ms)
+    ✕ Users can add a course to a semester (39 ms)
+    ✕ Users can remove a course from a semester (39 ms)
 
   ● Degree Tests › Users can delete a new degree plan
 
@@ -4134,5 +4134,5 @@ All files                |    30.1 |       25 |   19.21 |   30.33 |
 Test Suites: 1 failed, 1 total
 Tests:       11 failed, 5 passed, 16 total
 Snapshots:   0 total
-Time:        26.604 s
+Time:        24.89 s
 Ran all test suites.
