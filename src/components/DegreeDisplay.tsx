@@ -21,7 +21,7 @@ export const DegreeDisplay = ({
     updateGlobalCourseList: (newList: Course[]) => void;
     globalCourseList: Course[];
 }) => {
-    // IDs used to differentiate instances of objects
+    // IDs used to differentiate instances of degree plans and Years
     const [degreeId, setDegreeId] = useState<number>(startingDegreeId);
     const [yearId, setYearId] = useState<number>(1);
 
@@ -44,6 +44,19 @@ export const DegreeDisplay = ({
         });
         updateGlobalDegreeList([...globalDegreeList, ...updateId]);
     }
+
+    /*
+        Used to add a new degree that the user creates. Takes in the name of the degree
+        and the Degree the user selects (i.e. CISC BA or CISC BS)
+
+        INPUTS:
+            name: string
+            plan: DegreeBase
+        
+        OUTPUTS:
+            void, uses updateGlobalDegreeList() to update the global list of Degree Plans
+
+    */
     function addDegree(name: string, plan: DegreeBase): void {
         const newDegree: Degree = {
             name: name,

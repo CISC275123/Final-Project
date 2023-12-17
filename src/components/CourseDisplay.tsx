@@ -134,6 +134,7 @@ export const CourseDisplay = ({
         setEditing(edit);
     }
 
+    // Updates the department filter when the user selects one in the drop-down menu
     function changeFilter(event: React.ChangeEvent<HTMLSelectElement>) {
         setDepartmentFilter(event.target.value);
 
@@ -148,6 +149,7 @@ export const CourseDisplay = ({
         setCurrentPage(1);
     }
 
+    // Changes the page by modifying the index used for scrolling
     function changePage(page: number) {
         const newIndex = (page - 1) * NUM_COURSES_DISPLAYED;
         setIndex(newIndex);

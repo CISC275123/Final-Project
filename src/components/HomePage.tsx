@@ -128,11 +128,6 @@ export const HomePage = () => {
                 <span
                     style={{ "--fontSize": 28 } as React.CSSProperties}
                 ></span>
-                {/* <span className="style2"></span>
-                <span className="style3"></span>
-                <span className="style"></span>
-                <span className="style"></span>
-                <span className="style"></span> */}
             </div>
             <div className="center-container">
                 <div className="textHome">
@@ -141,7 +136,8 @@ export const HomePage = () => {
                         Directions: Click on Courses button to view all
                         available courses.
                     </h3>
-                    <h3>Click on Degrees button to make your degree plan. </h3>
+                    <h3>Click on Degrees button to make your degree plan.</h3>
+                    <h3>Click on the Cards to open up more options</h3>
                 </div>
             </div>
             <div className="Cardgroup">

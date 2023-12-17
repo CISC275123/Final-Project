@@ -33,6 +33,7 @@ export const CourseView = ({
         setEdit(!edit);
     };
 
+    // Function that parses prereq strings with "OR" present
     function listOrCourses(courses: Course[]) {
         return courses.map((course: Course, index) => (
             <div key={course.id}>
@@ -46,6 +47,7 @@ export const CourseView = ({
         ));
     }
 
+    // Function that parses prereq strings with "AND" present
     function listAndCourses(courses: Course[]) {
         return courses.map((course: Course, index) => (
             <div key={course.id}>
@@ -59,26 +61,34 @@ export const CourseView = ({
         ));
     }
 
+    // Parses prereq strings to display the requirements as Course interfaces
     function findPreReqs(str: string) {
+        // If there is no "or" present in the string to parse
         if (str.indexOf("or") === -1) {
+            // Finds the index of the prereq courses (i.e. "CISC 106") by using RegExp to parse the given string
             const indxOfPreReqs: number[][] = departments.map((dept) =>
                 Array.from(str.matchAll(new RegExp(dept, "gi"))).map(
                     (item) => item.index || 0
                 )
             );
 
+            // Flattens array to 1D array with the correct indices
             const flattenIndx: number[] = indxOfPreReqs
                 .flat()
                 .filter((item): boolean => item !== -1);
 
+            // Slices the array to grab the string value containing the course (i.e. "CISC 106")
             const strPrereqs: string[] = flattenIndx.map((indx) =>
                 str.slice(indx, indx + 8)
             );
 
+            // Uses findCourse() helper function to locate the Course object corresponding
+            // to the given string course code (I.e. "CISC 106")
             const prereqCourses: Course[] = strPrereqs.map((prereq) =>
                 findCourse(prereq)
             );
 
+            // Checks to make sure that there are prereqs
             const containsUndefined: boolean =
                 prereqCourses.filter((item): boolean => item === undefined)
                     .length > 0;
