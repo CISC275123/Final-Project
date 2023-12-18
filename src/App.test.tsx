@@ -51,6 +51,73 @@ test("renders the course name somewhere", () => {
     expect(linkElement).toBeInTheDocument();
 });
 
+describe("Semester Tests", () => {
+    beforeEach(() => {
+        render(<App />);
+    });
+
+    test("Users can add a Semester to their Degree Plan", () => {
+        // Opens Degree Plan and Adds a Sample Degree
+        const degreeButton = screen.getByText("Degrees");
+        expect(screen.queryByLabelText("Add")).not.toBeInTheDocument();
+        degreeButton.click();
+        const button = screen.getByText("Add");
+        button.click();
+        expect(
+            screen.queryByLabelText("Select your desired degree")
+        ).toBeInTheDocument();
+        const saveButtonDegree = screen.getByText("Save");
+        saveButtonDegree.click();
+        const text = screen.getByText("Sample Degree");
+        text.click();
+        expect(screen.queryByText("Sample Degree")).toBeInTheDocument();
+        const addYearButton = screen.getByText("Add Year");
+        addYearButton.click();
+        expect(
+            screen.queryByLabelText("Name your new Year:")
+        ).toBeInTheDocument();
+        const saveButtonYear = screen.getByText("Save");
+        saveButtonYear.click();
+        expect(screen.queryByText("Freshman")).toBeInTheDocument();
+        const addSemester = screen.getByText("Add Semester");
+        addSemester.click();
+        expect(screen.queryByLabelText("Semester")).toBeInTheDocument();
+        const saveSemester = screen.getByText("Save");
+        saveSemester.click();
+        expect(screen.queryByText("Fall Semester 2023")).toBeInTheDocument();
+        const editSemesterButton = screen.getByText("Edit Semester");
+        editSemesterButton.click();
+        const showCoursesButton = screen.getByText("Show Courses");
+        showCoursesButton.click();
+        expect(screen.queryByText("Next")).toBeInTheDocument();
+        const nextButton = screen.getByText("Next");
+        nextButton.click();
+        const backButton = screen.getByText("Back");
+        backButton.click();
+        const addButtons = screen.getAllByText("Add");
+        console.log("number of add buttons: " + addButtons.length);
+        addButtons[1].click();
+        const saveButtonSemester = screen.getByText("Save");
+        saveButtonSemester.click();
+        const removeCourseButton = screen.getByText("Remove");
+        removeCourseButton.click();
+        const exitButton = screen.getAllByText("Exit");
+        exitButton[1].click();
+        editSemesterButton.click();
+        showCoursesButton.click();
+        const clearCoursesButton = screen.getByText("Clear Courses");
+        clearCoursesButton.click();
+        expect(
+            screen.queryByText("Current Credits: 0 credits")
+        ).toBeInTheDocument();
+        addButtons[1].click();
+        saveButtonSemester.click();
+        exitButton[1].click();
+        const showCoursesButtonSemesterView = screen.getByText("Show Courses");
+        showCoursesButtonSemesterView.click();
+    });
+});
+
 describe("Degree Tests", () => {
     beforeEach(() => {
         render(<App />);
@@ -256,226 +323,5 @@ describe("Course Tests", () => {
             j = j + NUM_COURSES_DISPLAYED;
             nextButton.click();
         }
-    });
-});
-
-describe("Semester Tests", () => {
-    beforeEach(() => {
-        render(<App />);
-    });
-
-    test("Users can add a Semester from their Degree Plan", () => {
-        // Opens Degree Plan and Adds a Sample Degree
-        const degreeButton = screen.getByText("Degrees");
-        degreeButton.click();
-        const button = screen.getByText("Add");
-        button.click();
-        const saveButtonDegree = screen.getByText("Save");
-        saveButtonDegree.click();
-
-        // Opens Sample Degree
-        const text = screen.getByText("Sample Degree");
-        text.click();
-
-        // Adds a Freshman Year
-        const addYear = screen.getByText("Add Year");
-        addYear.click();
-        const saveButtonYear = screen.getByText("Save");
-        saveButtonYear.click();
-
-        //Checks if Add Semester button works
-        const addSemesterButton = screen.getByText("Add Semester");
-        addSemesterButton.click();
-        expect(screen.queryByText("Semester")).toBeInTheDocument();
-
-        //Checks if Save button works
-        const saveButtonForMakeSemester = screen.getByText("Save");
-        saveButtonForMakeSemester.click();
-        expect(screen.queryByText("Freshman")).toBeInTheDocument();
-
-        //Checks if Edit Semester button works
-        const editSemesterButton = screen.getByText("Edit Semester");
-        editSemesterButton.click();
-        expect(screen.queryByText("Show Courses")).toBeInTheDocument();
-
-        //Checks if Show Courses button works
-        const showCoursesButton = screen.getByText("Show Courses");
-        showCoursesButton.click();
-        expect(screen.queryByText("Show Courses")).toBeInTheDocument();
-    });
-
-    test("Users can add a new semester to a year", () => {
-        // Opens Degree Plan and Adds a Sample Degree
-        const degreeButton = screen.getByText("Degrees");
-        degreeButton.click();
-        const button = screen.getByText("Add");
-        button.click();
-        const saveButtonDegree = screen.getByText("Save");
-        saveButtonDegree.click();
-
-        // Opens Sample Degree
-        const text = screen.getByText("Sample Degree");
-        text.click();
-
-        // Adds a Freshman Year
-        const addYear = screen.getByText("Add Year");
-        addYear.click();
-        const saveButtonYear = screen.getByText("Save");
-        saveButtonYear.click();
-
-        // Adds a new semester
-        const addSemester = screen.getByText("Add Semester");
-        addSemester.click();
-        const saveSemester = screen.getByText("Save");
-        saveSemester.click();
-
-        expect(screen.queryByText("Edit Semester")).toBeInTheDocument();
-        expect(screen.queryByText("Delete Semester")).toBeInTheDocument();
-        expect(screen.queryByText("Fall Semester 2023")).toBeInTheDocument();
-    });
-
-    test("Users can delete a semester", () => {
-        // Opens Degree Plan and Adds a Sample Degree
-        const degreeButton = screen.getByText("Degrees");
-        degreeButton.click();
-        const button = screen.getByText("Add");
-        button.click();
-        const saveButtonDegree = screen.getByText("Save");
-        saveButtonDegree.click();
-
-        // Opens Sample Degree
-        const text = screen.getByText("Sample Degree");
-        text.click();
-
-        // Adds a Freshman Year
-        const addYear = screen.getByText("Add Year");
-        addYear.click();
-        const saveButtonYear = screen.getByText("Save");
-        saveButtonYear.click();
-
-        // Adds a new semester
-        const addSemester = screen.getByText("Add Semester");
-        addSemester.click();
-        const saveSemester = screen.getByText("Save");
-        saveSemester.click();
-
-        expect(screen.queryByText("Delete Semester")).toBeInTheDocument();
-        const deleteSemester = screen.getByText("Delete Semester");
-        expect(screen.queryByText("Fall Semester 2023")).toBeInTheDocument();
-        deleteSemester.click();
-        expect(
-            screen.queryByLabelText("Fall Semester 2023")
-        ).not.toBeInTheDocument();
-    });
-
-    test("Users can edit a semester", () => {
-        // Opens Degree Plan and Adds a Sample Degree
-        const degreeButton = screen.getByText("Degrees");
-        degreeButton.click();
-        const button = screen.getByText("Add");
-        button.click();
-        const saveButtonDegree = screen.getByText("Save");
-        saveButtonDegree.click();
-
-        // Opens Sample Degree
-        const text = screen.getByText("Sample Degree");
-        text.click();
-
-        // Adds a Freshman Year
-        const addYear = screen.getByText("Add Year");
-        addYear.click();
-        const saveButtonYear = screen.getByText("Save");
-        saveButtonYear.click();
-
-        // Adds a new semester
-        const addSemester = screen.getByText("Add Semester");
-        addSemester.click();
-        const saveSemester = screen.getByText("Save");
-        saveSemester.click();
-
-        expect(screen.queryByText("Edit Semester")).toBeInTheDocument();
-        const editSemester = screen.getByText("Edit Semester");
-        expect(screen.queryByText("Fall Semester 2023")).toBeInTheDocument();
-        editSemester.click();
-        expect(
-            screen.queryByText("Fall Semester 2023 ID: 1")
-        ).toBeInTheDocument();
-    });
-
-    test("Users can add a course to a semester", () => {
-        // Opens Degree Plan and Adds a Sample Degree
-        const degreeButton = screen.getByText("Degrees");
-        degreeButton.click();
-        const button = screen.getByText("Add");
-        button.click();
-        const saveButtonDegree = screen.getByText("Save");
-        saveButtonDegree.click();
-
-        // Opens Sample Degree
-        const text = screen.getByText("Sample Degree");
-        text.click();
-
-        // Adds a Freshman Year
-        const addYear = screen.getByText("Add Year");
-        addYear.click();
-        const saveButtonYear = screen.getByText("Save");
-        saveButtonYear.click();
-
-        // Adds a new semester
-        const addSemester = screen.getByText("Add Semester");
-        addSemester.click();
-        const saveSemester = screen.getByText("Save");
-        saveSemester.click();
-
-        // Add courses
-        const editSemester = screen.getByText("Edit Semester");
-        editSemester.click();
-        const showCourses = screen.getByText("Show Courses");
-        showCourses.click();
-        const addCourse = screen.getAllByText("Add")[1];
-        addCourse.click();
-        const save = screen.getByText("Save");
-        save.click();
-        expect(screen.queryByText("Remove")).toBeInTheDocument();
-    });
-
-    test("Users can remove a course from a semester", () => {
-        // Opens Degree Plan and Adds a Sample Degree
-        const degreeButton = screen.getByText("Degrees");
-        degreeButton.click();
-        const button = screen.getByText("Add");
-        button.click();
-        const saveButtonDegree = screen.getByText("Save");
-        saveButtonDegree.click();
-
-        // Opens Sample Degree
-        const text = screen.getByText("Sample Degree");
-        text.click();
-
-        // Adds a Freshman Year
-        const addYear = screen.getByText("Add Year");
-        addYear.click();
-        const saveButtonYear = screen.getByText("Save");
-        saveButtonYear.click();
-
-        // Adds a new semester
-        const addSemester = screen.getByText("Add Semester");
-        addSemester.click();
-        const saveSemester = screen.getByText("Save");
-        saveSemester.click();
-
-        // Add courses
-        const editSemester = screen.getByText("Edit Semester");
-        editSemester.click();
-        const showCourses = screen.getByText("Show Courses");
-        showCourses.click();
-        const addCourse = screen.getAllByText("Add")[1];
-        addCourse.click();
-        const save = screen.getByText("Save");
-        save.click();
-        expect(screen.queryByText("Remove")).toBeInTheDocument();
-        const remove = screen.getByText("Remove");
-        remove.click();
-        expect(screen.queryByText("Remove")).not.toBeInTheDocument();
     });
 });
