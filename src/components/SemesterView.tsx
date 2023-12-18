@@ -148,7 +148,7 @@ export const SemesterView = ({
             <h3>Courses: </h3>
             {semester.courses.map((c) => (
                 <div key={c.code}>
-                    {c.code}{" "}
+                    {c.code} ({c.credits} credits){""}
                     <Button onClick={() => removeCourse(c.code, c.credits)}>
                         Remove
                     </Button>
@@ -175,6 +175,7 @@ export const SemesterView = ({
                     }
                     addedCredits={addedCredits}
                     setAddedCredits={setAddedCredits}
+                    semester={semester}
                 ></SemesterAddCourse>
             )}
         </div>
