@@ -1,4 +1,13 @@
 /* eslint-disable no-extra-parens */
+/*
+
+NOTE: no-extra-parens rule for eslint DISABLED in the appropriate files because it is bugged.
+
+Certain expressions with several parentheses will be flagged by eslint for having
+unnecessary parentheses as a warning. Removing the parentheses then generates an
+error for not having said parentheses. This was determined to be a bug. 
+
+*/
 import "./App.css";
 import React, { useEffect, useState } from "react";
 import { Course } from "./interfaces/course";
@@ -13,10 +22,18 @@ import { CourseDisplay } from "./components/CourseDisplay";
 import { DegreeDisplay } from "./components/DegreeDisplay";
 
 function App(): JSX.Element {
-    // VARs holding list information on the user's degree plan
+    // VAR holding unique ID for Degree Plans.
     const [startingDegreeId, setStartingDegreeId] = useState<number>(1);
+
+    // VAR used to hold the current course list (stores user edits to courses)
     const [globalCourseList, setGlobalCourseList] = useState<Course[]>([]);
+
+    // VAR checking to see if the user has data for Degree plans stored in their Local Storage.
+    // Used to update IDs in Semesters if there is saved data.
     const [isDataSaved, setIsDataSaved] = useState<boolean>(false);
+
+    // Uses local storage to pull saved data on degree plans. If saved data does exist, updates
+    // the global list of degree plans and the starting IDs for degrees, otherwise sets it to an empty aray.
     const [globalDegreeList, setGlobalDegreeList] = useState<Degree[]>(() => {
         const rawSavedDegrees = localStorage.getItem("degrees");
         if (rawSavedDegrees) {
@@ -37,6 +54,8 @@ function App(): JSX.Element {
             return [];
         }
     });
+
+    // Stores the course Departments (i.e. CISC, BISC, CHEGG) for filtering purposes
     const [departments, setDepartments] = useState<string[]>(["All"]);
 
     // VARs used to control display of elements
@@ -44,6 +63,7 @@ function App(): JSX.Element {
     const [isDegree, setDegree] = useState<boolean>(false);
     const [isHome, setIsHome] = useState<boolean>(true);
 
+    // Update functions
     function updateGlobalCourseList(newList: Course[]) {
         setGlobalCourseList(newList);
     }
@@ -52,6 +72,7 @@ function App(): JSX.Element {
         setGlobalDegreeList(newList);
     }
 
+    // On start, parses JSON file and creates a list of Courses and Departments
     useEffect(() => {
         interface JSONCourse {
             code: string;
@@ -99,6 +120,8 @@ function App(): JSX.Element {
         setDepartments([...departments, ...depts]);
     }, []);
 
+    // When globalDegreeList is updated, update the user's local storage
+    // thus saving their degree plans when edits are made
     useEffect(() => {
         // Save degree plans to local storage
         localStorage.setItem("degrees", JSON.stringify(globalDegreeList));

@@ -40,6 +40,8 @@ export const DegreeView = ({
     const [showReqs, setShowReqs] = useState<boolean>(false);
     const [baseCourses, setBaseCourses] = useState<Course[]>([]);
 
+    // On load, creates a list of all courses by parsing the JSON catalog.
+    // TO DO: This list is already created in App.tsx. Future revisions should have this value passed in
     useEffect(() => {
         interface JSONCourse {
             code: string;
@@ -83,6 +85,7 @@ export const DegreeView = ({
         setBaseCourses(COURSES);
     }, []);
 
+    // Updates the Year the user selected (Freshman, Sophomore, etc)
     function updateSelection(event: React.ChangeEvent<HTMLSelectElement>) {
         setUserInput(event.target.value);
     }
@@ -109,60 +112,31 @@ export const DegreeView = ({
         return matchingCourses;
     }
 
-    // Displays all university requirements.
-    function displayUnivReqs(): ReactNode {
-        const reqs = Object.keys(degree.plan.university);
-        const coursesMeetingReqs = Object.values(degree.plan.university);
+    /*
+        Given a list of degree requirement categories, reqCategory (i.e. DLE requirement, FYS requirement, breadth requirements, etc),
+        display the category and determine whether the user has met the category's requirements given coursesMeetingReqs, the list
+        of courses that fulfil that category.
 
+        Uses getReqs() to parse the string arrays
+    */
+    function displayRequirements(
+        reqCategory: string[],
+        coursesMeetingReqs: string[][]
+    ): ReactNode {
         return (
             <div>
-                {reqs.map((c, index) =>
-                    getReqs(reqs, coursesMeetingReqs, index)
+                {reqCategory.map((c, index) =>
+                    getReqs(reqCategory, coursesMeetingReqs, index)
                 )}
             </div>
         );
     }
 
-    function displayCollegeReqs(): ReactNode {
-        const reqs = Object.keys(degree.plan.college);
-        const coursesMeetingReqs = Object.values(degree.plan.college);
-
-        // const allCourses = getAllCourses();
-
-        // const removeDups: string[][] = coursesMeetingReqs.map((c: string[]) =>
-        //     c.map((item: string) =>
-        //         allCourses.map(
-        //             (course: Course) => course.code.replace(/\s/g, "") === item
-        //         )
-        //             ? ""
-        //             : item
-        //     )
-        // );
-
-        return (
-            <div>
-                {reqs.map((c, index) =>
-                    getReqs(reqs, coursesMeetingReqs, index)
-                )}
-            </div>
-        );
-    }
-
-    function displayMajorReqs(): ReactNode {
-        const reqs = Object.keys(degree.plan.major);
-        const coursesMeetingReqs = Object.values(degree.plan.major);
-        return (
-            <div>
-                {reqs.map((c, index) =>
-                    getReqs(reqs, coursesMeetingReqs, index)
-                )}
-            </div>
-        );
-    }
-
-    // Given the requirement types, courses that fulfill those types, and an index for the type, returns HTML that states
-    // whether the student fulfilled the requirement or not. If the student does, it will also list the courses that
-    // fulfill that requirement
+    /* 
+        Given the requirement types/category, courses that fulfill those types/categories, and an index for the location of the type in the array, returns HTML that states
+        whether the student fulfilled the requirement or not. Also displays the current credit count vs the requirement count and the courses that currently meet those
+        requirements.
+    */
     function getReqs(
         reqs: string[],
         coursesMeetingReqs: string[][],
@@ -232,8 +206,9 @@ export const DegreeView = ({
     // CS BS is MISSING 6 credits in Six additional credits of computer science technical electives numbered 301 or above, except for CISC 355, CISC 356, CISC 357, CISC 465, CISC 366 and CISC 466
     // AND 12 credits in advanced courses in a focus area approved by the student’s CISC advisor and the CISC Undergraduate Coordinator
 
-    // A SINGLE COURSE WILL COUNT FOR ALL SIMILAR CATEGORIES. FOR EXAMPLE, A MATH BREADTH COURSE WILL COUNT FOR ALL MATH BREADTH CATEGORIES EVEN WHEN
+    // TO DO: A SINGLE COURSE WILL COUNT FOR ALL SIMILAR CATEGORIES. FOR EXAMPLE, A MATH BREADTH COURSE WILL COUNT FOR ALL MATH BREADTH CATEGORIES EVEN WHEN
     // DEGREE STATES IT REQUIRES XX CREDITS IN ADDITION TO BREADTH ALREADY TAKEN.
+    // FUTURE REVISIONS SHOULD ADDRESS THIS
 
     return (
         <div className="degree_card">
@@ -306,15 +281,24 @@ export const DegreeView = ({
                 <div className="degReqs">
                     <div className="univReqs">
                         <h2>University Requirements</h2>
-                        {displayUnivReqs()}
+                        {displayRequirements(
+                            Object.keys(degree.plan.university),
+                            Object.values(degree.plan.university)
+                        )}
                     </div>
                     <div className="collegeReqs">
                         <h2>College Requirements</h2>
-                        {displayCollegeReqs()}
+                        {displayRequirements(
+                            Object.keys(degree.plan.college),
+                            Object.values(degree.plan.college)
+                        )}
                     </div>
                     <div className="majorReqs">
                         <h2>Major Requirements</h2>
-                        {displayMajorReqs()}
+                        {displayRequirements(
+                            Object.keys(degree.plan.major),
+                            Object.values(degree.plan.major)
+                        )}
                     </div>
                 </div>
             )}
