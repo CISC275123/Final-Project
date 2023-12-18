@@ -119,7 +119,7 @@ export const SemesterViewCard = ({
                             key={course.id}
                             onClick={() => setDisplayId(course.id)}
                         >
-                            {course.code}: {course.name}
+                            {course.code}: {course.name} (cr:{course.credits})
                         </li>
                     ))}
                 {semester.courses.map((course: Course) => {

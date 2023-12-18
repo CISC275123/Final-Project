@@ -4,19 +4,22 @@ import { Course } from "../../interfaces/course";
 import { Button, Form } from "react-bootstrap";
 import { CourseCard } from "../CourseCard";
 import "./SemesterAddCourse.css";
+import { Semester } from "../../interfaces/semester";
 
 export const SemesterAddCourse = ({
     courses,
     addedCourses,
     setAddedCourses,
     addedCredits,
-    setAddedCredits
+    setAddedCredits,
+    semester
 }: {
     courses: Course[];
     addedCourses: Course[];
     setAddedCourses: (courseList: Course[]) => void;
     addedCredits: number;
     setAddedCredits: (x: number) => void;
+    semester: Semester;
 }) => {
     const NUM_COURSES_DISPLAYED = 3;
     const [currIndex, setIndex] = useState<number>(0);
@@ -30,9 +33,13 @@ export const SemesterAddCourse = ({
         } else {
             y = +c.credits;
         }
-        if (addedCourses.some((item) => item === c)) {
+        if (addedCourses.some((item) => item.id === c.id)) {
             alert("This course has already been added to the queue");
-        } else if (addedCredits + y <= 18) {
+        } else if (semester.courses.some((item) => item.id === c.id)) {
+            alert("This course is already in the semester");
+        } else if (semester.currentCredits + addedCredits + y > 18) {
+            alert("Too many credits added to queue exceeded semester limit.");
+        } else {
             // Check for prerequisite and restriction warnings
             if (c.preReq !== "") {
                 alert(
@@ -53,8 +60,6 @@ export const SemesterAddCourse = ({
                 setAddedCredits(addedCredits + +c.credits);
             }
             setAddedCourses([...addedCourses, c]);
-        } else {
-            alert("Too many credits added to queue.");
         }
     }
 
@@ -62,6 +67,14 @@ export const SemesterAddCourse = ({
         const removedCourse: Course[] = addedCourses.filter(
             (course: Course): boolean => course.id !== c.id
         );
+        let y = 0;
+        if (c.credits.includes("-")) {
+            const x = +c.credits.substring(c.credits.length - 1);
+            y = +x;
+        } else {
+            y = +c.credits;
+        }
+        setAddedCredits(addedCredits - y);
         setAddedCourses(removedCourse);
     }
     function convertCredits(course: Course): number | string {
@@ -168,7 +181,7 @@ export const SemesterAddCourse = ({
                         </div>
                     ))}
             </div>
-            <h2>Courses in Queue:</h2>
+            <h2>Courses in Queue: ({addedCredits} credits)</h2>
             <div>
                 {addedCourses.map((course: Course) => (
                     <div className="addCourseCard" key={course.code}>
