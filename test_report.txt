@@ -16,6 +16,48 @@
       at performUnitOfWork (node_modules/react-dom/cjs/react-dom.development.js:22787:5)
 
   console.error
+    Warning: Each child in a list should have a unique "key" prop.
+    
+    Check the render method of `SemesterList`. See https://reactjs.org/link/warning-keys for more information.
+        at div
+        at SemesterList (/home/runner/work/Final-Project/Final-Project/src/components/SemesterList.tsx:14:5)
+        at div
+        at div
+        at div
+        at div
+        at div
+        at DegreeView (/home/runner/work/Final-Project/Final-Project/src/components/DegreeView.tsx:16:5)
+        at div
+        at div
+        at DegreeList (/home/runner/work/Final-Project/Final-Project/src/components/DegreeList.tsx:17:5)
+        at div
+        at DegreeDisplay (/home/runner/work/Final-Project/Final-Project/src/components/DegreeDisplay.tsx:10:5)
+        at div
+        at body
+        at App (/home/runner/work/Final-Project/Final-Project/src/App.tsx:26:53)
+
+      105 |             )}
+      106 |             <div className="List">
+    > 107 |                 <ul>
+          |                 ^
+      108 |                     {true && (
+      109 |                         <>
+      110 |                             {semesterList.map((semester: Semester) => (
+
+      at printWarning (node_modules/react/cjs/react-jsx-dev-runtime.development.js:117:30)
+      at error (node_modules/react/cjs/react-jsx-dev-runtime.development.js:93:5)
+      at validateExplicitKey (node_modules/react/cjs/react-jsx-dev-runtime.development.js:986:5)
+      at validateChildKeys (node_modules/react/cjs/react-jsx-dev-runtime.development.js:1013:11)
+      at jsxWithValidation (node_modules/react/cjs/react-jsx-dev-runtime.development.js:1174:15)
+      at SemesterList (src/components/SemesterList.tsx:107:17)
+      at renderWithHooks (node_modules/react-dom/cjs/react-dom.development.js:14985:18)
+
+  console.log
+    number of add buttons: 4
+
+      at Object.<anonymous> (src/App.test.tsx:98:17)
+
+  console.error
     Warning: Cannot update a component (`CourseDisplay`) while rendering a different component (`CourseList`). To locate the bad setState() call inside `CourseList`, follow the stack trace as described in https://reactjs.org/link/setstate-in-render
         at CourseList (/home/runner/work/Final-Project/Final-Project/src/components/CourseList.tsx:9:5)
         at div
@@ -41,48 +83,41 @@
       at switchEditing (src/components/CourseDisplay.tsx:134:9)
       at src/components/CourseList.tsx:60:21
 
-FAIL src/App.test.tsx (23.003 s)
-  ✓ renders the course name somewhere (138 ms)
-  Degree Tests
-    ✓ Users can add a new degree plan (79 ms)
-    ✕ Users can delete a new degree plan (55 ms)
-    ✕ Users can select a degree plan they made and view it (61 ms)
-    ✕ Users can exit a degree plan after clicking on it (52 ms)
-    ✕ Users can add a Year to a Degree Plan (46 ms)
-    ✕ Users can delete a Year from their Degree Plan (64 ms)
-  Course Tests
-    ✓ Users can see a list of courses, including the course code, title, and credits (7136 ms)
-    ✓ Users can click on a course to view its information (6529 ms)
-    ✓ Users can edit a course (6328 ms)
+FAIL src/App.test.tsx (22.866 s)
+  ✓ renders the course name somewhere (122 ms)
   Semester Tests
-    ✕ Users can add a Semester from their Degree Plan (36 ms)
-    ✕ Users can add a new semester to a year (36 ms)
-    ✕ Users can delete a semester (36 ms)
-    ✕ Users can edit a semester (38 ms)
-    ✕ Users can add a course to a semester (41 ms)
-    ✕ Users can remove a course from a semester (40 ms)
+    ✓ Users can add a Semester to their Degree Plan (257 ms)
+  Degree Tests
+    ✕ Users can add a new degree plan (55 ms)
+    ✕ Users can delete a new degree plan (40 ms)
+    ✕ Users can select a degree plan they made and view it (51 ms)
+    ✕ Users can exit a degree plan after clicking on it (45 ms)
+    ✕ Users can add a Year to a Degree Plan (53 ms)
+    ✕ Users can delete a Year from their Degree Plan (52 ms)
+  Course Tests
+    ✓ Users can see a list of courses, including the course code, title, and credits (7142 ms)
+    ✓ Users can click on a course to view its information (6422 ms)
+    ✓ Users can edit a course (6336 ms)
 
-  ● Degree Tests › Users can delete a new degree plan
+  ● Degree Tests › Users can add a new degree plan
 
-    TestingLibraryElementError: Found multiple elements with the text: Remove
+    TestingLibraryElementError: Found multiple elements with the text: Sample Degree
 
     Here are the matching elements:
 
     Ignored nodes: comments, <script />, <style />
-    [36m<button[39m
-      [33mclass[39m=[32m"remove btn btn-primary"[39m
-      [33mtype[39m=[32m"button"[39m
+    [36m<h3[39m
+      [33mclass[39m=[32m"degreeName"[39m
     [36m>[39m
-      [0mRemove[0m
-    [36m</button>[39m
+      [0mSample Degree[0m
+    [36m</h3>[39m
 
     Ignored nodes: comments, <script />, <style />
-    [36m<button[39m
-      [33mclass[39m=[32m"remove btn btn-primary"[39m
-      [33mtype[39m=[32m"button"[39m
+    [36m<h3[39m
+      [33mclass[39m=[32m"degreeName"[39m
     [36m>[39m
-      [0mRemove[0m
-    [36m</button>[39m
+      [0mSample Degree[0m
+    [36m</h3>[39m
 
     (If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
 
@@ -267,20 +302,274 @@ FAIL src/App.test.tsx (23.003 s)
       [36m</div>[39m
     [36m</body>[39m
 
-      88 |         saveButton.click();
-      89 |
-    > 90 |         const deleteDegree = screen.getByText("Remove");
-         |                                     ^
-      91 |         expect(screen.queryByText("Sample Degree")).toBeInTheDocument();
-      92 |         deleteDegree.click();
-      93 |         expect(screen.queryByText("Sample Degree")).not.toBeInTheDocument();
+      143 |         const saveButton = screen.getByText("Save");
+      144 |         saveButton.click();
+    > 145 |         expect(screen.queryByText("Sample Degree")).toBeInTheDocument();
+          |                       ^
+      146 |     });
+      147 |
+      148 |     test("Users can delete a new degree plan", () => {
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:38:19)
+      at getElementError (node_modules/@testing-library/dom/dist/query-helpers.js:25:35)
+      at getMultipleElementsFoundError (node_modules/@testing-library/dom/dist/query-helpers.js:29:10)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:66:13
+      at queryByText (node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
+      at Object.<anonymous> (src/App.test.tsx:145:23)
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
+
+  ● Degree Tests › Users can delete a new degree plan
+
+    TestingLibraryElementError: Found multiple elements with the text: Remove
+
+    Here are the matching elements:
+
+    Ignored nodes: comments, <script />, <style />
+    [36m<button[39m
+      [33mclass[39m=[32m"remove btn btn-primary"[39m
+      [33mtype[39m=[32m"button"[39m
+    [36m>[39m
+      [0mRemove[0m
+    [36m</button>[39m
+
+    Ignored nodes: comments, <script />, <style />
+    [36m<button[39m
+      [33mclass[39m=[32m"remove btn btn-primary"[39m
+      [33mtype[39m=[32m"button"[39m
+    [36m>[39m
+      [0mRemove[0m
+    [36m</button>[39m
+
+    Ignored nodes: comments, <script />, <style />
+    [36m<button[39m
+      [33mclass[39m=[32m"remove btn btn-primary"[39m
+      [33mtype[39m=[32m"button"[39m
+    [36m>[39m
+      [0mRemove[0m
+    [36m</button>[39m
+
+    (If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
+
+    Ignored nodes: comments, <script />, <style />
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<body[39m
+          [33mclass[39m=[32m"App"[39m
+        [36m>[39m
+          [36m<header[39m
+            [33mclass[39m=[32m"App-header"[39m
+          [36m>[39m
+            [36m<nav>[39m
+              [36m<a[39m
+                [33mclass[39m=[32m"logo"[39m
+              [36m>[39m
+                [36m<img[39m
+                  [33malt[39m=[32m"Homepage logo"[39m
+                  [33msrc[39m=[32m"logo.png"[39m
+                [36m/>[39m
+              [36m</a>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"title"[39m
+              [36m>[39m
+                [0mCISC275 - Introduction to Software Engineering[0m
+              [36m</p>[39m
+              [36m<ul[39m
+                [33mclass[39m=[32m"nav_links"[39m
+              [36m>[39m
+                [36m<li>[39m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"Home btn btn-primary"[39m
+                    [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
+                    [33mtype[39m=[32m"button"[39m
+                  [36m>[39m
+                    [0mHome[0m
+                  [36m</button>[39m
+                [36m</li>[39m
+                [36m<li>[39m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"Home btn btn-primary"[39m
+                    [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
+                    [33mtype[39m=[32m"button"[39m
+                  [36m>[39m
+                    [0mCourses[0m
+                  [36m</button>[39m
+                [36m</li>[39m
+                [36m<li>[39m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"Home btn btn-primary"[39m
+                    [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
+                    [33mtype[39m=[32m"button"[39m
+                  [36m>[39m
+                    [0mDegrees[0m
+                  [36m</button>[39m
+                [36m</li>[39m
+              [36m</ul>[39m
+            [36m</nav>[39m
+          [36m</header>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"HomePage"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"bubbles"[39m
+            [36m/>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"CourseList"[39m
+          [36m/>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"DegreeList"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"DegreeList"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"degree_page"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"degree_buttons"[39m
+                [36m>[39m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"degreeAddbutton btn btn-primary"[39m
+                    [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
+                    [33mtype[39m=[32m"button"[39m
+                  [36m>[39m
+                    [0mAdd[0m
+                  [36m</button>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"degree_list"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"degree_view_card"[39m
+                  [36m>[39m
+                    [36m<div>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mSample Degree[0m
+                      [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
+                    [36m</div>[39m
+                    [36m<button[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
+                      [33mtype[39m=[32m"button"[39m
+                    [36m>[39m
+                      [0mRemove[0m
+                    [36m</button>[39m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"degree_view_card"[39m
+                  [36m>[39m
+                    [36m<div>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mSample Degree[0m
+                      [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
+                    [36m</div>[39m
+                    [36m<button[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
+                      [33mtype[39m=[32m"button"[39m
+                    [36m>[39m
+                      [0mRemove[0m
+                    [36m</button>[39m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"degree_view_card"[39m
+                  [36m>[39m
+                    [36m<div>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mSample Degree[0m
+                      [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
+                    [36m</div>[39m
+                    [36m<button[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
+                      [33mtype[39m=[32m"button"[39m
+                    [36m>[39m
+                      [0mRemove[0m
+                    [36m</button>[39m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"storageButtons"[39m
+                  [36m>[39m
+                    [36m<button[39m
+                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
+                      [33mtype[39m=[32m"button"[39m
+                    [36m>[39m
+                      [0mSave Degrees[0m
+                    [36m</button>[39m
+                    [36m<div>[39m
+                      [36m<div>[39m
+                        [36m<label[39m
+                          [33mfor[39m=[32m"fileInput"[39m
+                        [36m>[39m
+                          [0mUpload Your Plans[0m
+                        [36m</label>[39m
+                        [36m<br />[39m
+                        [36m<input[39m
+                          [33maccept[39m=[32m".json"[39m
+                          [33mid[39m=[32m"fileInput"[39m
+                          [33mtype[39m=[32m"file"[39m
+                        [36m/>[39m
+                      [36m</div>[39m
+                    [36m</div>[39m
+                    [36m<button[39m
+                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
+                      [33mtype[39m=[32m"button"[39m
+                    [36m>[39m
+                      [0mClear Storage[0m
+                    [36m</button>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<footer[39m
+            [33mclass[39m=[32m"footerCustom"[39m
+          [36m>[39m
+            [36m<p>[39m
+              [0mCreated and Maintained by: Leon Giang, Jason Chan, Sibyl Roosen, Abdullah Maruf, Taylor Kadans[0m
+            [36m</p>[39m
+          [36m</footer>[39m
+        [36m</body>[39m
+      [36m</div>[39m
+    [36m</body>[39m
+
+      155 |         saveButton.click();
+      156 |
+    > 157 |         const deleteDegree = screen.getByText("Remove");
+          |                                     ^
+      158 |         expect(screen.queryByText("Sample Degree")).toBeInTheDocument();
+      159 |         deleteDegree.click();
+      160 |         expect(screen.queryByText("Sample Degree")).not.toBeInTheDocument();
 
       at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:38:19)
       at getElementError (node_modules/@testing-library/dom/dist/query-helpers.js:25:35)
       at getMultipleElementsFoundError (node_modules/@testing-library/dom/dist/query-helpers.js:29:10)
       at node_modules/@testing-library/dom/dist/query-helpers.js:66:13
       at getByText (node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
-      at Object.<anonymous> (src/App.test.tsx:90:37)
+      at Object.<anonymous> (src/App.test.tsx:157:37)
       at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
       at runJest (node_modules/@jest/core/build/runJest.js:404:19)
       at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
@@ -313,6 +602,13 @@ FAIL src/App.test.tsx (23.003 s)
       [0mSample Degree[0m
     [36m</h3>[39m
 
+    Ignored nodes: comments, <script />, <style />
+    [36m<h3[39m
+      [33mclass[39m=[32m"degreeName"[39m
+    [36m>[39m
+      [0mSample Degree[0m
+    [36m</h3>[39m
+
     (If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
 
     Ignored nodes: comments, <script />, <style />
@@ -471,6 +767,28 @@ FAIL src/App.test.tsx (23.003 s)
                     [36m</button>[39m
                   [36m</div>[39m
                   [36m<div[39m
+                    [33mclass[39m=[32m"degree_view_card"[39m
+                  [36m>[39m
+                    [36m<div>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mSample Degree[0m
+                      [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
+                    [36m</div>[39m
+                    [36m<button[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
+                      [33mtype[39m=[32m"button"[39m
+                    [36m>[39m
+                      [0mRemove[0m
+                    [36m</button>[39m
+                  [36m</div>[39m
+                  [36m<div[39m
                     [33mclass[39m=[32m"storageButtons"[39m
                   [36m>[39m
                     [36m<button[39m
@@ -518,20 +836,20 @@ FAIL src/App.test.tsx (23.003 s)
       [36m</div>[39m
     [36m</body>[39m
 
-      103 |         saveButton.click();
-      104 |
-    > 105 |         const text = screen.getByText("Sample Degree");
+      170 |         saveButton.click();
+      171 |
+    > 172 |         const text = screen.getByText("Sample Degree");
           |                             ^
-      106 |         text.click();
-      107 |         expect(screen.queryByText("Add Year")).toBeInTheDocument();
-      108 |     });
+      173 |         text.click();
+      174 |         expect(screen.queryByText("Add Year")).toBeInTheDocument();
+      175 |     });
 
       at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:38:19)
       at getElementError (node_modules/@testing-library/dom/dist/query-helpers.js:25:35)
       at getMultipleElementsFoundError (node_modules/@testing-library/dom/dist/query-helpers.js:29:10)
       at node_modules/@testing-library/dom/dist/query-helpers.js:66:13
       at getByText (node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
-      at Object.<anonymous> (src/App.test.tsx:105:29)
+      at Object.<anonymous> (src/App.test.tsx:172:29)
       at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
       at runJest (node_modules/@jest/core/build/runJest.js:404:19)
       at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
@@ -571,6 +889,13 @@ FAIL src/App.test.tsx (23.003 s)
       [0mSample Degree[0m
     [36m</h3>[39m
 
+    Ignored nodes: comments, <script />, <style />
+    [36m<h3[39m
+      [33mclass[39m=[32m"degreeName"[39m
+    [36m>[39m
+      [0mSample Degree[0m
+    [36m</h3>[39m
+
     (If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
 
     Ignored nodes: comments, <script />, <style />
@@ -751,6 +1076,28 @@ FAIL src/App.test.tsx (23.003 s)
                     [36m</button>[39m
                   [36m</div>[39m
                   [36m<div[39m
+                    [33mclass[39m=[32m"degree_view_card"[39m
+                  [36m>[39m
+                    [36m<div>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mSample Degree[0m
+                      [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
+                    [36m</div>[39m
+                    [36m<button[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
+                      [33mtype[39m=[32m"button"[39m
+                    [36m>[39m
+                      [0mRemove[0m
+                    [36m</button>[39m
+                  [36m</div>[39m
+                  [36m<div[39m
                     [33mclass[39m=[32m"storageButtons"[39m
                   [36m>[39m
                     [36m<button[39m
@@ -798,20 +1145,20 @@ FAIL src/App.test.tsx (23.003 s)
       [36m</div>[39m
     [36m</body>[39m
 
-      117 |         saveButton.click();
-      118 |
-    > 119 |         const text = screen.getByText("Sample Degree");
+      184 |         saveButton.click();
+      185 |
+    > 186 |         const text = screen.getByText("Sample Degree");
           |                             ^
-      120 |         text.click();
-      121 |
-      122 |         const exitDegree = screen.getByText("Exit");
+      187 |         text.click();
+      188 |
+      189 |         const exitDegree = screen.getByText("Exit");
 
       at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:38:19)
       at getElementError (node_modules/@testing-library/dom/dist/query-helpers.js:25:35)
       at getMultipleElementsFoundError (node_modules/@testing-library/dom/dist/query-helpers.js:29:10)
       at node_modules/@testing-library/dom/dist/query-helpers.js:66:13
       at getByText (node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
-      at Object.<anonymous> (src/App.test.tsx:119:29)
+      at Object.<anonymous> (src/App.test.tsx:186:29)
       at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
       at runJest (node_modules/@jest/core/build/runJest.js:404:19)
       at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
@@ -858,6 +1205,13 @@ FAIL src/App.test.tsx (23.003 s)
       [0mSample Degree[0m
     [36m</h3>[39m
 
+    Ignored nodes: comments, <script />, <style />
+    [36m<h3[39m
+      [33mclass[39m=[32m"degreeName"[39m
+    [36m>[39m
+      [0mSample Degree[0m
+    [36m</h3>[39m
+
     (If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
 
     Ignored nodes: comments, <script />, <style />
@@ -1060,6 +1414,28 @@ FAIL src/App.test.tsx (23.003 s)
                     [36m</button>[39m
                   [36m</div>[39m
                   [36m<div[39m
+                    [33mclass[39m=[32m"degree_view_card"[39m
+                  [36m>[39m
+                    [36m<div>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mSample Degree[0m
+                      [36m</h3>[39m
+                      [36m<h3[39m
+                        [33mclass[39m=[32m"degreeName"[39m
+                      [36m>[39m
+                        [0mCOMPUTER SCIENCE (BA)[0m
+                      [36m</h3>[39m
+                    [36m</div>[39m
+                    [36m<button[39m
+                      [33mclass[39m=[32m"remove btn btn-primary"[39m
+                      [33mtype[39m=[32m"button"[39m
+                    [36m>[39m
+                      [0mRemove[0m
+                    [36m</button>[39m
+                  [36m</div>[39m
+                  [36m<div[39m
                     [33mclass[39m=[32m"storageButtons"[39m
                   [36m>[39m
                     [36m<button[39m
@@ -1107,20 +1483,20 @@ FAIL src/App.test.tsx (23.003 s)
       [36m</div>[39m
     [36m</body>[39m
 
-      136 |
-      137 |         // Opens Sample Degree
-    > 138 |         const text = screen.getByText("Sample Degree");
+      203 |
+      204 |         // Opens Sample Degree
+    > 205 |         const text = screen.getByText("Sample Degree");
           |                             ^
-      139 |         text.click();
-      140 |
-      141 |         const addYear = screen.getByText("Add Year");
+      206 |         text.click();
+      207 |
+      208 |         const addYear = screen.getByText("Add Year");
 
       at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:38:19)
       at getElementError (node_modules/@testing-library/dom/dist/query-helpers.js:25:35)
       at getMultipleElementsFoundError (node_modules/@testing-library/dom/dist/query-helpers.js:29:10)
       at node_modules/@testing-library/dom/dist/query-helpers.js:66:13
       at getByText (node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
-      at Object.<anonymous> (src/App.test.tsx:138:29)
+      at Object.<anonymous> (src/App.test.tsx:205:29)
       at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
       at runJest (node_modules/@jest/core/build/runJest.js:404:19)
       at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
@@ -1174,344 +1550,6 @@ FAIL src/App.test.tsx (23.003 s)
       [0mSample Degree[0m
     [36m</h3>[39m
 
-    (If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<body>[39m
-      [36m<div>[39m
-        [36m<body[39m
-          [33mclass[39m=[32m"App"[39m
-        [36m>[39m
-          [36m<header[39m
-            [33mclass[39m=[32m"App-header"[39m
-          [36m>[39m
-            [36m<nav>[39m
-              [36m<a[39m
-                [33mclass[39m=[32m"logo"[39m
-              [36m>[39m
-                [36m<img[39m
-                  [33malt[39m=[32m"Homepage logo"[39m
-                  [33msrc[39m=[32m"logo.png"[39m
-                [36m/>[39m
-              [36m</a>[39m
-              [36m<p[39m
-                [33mclass[39m=[32m"title"[39m
-              [36m>[39m
-                [0mCISC275 - Introduction to Software Engineering[0m
-              [36m</p>[39m
-              [36m<ul[39m
-                [33mclass[39m=[32m"nav_links"[39m
-              [36m>[39m
-                [36m<li>[39m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"Home btn btn-primary"[39m
-                    [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
-                    [33mtype[39m=[32m"button"[39m
-                  [36m>[39m
-                    [0mHome[0m
-                  [36m</button>[39m
-                [36m</li>[39m
-                [36m<li>[39m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"Home btn btn-primary"[39m
-                    [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
-                    [33mtype[39m=[32m"button"[39m
-                  [36m>[39m
-                    [0mCourses[0m
-                  [36m</button>[39m
-                [36m</li>[39m
-                [36m<li>[39m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"Home btn btn-primary"[39m
-                    [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
-                    [33mtype[39m=[32m"button"[39m
-                  [36m>[39m
-                    [0mDegrees[0m
-                  [36m</button>[39m
-                [36m</li>[39m
-              [36m</ul>[39m
-            [36m</nav>[39m
-          [36m</header>[39m
-          [36m<div[39m
-            [33mclass[39m=[32m"HomePage"[39m
-          [36m>[39m
-            [36m<div[39m
-              [33mclass[39m=[32m"bubbles"[39m
-            [36m/>[39m
-          [36m</div>[39m
-          [36m<div[39m
-            [33mclass[39m=[32m"CourseList"[39m
-          [36m/>[39m
-          [36m<div[39m
-            [33mclass[39m=[32m"DegreeList"[39m
-          [36m>[39m
-            [36m<div[39m
-              [33mclass[39m=[32m"DegreeList"[39m
-            [36m>[39m
-              [36m<div[39m
-                [33mclass[39m=[32m"degree_page"[39m
-              [36m>[39m
-                [36m<div[39m
-                  [33mclass[39m=[32m"degree_buttons"[39m
-                [36m>[39m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"degreeAddbutton btn btn-primary"[39m
-                    [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
-                    [33mtype[39m=[32m"button"[39m
-                  [36m>[39m
-                    [0mAdd[0m
-                  [36m</button>[39m
-                [36m</div>[39m
-                [36m<div[39m
-                  [33mclass[39m=[32m"degree_list"[39m
-                [36m>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"storageButtons"[39m
-                  [36m>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
-                      [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mSave Degrees[0m
-                    [36m</button>[39m
-                    [36m<div>[39m
-                      [36m<div>[39m
-                        [36m<label[39m
-                          [33mfor[39m=[32m"fileInput"[39m
-                        [36m>[39m
-                          [0mUpload Your Plans[0m
-                        [36m</label>[39m
-                        [36m<br />[39m
-                        [36m<input[39m
-                          [33maccept[39m=[32m".json"[39m
-                          [33mid[39m=[32m"fileInput"[39m
-                          [33mtype[39m=[32m"file"[39m
-                        [36m/>[39m
-                      [36m</div>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
-                      [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mClear Storage[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                [36m</div>[39m
-              [36m</div>[39m
-            [36m</div>[39m
-          [36m</div>[39m
-          [36m<footer[39m
-            [33mclass[39m=[32m"footerCustom"[39m
-          [36m>[39m
-            [36m<p>[39m
-              [0mCreated and Maintained by: Leon Giang, Jason Chan, Sibyl Roosen, Abdullah Maruf, Taylor Kadans[0m
-            [36m</p>[39m
-          [36m</footer>[39m
-        [36m</body>[39m
-      [36m</div>[39m
-    [36m</body>[39m
-
-      163 |
-      164 |         // Opens Sample Degree
-    > 165 |         const text = screen.getByText("Sample Degree");
-          |                             ^
-      166 |         text.click();
-      167 |
-      168 |         // Adds a Freshman Year
-
-      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:38:19)
-      at getElementError (node_modules/@testing-library/dom/dist/query-helpers.js:25:35)
-      at getMultipleElementsFoundError (node_modules/@testing-library/dom/dist/query-helpers.js:29:10)
-      at node_modules/@testing-library/dom/dist/query-helpers.js:66:13
-      at getByText (node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
-      at Object.<anonymous> (src/App.test.tsx:165:29)
-      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
-      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
-      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
-      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
-
-  ● Semester Tests › Users can add a Semester from their Degree Plan
-
-    TestingLibraryElementError: Found multiple elements with the text: Sample Degree
-
-    Here are the matching elements:
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
     Ignored nodes: comments, <script />, <style />
     [36m<h3[39m
       [33mclass[39m=[32m"degreeName"[39m
@@ -1812,2327 +1850,57 @@ FAIL src/App.test.tsx (23.003 s)
       [36m</div>[39m
     [36m</body>[39m
 
-      275 |
-      276 |         // Opens Sample Degree
-    > 277 |         const text = screen.getByText("Sample Degree");
+      230 |
+      231 |         // Opens Sample Degree
+    > 232 |         const text = screen.getByText("Sample Degree");
           |                             ^
-      278 |         text.click();
-      279 |
-      280 |         // Adds a Freshman Year
+      233 |         text.click();
+      234 |
+      235 |         // Adds a Freshman Year
 
       at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:38:19)
       at getElementError (node_modules/@testing-library/dom/dist/query-helpers.js:25:35)
       at getMultipleElementsFoundError (node_modules/@testing-library/dom/dist/query-helpers.js:29:10)
       at node_modules/@testing-library/dom/dist/query-helpers.js:66:13
       at getByText (node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
-      at Object.<anonymous> (src/App.test.tsx:277:29)
+      at Object.<anonymous> (src/App.test.tsx:232:29)
       at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
       at runJest (node_modules/@jest/core/build/runJest.js:404:19)
       at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
       at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
 
-  ● Semester Tests › Users can add a new semester to a year
-
-    TestingLibraryElementError: Found multiple elements with the text: Sample Degree
-
-    Here are the matching elements:
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    (If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<body>[39m
-      [36m<div>[39m
-        [36m<body[39m
-          [33mclass[39m=[32m"App"[39m
-        [36m>[39m
-          [36m<header[39m
-            [33mclass[39m=[32m"App-header"[39m
-          [36m>[39m
-            [36m<nav>[39m
-              [36m<a[39m
-                [33mclass[39m=[32m"logo"[39m
-              [36m>[39m
-                [36m<img[39m
-                  [33malt[39m=[32m"Homepage logo"[39m
-                  [33msrc[39m=[32m"logo.png"[39m
-                [36m/>[39m
-              [36m</a>[39m
-              [36m<p[39m
-                [33mclass[39m=[32m"title"[39m
-              [36m>[39m
-                [0mCISC275 - Introduction to Software Engineering[0m
-              [36m</p>[39m
-              [36m<ul[39m
-                [33mclass[39m=[32m"nav_links"[39m
-              [36m>[39m
-                [36m<li>[39m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"Home btn btn-primary"[39m
-                    [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
-                    [33mtype[39m=[32m"button"[39m
-                  [36m>[39m
-                    [0mHome[0m
-                  [36m</button>[39m
-                [36m</li>[39m
-                [36m<li>[39m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"Home btn btn-primary"[39m
-                    [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
-                    [33mtype[39m=[32m"button"[39m
-                  [36m>[39m
-                    [0mCourses[0m
-                  [36m</button>[39m
-                [36m</li>[39m
-                [36m<li>[39m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"Home btn btn-primary"[39m
-                    [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
-                    [33mtype[39m=[32m"button"[39m
-                  [36m>[39m
-                    [0mDegrees[0m
-                  [36m</button>[39m
-                [36m</li>[39m
-              [36m</ul>[39m
-            [36m</nav>[39m
-          [36m</header>[39m
-          [36m<div[39m
-            [33mclass[39m=[32m"HomePage"[39m
-          [36m>[39m
-            [36m<div[39m
-              [33mclass[39m=[32m"bubbles"[39m
-            [36m/>[39m
-          [36m</div>[39m
-          [36m<div[39m
-            [33mclass[39m=[32m"CourseList"[39m
-          [36m/>[39m
-          [36m<div[39m
-            [33mclass[39m=[32m"DegreeList"[39m
-          [36m>[39m
-            [36m<div[39m
-              [33mclass[39m=[32m"DegreeList"[39m
-            [36m>[39m
-              [36m<div[39m
-                [33mclass[39m=[32m"degree_page"[39m
-              [36m>[39m
-                [36m<div[39m
-                  [33mclass[39m=[32m"degree_buttons"[39m
-                [36m>[39m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"degreeAddbutton btn btn-primary"[39m
-                    [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
-                    [33mtype[39m=[32m"button"[39m
-                  [36m>[39m
-                    [0mAdd[0m
-                  [36m</button>[39m
-                [36m</div>[39m
-                [36m<div[39m
-                  [33mclass[39m=[32m"degree_list"[39m
-                [36m>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"storageButtons"[39m
-                  [36m>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
-                      [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mSave Degrees[0m
-                    [36m</button>[39m
-                    [36m<div>[39m
-                      [36m<div>[39m
-                        [36m<label[39m
-                          [33mfor[39m=[32m"fileInput"[39m
-                        [36m>[39m
-                          [0mUpload Your Plans[0m
-                        [36m</label>[39m
-                        [36m<br />[39m
-                        [36m<input[39m
-                          [33maccept[39m=[32m".json"[39m
-                          [33mid[39m=[32m"fileInput"[39m
-                          [33mtype[39m=[32m"file"[39m
-                        [36m/>[39m
-                      [36m</div>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
-                      [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mClear Storage[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                [36m</div>[39m
-              [36m</div>[39m
-            [36m</div>[39m
-          [36m</div>[39m
-          [36m<footer[39m
-            [33mclass[39m=[32m"footerCustom"[39m
-          [36m>[39m
-            [36m<p>[39m
-              [0mCreated and Maintained by: Leon Giang, Jason Chan, Sibyl Roosen, Abdullah Maruf, Taylor Kadans[0m
-            [36m</p>[39m
-          [36m</footer>[39m
-        [36m</body>[39m
-      [36m</div>[39m
-    [36m</body>[39m
-
-      315 |
-      316 |         // Opens Sample Degree
-    > 317 |         const text = screen.getByText("Sample Degree");
-          |                             ^
-      318 |         text.click();
-      319 |
-      320 |         // Adds a Freshman Year
-
-      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:38:19)
-      at getElementError (node_modules/@testing-library/dom/dist/query-helpers.js:25:35)
-      at getMultipleElementsFoundError (node_modules/@testing-library/dom/dist/query-helpers.js:29:10)
-      at node_modules/@testing-library/dom/dist/query-helpers.js:66:13
-      at getByText (node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
-      at Object.<anonymous> (src/App.test.tsx:317:29)
-      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
-      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
-      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
-      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
-
-  ● Semester Tests › Users can delete a semester
-
-    TestingLibraryElementError: Found multiple elements with the text: Sample Degree
-
-    Here are the matching elements:
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    (If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<body>[39m
-      [36m<div>[39m
-        [36m<body[39m
-          [33mclass[39m=[32m"App"[39m
-        [36m>[39m
-          [36m<header[39m
-            [33mclass[39m=[32m"App-header"[39m
-          [36m>[39m
-            [36m<nav>[39m
-              [36m<a[39m
-                [33mclass[39m=[32m"logo"[39m
-              [36m>[39m
-                [36m<img[39m
-                  [33malt[39m=[32m"Homepage logo"[39m
-                  [33msrc[39m=[32m"logo.png"[39m
-                [36m/>[39m
-              [36m</a>[39m
-              [36m<p[39m
-                [33mclass[39m=[32m"title"[39m
-              [36m>[39m
-                [0mCISC275 - Introduction to Software Engineering[0m
-              [36m</p>[39m
-              [36m<ul[39m
-                [33mclass[39m=[32m"nav_links"[39m
-              [36m>[39m
-                [36m<li>[39m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"Home btn btn-primary"[39m
-                    [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
-                    [33mtype[39m=[32m"button"[39m
-                  [36m>[39m
-                    [0mHome[0m
-                  [36m</button>[39m
-                [36m</li>[39m
-                [36m<li>[39m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"Home btn btn-primary"[39m
-                    [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
-                    [33mtype[39m=[32m"button"[39m
-                  [36m>[39m
-                    [0mCourses[0m
-                  [36m</button>[39m
-                [36m</li>[39m
-                [36m<li>[39m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"Home btn btn-primary"[39m
-                    [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
-                    [33mtype[39m=[32m"button"[39m
-                  [36m>[39m
-                    [0mDegrees[0m
-                  [36m</button>[39m
-                [36m</li>[39m
-              [36m</ul>[39m
-            [36m</nav>[39m
-          [36m</header>[39m
-          [36m<div[39m
-            [33mclass[39m=[32m"HomePage"[39m
-          [36m>[39m
-            [36m<div[39m
-              [33mclass[39m=[32m"bubbles"[39m
-            [36m/>[39m
-          [36m</div>[39m
-          [36m<div[39m
-            [33mclass[39m=[32m"CourseList"[39m
-          [36m/>[39m
-          [36m<div[39m
-            [33mclass[39m=[32m"DegreeList"[39m
-          [36m>[39m
-            [36m<div[39m
-              [33mclass[39m=[32m"DegreeList"[39m
-            [36m>[39m
-              [36m<div[39m
-                [33mclass[39m=[32m"degree_page"[39m
-              [36m>[39m
-                [36m<div[39m
-                  [33mclass[39m=[32m"degree_buttons"[39m
-                [36m>[39m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"degreeAddbutton btn btn-primary"[39m
-                    [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
-                    [33mtype[39m=[32m"button"[39m
-                  [36m>[39m
-                    [0mAdd[0m
-                  [36m</button>[39m
-                [36m</div>[39m
-                [36m<div[39m
-                  [33mclass[39m=[32m"degree_list"[39m
-                [36m>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"storageButtons"[39m
-                  [36m>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
-                      [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mSave Degrees[0m
-                    [36m</button>[39m
-                    [36m<div>[39m
-                      [36m<div>[39m
-                        [36m<label[39m
-                          [33mfor[39m=[32m"fileInput"[39m
-                        [36m>[39m
-                          [0mUpload Your Plans[0m
-                        [36m</label>[39m
-                        [36m<br />[39m
-                        [36m<input[39m
-                          [33maccept[39m=[32m".json"[39m
-                          [33mid[39m=[32m"fileInput"[39m
-                          [33mtype[39m=[32m"file"[39m
-                        [36m/>[39m
-                      [36m</div>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
-                      [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mClear Storage[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                [36m</div>[39m
-              [36m</div>[39m
-            [36m</div>[39m
-          [36m</div>[39m
-          [36m<footer[39m
-            [33mclass[39m=[32m"footerCustom"[39m
-          [36m>[39m
-            [36m<p>[39m
-              [0mCreated and Maintained by: Leon Giang, Jason Chan, Sibyl Roosen, Abdullah Maruf, Taylor Kadans[0m
-            [36m</p>[39m
-          [36m</footer>[39m
-        [36m</body>[39m
-      [36m</div>[39m
-    [36m</body>[39m
-
-      345 |
-      346 |         // Opens Sample Degree
-    > 347 |         const text = screen.getByText("Sample Degree");
-          |                             ^
-      348 |         text.click();
-      349 |
-      350 |         // Adds a Freshman Year
-
-      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:38:19)
-      at getElementError (node_modules/@testing-library/dom/dist/query-helpers.js:25:35)
-      at getMultipleElementsFoundError (node_modules/@testing-library/dom/dist/query-helpers.js:29:10)
-      at node_modules/@testing-library/dom/dist/query-helpers.js:66:13
-      at getByText (node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
-      at Object.<anonymous> (src/App.test.tsx:347:29)
-      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
-      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
-      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
-      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
-
-  ● Semester Tests › Users can edit a semester
-
-    TestingLibraryElementError: Found multiple elements with the text: Sample Degree
-
-    Here are the matching elements:
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    (If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<body>[39m
-      [36m<div>[39m
-        [36m<body[39m
-          [33mclass[39m=[32m"App"[39m
-        [36m>[39m
-          [36m<header[39m
-            [33mclass[39m=[32m"App-header"[39m
-          [36m>[39m
-            [36m<nav>[39m
-              [36m<a[39m
-                [33mclass[39m=[32m"logo"[39m
-              [36m>[39m
-                [36m<img[39m
-                  [33malt[39m=[32m"Homepage logo"[39m
-                  [33msrc[39m=[32m"logo.png"[39m
-                [36m/>[39m
-              [36m</a>[39m
-              [36m<p[39m
-                [33mclass[39m=[32m"title"[39m
-              [36m>[39m
-                [0mCISC275 - Introduction to Software Engineering[0m
-              [36m</p>[39m
-              [36m<ul[39m
-                [33mclass[39m=[32m"nav_links"[39m
-              [36m>[39m
-                [36m<li>[39m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"Home btn btn-primary"[39m
-                    [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
-                    [33mtype[39m=[32m"button"[39m
-                  [36m>[39m
-                    [0mHome[0m
-                  [36m</button>[39m
-                [36m</li>[39m
-                [36m<li>[39m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"Home btn btn-primary"[39m
-                    [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
-                    [33mtype[39m=[32m"button"[39m
-                  [36m>[39m
-                    [0mCourses[0m
-                  [36m</button>[39m
-                [36m</li>[39m
-                [36m<li>[39m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"Home btn btn-primary"[39m
-                    [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
-                    [33mtype[39m=[32m"button"[39m
-                  [36m>[39m
-                    [0mDegrees[0m
-                  [36m</button>[39m
-                [36m</li>[39m
-              [36m</ul>[39m
-            [36m</nav>[39m
-          [36m</header>[39m
-          [36m<div[39m
-            [33mclass[39m=[32m"HomePage"[39m
-          [36m>[39m
-            [36m<div[39m
-              [33mclass[39m=[32m"bubbles"[39m
-            [36m/>[39m
-          [36m</div>[39m
-          [36m<div[39m
-            [33mclass[39m=[32m"CourseList"[39m
-          [36m/>[39m
-          [36m<div[39m
-            [33mclass[39m=[32m"DegreeList"[39m
-          [36m>[39m
-            [36m<div[39m
-              [33mclass[39m=[32m"DegreeList"[39m
-            [36m>[39m
-              [36m<div[39m
-                [33mclass[39m=[32m"degree_page"[39m
-              [36m>[39m
-                [36m<div[39m
-                  [33mclass[39m=[32m"degree_buttons"[39m
-                [36m>[39m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"degreeAddbutton btn btn-primary"[39m
-                    [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
-                    [33mtype[39m=[32m"button"[39m
-                  [36m>[39m
-                    [0mAdd[0m
-                  [36m</button>[39m
-                [36m</div>[39m
-                [36m<div[39m
-                  [33mclass[39m=[32m"degree_list"[39m
-                [36m>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"storageButtons"[39m
-                  [36m>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
-                      [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mSave Degrees[0m
-                    [36m</button>[39m
-                    [36m<div>[39m
-                      [36m<div>[39m
-                        [36m<label[39m
-                          [33mfor[39m=[32m"fileInput"[39m
-                        [36m>[39m
-                          [0mUpload Your Plans[0m
-                        [36m</label>[39m
-                        [36m<br />[39m
-                        [36m<input[39m
-                          [33maccept[39m=[32m".json"[39m
-                          [33mid[39m=[32m"fileInput"[39m
-                          [33mtype[39m=[32m"file"[39m
-                        [36m/>[39m
-                      [36m</div>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
-                      [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mClear Storage[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                [36m</div>[39m
-              [36m</div>[39m
-            [36m</div>[39m
-          [36m</div>[39m
-          [36m<footer[39m
-            [33mclass[39m=[32m"footerCustom"[39m
-          [36m>[39m
-            [36m<p>[39m
-              [0mCreated and Maintained by: Leon Giang, Jason Chan, Sibyl Roosen, Abdullah Maruf, Taylor Kadans[0m
-            [36m</p>[39m
-          [36m</footer>[39m
-        [36m</body>[39m
-      [36m</div>[39m
-    [36m</body>[39m
-
-      379 |
-      380 |         // Opens Sample Degree
-    > 381 |         const text = screen.getByText("Sample Degree");
-          |                             ^
-      382 |         text.click();
-      383 |
-      384 |         // Adds a Freshman Year
-
-      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:38:19)
-      at getElementError (node_modules/@testing-library/dom/dist/query-helpers.js:25:35)
-      at getMultipleElementsFoundError (node_modules/@testing-library/dom/dist/query-helpers.js:29:10)
-      at node_modules/@testing-library/dom/dist/query-helpers.js:66:13
-      at getByText (node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
-      at Object.<anonymous> (src/App.test.tsx:381:29)
-      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
-      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
-      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
-      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
-
-  ● Semester Tests › Users can add a course to a semester
-
-    TestingLibraryElementError: Found multiple elements with the text: Sample Degree
-
-    Here are the matching elements:
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    (If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<body>[39m
-      [36m<div>[39m
-        [36m<body[39m
-          [33mclass[39m=[32m"App"[39m
-        [36m>[39m
-          [36m<header[39m
-            [33mclass[39m=[32m"App-header"[39m
-          [36m>[39m
-            [36m<nav>[39m
-              [36m<a[39m
-                [33mclass[39m=[32m"logo"[39m
-              [36m>[39m
-                [36m<img[39m
-                  [33malt[39m=[32m"Homepage logo"[39m
-                  [33msrc[39m=[32m"logo.png"[39m
-                [36m/>[39m
-              [36m</a>[39m
-              [36m<p[39m
-                [33mclass[39m=[32m"title"[39m
-              [36m>[39m
-                [0mCISC275 - Introduction to Software Engineering[0m
-              [36m</p>[39m
-              [36m<ul[39m
-                [33mclass[39m=[32m"nav_links"[39m
-              [36m>[39m
-                [36m<li>[39m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"Home btn btn-primary"[39m
-                    [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
-                    [33mtype[39m=[32m"button"[39m
-                  [36m>[39m
-                    [0mHome[0m
-                  [36m</button>[39m
-                [36m</li>[39m
-                [36m<li>[39m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"Home btn btn-primary"[39m
-                    [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
-                    [33mtype[39m=[32m"button"[39m
-                  [36m>[39m
-                    [0mCourses[0m
-                  [36m</button>[39m
-                [36m</li>[39m
-                [36m<li>[39m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"Home btn btn-primary"[39m
-                    [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
-                    [33mtype[39m=[32m"button"[39m
-                  [36m>[39m
-                    [0mDegrees[0m
-                  [36m</button>[39m
-                [36m</li>[39m
-              [36m</ul>[39m
-            [36m</nav>[39m
-          [36m</header>[39m
-          [36m<div[39m
-            [33mclass[39m=[32m"HomePage"[39m
-          [36m>[39m
-            [36m<div[39m
-              [33mclass[39m=[32m"bubbles"[39m
-            [36m/>[39m
-          [36m</div>[39m
-          [36m<div[39m
-            [33mclass[39m=[32m"CourseList"[39m
-          [36m/>[39m
-          [36m<div[39m
-            [33mclass[39m=[32m"DegreeList"[39m
-          [36m>[39m
-            [36m<div[39m
-              [33mclass[39m=[32m"DegreeList"[39m
-            [36m>[39m
-              [36m<div[39m
-                [33mclass[39m=[32m"degree_page"[39m
-              [36m>[39m
-                [36m<div[39m
-                  [33mclass[39m=[32m"degree_buttons"[39m
-                [36m>[39m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"degreeAddbutton btn btn-primary"[39m
-                    [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
-                    [33mtype[39m=[32m"button"[39m
-                  [36m>[39m
-                    [0mAdd[0m
-                  [36m</button>[39m
-                [36m</div>[39m
-                [36m<div[39m
-                  [33mclass[39m=[32m"degree_list"[39m
-                [36m>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"storageButtons"[39m
-                  [36m>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
-                      [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mSave Degrees[0m
-                    [36m</button>[39m
-                    [36m<div>[39m
-                      [36m<div>[39m
-                        [36m<label[39m
-                          [33mfor[39m=[32m"fileInput"[39m
-                        [36m>[39m
-                          [0mUpload Your Plans[0m
-                        [36m</label>[39m
-                        [36m<br />[39m
-                        [36m<input[39m
-                          [33maccept[39m=[32m".json"[39m
-                          [33mid[39m=[32m"fileInput"[39m
-                          [33mtype[39m=[32m"file"[39m
-                        [36m/>[39m
-                      [36m</div>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
-                      [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mClear Storage[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                [36m</div>[39m
-              [36m</div>[39m
-            [36m</div>[39m
-          [36m</div>[39m
-          [36m<footer[39m
-            [33mclass[39m=[32m"footerCustom"[39m
-          [36m>[39m
-            [36m<p>[39m
-              [0mCreated and Maintained by: Leon Giang, Jason Chan, Sibyl Roosen, Abdullah Maruf, Taylor Kadans[0m
-            [36m</p>[39m
-          [36m</footer>[39m
-        [36m</body>[39m
-      [36m</div>[39m
-    [36m</body>[39m
-
-      413 |
-      414 |         // Opens Sample Degree
-    > 415 |         const text = screen.getByText("Sample Degree");
-          |                             ^
-      416 |         text.click();
-      417 |
-      418 |         // Adds a Freshman Year
-
-      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:38:19)
-      at getElementError (node_modules/@testing-library/dom/dist/query-helpers.js:25:35)
-      at getMultipleElementsFoundError (node_modules/@testing-library/dom/dist/query-helpers.js:29:10)
-      at node_modules/@testing-library/dom/dist/query-helpers.js:66:13
-      at getByText (node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
-      at Object.<anonymous> (src/App.test.tsx:415:29)
-      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
-      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
-      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
-      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
-
-  ● Semester Tests › Users can remove a course from a semester
-
-    TestingLibraryElementError: Found multiple elements with the text: Sample Degree
-
-    Here are the matching elements:
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<h3[39m
-      [33mclass[39m=[32m"degreeName"[39m
-    [36m>[39m
-      [0mSample Degree[0m
-    [36m</h3>[39m
-
-    (If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<body>[39m
-      [36m<div>[39m
-        [36m<body[39m
-          [33mclass[39m=[32m"App"[39m
-        [36m>[39m
-          [36m<header[39m
-            [33mclass[39m=[32m"App-header"[39m
-          [36m>[39m
-            [36m<nav>[39m
-              [36m<a[39m
-                [33mclass[39m=[32m"logo"[39m
-              [36m>[39m
-                [36m<img[39m
-                  [33malt[39m=[32m"Homepage logo"[39m
-                  [33msrc[39m=[32m"logo.png"[39m
-                [36m/>[39m
-              [36m</a>[39m
-              [36m<p[39m
-                [33mclass[39m=[32m"title"[39m
-              [36m>[39m
-                [0mCISC275 - Introduction to Software Engineering[0m
-              [36m</p>[39m
-              [36m<ul[39m
-                [33mclass[39m=[32m"nav_links"[39m
-              [36m>[39m
-                [36m<li>[39m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"Home btn btn-primary"[39m
-                    [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
-                    [33mtype[39m=[32m"button"[39m
-                  [36m>[39m
-                    [0mHome[0m
-                  [36m</button>[39m
-                [36m</li>[39m
-                [36m<li>[39m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"Home btn btn-primary"[39m
-                    [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
-                    [33mtype[39m=[32m"button"[39m
-                  [36m>[39m
-                    [0mCourses[0m
-                  [36m</button>[39m
-                [36m</li>[39m
-                [36m<li>[39m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"Home btn btn-primary"[39m
-                    [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
-                    [33mtype[39m=[32m"button"[39m
-                  [36m>[39m
-                    [0mDegrees[0m
-                  [36m</button>[39m
-                [36m</li>[39m
-              [36m</ul>[39m
-            [36m</nav>[39m
-          [36m</header>[39m
-          [36m<div[39m
-            [33mclass[39m=[32m"HomePage"[39m
-          [36m>[39m
-            [36m<div[39m
-              [33mclass[39m=[32m"bubbles"[39m
-            [36m/>[39m
-          [36m</div>[39m
-          [36m<div[39m
-            [33mclass[39m=[32m"CourseList"[39m
-          [36m/>[39m
-          [36m<div[39m
-            [33mclass[39m=[32m"DegreeList"[39m
-          [36m>[39m
-            [36m<div[39m
-              [33mclass[39m=[32m"DegreeList"[39m
-            [36m>[39m
-              [36m<div[39m
-                [33mclass[39m=[32m"degree_page"[39m
-              [36m>[39m
-                [36m<div[39m
-                  [33mclass[39m=[32m"degree_buttons"[39m
-                [36m>[39m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"degreeAddbutton btn btn-primary"[39m
-                    [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
-                    [33mtype[39m=[32m"button"[39m
-                  [36m>[39m
-                    [0mAdd[0m
-                  [36m</button>[39m
-                [36m</div>[39m
-                [36m<div[39m
-                  [33mclass[39m=[32m"degree_list"[39m
-                [36m>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"degree_view_card"[39m
-                  [36m>[39m
-                    [36m<div>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mSample Degree[0m
-                      [36m</h3>[39m
-                      [36m<h3[39m
-                        [33mclass[39m=[32m"degreeName"[39m
-                      [36m>[39m
-                        [0mCOMPUTER SCIENCE (BA)[0m
-                      [36m</h3>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"remove btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mRemove[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"storageButtons"[39m
-                  [36m>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
-                      [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mSave Degrees[0m
-                    [36m</button>[39m
-                    [36m<div>[39m
-                      [36m<div>[39m
-                        [36m<label[39m
-                          [33mfor[39m=[32m"fileInput"[39m
-                        [36m>[39m
-                          [0mUpload Your Plans[0m
-                        [36m</label>[39m
-                        [36m<br />[39m
-                        [36m<input[39m
-                          [33maccept[39m=[32m".json"[39m
-                          [33mid[39m=[32m"fileInput"[39m
-                          [33mtype[39m=[32m"file"[39m
-                        [36m/>[39m
-                      [36m</div>[39m
-                    [36m</div>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
-                      [33mstyle[39m=[32m"background: rgb(79, 195, 220); color: white;"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mClear Storage[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
-                [36m</div>[39m
-              [36m</div>[39m
-            [36m</div>[39m
-          [36m</div>[39m
-          [36m<footer[39m
-            [33mclass[39m=[32m"footerCustom"[39m
-          [36m>[39m
-            [36m<p>[39m
-              [0mCreated and Maintained by: Leon Giang, Jason Chan, Sibyl Roosen, Abdullah Maruf, Taylor Kadans[0m
-            [36m</p>[39m
-          [36m</footer>[39m
-        [36m</body>[39m
-      [36m</div>[39m
-    [36m</body>[39m
-
-      450 |
-      451 |         // Opens Sample Degree
-    > 452 |         const text = screen.getByText("Sample Degree");
-          |                             ^
-      453 |         text.click();
-      454 |
-      455 |         // Adds a Freshman Year
-
-      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:38:19)
-      at getElementError (node_modules/@testing-library/dom/dist/query-helpers.js:25:35)
-      at getMultipleElementsFoundError (node_modules/@testing-library/dom/dist/query-helpers.js:29:10)
-      at node_modules/@testing-library/dom/dist/query-helpers.js:66:13
-      at getByText (node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
-      at Object.<anonymous> (src/App.test.tsx:452:29)
-      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
-      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
-      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
-      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
-
--------------------------|---------|----------|---------|---------|-----------------------------------------
-File                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                       
--------------------------|---------|----------|---------|---------|-----------------------------------------
-All files                |   30.21 |     24.4 |    19.5 |   30.49 |                                         
- src                     |   86.53 |    92.85 |      70 |   86.53 |                                         
-  App.tsx                |   86.53 |    92.85 |      70 |   86.53 | 68,138-159                              
- src/components          |   27.29 |    21.53 |   18.82 |   27.48 |                                         
-  CourseCard.tsx         |     100 |      100 |     100 |     100 |                                         
-  CourseDisplay.tsx      |   51.78 |     7.14 |    37.5 |   51.78 | 96-128,139-155,169,202-203              
-  CourseEdit.tsx         |    40.9 |      100 |      10 |    40.9 | 27-35,39-43,62-140                      
-  CourseList.tsx         |     100 |      100 |     100 |     100 |                                         
-  CourseView.tsx         |    23.8 |    34.37 |   15.15 |   24.19 | 38-55,71,78,82,88,99-173                
-  DegreeCard.tsx         |      50 |      100 |   33.33 |      50 | 18-22                                   
-  DegreeDisplay.tsx      |   24.24 |        0 |   14.28 |   24.24 | 37-45,83-178                            
-  DegreeList.tsx         |   48.21 |    72.72 |   44.44 |   48.21 | 61,66,84-97,107-126,146,151-160,188,267 
-  DegreeView.tsx         |    2.08 |        0 |       0 |    2.12 | 38-325                                  
-  HomePage.tsx           |     100 |      100 |     100 |     100 |                                         
-  SemesterCard.tsx       |       5 |        0 |       0 |       5 | 29-98                                   
-  SemesterList.tsx       |    3.57 |        0 |       0 |    3.57 | 35-149                                  
-  SemesterView.tsx       |    1.92 |        0 |       0 |    1.96 | 30-152                                  
-  SemesterViewCard.tsx   |    3.33 |        0 |       0 |    3.33 | 35-138                                  
- src/components/Semester |    1.72 |        0 |       0 |    1.78 |                                         
-  SemesterAddCourse.tsx  |    1.72 |        0 |       0 |    1.78 | 24-195                                  
- src/interfaces          |       0 |        0 |       0 |       0 |                                         
-  course.ts              |       0 |        0 |       0 |       0 |                                         
-  degree.ts              |       0 |        0 |       0 |       0 |                                         
-  degreebase.ts          |       0 |        0 |       0 |       0 |                                         
-  semester.ts            |       0 |        0 |       0 |       0 |                                         
-  year.ts                |       0 |        0 |       0 |       0 |                                         
--------------------------|---------|----------|---------|---------|-----------------------------------------
+-------------------------|---------|----------|---------|---------|-------------------------------------------------------
+File                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                                     
+-------------------------|---------|----------|---------|---------|-------------------------------------------------------
+All files                |   58.05 |     48.8 |    42.5 |   58.41 |                                                       
+ src                     |   86.53 |    92.85 |      70 |   86.53 |                                                       
+  App.tsx                |   86.53 |    92.85 |      70 |   86.53 | 68,138-159                                            
+ src/components          |   55.73 |    43.07 |   40.58 |   55.88 |                                                       
+  CourseCard.tsx         |     100 |      100 |     100 |     100 |                                                       
+  CourseDisplay.tsx      |   51.78 |     7.14 |    37.5 |   51.78 | 96-128,139-155,169,202-203                            
+  CourseEdit.tsx         |    40.9 |      100 |      10 |    40.9 | 27-35,39-43,62-140                                    
+  CourseList.tsx         |     100 |      100 |     100 |     100 |                                                       
+  CourseView.tsx         |    23.8 |    34.37 |   15.15 |   24.19 | 38-55,71,78,82,88,99-173                              
+  DegreeCard.tsx         |      75 |      100 |   66.66 |      75 | 22                                                    
+  DegreeDisplay.tsx      |    60.6 |     37.5 |      50 |    60.6 | 37-45,116-125,175-178                                 
+  DegreeList.tsx         |   51.78 |    81.81 |      50 |   51.78 | 66,84-97,107-126,146,151-160,188                      
+  DegreeView.tsx         |      50 |    33.33 |   20.83 |   51.06 | 90-191,259-274,309-325                                
+  HomePage.tsx           |     100 |      100 |     100 |     100 |                                                       
+  SemesterCard.tsx       |      65 |        0 |   42.85 |      65 | 34-43,64,98                                           
+  SemesterList.tsx       |   64.28 |    58.33 |      70 |   64.28 | 41-46,66-74                                           
+  SemesterView.tsx       |    92.3 |    58.33 |   91.66 |   92.15 | 88,109,114,134                                        
+  SemesterViewCard.tsx   |   36.66 |    35.29 |   28.57 |   36.66 | 44,53-81,100-120,127                                  
+ src/components/Semester |      50 |    54.16 |      45 |   51.78 |                                                       
+  SemesterAddCourse.tsx  |      50 |    54.16 |      45 |   51.78 | 34,37,39,41,45,50,60,67-78,92-107,128-129,173,190-195 
+ src/interfaces          |       0 |        0 |       0 |       0 |                                                       
+  course.ts              |       0 |        0 |       0 |       0 |                                                       
+  degree.ts              |       0 |        0 |       0 |       0 |                                                       
+  degreebase.ts          |       0 |        0 |       0 |       0 |                                                       
+  semester.ts            |       0 |        0 |       0 |       0 |                                                       
+  year.ts                |       0 |        0 |       0 |       0 |                                                       
+-------------------------|---------|----------|---------|---------|-------------------------------------------------------
 Test Suites: 1 failed, 1 total
-Tests:       11 failed, 5 passed, 16 total
+Tests:       6 failed, 5 passed, 11 total
 Snapshots:   0 total
-Time:        24.275 s
+Time:        24.227 s
 Ran all test suites.
