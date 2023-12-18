@@ -5,7 +5,7 @@
   console.error
     Warning: validateDOMNesting(...): <body> cannot appear as a child of <div>.
         at body
-        at App (/home/runner/work/Final-Project/Final-Project/src/App.tsx:17:53)
+        at App (/home/runner/work/Final-Project/Final-Project/src/App.tsx:26:53)
 
       at printWarning (node_modules/react-dom/cjs/react-dom.development.js:67:30)
       at error (node_modules/react-dom/cjs/react-dom.development.js:43:5)
@@ -23,7 +23,7 @@
         at CourseDisplay (/home/runner/work/Final-Project/Final-Project/src/components/CourseDisplay.tsx:12:5)
         at div
         at body
-        at App (/home/runner/work/Final-Project/Final-Project/src/App.tsx:17:53)
+        at App (/home/runner/work/Final-Project/Final-Project/src/App.tsx:26:53)
 
       132 |     // Used to display/hide the relevant buttons when editing a course. Takes in a boolean to set the value of isEditing to.
       133 |     function switchEditing(edit: boolean) {
@@ -31,7 +31,7 @@
           |         ^
       135 |     }
       136 |
-      137 |     function changeFilter(event: React.ChangeEvent<HTMLSelectElement>) {
+      137 |     // Updates the department filter when the user selects one in the drop-down menu
 
       at printWarning (node_modules/react-dom/cjs/react-dom.development.js:67:30)
       at error (node_modules/react-dom/cjs/react-dom.development.js:43:5)
@@ -41,26 +41,26 @@
       at switchEditing (src/components/CourseDisplay.tsx:134:9)
       at src/components/CourseList.tsx:60:21
 
-FAIL src/App.test.tsx (23.01 s)
-  ✓ renders the course name somewhere (137 ms)
+FAIL src/App.test.tsx (23.003 s)
+  ✓ renders the course name somewhere (138 ms)
   Degree Tests
-    ✓ Users can add a new degree plan (74 ms)
-    ✕ Users can delete a new degree plan (54 ms)
-    ✕ Users can select a degree plan they made and view it (55 ms)
-    ✕ Users can exit a degree plan after clicking on it (49 ms)
-    ✕ Users can add a Year to a Degree Plan (49 ms)
-    ✕ Users can delete a Year from their Degree Plan (57 ms)
+    ✓ Users can add a new degree plan (79 ms)
+    ✕ Users can delete a new degree plan (55 ms)
+    ✕ Users can select a degree plan they made and view it (61 ms)
+    ✕ Users can exit a degree plan after clicking on it (52 ms)
+    ✕ Users can add a Year to a Degree Plan (46 ms)
+    ✕ Users can delete a Year from their Degree Plan (64 ms)
   Course Tests
-    ✓ Users can see a list of courses, including the course code, title, and credits (7082 ms)
-    ✓ Users can click on a course to view its information (6617 ms)
-    ✓ Users can edit a course (6259 ms)
+    ✓ Users can see a list of courses, including the course code, title, and credits (7136 ms)
+    ✓ Users can click on a course to view its information (6529 ms)
+    ✓ Users can edit a course (6328 ms)
   Semester Tests
-    ✕ Users can add a Semester from their Degree Plan (37 ms)
-    ✕ Users can add a new semester to a year (38 ms)
-    ✕ Users can delete a semester (39 ms)
-    ✕ Users can edit a semester (40 ms)
+    ✕ Users can add a Semester from their Degree Plan (36 ms)
+    ✕ Users can add a new semester to a year (36 ms)
+    ✕ Users can delete a semester (36 ms)
+    ✕ Users can edit a semester (38 ms)
     ✕ Users can add a course to a semester (41 ms)
-    ✕ Users can remove a course from a semester (41 ms)
+    ✕ Users can remove a course from a semester (40 ms)
 
   ● Degree Tests › Users can delete a new degree plan
 
@@ -4101,38 +4101,38 @@ FAIL src/App.test.tsx (23.01 s)
       at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
       at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
 
--------------------------|---------|----------|---------|---------|----------------------------------------
-File                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                      
--------------------------|---------|----------|---------|---------|----------------------------------------
-All files                |   29.62 |     24.4 |   19.11 |   29.89 |                                        
- src                     |   86.53 |    92.85 |      70 |   86.53 |                                        
-  App.tsx                |   86.53 |    92.85 |      70 |   86.53 | 48,115-136                             
- src/components          |   26.62 |    21.53 |   18.39 |    26.8 |                                        
-  CourseCard.tsx         |     100 |      100 |     100 |     100 |                                        
-  CourseDisplay.tsx      |   51.78 |     7.14 |    37.5 |   51.78 | 96-128,138-153,167,200-201             
-  CourseEdit.tsx         |    40.9 |      100 |      10 |    40.9 | 30-38,42-46,65-143                     
-  CourseList.tsx         |     100 |      100 |     100 |     100 |                                        
-  CourseView.tsx         |    23.8 |    34.37 |   15.15 |   24.19 | 37-53,66,72,75,79,89-163               
-  DegreeCard.tsx         |      50 |      100 |   33.33 |      50 | 18-22                                  
-  DegreeDisplay.tsx      |   24.24 |        0 |   14.28 |   24.24 | 37-45,70-165                           
-  DegreeList.tsx         |   47.36 |    72.72 |   44.44 |   47.36 | 61,65,78-91,98-117,136,140-148,176,255 
-  DegreeView.tsx         |    1.72 |        0 |       0 |    1.75 | 38-341                                 
-  HomePage.tsx           |     100 |      100 |     100 |     100 |                                        
-  SemesterCard.tsx       |       5 |        0 |       0 |       5 | 29-98                                  
-  SemesterList.tsx       |    3.57 |        0 |       0 |    3.57 | 35-149                                 
-  SemesterView.tsx       |    1.92 |        0 |       0 |    1.96 | 30-152                                 
-  SemesterViewCard.tsx   |    3.33 |        0 |       0 |    3.33 | 35-138                                 
- src/components/Semester |    1.72 |        0 |       0 |    1.78 |                                        
-  SemesterAddCourse.tsx  |    1.72 |        0 |       0 |    1.78 | 24-195                                 
- src/interfaces          |       0 |        0 |       0 |       0 |                                        
-  course.ts              |       0 |        0 |       0 |       0 |                                        
-  degree.ts              |       0 |        0 |       0 |       0 |                                        
-  degreebase.ts          |       0 |        0 |       0 |       0 |                                        
-  semester.ts            |       0 |        0 |       0 |       0 |                                        
-  year.ts                |       0 |        0 |       0 |       0 |                                        
--------------------------|---------|----------|---------|---------|----------------------------------------
+-------------------------|---------|----------|---------|---------|-----------------------------------------
+File                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                       
+-------------------------|---------|----------|---------|---------|-----------------------------------------
+All files                |   30.21 |     24.4 |    19.5 |   30.49 |                                         
+ src                     |   86.53 |    92.85 |      70 |   86.53 |                                         
+  App.tsx                |   86.53 |    92.85 |      70 |   86.53 | 68,138-159                              
+ src/components          |   27.29 |    21.53 |   18.82 |   27.48 |                                         
+  CourseCard.tsx         |     100 |      100 |     100 |     100 |                                         
+  CourseDisplay.tsx      |   51.78 |     7.14 |    37.5 |   51.78 | 96-128,139-155,169,202-203              
+  CourseEdit.tsx         |    40.9 |      100 |      10 |    40.9 | 27-35,39-43,62-140                      
+  CourseList.tsx         |     100 |      100 |     100 |     100 |                                         
+  CourseView.tsx         |    23.8 |    34.37 |   15.15 |   24.19 | 38-55,71,78,82,88,99-173                
+  DegreeCard.tsx         |      50 |      100 |   33.33 |      50 | 18-22                                   
+  DegreeDisplay.tsx      |   24.24 |        0 |   14.28 |   24.24 | 37-45,83-178                            
+  DegreeList.tsx         |   48.21 |    72.72 |   44.44 |   48.21 | 61,66,84-97,107-126,146,151-160,188,267 
+  DegreeView.tsx         |    2.08 |        0 |       0 |    2.12 | 38-325                                  
+  HomePage.tsx           |     100 |      100 |     100 |     100 |                                         
+  SemesterCard.tsx       |       5 |        0 |       0 |       5 | 29-98                                   
+  SemesterList.tsx       |    3.57 |        0 |       0 |    3.57 | 35-149                                  
+  SemesterView.tsx       |    1.92 |        0 |       0 |    1.96 | 30-152                                  
+  SemesterViewCard.tsx   |    3.33 |        0 |       0 |    3.33 | 35-138                                  
+ src/components/Semester |    1.72 |        0 |       0 |    1.78 |                                         
+  SemesterAddCourse.tsx  |    1.72 |        0 |       0 |    1.78 | 24-195                                  
+ src/interfaces          |       0 |        0 |       0 |       0 |                                         
+  course.ts              |       0 |        0 |       0 |       0 |                                         
+  degree.ts              |       0 |        0 |       0 |       0 |                                         
+  degreebase.ts          |       0 |        0 |       0 |       0 |                                         
+  semester.ts            |       0 |        0 |       0 |       0 |                                         
+  year.ts                |       0 |        0 |       0 |       0 |                                         
+-------------------------|---------|----------|---------|---------|-----------------------------------------
 Test Suites: 1 failed, 1 total
 Tests:       11 failed, 5 passed, 16 total
 Snapshots:   0 total
-Time:        24.279 s
+Time:        24.275 s
 Ran all test suites.
